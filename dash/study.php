@@ -9,7 +9,7 @@
 	// Parâmetros
 	$user_id = car_get_session_attribute('user_id', 0);
 
-    $stud_key = car_get_parameter('k', 0);
+    $stud_key = car_get_parameter('k', '');
 
     // Variáveis
 	$stse_order = 0;

@@ -17,8 +17,6 @@
         // se não estiver logado, redireciona para a página de login
         if ($_login == 'off' and strrpos($_SERVER['REQUEST_URI'], '/login/login.php') === false) {
             car_redirect('../login/login.php?redirect_url=' . urlencode(car_current_url()));
-
-            car_set_session_attribute('session_admin_login', 'off');
         }
     }
 
@@ -156,7 +154,6 @@
 		if ($_login == 'off' and strrpos($_SERVER['REQUEST_URI'], '/login/login') === false) {
 			car_redirect(CAR_PATH_WEB . '/'. $_t['lang'] . '/login/login?redirect_url=' . urlencode(car_current_url()));
 	
-			car_set_session_attribute('session_login', 'off');
 		} else if ($_login == 'on' and strrpos($_SERVER['REQUEST_URI'], '/login/login') !== false) { // se estiver logado e acessar o /login/login/ direciona para a /home
 			car_redirect(CAR_PATH_WEB . '/dash/deck-list');
 		}

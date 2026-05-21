@@ -8,7 +8,7 @@
 
     // Parâmetros
     $user_id = car_get_session_attribute('user_id', 0);
-    $deck_key = car_get_parameter('k', 0);
+    $deck_key = car_get_parameter('k', '');
 
     // Variáveis de Paginação
     $current_page = car_get_parameter('current_page', 0);
@@ -72,7 +72,6 @@
     $header_index_follow = 'noindex,nofollow';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $("#input_file").change(function() {

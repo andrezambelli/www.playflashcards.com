@@ -8,7 +8,7 @@
 	$user_id = car_get_session_attribute('user_id', 0);
     $read_database = car_get_session_attribute('read_database', 'on');
 
-    $deck_key = car_get_parameter('k', 0);
+    $deck_key = car_get_parameter('k', '');
 ?>
 <?php
     $header_title = car_t($t, 'Delete Deck') . ' - Play Flashcards';
