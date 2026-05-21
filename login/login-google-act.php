@@ -1,3 +1,4 @@
+<?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
 <?php include_once CAL_ROOT_WEB . '/config.inc';?>
 <?php include_once CAL_ROOT_EXTERNAL_LIB . '/google-api-client-2.12.1/vendor/autoload.php';?>

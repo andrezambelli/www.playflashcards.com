@@ -1,3 +1,4 @@
+<?php /** @var array $t */ ?>
 <?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php if (!isset($_COOKIE['consent_key'])) { // Se não existir cookie, faz a pergunta?>
     <div class="div-cookie-consent">

@@ -1,3 +1,4 @@
+<?php /** @var array $t */ ?>
 <?php
     cal_set_session_attribute('current_url', cal_current_url());
 
