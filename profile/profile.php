@@ -80,7 +80,7 @@
         <div class="space"></div>
         <div class="stats-title"><?= car_t($t, 'Delete your Account'); ?>:</div>
         <div class="stats-value">
-            <a href="../profile/profile-delete">
+            <a href="<?= CAR_PATH_WEB; ?>/profile/profile-delete">
                 <?= car_t($t, 'Delete'); ?>
             </a>
         </div>

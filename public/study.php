@@ -191,7 +191,7 @@
 			event.preventDefault();
 
 			$('#stse_answer').val('true');
-			$('#main_form').attr('action', '../study/study-act');
+			$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/study/study-act');
 			$('#main_form').submit();
 		});
 
@@ -199,7 +199,7 @@
 			event.preventDefault();
 
 			$('#stse_answer').val('false');
-			$('#main_form').attr('action', '../study/study-act');
+			$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/study/study-act');
 			$('#main_form').submit();
 		});
 	});
@@ -251,7 +251,7 @@
                 <?= car_t($t, 'Deck'); ?>
             </div>
             <div class="stats-value">
-                <a href="../deck/<?= $deck_key; ?>">
+                <a href="<?= CAR_PATH_WEB; ?>/deck/<?= $deck_key; ?>">
                     <?= car_htmlspecialchars($deck_name); ?>
                 </a>
             </div>

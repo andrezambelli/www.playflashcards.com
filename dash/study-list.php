@@ -102,7 +102,7 @@
                                 <?php $count += 1; ?>
                                 <tr>
                                     <td>
-                                        <a href="../dash/study?k=<?= $row['stud_key']; ?>">
+                                        <a href="<?= CAR_PATH_WEB; ?>/dash/study?k=<?= $row['stud_key']; ?>">
                                             <?= car_htmlspecialchars($row['stud_begin']); ?>
                                         </a>
                                     </td>
@@ -111,7 +111,7 @@
                                     </td>
                                     <td>
                                         <?php if (empty($row['stud_end'])) { ?>
-                                            <a href="../dash/study?k=<?= $row['stud_key']; ?>" class="buttonx">
+                                            <a href="<?= CAR_PATH_WEB; ?>/dash/study?k=<?= $row['stud_key']; ?>" class="buttonx">
                                                 <?= car_t($t, 'Play'); ?>
                                             </a>
                                         <?php } else { ?>
@@ -125,17 +125,17 @@
                     <?php if ($total_pages > 1) { ?>
                         <div class="pages">
                             <?php if ($current_page > 0) { ?>
-                                <a href="../dash/study-list?k=<?= $deck_key?>&current_page=<?= ($current_page - 1); ?>" class="buttonx">&lt;</a>
+                                <a href="<?= CAR_PATH_WEB; ?>/dash/study-list?k=<?= $deck_key?>&current_page=<?= ($current_page - 1); ?>" class="buttonx">&lt;</a>
                             <?php } ?>
                             <?php for ($page = 0; $page < $total_pages; $page++) { ?>
                                 <?php if ($current_page != $page) { ?>
-                                    <a href="../dash/study-list?k=<?= $deck_key?>&current_page=<?= $page; ?>" class="buttonx"><?= ($page + 1); ?></a>
+                                    <a href="<?= CAR_PATH_WEB; ?>/dash/study-list?k=<?= $deck_key?>&current_page=<?= $page; ?>" class="buttonx"><?= ($page + 1); ?></a>
                                 <?php } else { ?>
                                     <span class="disabledx"><?= ($page + 1); ?></span>
                                 <?php } ?>
                             <?php } ?>
                             <?php if ($current_page + 1 < $total_pages) { ?>
-                                <a href="../dash/study-list?k=<?= $deck_key?>&current_page=<?= ($current_page + 1); ?>" class="buttonx">&gt;</a>
+                                <a href="<?= CAR_PATH_WEB; ?>/dash/study-list?k=<?= $deck_key?>&current_page=<?= ($current_page + 1); ?>" class="buttonx">&gt;</a>
                             <?php } ?>
                         </div>
                     <?php } ?>

@@ -171,7 +171,7 @@
 			event.preventDefault();
 
 			$('#stse_answer').val('true');
-			$('#main_form').attr('action', '../dash/study-act');
+			$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/dash/study-act');
 			$('#main_form').submit();
 		});
 
@@ -179,7 +179,7 @@
 			event.preventDefault();
 
 			$('#stse_answer').val('false');
-			$('#main_form').attr('action', '../dash/study-act');
+			$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/dash/study-act');
 			$('#main_form').submit();
 		});
 	});
@@ -232,7 +232,7 @@
             </div>
             <?php if ($has_card) { ?>
                 <div class="stats-value">
-                    <a href="../dash/deck?k=<?= $deck_key; ?>">
+                    <a href="<?= CAR_PATH_WEB; ?>/dash/deck?k=<?= $deck_key; ?>">
                         <?= car_htmlspecialchars($deck_name); ?>
                     </a>
                 </div>
@@ -258,7 +258,7 @@
             <div class="space"></div>
             <div class="stats-title"><?= car_t($t, 'Delete Study'); ?>:</div>
             <div class="stats-value">
-                <a href="../dash/study-delete-act?k=<?= $stud_key; ?>" class="buttonx w75">
+                <a href="<?= CAR_PATH_WEB; ?>/dash/study-delete-act?k=<?= $stud_key; ?>" class="buttonx w75">
                     <?= car_t($t, 'Delete'); ?>
                 </a>
             </div>

@@ -65,7 +65,7 @@
             <?= car_t($t, 'profile.srs.definition'); ?>
         </div>
         <div class="space"></div>
-        <form id="main_form" action="../profile/srs-act" method="post">
+        <form id="main_form" action="<?= CAR_PATH_WEB; ?>/profile/srs-act" method="post">
             <div class="stats-title">
                 <?= car_t($t, 'Number of Cards per Study Session'); ?>:
             </div>
