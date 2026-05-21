@@ -1,10 +1,10 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
     // Parâmetros
-    $user_id = cal_get_session_attribute('user_id', CAL_USER_ID_MASTER);
+    $user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
 
     // Variáveis
     $_page = $routes[$t['lang']];
@@ -45,7 +45,7 @@
         $stud_key = $pages[1];
 
         // Ajustando o timezone do banco de dados
-        $timezone = cal_get_session_attribute('timezone', CAL_TIMEZONE_DEFAULT);
+        $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
         $sql = sprintf("SET time_zone = '%s'", $timezone);
         $mysqli->query($sql);
 
@@ -56,7 +56,7 @@
                          where a.stud_key = '%s'
                            and a.user_id = %d
                            and a.deck_id = b.deck_id",
-                        $mysqli->real_escape_string(cal_never_null($stud_key)),
+                        $mysqli->real_escape_string(car_never_null($stud_key)),
                         $user_id);
 
         $result = $mysqli->query($sql);
@@ -92,7 +92,7 @@
                                and b.stse_answer is null
                              order by b.stse_order
                             limit 1",
-                            $mysqli->real_escape_string(cal_never_null($stud_key)),
+                            $mysqli->real_escape_string(car_never_null($stud_key)),
                             $user_id);
 
             $result = $mysqli->query($sql);
@@ -142,15 +142,15 @@
 
     // Definindo title e meta description
     $_title = '';
-    if (!empty($deck_name)) $_title = cal_t($t, 'Deck') . ': '.  $deck_name . ' - ';
-    $_title .= cal_t($t, 'Study') . ': ' . $stud_key;
+    if (!empty($deck_name)) $_title = car_t($t, 'Deck') . ': '.  $deck_name . ' - ';
+    $_title .= car_t($t, 'Study') . ': ' . $stud_key;
 ;
 ?>
 <?php
-    $header_title =  cal_htmlspecialchars($_title) . ' - Play Flashcards';
+    $header_title =  car_htmlspecialchars($_title) . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <script>
 	$(document).ready(function() {
@@ -173,10 +173,10 @@
 			event.preventDefault();
 
             if (front) {
-                $('#flip_div').text('<?= cal_t($t, 'Back'); ?>');
+                $('#flip_div').text('<?= car_t($t, 'Back'); ?>');
                 front = false;
             } else {
-                $('#flip_div').text('<?= cal_t($t, 'Front'); ?>');
+                $('#flip_div').text('<?= car_t($t, 'Front'); ?>');
                 front = true;
             }
 
@@ -206,7 +206,7 @@
 </script>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
+        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
         <?php if ($has_study) { ?>
             <?php if ($has_card) { ?>
                 <div class="form">
@@ -214,85 +214,85 @@
                         <input type="hidden" name="k" value="<?= $stud_key; ?>" />
                         <input type="hidden" name="stse_order" value="<?= $stse_order; ?>" />
                         <input type="hidden" id="stse_answer" name="stse_answer" value="" />
-                        <input type="hidden" id="flip_btn" value="<?= cal_t($t, 'Flip'); ?>" />
+                        <input type="hidden" id="flip_btn" value="<?= car_t($t, 'Flip'); ?>" />
                         <div id="flip_div">
-                            <?= cal_t($t, 'Front'); ?>
+                            <?= car_t($t, 'Front'); ?>
                         </div>
                         <div class="flip_leg">
-                            <?= cal_t($t, 'click on the card'); ?>
+                            <?= car_t($t, 'click on the card'); ?>
                         </div>
                         <div id="flip_card" class="flip-card">
                             <div class="flip-card-inner">
                                 <div id="flip_card_front" class="flip-card-front" style="color: #<?= $deck_color; ?>; background-color: #<?= $deck_bgcolor; ?>;">
-                                    <h1><?= cal_htmlspecialchars($card_front); ?></h1>
+                                    <h1><?= car_htmlspecialchars($card_front); ?></h1>
                                 </div>
                                 <div id="flip_card_back" class="flip-card-back" style="color: #<?= $deck_color; ?>; background-color: #<?= $deck_bgcolor; ?>;">
-                                    <h1><?= cal_htmlspecialchars($card_back); ?>	</h1>
+                                    <h1><?= car_htmlspecialchars($card_back); ?>	</h1>
                                 </div>
                             </div>
                         </div>
                         <div class="flip-button">
                             <div class="buttons">
-                                <input type="button" id="true_btn" value="<?= cal_t($t, 'True Btn'); ?>" class="buttonx green" />
-                                <input type="button" id="false_btn" value="<?= cal_t($t, 'False Btn'); ?>" class="buttonx" />
+                                <input type="button" id="true_btn" value="<?= car_t($t, 'True Btn'); ?>" class="buttonx green" />
+                                <input type="button" id="false_btn" value="<?= car_t($t, 'False Btn'); ?>" class="buttonx" />
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="stats-title">
-                    <?= cal_t($t, 'Flashcard'); ?>
+                    <?= car_t($t, 'Flashcard'); ?>
                 </div>
                 <div class="stats-value">
-                    <?= cal_htmlspecialchars($stse_order . '/' . $stud_total); ?>
+                    <?= car_htmlspecialchars($stse_order . '/' . $stud_total); ?>
                 </div>
             <?php } ?>
             <div class="space"></div>
             <div class="title">
-                <?= cal_t($t, 'Deck'); ?>
+                <?= car_t($t, 'Deck'); ?>
             </div>
             <div class="stats-value">
                 <a href="../deck/<?= $deck_key; ?>">
-                    <?= cal_htmlspecialchars($deck_name); ?>
+                    <?= car_htmlspecialchars($deck_name); ?>
                 </a>
             </div>
             <div class="stats-value">
-                <?= cal_htmlspecialchars($deck_desc); ?>
+                <?= car_htmlspecialchars($deck_desc); ?>
             </div>
             <div class="space"></div>
             <?php if (!$has_card) { ?>
-                <div class="title"><?= cal_t($t, 'Results'); ?></div>
-                <div class="stats-title"><?= cal_t($t, 'Accuracy Rate'); ?></div>
-                <div class="stats-value"><?= cal_percent($stud_true, $stud_total); ?>%</div>
-                <div class="stats-title"><?= cal_t($t, 'Correctly Answered'); ?>:</div>
-                <div class="stats-value"><?= cal_htmlspecialchars($stud_true . '/' . $stud_total); ?></div>
-                <div class="stats-title"><?= cal_t($t, 'Start Date'); ?>:</div>
-                <div class="stats-value"><?= cal_htmlspecialchars($stud_begin); ?></div>
-                <div class="stats-title"><?= cal_t($t, 'Study Time'); ?>:</div>
-                <div class="stats-value"><?= cal_diff_dates($stud_begin, $stud_end); ?></div>
+                <div class="title"><?= car_t($t, 'Results'); ?></div>
+                <div class="stats-title"><?= car_t($t, 'Accuracy Rate'); ?></div>
+                <div class="stats-value"><?= car_percent($stud_true, $stud_total); ?>%</div>
+                <div class="stats-title"><?= car_t($t, 'Correctly Answered'); ?>:</div>
+                <div class="stats-value"><?= car_htmlspecialchars($stud_true . '/' . $stud_total); ?></div>
+                <div class="stats-title"><?= car_t($t, 'Start Date'); ?>:</div>
+                <div class="stats-value"><?= car_htmlspecialchars($stud_begin); ?></div>
+                <div class="stats-title"><?= car_t($t, 'Study Time'); ?>:</div>
+                <div class="stats-value"><?= car_diff_dates($stud_begin, $stud_end); ?></div>
                 <div class="space"></div>
-                <div class="stats-title"><?= cal_t($t, 'New Study'); ?>:</div>
+                <div class="stats-title"><?= car_t($t, 'New Study'); ?>:</div>
                 <div class="stats-value">
-                    <form action="<?= CAL_PATH_WEB; ?>/deck/study-new-act" method="post">
-                        <input type="hidden" name="k" value="<?= cal_htmlspecialchars($deck_key); ?>">
-                        <input type="submit" value="<?= cal_t($t, 'Play'); ?>" class="buttonx" />
+                    <form action="<?= CAR_PATH_WEB; ?>/deck/study-new-act" method="post">
+                        <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key); ?>">
+                        <input type="submit" value="<?= car_t($t, 'Play'); ?>" class="buttonx" />
                     </form>
                 </div>
             <?php } ?>
             <div class="space"></div>
-            <div class="stats-title"><?= cal_t($t, 'Delete Study'); ?>:</div>
+            <div class="stats-title"><?= car_t($t, 'Delete Study'); ?>:</div>
             <div class="stats-value">
-                <form action="<?= CAL_PATH_WEB; ?>/study/study-delete-act" method="post">
-                    <input type="hidden" name="k" value="<?= cal_htmlspecialchars($stud_key); ?>">
-                    <input type="submit" value="<?= cal_t($t, 'Delete'); ?>" class="buttonx" />
+                <form action="<?= CAR_PATH_WEB; ?>/study/study-delete-act" method="post">
+                    <input type="hidden" name="k" value="<?= car_htmlspecialchars($stud_key); ?>">
+                    <input type="submit" value="<?= car_t($t, 'Delete'); ?>" class="buttonx" />
                 </form>
             </div>
         <?php } else { ?>
-            <?= cal_t($t, 'Study not found.'); ?>
+            <?= car_t($t, 'Study not found.'); ?>
         <?php } ?>
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/containers/box-signin.inc'; ?>
-    <?php include_once CAL_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/containers/box-signin.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>

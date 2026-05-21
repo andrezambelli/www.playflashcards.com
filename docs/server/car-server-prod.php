@@ -1,23 +1,23 @@
 <?php
-	define('CAL_PROD', true);
+	define('CAR_PROD', true);
 
-	define('CAL_DB_AUTOCOMMIT', false);
-	define('CAL_DB_NAME', 'flashcarddb');
-	define('CAL_DB_USER', '');
-	define('CAL_DB_PASSWORD', '');
-	define('CAL_DB_HOST', '');
-	define('CAL_DB_PORT', '3306');
-	define('CAL_DB_CHARSET', 'utf8');
+	define('CAR_DB_AUTOCOMMIT', false);
+	define('CAR_DB_NAME', 'flashcarddb');
+	define('CAR_DB_USER', '');
+	define('CAR_DB_PASSWORD', '');
+	define('CAR_DB_HOST', '');
+	define('CAR_DB_PORT', '3306');
+	define('CAR_DB_CHARSET', 'utf8');
 
-	define('CAL_ROOT_APP', $_SERVER['DOCUMENT_ROOT']);
-	define('CAL_ROOT_WEB', CAL_ROOT_APP);
-	define('CAL_ROOT_ADMIN', CAL_ROOT_APP . '/admin');
-	define('CAL_ROOT_GENERAL', CAL_ROOT_APP . '/general');
-	define('CAL_ROOT_EXTERNAL_LIB', CAL_ROOT_APP . '/external-lib');
+	define('CAR_ROOT_APP', $_SERVER['DOCUMENT_ROOT']);
+	define('CAR_ROOT_WEB', CAR_ROOT_APP);
+	define('CAR_ROOT_ADMIN', CAR_ROOT_APP . '/admin');
+	define('CAR_ROOT_GENERAL', CAR_ROOT_APP . '/general');
+	define('CAR_ROOT_EXTERNAL_LIB', CAR_ROOT_APP . '/external-lib');
 
-	define('CAL_PATH_APP', '');
-	define('CAL_PATH_WEB', CAL_PATH_APP);
-	define('CAL_PATH_ADMIN', CAL_PATH_APP . '/admin');
+	define('CAR_PATH_APP', '');
+	define('CAR_PATH_WEB', CAR_PATH_APP);
+	define('CAR_PATH_ADMIN', CAR_PATH_APP . '/admin');
 
-	define('CAL_SERVICE_KEY', '');
+	define('CAR_SERVICE_KEY', '');
 ?>

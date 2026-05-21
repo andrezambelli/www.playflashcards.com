@@ -3,14 +3,14 @@
 
     // Variáveis
 	$user_id = 0;
-    $user_lang = CAL_SYSTEM_LANG_DEFAULT;
+    $user_lang = CAR_SYSTEM_LANG_DEFAULT;
 	$user_max_group = 0;
 	$user_max_card = 0;
 	$user_max_study = 0;
 	
 	// Procurando o user_id pela conta de e-mail
 	$sql = sprintf("select user_id, user_lang from car_user where user_email = '%s'",
-                    $mysqli->real_escape_string(cal_never_null($user_email)));
+                    $mysqli->real_escape_string(car_never_null($user_email)));
 	
 	$result = $mysqli->query($sql);
 	
@@ -24,12 +24,12 @@
 
 		// Inserindo o usuário
 		$sql = sprintf("insert into car_user (user_email, user_lang) values ('%s', '%s')",
-                        $mysqli->real_escape_string(cal_never_null($user_email)),
-                        $mysqli->real_escape_string(cal_never_null($user_lang)));
+                        $mysqli->real_escape_string(car_never_null($user_email)),
+                        $mysqli->real_escape_string(car_never_null($user_lang)));
 		
 		$result = $mysqli->query($sql);
 		
-		$user_id = cal_last_insert_id($mysqli);
+		$user_id = car_last_insert_id($mysqli);
 
         $mysqli->commit();
     }
@@ -41,7 +41,7 @@
         $sql = sprintf("
                         update car_cookie set user_id = %d where cook_key = '%s' and cook_update = now()",
                         $user_id,
-                        $mysqli->real_escape_string(cal_never_null($cook_key)));
+                        $mysqli->real_escape_string(car_never_null($cook_key)));
 
         $mysqli->query($sql);
 
@@ -64,8 +64,8 @@
     // Carrega o conteúdo do idioma do usuario
     $_SESSION['lang'] = $user_lang;
 
-	cal_set_session_attribute('session_login', 'on'); // logado!
-	cal_set_session_attribute('user_id', $user_id); // armazenando o user_id na sessão
-	cal_set_session_attribute('user_max_deck', $user_max_deck); // armazenando o número máximo de grupos por usuário
-	cal_set_session_attribute('user_max_card', $user_max_card); // armazenando o número máximo de cartões por grupo
-	cal_set_session_attribute('user_max_study', $user_max_study); // armazenando o número máximo de estudos por grupo
+	car_set_session_attribute('session_login', 'on'); // logado!
+	car_set_session_attribute('user_id', $user_id); // armazenando o user_id na sessão
+	car_set_session_attribute('user_max_deck', $user_max_deck); // armazenando o número máximo de grupos por usuário
+	car_set_session_attribute('user_max_card', $user_max_card); // armazenando o número máximo de cartões por grupo
+	car_set_session_attribute('user_max_study', $user_max_study); // armazenando o número máximo de estudos por grupo

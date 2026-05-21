@@ -1,14 +1,14 @@
 <?php
 	ini_set('default_charset','UTF-8');
 	
-	include_once CAL_ROOT_GENERAL . '/functions.inc';
+	include_once CAR_ROOT_GENERAL . '/functions.inc';
 
 	class DatabaseSessionHandler{
 		private $db;
 		
 		public function open() {
-			$this->db = new mysqli(CAL_DB_HOST, CAL_DB_USER, CAL_DB_PASSWORD, CAL_DB_NAME, CAL_DB_PORT);
-			$this->db->set_charset(CAL_DB_CHARSET);
+			$this->db = new mysqli(CAR_DB_HOST, CAR_DB_USER, CAR_DB_PASSWORD, CAR_DB_NAME, CAR_DB_PORT);
+			$this->db->set_charset(CAR_DB_CHARSET);
 			
 			return true;
 		}
@@ -18,7 +18,7 @@
 		}
 		
 		function read($id) {
-			$id = $this->db->real_escape_string(cal_never_null($id));
+			$id = $this->db->real_escape_string(car_never_null($id));
 			$record = '';
 			
 			$sql = " SELECT value ".
@@ -39,11 +39,11 @@
 		function write($id, $value) {
 			$access = time();
 			
-			$id = $this->db->real_escape_string(cal_never_null($id));
+			$id = $this->db->real_escape_string(car_never_null($id));
 			
-			$access = $this->db->real_escape_string(cal_never_null($access));
+			$access = $this->db->real_escape_string(car_never_null($access));
 			
-			$value = $this->db->real_escape_string(cal_never_null($value));
+			$value = $this->db->real_escape_string(car_never_null($value));
 			
 			$sql = " REPLACE ".
 					" INTO car_session ".
@@ -58,7 +58,7 @@
 		}
 		
 		function destroy($id) {
-			$id = $this->db->real_escape_string(cal_never_null($id));
+			$id = $this->db->real_escape_string(car_never_null($id));
 			$sql = " DELETE ".
 					" FROM car_session ".
 					" WHERE id = '$id' ";
@@ -72,7 +72,7 @@
 		
 		function clean($max) {
 			$old = time() - $max;
-			$old = $this->db->real_escape_string(cal_never_null($old));
+			$old = $this->db->real_escape_string(car_never_null($old));
 			$sql = " DELETE ".
 					" FROM car_session ".
 					" WHERE access < '$old' ";
@@ -85,12 +85,12 @@
 	
 	date_default_timezone_set('America/Sao_Paulo');
 
-	error_reporting(CAL_PROD ? 0 : -1);
+	error_reporting(CAR_PROD ? 0 : -1);
 
 	// Iniciando o objeto para conexão com o banco de dados
-	$mysqli = new mysqli(CAL_DB_HOST, CAL_DB_USER, CAL_DB_PASSWORD, CAL_DB_NAME);
-	$mysqli->set_charset(CAL_DB_CHARSET);
-	$mysqli->autocommit(CAL_DB_AUTOCOMMIT);
+	$mysqli = new mysqli(CAR_DB_HOST, CAR_DB_USER, CAR_DB_PASSWORD, CAR_DB_NAME);
+	$mysqli->set_charset(CAR_DB_CHARSET);
+	$mysqli->autocommit(CAR_DB_AUTOCOMMIT);
 	
 	$database_session = new DatabaseSessionHandler(); 
 	

@@ -1,25 +1,25 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc'; ?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
 	// Parâmetros
-	$user_id = cal_get_session_attribute('user_id', 0);
-    $user_max_study = cal_get_session_attribute('user_max_study', CAL_USER_MAX_STUDY);
+	$user_id = car_get_session_attribute('user_id', 0);
+    $user_max_study = car_get_session_attribute('user_max_study', CAR_USER_MAX_STUDY);
 
-    $deck_key = cal_get_parameter('k', '');
+    $deck_key = car_get_parameter('k', '');
 
     // Variáveis
 	$user_count_study = 0;
 	$deck_id = 0;
 	
-	$redirect = CAL_PATH_WEB . '/dash/study-list?k=' . $deck_key;
+	$redirect = CAR_PATH_WEB . '/dash/study-list?k=' . $deck_key;
 	
 	try {
 		// Procurando o identificador do grupo
 		$sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
-                        $mysqli->real_escape_string(cal_never_null($deck_key)),
+                        $mysqli->real_escape_string(car_never_null($deck_key)),
                         $user_id);
 		
 		$result = $mysqli->query($sql);
@@ -49,10 +49,10 @@
 			$stud_key = null;
 			
 			while ($stud_key == null) {
-				$stud_key = cal_generate_key(12);
+				$stud_key = car_generate_key(12);
 				
 				// A chave do estudo precisa ser única no banco de dados
-				$sql = sprintf(" select count(1) as count from car_study where stud_key = '%s'", $mysqli->real_escape_string(cal_never_null($stud_key)));
+				$sql = sprintf(" select count(1) as count from car_study where stud_key = '%s'", $mysqli->real_escape_string(car_never_null($stud_key)));
 				
 				$result = $mysqli->query($sql);
 				
@@ -81,12 +81,12 @@
                                 values (%d, %d, '%s', %d)",
                                 $user_id,
                                 $deck_id,
-                                $mysqli->real_escape_string(cal_never_null($stud_key)),
+                                $mysqli->real_escape_string(car_never_null($stud_key)),
                                 $stud_total);
 				
 				$result = $mysqli->query($sql);
 				
-				$stud_id = cal_last_insert_id($mysqli);
+				$stud_id = car_last_insert_id($mysqli);
 				
 				if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
 				
@@ -107,26 +107,26 @@
 				
 				$mysqli->commit();
 
-				$redirect = CAL_PATH_WEB . '/dash/study?k=' . $stud_key;
+				$redirect = CAR_PATH_WEB . '/dash/study?k=' . $stud_key;
 			} else {
-				cal_set_session_error_message('The deck has no flashcards.');
+				car_set_session_error_message('The deck has no flashcards.');
 				
-				$redirect = CAL_PATH_WEB . '/dash/study-list?k=' . $deck_key;
+				$redirect = CAR_PATH_WEB . '/dash/study-list?k=' . $deck_key;
 			}
 		} else {
-			cal_set_session_error_message('dash.study-new-act.error1');
+			car_set_session_error_message('dash.study-new-act.error1');
 			
-			$redirect = CAL_PATH_WEB . '/dash/study-list?k=' . $deck_key;
+			$redirect = CAR_PATH_WEB . '/dash/study-list?k=' . $deck_key;
 		}
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
-		cal_set_session_error_message($e->getMessage());
+		car_set_session_error_message($e->getMessage());
 		
-		$redirect = CAL_PATH_WEB . '/dash/study-list?k=' . $deck_key;
+		$redirect = CAR_PATH_WEB . '/dash/study-list?k=' . $deck_key;
 	}
 
 	$mysqli->close();
 	
-	cal_redirect($redirect);
+	car_redirect($redirect);
 ?>

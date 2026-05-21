@@ -11,21 +11,21 @@
         '+'=>''
     );
 
-    function cal_check_admin_login() {
-        $_login = cal_get_session_attribute('session_admin_login', '');
+    function car_check_admin_login() {
+        $_login = car_get_session_attribute('session_admin_login', '');
 
         // se não estiver logado, redireciona para a página de login
         if ($_login == 'off' and strrpos($_SERVER['REQUEST_URI'], '/login/login.php') === false) {
-            cal_redirect('../login/login.php?redirect_url=' . urlencode(cal_current_url()));
+            car_redirect('../login/login.php?redirect_url=' . urlencode(car_current_url()));
 
-            cal_set_session_attribute('session_admin_login', 'off');
+            car_set_session_attribute('session_admin_login', 'off');
         }
     }
 
     /*
      * Calcula a porcentagem de um número sobre outro. by chatGPT
      */
-	function cal_percent($_value, $_total) {
+	function car_percent($_value, $_total) {
 		if ($_total !== 0) {
 			return round(($_value / $_total) * 100);
 		} else {
@@ -37,7 +37,7 @@
 	 * Subtração de datas. by chatGPT
 	 * Retorna o tempo em 36h 34min 36s
 	 */
-	function cal_diff_dates($_begin, $_end) {
+	function car_diff_dates($_begin, $_end) {
 		$_b = new DateTime($_begin);
 		$_e = new DateTime($_end);
 		
@@ -65,7 +65,7 @@
 	/*
 	 * Recuperando o idioma do navegador. by chatGPT
 	 */
-	function cal_get_browser_language() {
+	function car_get_browser_language() {
 		if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 			$preferredLanguages = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 			$languages = explode(',', $preferredLanguages);
@@ -82,7 +82,7 @@
      * Transforma texto em URL
      * Por exemplo: Andre Luis para andre-luis
      */
-    function cal_text_to_url($_text) {
+    function car_text_to_url($_text) {
         $_text = strtr($_text, $GLOBALS['NORMALIZE_CHARS']); // remove acentuação
         $_text = trim($_text);
         $_text = strtr($_text, ' ', '-'); // substitui espaço por hífen
@@ -94,7 +94,7 @@
     /*
      * Lê um atributo da sessão
      */
-	function cal_get_session_attribute($_key, $_default) {
+	function car_get_session_attribute($_key, $_default) {
 		$_result = '';
 
 		if (isset($_SESSION) and isset($_SESSION[$_key])) {
@@ -109,7 +109,7 @@
     /*
      * Grava um atributo na sessão
      */
-	function cal_set_session_attribute($_key, $_value) {
+	function car_set_session_attribute($_key, $_value) {
 		if (!empty($_key)) {
 			$_SESSION[$_key] = $_value;
 		}		
@@ -118,7 +118,7 @@
     /*
      * Lê um parâmtro da requisição GET ou POST
      */
-	function cal_get_parameter($_name, $_default) {
+	function car_get_parameter($_name, $_default) {
 		$_value = $_default;
 		
 		if (isset($_GET[$_name])) $_value = trim($_GET[$_name]);
@@ -132,7 +132,7 @@
 	/*
 	 * Recupera o último id inserido no banco de dados
 	 */
-	function cal_last_insert_id($_mysqli) {
+	function car_last_insert_id($_mysqli) {
 		$_id = 0;
 		$_sql = " select last_insert_id() AS last_insert_id;";
 		$_result = $_mysqli->query($_sql, MYSQLI_USE_RESULT);
@@ -149,29 +149,29 @@
      * Se não estiver logado, redireciona para a página de login
      * Se estiver logado e acessar a página de login, então direciona para a lista de grupos
      */
-	function cal_check_login($_t) {
+	function car_check_login($_t) {
         $_lang = $_SESSION['lang'];
 
-		$_login = cal_get_session_attribute('session_login', '');
+		$_login = car_get_session_attribute('session_login', '');
 	
 		// se não estiver logado, redireciona para a página de login 
 		if ($_login == 'off' and strrpos($_SERVER['REQUEST_URI'], '/login/login') === false) {
-			cal_redirect(CAL_PATH_WEB . '/'. $_t['lang'] . '/login/login?redirect_url=' . urlencode(cal_current_url()));
+			car_redirect(CAR_PATH_WEB . '/'. $_t['lang'] . '/login/login?redirect_url=' . urlencode(car_current_url()));
 	
-			cal_set_session_attribute('session_login', 'off');
+			car_set_session_attribute('session_login', 'off');
 		} else if ($_login == 'on' and strrpos($_SERVER['REQUEST_URI'], '/login/login') !== false) { // se estiver logado e acessar o /login/login/ direciona para a /home
-			cal_redirect(CAL_PATH_WEB . '/dash/deck-list');
+			car_redirect(CAR_PATH_WEB . '/dash/deck-list');
 		}
 	}
 
     /*
      * Retorna o valor da chave $_key do array $_t
      */
-    function cal_t($_t, $_key) {
+    function car_t($_t, $_key) {
         if (isset($_t[$_key])) {
-            return cal_htmlspecialchars($_t[$_key]);
+            return car_htmlspecialchars($_t[$_key]);
         } else {
-            return cal_htmlspecialchars('*'. $_key);
+            return car_htmlspecialchars('*'. $_key);
         }
     }
 
@@ -179,7 +179,7 @@
      * Se o idioma da URL for diferente do idioma do parâmetro,
      * Então redireciona para a mesma página do idioma do parâmtro
      */
-    function cal_check_language($_lang) {
+    function car_check_language($_lang) {
         $_new_lang = 'en';
 
         if (strrpos($_SERVER['REQUEST_URI'], '/en/') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/en')) === '/en') {
@@ -199,14 +199,14 @@
         }
 
         if ($_new_lang != $_lang) {
-           cal_redirect(cal_get_base_url(CAL_PATH_WEB) . '/services/change-language-act?lang=' . $_new_lang);
+           car_redirect(car_get_base_url(CAR_PATH_WEB) . '/services/change-language-act?lang=' . $_new_lang);
         }
     }
 
     /*
      * Redireciona a página
      */
-	function cal_redirect($_url) {
+	function car_redirect($_url) {
 		if (!headers_sent()) {
 			header('Location: ' . $_url);
 		} else {
@@ -221,7 +221,7 @@
 	 * ou
 	 * https://localhost
 	 */
-	function cal_get_base_url($_path) {
+	function car_get_base_url($_path) {
 		$_protocol = 'http';
 		
 		if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443') {
@@ -241,7 +241,7 @@
     /*
      * Retorna a URL do navegador
      */
-	function cal_current_url() {
+	function car_current_url() {
 		$_protocol    = strpos(strtolower($_SERVER['HTTP_HOST']),'localhost') === 0 ? 'http' : 'https';
 		$_host        = $_SERVER['HTTP_HOST'];
 		$_request_uri = $_SERVER['REQUEST_URI'];
@@ -254,7 +254,7 @@
 	/*
 	 * Gera a chave que será utilizada nos grupos, cartões e estudos
 	 */
-	function cal_generate_key($_size) {
+	function car_generate_key($_size) {
         $random = '';
 
         $_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
@@ -269,14 +269,14 @@
     /*
      * Remove os caracteres especiais
      */
-	function cal_htmlspecialchars($_string) {
-		return htmlspecialchars(cal_never_null($_string));
+	function car_htmlspecialchars($_string) {
+		return htmlspecialchars(car_never_null($_string));
 	}
 	
 	/*
 	 * Se a strint for null, retorna branco ''
 	 */
-	function cal_never_null($_string) {
+	function car_never_null($_string) {
 		$_text = '';
 		
 		if ($_string != null)  $_text = $_string;
@@ -287,44 +287,44 @@
     /*
      * Escreve conteúdo na variável de erro da sessão
      */
-	function cal_set_session_error_message($_message) {
-		cal_set_session_attribute('error_message', $_message);
+	function car_set_session_error_message($_message) {
+		car_set_session_attribute('error_message', $_message);
 	}
 
     /*
      * Lê a variável de erro da sessão
      */
-	function cal_get_session_error_message() {
-		return cal_get_session_attribute('error_message', '');
+	function car_get_session_error_message() {
+		return car_get_session_attribute('error_message', '');
 	}
 
     /*
      * Retorna verdadeiro se existe variável de erro na sessão
      * Senão retorna false
      */
-	function cal_has_session_error_message() {
-		return (cal_get_session_error_message() != '' ? true : false);
+	function car_has_session_error_message() {
+		return (car_get_session_error_message() != '' ? true : false);
 	}
 	
 	/*
 	 * Grava conteúdo na variável de alerta da sessão
 	 */
-	function cal_set_session_alert_message($_message) {
-		cal_set_session_attribute('alert_message', $_message);
+	function car_set_session_alert_message($_message) {
+		car_set_session_attribute('alert_message', $_message);
 	}
 
     /*
 	 * Lê a variável de alerta da sessão
 	 */
-	function cal_get_session_alert_message() {
-		return cal_get_session_attribute('alert_message', '');
+	function car_get_session_alert_message() {
+		return car_get_session_attribute('alert_message', '');
 	}
 
     /*
      * Retorna verdadeiro se existe variável de alerta na sessão
      * Senão retorna false
      */
-	function cal_has_session_alert_message() {
-		return (cal_get_session_alert_message() != '' ? true : false);
+	function car_has_session_alert_message() {
+		return (car_get_session_alert_message() != '' ? true : false);
 	}
 ?>

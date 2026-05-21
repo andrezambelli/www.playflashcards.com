@@ -1,17 +1,17 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc'; ?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
-	cal_set_session_attribute('read_database', 'on');
+	car_set_session_attribute('read_database', 'on');
 
 	// Parâmetros
-    $user_id = cal_get_session_attribute('user_id', 0);
-	$deck_key = cal_get_parameter('k', 0);
+    $user_id = car_get_session_attribute('user_id', 0);
+	$deck_key = car_get_parameter('k', 0);
 
     // Variáveis de Paginação
-    $current_page = cal_get_parameter('current_page', 0);
+    $current_page = car_get_parameter('current_page', 0);
     $total_records = 0; // quantidade de registro da consulta
     $total_pages = 0; // quantidade de páginas
     $records_per_page = 25; // quantidade de registros por página
@@ -20,7 +20,7 @@
     $deck_id = 0;
 
     // Ajustando o timezone do banco de dados
-    $timezone = cal_get_session_attribute('timezone', CAL_TIMEZONE_DEFAULT);
+    $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
     $sql = sprintf("SET time_zone = '%s'", $timezone);
     $mysqli->query($sql);
 
@@ -30,7 +30,7 @@
                       from car_deck
                      where deck_key = '%s'
                        and user_id = %d",
-                    $mysqli->real_escape_string(cal_never_null($deck_key)),
+                    $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 	
 	$result = $mysqli->query($sql);
@@ -66,20 +66,20 @@
 	$result = $mysqli->query($sql);
 ?>
 <?php
-    $header_title = cal_t($t, 'Studies') . ' - Play Flashcards';
+    $header_title = car_t($t, 'Studies') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
+        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
         <div class="title">
-            <?= cal_t($t, 'Deck'); ?>
+            <?= car_t($t, 'Deck'); ?>
         </div>
-        <?php include_once CAL_ROOT_WEB . '/dash/deck-info.inc'; ?>
+        <?php include_once CAR_ROOT_WEB . '/dash/deck-info.inc'; ?>
         <div class="title">
-            <?= cal_t($t, 'Studies'); ?> (<?= $total_records; ?>)
+            <?= car_t($t, 'Studies'); ?> (<?= $total_records; ?>)
         </div>
         <?php if ($_found) { ?>
             <?php if (isset($result)) { ?>
@@ -89,13 +89,13 @@
                             <?php $count = 0; ?>
                             <tr>
                                 <th style="width:50%">
-                                    <?= cal_t($t, 'Start'); ?>
+                                    <?= car_t($t, 'Start'); ?>
                                 </th>
                                 <th style="width:25%">
-                                    <?= cal_t($t, 'Flashcards'); ?>
+                                    <?= car_t($t, 'Flashcards'); ?>
                                 </th>
                                 <th style="width:25%">
-                                    <?= cal_t($t, 'Accuracy Rate'); ?>
+                                    <?= car_t($t, 'Accuracy Rate'); ?>
                                 </th>
                             </tr>
                             <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
@@ -103,7 +103,7 @@
                                 <tr>
                                     <td>
                                         <a href="../dash/study?k=<?= $row['stud_key']; ?>">
-                                            <?= cal_htmlspecialchars($row['stud_begin']); ?>
+                                            <?= car_htmlspecialchars($row['stud_begin']); ?>
                                         </a>
                                     </td>
                                     <td>
@@ -112,10 +112,10 @@
                                     <td>
                                         <?php if (empty($row['stud_end'])) { ?>
                                             <a href="../dash/study?k=<?= $row['stud_key']; ?>" class="buttonx">
-                                                <?= cal_t($t, 'Play'); ?>
+                                                <?= car_t($t, 'Play'); ?>
                                             </a>
                                         <?php } else { ?>
-                                            <?= cal_percent($row['stud_true'], $row['stud_total']); ?>%
+                                            <?= car_percent($row['stud_true'], $row['stud_total']); ?>%
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -142,10 +142,10 @@
                 <?php } ?>
             <?php } ?>
         <?php } ?>
-        <?php include_once CAL_ROOT_WEB . '/dash/new-study.inc'; ?>
+        <?php include_once CAR_ROOT_WEB . '/dash/new-study.inc'; ?>
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/home/secondary.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>

@@ -1,5 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_ADMIN . '/config.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
 <?php 
 	try {
 		// apagando as respostas
@@ -13,10 +13,10 @@
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
-		cal_set_session_error_message($e->getMessage());
+		car_set_session_error_message($e->getMessage());
 	}
 ?>
-<?php include_once CAL_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
 <div class="master">
 	<div class="form">
 		<strong>Apagar Sessões</strong><br/>
@@ -24,5 +24,5 @@
 		Sessões excluídas com sucesso.
 	</div>
 </div>
-<?php include_once CAL_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>
 		

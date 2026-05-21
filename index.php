@@ -16,15 +16,15 @@
 
             if (sizeof($pages) == 3) {
                 if ($pages[0] == 'deck') {
-                    $_page = CAL_ROOT_WEB . '/public/deck.php'; // /group/abc123/cores-ingles-portugues
+                    $_page = CAR_ROOT_WEB . '/public/deck.php'; // /group/abc123/cores-ingles-portugues
                 } else {
                     $_page = $routes["404"];
                 }
             } elseif (sizeof($pages) == 2) {
                 if ($pages[0] == 'deck') {
-                    $_page = CAL_ROOT_WEB . '/public/deck.php'; // /group/abc123
+                    $_page = CAR_ROOT_WEB . '/public/deck.php'; // /group/abc123
                 } elseif ($pages[0] == 'study') {
-                    $_page = CAL_ROOT_WEB . '/public/study.php'; // /study/abc123
+                    $_page = CAR_ROOT_WEB . '/public/study.php'; // /study/abc123
                 } else {
                     $_page = $routes["404"];
                 }

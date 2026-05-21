@@ -72,17 +72,17 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 | Constante | Descrição |
 |---|---|
 | `CAR_USER_SRS_LIMIT` | Máximo de cartões por sessão SRS |
-| `CAL_USER_SRS_SEQUENCE` | Sequência de repetição |
-| `CAL_USER_SRS_RATE` | Taxa de acerto alvo (%) |
-| `CAL_USER_SRS_DAYS` | Intervalo de dias entre sessões |
+| `CAR_USER_SRS_SEQUENCE` | Sequência de repetição |
+| `CAR_USER_SRS_RATE` | Taxa de acerto alvo (%) |
+| `CAR_USER_SRS_DAYS` | Intervalo de dias entre sessões |
 
 ### Limites por usuário
 
 | Constante | Descrição |
 |---|---|
-| `CAL_USER_MAX_DECK` | Máximo de baralhos por usuário |
-| `CAL_USER_MAX_STUDY` | Máximo de sessões de estudo |
-| `CAL_USER_MAX_CARD` | Máximo de cartões por baralho |
+| `CAR_USER_MAX_DECK` | Máximo de baralhos por usuário |
+| `CAR_USER_MAX_STUDY` | Máximo de sessões de estudo |
+| `CAR_USER_MAX_CARD` | Máximo de cartões por baralho |
 
 ## 6. Restrições (nunca)
 
@@ -93,5 +93,5 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 ## 7. Regras (ao fazer)
 
 - Ao criar ou editar texto, usar pt-BR correto, com acentos, cedilhas e pontuação
-- Ao modificar qualquer arquivo `.js` ou `.css`, incrementar o valor de `CAL_VERSION` em `config.inc`
+- Ao modificar qualquer arquivo `.js` ou `.css`, incrementar o valor de `CAR_VERSION` em `config.inc`
 - Ao identificar durante o trabalho uma regra, padrão ou exceção recorrente que ainda não está documentada, propor a adição neste CLAUDE.md antes de encerrar a conversa

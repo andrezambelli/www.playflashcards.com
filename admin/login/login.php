@@ -1,6 +1,6 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_ADMIN . '/config.inc' ?>
-<?php include_once CAL_ROOT_ADMIN . '/containers/header.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/header.inc' ?>
 <?php 
 	$redirect_url = '';
 	
@@ -10,7 +10,7 @@
 	<?php include_once "../include/message.inc" ?> 
 	<div class="form">
 		<form action="login-act.php" method="post">
-			<input type="hidden" name="redirect_url" value="<?= cal_htmlspecialchars($redirect_url); ?>" />
+			<input type="hidden" name="redirect_url" value="<?= car_htmlspecialchars($redirect_url); ?>" />
 			<table>
 				<tr>
 					<td class="label" style="width:20%">
@@ -33,4 +33,4 @@
 		$('#password').focus(); 
 	});
 </script>
-<?php include_once CAL_ROOT_ADMIN . "/include/footer.inc" ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc" ?>

@@ -1,19 +1,19 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
     // Parâmetros
-    $user_id = cal_get_session_attribute('user_id', 0);
-    $user_max_deck = cal_get_session_attribute('user_max_deck', CAL_USER_MAX_DECK);
+    $user_id = car_get_session_attribute('user_id', 0);
+    $user_max_deck = car_get_session_attribute('user_max_deck', CAR_USER_MAX_DECK);
 
     // Variáveis
-    $deck_bgcolor = CAL_DECK_BGCOLOR_DEFAULT;
+    $deck_bgcolor = CAR_DECK_BGCOLOR_DEFAULT;
     
     $user_count_deck = 0;
 
-    $redirect = CAL_PATH_WEB . '/dash/deck-list';
+    $redirect = CAR_PATH_WEB . '/dash/deck-list';
 
     try {
         // Antes de criar, contar a quantidade de grupos deste usuário
@@ -30,10 +30,10 @@
 
         if ($user_count_deck < $user_max_deck) {
             while ($deck_key == null) {
-                $deck_key = cal_generate_key(12);
+                $deck_key = car_generate_key(12);
 
                 // A chave do grupo precisa ser única no banco de dados
-                $sql = sprintf(" select count(1) as count from car_deck where deck_key = '%s'", $mysqli->real_escape_string(cal_never_null($deck_key)));
+                $sql = sprintf(" select count(1) as count from car_deck where deck_key = '%s'", $mysqli->real_escape_string(car_never_null($deck_key)));
 
                 $result = $mysqli->query($sql);
 
@@ -49,9 +49,9 @@
                                     (user_id, deck_name, deck_key, deck_bgcolor)
                                    values (%d, '%s', '%s', '%s')",
                             $user_id,
-                            $mysqli->real_escape_string(cal_never_null(CAL_DECK_NAME_DEFAULT)),
-                            $mysqli->real_escape_string(cal_never_null($deck_key)),
-                            $mysqli->real_escape_string(cal_never_null($deck_bgcolor)));
+                            $mysqli->real_escape_string(car_never_null(CAR_DECK_NAME_DEFAULT)),
+                            $mysqli->real_escape_string(car_never_null($deck_key)),
+                            $mysqli->real_escape_string(car_never_null($deck_bgcolor)));
 
             $result = $mysqli->query($sql);
 
@@ -59,21 +59,21 @@
 
             $mysqli->commit();
 
-            $redirect = CAL_PATH_WEB . '/dash/deck-edit?k=' . $deck_key;
+            $redirect = CAR_PATH_WEB . '/dash/deck-edit?k=' . $deck_key;
         } else {
-            cal_set_session_error_message('Você não tem permissão para incluir mais um grupo.');
+            car_set_session_error_message('Você não tem permissão para incluir mais um grupo.');
 
-            $redirect = CAL_PATH_WEB . '/dash/deck-list';
+            $redirect = CAR_PATH_WEB . '/dash/deck-list';
         }
     } catch(Exception $e) {
         $mysqli->rollback();
 
-        cal_set_session_error_message($e->getMessage());
+        car_set_session_error_message($e->getMessage());
 
-        $redirect = CAL_PATH_WEB . '/dash/deck-list';
+        $redirect = CAR_PATH_WEB . '/dash/deck-list';
     }
 
     $mysqli->close();
 
-    cal_redirect($redirect);
+    car_redirect($redirect);
 ?>

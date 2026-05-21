@@ -1,5 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_ADMIN . '/config.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
 <?php
     // Variáveis
     $today = date("Y-m-d");
@@ -9,7 +9,7 @@
 
 	$result_decks = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 ?>
-<?php include_once CAL_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
 <div class="master">
 	<div class="form">
 		<strong>Sitemap</strong><br/>
@@ -59,7 +59,7 @@
 			$xml .= '</urlset>';
 		?>
 		<?php 
-			$file_path_name = CAL_ROOT_WEB . '/sitemap.xml';
+			$file_path_name = CAR_ROOT_WEB . '/sitemap.xml';
 			
 			if (file_exists($file_path_name)) {
 				unlink($file_path_name);
@@ -72,7 +72,7 @@
 		<br/>
 		Sitemap criado com sucesso.<br/>
 		<br/>
-		Arquivo gerado: <a href="<?= CAL_PATH_WEB . '/sitemap.xml'; ?>"><?= CAL_PATH_WEB . '/sitemap.xml'; ?></a>
+		Arquivo gerado: <a href="<?= CAR_PATH_WEB . '/sitemap.xml'; ?>"><?= CAR_PATH_WEB . '/sitemap.xml'; ?></a>
 	</div>
 </div>
-<?php include_once CAL_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>

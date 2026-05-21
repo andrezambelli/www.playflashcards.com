@@ -9,7 +9,7 @@
                          where a.card_key = '%s'
                            and a.user_id = %d
                            and a.deck_id = b.deck_id",
-                        $mysqli->real_escape_string(cal_never_null($card_key)),
+                        $mysqli->real_escape_string(car_never_null($card_key)),
 						$user_id);
 		
 		$result = $mysqli->query($sql);
@@ -25,7 +25,7 @@
                          where a.stud_key = '%s'
                            and a.user_id = %d
                            and a.deck_id = b.deck_id",
-                        $mysqli->real_escape_string(cal_never_null($stud_key)),
+                        $mysqli->real_escape_string(car_never_null($stud_key)),
                         $user_id);
 		
 		$result = $mysqli->query($sql);
@@ -42,7 +42,7 @@
                           from car_deck a
                          where deck_key = '%s'
                            and user_id = %d",
-                        $mysqli->real_escape_string(cal_never_null($deck_key)),
+                        $mysqli->real_escape_string(car_never_null($deck_key)),
                         $user_id);
 		
 		$result_subsubmenu = $mysqli->query($sql);
@@ -64,16 +64,16 @@
 	
 	// Se não achou o grupo, apresenta mensagem de erro
 	if (!$_found) {
-		cal_set_session_error_message('Deck, flashcard or study not found.');
+		car_set_session_error_message('Deck, flashcard or study not found.');
 
-        cal_redirect(CAL_PATH_WEB . '/dash/deck-list');
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
 	}
 ?>
 
 <?php if ($_found) { ?>
-    <?php if ($_deck_name != CAL_DECK_NAME_DEFAULT) { ?>
-        <a href="<?= CAL_PATH_WEB; ?>/dash/deck?k=<?= $deck_key; ?>" class="button w100p">
-            <?= cal_htmlspecialchars($_deck_name); ?>
+    <?php if ($_deck_name != CAR_DECK_NAME_DEFAULT) { ?>
+        <a href="<?= CAR_PATH_WEB; ?>/dash/deck?k=<?= $deck_key; ?>" class="button w100p">
+            <?= car_htmlspecialchars($_deck_name); ?>
         </a>
     <?php } ?>
 <?php } ?>

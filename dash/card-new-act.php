@@ -1,25 +1,25 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc'; ?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
 	// Parâmetros
-	$user_id = cal_get_session_attribute('user_id', 0);
-	$user_max_card = cal_get_session_attribute('user_max_card', CAL_USER_MAX_CARD);
+	$user_id = car_get_session_attribute('user_id', 0);
+	$user_max_card = car_get_session_attribute('user_max_card', CAR_USER_MAX_CARD);
 
-    $deck_key = cal_get_parameter('k', '');
+    $deck_key = car_get_parameter('k', '');
 
     // Variáveis
 	$user_count_card = 0;
 	$deck_id = 0;
 	
-	$redirect = CAL_PATH_WEB . '/dash/card-list?k=' . $deck_key;
+	$redirect = CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key;
 	
 	try {
 		// Procurando o identificar do grupo
 		$sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
-                        $mysqli->real_escape_string(cal_never_null($deck_key)),
+                        $mysqli->real_escape_string(car_never_null($deck_key)),
                         $user_id);
 		
 		$result = $mysqli->query($sql);
@@ -49,10 +49,10 @@
 			$card_key = null;
 			
 			while ($card_key == null) {
-				$card_key = cal_generate_key(12);
+				$card_key = car_generate_key(12);
 				
 				// A chave do cartão precisa ser única no banco de dados
-				$sql = sprintf(" select count(1) as count from car_card where card_key = '%s'", $mysqli->real_escape_string(cal_never_null($card_key)));
+				$sql = sprintf(" select count(1) as count from car_card where card_key = '%s'", $mysqli->real_escape_string(car_never_null($card_key)));
 				
 				$result = $mysqli->query($sql);
 				
@@ -70,7 +70,7 @@
                             values (%d, %d, '%s')",
                             $user_id,
                             $deck_id,
-                            $mysqli->real_escape_string(cal_never_null($card_key)));
+                            $mysqli->real_escape_string(car_never_null($card_key)));
 			
 			$result = $mysqli->query($sql);
 			
@@ -103,19 +103,19 @@
 			
 			$mysqli->commit();
 
-			$redirect = CAL_PATH_WEB . '/dash/card-edit?k=' . $card_key;
+			$redirect = CAR_PATH_WEB . '/dash/card-edit?k=' . $card_key;
 		} else {
-			cal_set_session_error_message('dash.card-new.act.error');
+			car_set_session_error_message('dash.card-new.act.error');
 
-			$redirect = CAL_PATH_WEB . '/dash/card-list?k=' . $deck_key;
+			$redirect = CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key;
 		}
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
-		cal_set_session_error_message($e->getMessage());
+		car_set_session_error_message($e->getMessage());
 	}
 
 	$mysqli->close();
 	
-	cal_redirect($redirect);
+	car_redirect($redirect);
 ?>

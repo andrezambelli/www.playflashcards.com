@@ -1,5 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_ADMIN . '/config.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
 <?php
     $total_users = 0;
     $total_decks = 0;
@@ -72,7 +72,7 @@
         $total_cookies = $row['count'];
     }
 ?>
-<?php include_once CAL_ROOT_ADMIN . '/containers/header.inc' ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/header.inc' ?>
 <div class="master">
 	<div class="subtitle"><div>Home</div></div>
     <div class="form">

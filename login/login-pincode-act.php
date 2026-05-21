@@ -1,43 +1,43 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
 	// Parâmetros
-	$redirect_url = cal_get_session_attribute('redirect_url', '');
-	$email = cal_get_session_attribute('email', '');
-	$pincode_s = cal_get_session_attribute('pincode', ''); // pincode da sessão
+	$redirect_url = car_get_session_attribute('redirect_url', '');
+	$email = car_get_session_attribute('email', '');
+	$pincode_s = car_get_session_attribute('pincode', ''); // pincode da sessão
 
-    $pincode_p = cal_get_parameter('pincode', ''); // pincode do parâmetro
+    $pincode_p = car_get_parameter('pincode', ''); // pincode do parâmetro
 
     // Variáveis
-	$redirect = CAL_PATH_WEB . '/login/login';
+	$redirect = CAR_PATH_WEB . '/login/login';
 
     try {
 		if ($pincode_s == $pincode_p) {
 			$user_email = $email;
 
-			include_once CAL_ROOT_WEB . '/login/user-insert-act.inc';
+			include_once CAR_ROOT_WEB . '/login/user-insert-act.inc';
 
 			if (empty($redirect_url)) {
-				$redirect = CAL_PATH_WEB . '/dash/deck-list';
+				$redirect = CAR_PATH_WEB . '/dash/deck-list';
 			} else {
 				$redirect = $redirect_url;
 			}
 		} else {
-			cal_set_session_error_message('login.login-pincode-act.invalid');
+			car_set_session_error_message('login.login-pincode-act.invalid');
 
-			$redirect = CAL_PATH_WEB . '/login/login-pincode';
+			$redirect = CAR_PATH_WEB . '/login/login-pincode';
 		}
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
-		cal_set_session_error_message($e->getMessage());
+		car_set_session_error_message($e->getMessage());
 	
-		$redirect = CAL_PATH_WEB . '/login/login';
+		$redirect = CAR_PATH_WEB . '/login/login';
 	}
 	
 	$mysqli->close();
 	
-	cal_redirect($redirect);
+	car_redirect($redirect);
 ?>

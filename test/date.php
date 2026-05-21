@@ -1,10 +1,10 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php' ;?>
-<?php include_once CAL_ROOT_WEB . '/config.inc' ;?>
+<?php include_once CAR_ROOT_WEB . '/config.inc' ;?>
 <?php
     $header_title = 'Test Date - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <script>
     function padZero(value) {
@@ -21,7 +21,7 @@
         console.log("Fuso Horário: " + timezone);
 
         $.ajax({
-            url: "<?= CAL_PATH_WEB; ?>/test/set-timezone.php",
+            url: "<?= CAR_PATH_WEB; ?>/test/set-timezone.php",
             type: "POST",
             data: {timezone: timezone},
             success: function (response) {
@@ -52,5 +52,5 @@
 ?>
 <?= $timestamp; ?>
 <hr/>
-<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc';?>
 

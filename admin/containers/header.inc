@@ -1,6 +1,6 @@
 <?php
-    cal_check_admin_login();
-	$_login = cal_get_session_attribute('session_admin_login', 'off');
+    car_check_admin_login();
+	$_login = car_get_session_attribute('session_admin_login', 'off');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" dir="ltr">
@@ -17,10 +17,10 @@
 	<meta name="Description" content="" />
 	
 	<link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon" />
-	<link type="text/css" rel="stylesheet" href="<?= CAL_PATH_ADMIN . "/assets/css/styles.css" ?>"  media="all" />
+	<link type="text/css" rel="stylesheet" href="<?= CAR_PATH_ADMIN . "/assets/css/styles.css" ?>"  media="all" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<title>
-		Play Flashcards Admin - <?= CAL_ADMIN_VERSION; ?>
+		Play Flashcards Admin - <?= CAR_ADMIN_VERSION; ?>
 	</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
 		<div class="title">
 			<div style="padding:10px;">
 				Administrador do Play Flashcards<br/>
-				Versão <?= CAL_ADMIN_VERSION; ?>
+				Versão <?= CAR_ADMIN_VERSION; ?>
 				[<?= $_login; ?>]
 			</div>
 		</div>

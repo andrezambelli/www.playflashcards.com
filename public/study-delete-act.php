@@ -1,12 +1,12 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc'; ?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
 	// Parâmetros 
-	$user_id = cal_get_session_attribute('user_id', CAL_USER_ID_MASTER);
+	$user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
 
-    $stud_key = cal_get_parameter('k', '');
+    $stud_key = car_get_parameter('k', '');
 
     // Variáveis
 	$stud_id = 0;
@@ -20,7 +20,7 @@
                                 where a.stud_key = '%s'
                                   and a.user_id = %d
                                   and a.deck_id = b.deck_id",
-                                $mysqli->real_escape_string(cal_never_null($stud_key)),
+                                $mysqli->real_escape_string(car_never_null($stud_key)),
                                 $user_id);
 		
 		$result = $mysqli->query($sql);
@@ -48,10 +48,10 @@
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
-		cal_set_session_error_message($e->getMessage());
+		car_set_session_error_message($e->getMessage());
 	}
 
 	$mysqli->close();
 	
-	cal_redirect(CAL_PATH_WEB . '/deck/' . $deck_key);
+	car_redirect(CAR_PATH_WEB . '/deck/' . $deck_key);
 ?>

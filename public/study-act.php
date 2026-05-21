@@ -1,14 +1,14 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc'; ?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
     // Parâmetros
-    $user_id = cal_get_session_attribute('user_id', CAL_USER_ID_MASTER);
+    $user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
 
-    $stud_key = cal_get_parameter('k', '');
-    $stse_order = cal_get_parameter('stse_order', 0);
-    $stse_answer = cal_get_parameter('stse_answer', 0);
+    $stud_key = car_get_parameter('k', '');
+    $stse_order = car_get_parameter('stse_order', 0);
+    $stse_answer = car_get_parameter('stse_answer', 0);
 
     // Variáveis
     $stud_id = 0;
@@ -21,7 +21,7 @@
     try {
         // Procurando o stud_id
         $sql = sprintf(" select stud_id from car_study where stud_key = '%s' and user_id = %d",
-                        $mysqli->real_escape_string(cal_never_null($stud_key)),
+                        $mysqli->real_escape_string(car_never_null($stud_key)),
                         $user_id);
 
         $result = $mysqli->query($sql);
@@ -106,7 +106,7 @@
             if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
 
             // Atualizando as respostas no cartão
-            if ($user_id != CAL_USER_ID_MASTER) {
+            if ($user_id != CAR_USER_ID_MASTER) {
                 if ($stse_answer == 1) { // true
                     $sql = sprintf('
                                 update car_card
@@ -137,10 +137,10 @@
     } catch(Exception $e) {
         $mysqli->rollback();
 
-        cal_set_session_error_message($e->getMessage());
+        car_set_session_error_message($e->getMessage());
     }
 
     $mysqli->close();
 
-    cal_redirect(CAL_PATH_WEB . '/study/' . $stud_key);
+    car_redirect(CAR_PATH_WEB . '/study/' . $stud_key);
 ?>

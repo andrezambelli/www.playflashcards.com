@@ -1,13 +1,13 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
-	cal_set_session_attribute('read_database', 'on');
+	car_set_session_attribute('read_database', 'on');
 
     // Parâmetros
-    $user_id = cal_get_session_attribute('user_id', 0);
+    $user_id = car_get_session_attribute('user_id', 0);
 
     // Variáveis
     $total_records = 0; // quantidade de registro da consulta
@@ -25,7 +25,7 @@
     // Apagando todos os grupos que estiveram com o nome padrão
     $_sql = sprintf(" delete from car_deck where user_id = %d and deck_name = '%s'",
                     $user_id,
-                    $mysqli->real_escape_string(cal_never_null(CAL_DECK_NAME_DEFAULT)));
+                    $mysqli->real_escape_string(car_never_null(CAR_DECK_NAME_DEFAULT)));
 
     $_result = $mysqli->query($_sql);
 
@@ -38,32 +38,32 @@
 	$result = $mysqli->query($sql);
 ?>
 <?php
-    $header_title = cal_t($t, 'Decks') . ' - Play Flashcards';
+    $header_title = car_t($t, 'Decks') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
+        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
         <div class="title">
-            <?= cal_t($t, 'Decks'); ?>
+            <?= car_t($t, 'Decks'); ?>
         </div>
         <?php if ($result->num_rows > 0) { ?>
             <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-                <a href="<?= CAL_PATH_WEB; ?>/dash/deck?k=<?= $row['deck_key']; ?>" class="button w100p">
-                    <?= cal_htmlspecialchars($row['deck_name']); ?>
+                <a href="<?= CAR_PATH_WEB; ?>/dash/deck?k=<?= $row['deck_key']; ?>" class="button w100p">
+                    <?= car_htmlspecialchars($row['deck_name']); ?>
                 </a>
             <?php } ?>
         <?php } ?>
         <div class="stats-value">
-            <a href="<?= CAL_PATH_WEB; ?>/dash/deck-new-act" class="buttonx">
-                <?= cal_t($t, 'New Deck'); ?>
+            <a href="<?= CAR_PATH_WEB; ?>/dash/deck-new-act" class="buttonx">
+                <?= car_t($t, 'New Deck'); ?>
             </a>
         </div>
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/home/secondary.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>

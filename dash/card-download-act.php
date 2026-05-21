@@ -1,20 +1,20 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
-<?php cal_check_login($t); ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_login($t); ?>
 <?php
 	// Parâmetros 
-	$user_id = cal_get_session_attribute('user_id', 0);
+	$user_id = car_get_session_attribute('user_id', 0);
 
-    $deck_key = cal_get_parameter('k', '');
+    $deck_key = car_get_parameter('k', '');
 
     // Variáveis
 	$deck_id = 0;
 
     // Procurando informação do grupo
     $sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
-                    $mysqli->real_escape_string(cal_never_null($deck_key)),
+                    $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
     $result = $mysqli->query($sql);

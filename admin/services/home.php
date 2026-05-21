@@ -1,6 +1,6 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_ADMIN . '/config.inc' ?>
-<?php cal_set_session_attribute('read_database', 'on'); ?>
+<?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
+<?php car_set_session_attribute('read_database', 'on'); ?>
 <?php 
 	$total_sessions = 0;
 	$last_session = 0;
@@ -23,7 +23,7 @@
 		$last_session = $row['created'];
 	}
 ?>
-<?php include_once CAL_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
 <div class="master">
     <div class="subtitle"><div>Serviços</div></div>
 	<div class="form">
@@ -34,7 +34,7 @@
 		Atualiza o rate de todos os cartões.<br/>
         <br/>
         <a href="session-act.php">Apagar Sessões</a><br/>
-        Apaga todos os registros da tabela cal_session. Última sessão: <strong><?= $last_session; ?></strong>. Total = <strong><?= $total_sessions; ?></strong><br/>
+        Apaga todos os registros da tabela car_session. Última sessão: <strong><?= $last_session; ?></strong>. Total = <strong><?= $total_sessions; ?></strong><br/>
     </div>
 </div>
-<?php include_once CAL_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>

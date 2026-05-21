@@ -1,5 +1,5 @@
 <?php
-	$_login = cal_get_session_attribute('session_admin_login', 'off');
+	$_login = car_get_session_attribute('session_admin_login', 'off');
 	
 	if (empty($_login)) {
 		$_SESSION = array();

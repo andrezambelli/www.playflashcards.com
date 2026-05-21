@@ -1,10 +1,10 @@
 <?php /** @var array $t */ ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
-<?php include_once CAL_ROOT_WEB . '/config.inc';?>
-<?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc';?>
+<?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
     // Parâmetros
-    $user_id = cal_get_session_attribute('user_id', CAL_USER_ID_MASTER);
+    $user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
 
     // Variáveis
     $_page = $routes[$t['lang']];
@@ -41,7 +41,7 @@
 
         // Procurando informações do deck publico
         $sql = sprintf("select user_id, deck_id, deck_name, deck_desc, deck_url, deck_follow from car_deck where deck_key = '%s' and deck_public = 1",
-                        $mysqli->real_escape_string(cal_never_null($deck_key)));
+                        $mysqli->real_escape_string(car_never_null($deck_key)));
 
         $result = $mysqli->query($sql);
 
@@ -67,7 +67,7 @@
     }
 
     // Definindo title e meta description
-    $_title = cal_t($t, 'Deck');
+    $_title = car_t($t, 'Deck');
     if (!empty($deck_name)) $_title .= ': '. $deck_name;
 
     // Se a deck_url do banco de dados for diferente da deck_url do pages, então redirecionar
@@ -76,59 +76,59 @@
     }
 
     if ($deck_url != $page_deck_url || $page_redirect) {
-        cal_redirect(CAL_PATH_WEB . '/deck/'. $deck_key . '/'. $deck_url);
+        car_redirect(CAR_PATH_WEB . '/deck/'. $deck_key . '/'. $deck_url);
     }
 ?>
 <?php
-    $header_title = cal_htmlspecialchars($_title) . ' - Play Flashcards';
-    $header_description = cal_htmlspecialchars($deck_desc);
+    $header_title = car_htmlspecialchars($_title) . ' - Play Flashcards';
+    $header_description = car_htmlspecialchars($deck_desc);
     if ($deck_follow) {
         $header_index_follow = 'index,follow';
     } else {
         $header_index_follow = 'noindex,nofollow';
     }
-    include_once CAL_ROOT_WEB . '/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
+        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
         <?php if ($has_deck) { ?>
             <div class="title">
-                <?= cal_t($t, 'Deck'); ?>
+                <?= car_t($t, 'Deck'); ?>
             </div>
             <div class="stats-title">
-                <?= cal_htmlspecialchars($deck_name); ?>
+                <?= car_htmlspecialchars($deck_name); ?>
             </div>
             <div class="stats-value">
-                <?= cal_htmlspecialchars($deck_desc); ?>
+                <?= car_htmlspecialchars($deck_desc); ?>
             </div>
             <?php if($total_cards > 0) { ?>
                 <div>
                     <?php if ($user_id == $user_id_deck) { // usuario logado é o dono do deck ?>
-                        <a href="<?= CAL_PATH_WEB; ?>/dash/study-srs-new-act?k=<?= $deck_key; ?>" class="buttonx">
-                            <?= cal_t($t, 'Play SRS'); ?>
+                        <a href="<?= CAR_PATH_WEB; ?>/dash/study-srs-new-act?k=<?= $deck_key; ?>" class="buttonx">
+                            <?= car_t($t, 'Play SRS'); ?>
                         </a>
-                        <a href="<?= CAL_PATH_WEB; ?>/dash/study-new-act?k=<?= $deck_key; ?>" class="buttonx">
-                            <?= cal_t($t, 'Play'); ?>
+                        <a href="<?= CAR_PATH_WEB; ?>/dash/study-new-act?k=<?= $deck_key; ?>" class="buttonx">
+                            <?= car_t($t, 'Play'); ?>
                         </a>
                     <?php } else { ?>
-                        <form action="<?= CAL_PATH_WEB; ?>/deck/study-new-act" method="post">
-                            <input type="hidden" name="k" value="<?= cal_htmlspecialchars($deck_key); ?>">
-                            <input type="submit" value="<?= cal_t($t, 'Play'); ?>" class="buttonx" />
+                        <form action="<?= CAR_PATH_WEB; ?>/deck/study-new-act" method="post">
+                            <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key); ?>">
+                            <input type="submit" value="<?= car_t($t, 'Play'); ?>" class="buttonx" />
                         </form>
                     <?php } ?>
                 </div>
                 <?php } else { ?>
-                <?= cal_t($t, 'This deck has no flashcards.'); ?>
+                <?= car_t($t, 'This deck has no flashcards.'); ?>
                 <?php } ?>
         <?php } else { ?>
-            <?= cal_t($t, 'Deck not found.'); ?>
+            <?= car_t($t, 'Deck not found.'); ?>
         <?php } ?>
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/containers/box-signin.inc'; ?>
-    <?php include_once CAL_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/containers/box-signin.inc'; ?>
+    <?php include_once CAR_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>
 
