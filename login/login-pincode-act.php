@@ -14,7 +14,7 @@
 	$redirect = CAR_PATH_WEB . '/login/login';
 
     try {
-		if ($pincode_s === $pincode_p) {
+		if (!empty($pincode_s) && password_verify($pincode_p, $pincode_s)) {
 			$user_email = $email;
 
 			include_once CAR_ROOT_WEB . '/login/user-insert-act.inc';
@@ -22,7 +22,7 @@
 			if (empty($redirect_url)) {
 				$redirect = CAR_PATH_WEB . '/dash/deck-list';
 			} else {
-				$redirect = $redirect_url;
+				$redirect = car_safe_redirect_url($redirect_url, CAR_PATH_WEB . '/dash/deck-list');
 			}
 		} else {
 			car_set_session_error_message('login.login-pincode-act.invalid');

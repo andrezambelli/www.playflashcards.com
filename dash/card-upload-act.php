@@ -30,21 +30,21 @@
 
         $result = $mysqli->query($sql);
 
-        if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+        if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
         // Apagando todos os estudos desse grupo
         $sql = sprintf('delete from car_study where deck_id = %d', $deck_id, $user_id);
 
         $result = $mysqli->query($sql);
 
-        if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+        if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
         // Apagando todos os cartões desse estudo
         $sql = sprintf('delete from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
 
         $result = $mysqli->query($sql);
 
-        if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+        if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
         if (isset($_FILES['input_file']) && $_FILES['input_file']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['input_file']['tmp_name'];
@@ -92,7 +92,7 @@
 
                             $result = $mysqli->query($sql);
 
-                            if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+                            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
                         } else {
                             $line_import = true;
                         }

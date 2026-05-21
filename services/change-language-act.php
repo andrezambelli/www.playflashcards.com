@@ -8,7 +8,7 @@
 
     // Variáveis
     $original_lang = $_SESSION['lang']; // idioma da sessão
-    $redirect_url = $_SERVER['HTTP_REFERER'];
+    $redirect_url = car_safe_redirect_url($_SERVER['HTTP_REFERER'] ?? '', '');
 
     // Carrega o conteúdo do idioma do navegador na sessão
     $_SESSION['lang'] = $new_lang;

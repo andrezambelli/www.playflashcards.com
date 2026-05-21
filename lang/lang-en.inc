@@ -6,6 +6,7 @@ $t = [
     'Check the Code'=>'Check the Code',
     'click on the card'=>'click on the card',
     'Code'=>'Code',
+    'error.db'=>'An unexpected error occurred. Please try again.',
     'common.403.title'=>'Forbidden',
     'common.404.desc'=>'Sorry, the page you are looking for could not be found. Please make sure you typed the correct address or navigate to other areas of the site to find the desired content.',
     'common.404.title'=>'Page not found',

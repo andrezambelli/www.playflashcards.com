@@ -43,7 +43,7 @@
 			
 			$_result = $mysqli->query($_sql);
 			
-			if (!$_result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+			if (!$_result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 			
 			// Cria a chave do cartão
 			$card_key = null;
@@ -74,7 +74,7 @@
 			
 			$result = $mysqli->query($sql);
 			
-			if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+			if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 			
 			// Apagando todos as sessões de estudo deste grupo que ainda não foram finalizados
 			$sql = sprintf('
@@ -90,7 +90,7 @@
 			
 			$result = $mysqli->query($sql);
 			
-			if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+			if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
             // Apagando todos os estudos deste grupo que ainda não foram finalizados
 			$sql = sprintf('delete from car_study where deck_id = %d and user_id = %d and stud_end is null',
@@ -99,7 +99,7 @@
 			
 			$result = $mysqli->query($sql);
 			
-			if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+			if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 			
 			$mysqli->commit();
 

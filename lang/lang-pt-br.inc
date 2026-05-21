@@ -6,6 +6,7 @@ $t = [
     'Check the Code'=>'Verifique o Código',
     'click on the card'=>'clique no cartão',
     'Code'=>'Código',
+    'error.db'=>'Ocorreu um erro inesperado. Por favor, tente novamente.',
     'common.403.title'=>'Acesso Negado',
     'common.404.desc'=>'Desculpe, a página que você está procurando não foi encontrada. Certifique-se de que digitou o endereço correto ou navegue para outras áreas do site para encontrar o conteúdo desejado.',
     'common.404.title'=>'Página não encontrada',

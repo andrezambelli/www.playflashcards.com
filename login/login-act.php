@@ -38,7 +38,7 @@
 		$result = is_string($response) ? json_decode($response, true) : null;
 
 		if ($httpCode === 200 && is_array($result) && !empty($result['ok'])) {
-			car_set_session_attribute('pincode', $pincode);
+			car_set_session_attribute('pincode', password_hash($pincode, PASSWORD_DEFAULT));
 			car_set_session_alert_message('login.login-act.sucesso');
 			$redirect = CAR_PATH_WEB . '/login/login-pincode';
 		} else {

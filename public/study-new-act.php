@@ -29,7 +29,7 @@
 
         $_result = $mysqli->query($_sql);
 
-        if (!$_result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+        if (!$_result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
         // Cria a chave do estudo
         $stud_key = null;
@@ -78,7 +78,7 @@
 
             $stud_id = car_last_insert_id($mysqli);
 
-            if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
             // Inserindo os cartões na sessão do estudo
             $sql = sprintf('
@@ -93,7 +93,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) throw new Exception($mysqli->sqlstate . ' - ' .$mysqli->error);
+            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
 
             $mysqli->commit();
 

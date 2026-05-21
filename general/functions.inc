@@ -202,6 +202,18 @@
     }
 
     /*
+     * Valida se uma URL de redirect pertence ao mesmo host do servidor.
+     * Retorna a URL original se for segura, ou $_fallback caso contrário.
+     */
+    function car_safe_redirect_url($_url, $_fallback = '') {
+        if (empty($_url)) return $_fallback;
+        $_parsed = parse_url($_url);
+        if (!isset($_parsed['host'])) return $_url; // URL relativa é segura
+        if (isset($_SERVER['HTTP_HOST']) && $_parsed['host'] === $_SERVER['HTTP_HOST']) return $_url;
+        return $_fallback;
+    }
+
+    /*
      * Redireciona a página
      */
 	function car_redirect($_url) {
