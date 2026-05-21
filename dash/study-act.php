@@ -69,7 +69,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             // Procurando as respostas certas e erradas da sessão de estudo
             $sql = sprintf("
@@ -85,7 +85,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             $stud_true = 0;
             $stud_false = 0;
@@ -109,7 +109,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             // Atualizando as respostas no cartão
             if ($user_id != CAR_USER_ID_MASTER) {
@@ -151,7 +151,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
         }
 
         $mysqli->commit();

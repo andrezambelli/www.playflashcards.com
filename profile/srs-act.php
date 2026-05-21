@@ -39,7 +39,7 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             $mysqli->commit();
 

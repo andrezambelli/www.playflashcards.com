@@ -35,14 +35,14 @@
 		
 		$result = $mysqli->query($sql);
 		 
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando o estudo
 		$sql = sprintf('delete from car_study where stud_id = %d and user_id = %d', $stud_id, $user_id);
 		
 		$result = $mysqli->query($sql);
 		
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		$mysqli->commit();
 	} catch(Exception $e) {

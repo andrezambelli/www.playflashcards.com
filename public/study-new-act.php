@@ -11,7 +11,7 @@
     // Variáveis
 	$deck_id = 0;
 	
-	$redirect = CAR_PATH_WEB . '/dash/' . $deck_key;
+	$redirect = CAR_PATH_WEB . '/deck/' . $deck_key;
 	
 	try {
 		// Procurando o deck_id
@@ -29,7 +29,7 @@
 
         $_result = $mysqli->query($_sql);
 
-        if (!$_result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+        if (!$_result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Cria a chave do estudo
         $stud_key = null;
@@ -78,7 +78,7 @@
 
             $stud_id = car_last_insert_id($mysqli);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             // Inserindo os cartões na sessão do estudo
             $sql = sprintf('
@@ -93,22 +93,22 @@
 
             $result = $mysqli->query($sql);
 
-            if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             $mysqli->commit();
 
             $redirect = CAR_PATH_WEB . '/study/' . $stud_key;
         } else {
-            car_set_session_error_message('The deck has no flashcards.');
+            car_set_session_error_message('dash.study-new-act.no-cards');
 
-            $redirect = CAR_PATH_WEB . '/dash/' . $deck_key;
+            $redirect = CAR_PATH_WEB . '/deck/' . $deck_key;
         }
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		
 		car_set_session_error_message($e->getMessage());
 		
-		$redirect = CAR_PATH_WEB . '/dash/' . $deck_key;
+		$redirect = CAR_PATH_WEB . '/deck/' . $deck_key;
 	}
 
 	$mysqli->close();

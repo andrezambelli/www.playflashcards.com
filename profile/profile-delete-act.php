@@ -26,21 +26,21 @@
 		
 		$result = $mysqli->query($sql);
 		 
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando todos os grupos
 		$sql = sprintf('delete from car_group where user_id = %d', $user_id);
 		
 		$result = $mysqli->query($sql);
 		
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando o usuário
         $sql = sprintf('delete from car_user where user_id = %d', $user_id);
 
         $result = $mysqli->query($sql);
 
-        if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+        if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		$mysqli->commit();
 	} catch(Exception $e) {
 		$mysqli->rollback();

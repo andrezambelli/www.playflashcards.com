@@ -40,27 +40,30 @@
                          where stud_id in (
                         select stud_id
                           from car_study
-                         where deck_id = %d)',
-                        $deck_id);
-		
+                         where deck_id = %d
+                           and user_id = %d)',
+                        $deck_id,
+                        $user_id);
+
 		$result = $mysqli->query($sql);
-		
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando todos os estudos deste grupo que ainda não foram finalizados
-		$sql = sprintf('delete from car_study where deck_id = %d and stud_end is null',
-                        $deck_id);
+		$sql = sprintf('delete from car_study where deck_id = %d and user_id = %d and stud_end is null',
+                        $deck_id,
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando o cartão
 		$sql = sprintf('delete from car_card where card_id = %d and user_id = %d', $card_id, $user_id);
 		
 		$result = $mysqli->query($sql);
 		 
-		if (!$result) error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db');
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 				
 		$mysqli->commit();
 	} catch(Exception $e) {
