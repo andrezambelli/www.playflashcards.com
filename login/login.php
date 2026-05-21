@@ -17,11 +17,11 @@
     $header_title = cal_t($t, 'login.login.title') .' - Play Flashcards';
     $header_description = cal_t($t, 'login.login.desc');
     $header_index_follow = 'index,follow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
         <div class="form">
             <form action="<?= CAL_PATH_WEB . '/login/login-act'; ?>" method="post">
                 <input type="hidden" name="redirect_url" value="<?= cal_htmlspecialchars($redirect_url); ?>" />
@@ -64,6 +64,6 @@
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/include/box-follow-decks.inc'; ?>
+    <?php include_once CAL_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>

@@ -11,7 +11,7 @@
     $header_title = cal_t($t, 'Delete your Account') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <script>
 	$(document).ready(function() {
@@ -31,7 +31,7 @@
 </script>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
         <div class="title">
             <?= cal_t($t, 'Delete your Account'); ?>
         </div>
@@ -48,4 +48,4 @@
 <div class="div-secondary">
     <?php include_once CAL_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc'; ?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>

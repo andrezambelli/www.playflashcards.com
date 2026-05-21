@@ -25,16 +25,16 @@
 	<?php if (isset($header_canonical) & !empty($header_canonical)) { ?>
 		<link rel="canonical" href="<?= $header_canonical; ?>" />
 	<?php } ?>
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/content/img/icon.png'; ?>" />
- 	<link type="text/css" rel="stylesheet" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/content/css/site-0.0.20.css'; ?>"  media="all" />
+	<link rel="apple-touch-icon" sizes="180x180" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/assets/img/icon.png'; ?>" />
+ 	<link type="text/css" rel="stylesheet" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/assets/css/styles.css'; ?>"  media="all" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="<?= cal_get_base_url(CAL_PATH_WEB) . '/content/js/site-0.0.07.js' ?>"></script>
+    <script src="<?= cal_get_base_url(CAL_PATH_WEB) . '/assets/js/main.js' ?>"></script>
 	<title>
 		<?= cal_htmlspecialchars($header_title); ?>
 	</title>
 	<link rel=”shortcut icon” href=”<?= cal_get_base_url(CAL_PATH_WEB) . '/favicon.ico'; ?>”>
-	<link rel="icon" type="image/png" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/content/img/favicon.png' ?>">
-	<link rel="shortcut icon" type="image/png"  href="<?= cal_get_base_url(CAL_PATH_WEB) . '/content/img/favicon.png' ?>" />
+	<link rel="icon" type="image/png" href="<?= cal_get_base_url(CAL_PATH_WEB) . '/assets/img/favicon.png' ?>">
+	<link rel="shortcut icon" type="image/png"  href="<?= cal_get_base_url(CAL_PATH_WEB) . '/assets/img/favicon.png' ?>" />
     <?php if ($_SERVER['REQUEST_URI'] == '' || $_SERVER['REQUEST_URI'] == '/') { ?>
         <?php // estamos na raiz e no site de produção ?>
         <link rel="alternate" hreflang="en" href="https://www.playflashcards.com/en/">
@@ -52,7 +52,7 @@
             $(document).ready(function() {
                 // Atualiza o timezone do navegador na sessão do usuário
                 $.ajax({
-                    url: "<?= CAL_PATH_WEB . '/general/set-timezone-act'; ?>",
+                    url: "<?= CAL_PATH_WEB . '/services/set-timezone-act'; ?>",
                     type: "POST",
                     data: {timezone: getTimezoneFormated()},
                     success: function (response) {
@@ -69,11 +69,11 @@
                 <div class="logo">
                     <?php if ($_login == 'off') { ?>
                         <a href="<?= CAL_PATH_WEB . '/' . $t['lang'] . '/'; ?>">
-                            <img src="<?= CAL_PATH_WEB . '/content/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
+                            <img src="<?= CAL_PATH_WEB . '/assets/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
                         </a>
                     <?php } else { ?>
                         <a href="<?= CAL_PATH_WEB . '/dash/deck-list'; ?>">
-                            <img src="<?= CAL_PATH_WEB . '/content/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
+                            <img src="<?= CAL_PATH_WEB . '/assets/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
                         </a>
                     <?php } ?>
                     <span>
@@ -81,8 +81,8 @@
                     </span>
                 </div>
                 <div class="menu" id="btn_menu_div">
-                    <img id="menu_img" src="<?= CAL_PATH_WEB . '/content/img/menu.png'; ?>" width="40px" height="40px" alt="<?= cal_t($t, 'Menu'); ?>" />
-                    <img id="close_img" src="<?= CAL_PATH_WEB . '/content/img/close.png'; ?>" width="40px" height="40px" alt="<?= cal_t($t, 'Menu'); ?>" />
+                    <img id="menu_img" src="<?= CAL_PATH_WEB . '/assets/img/menu.png'; ?>" width="40px" height="40px" alt="<?= cal_t($t, 'Menu'); ?>" />
+                    <img id="close_img" src="<?= CAL_PATH_WEB . '/assets/img/close.png'; ?>" width="40px" height="40px" alt="<?= cal_t($t, 'Menu'); ?>" />
                 </div>
             </div>
             <div id="menu_div">

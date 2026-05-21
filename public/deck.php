@@ -86,11 +86,11 @@
     } else {
         $header_index_follow = 'noindex,nofollow';
     }
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
         <?php if ($has_deck) { ?>
             <div class="title">
                 <?= cal_t($t, 'Deck'); ?>
@@ -126,8 +126,8 @@
     </div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/include/box-signin.inc'; ?>
-    <?php include_once CAL_ROOT_WEB . '/include/box-follow-decks.inc'; ?>
+    <?php include_once CAL_ROOT_WEB . '/containers/box-signin.inc'; ?>
+    <?php include_once CAL_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc'; ?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>
 

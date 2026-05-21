@@ -35,7 +35,7 @@
     $header_title = cal_t($t, 'Profile') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <script>
     $(document).ready(function() {
@@ -48,7 +48,7 @@
 </script>
 <div class="div-primary">
     <div class="div-start">
-        <?php include_once CAL_ROOT_WEB . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
         <div class="title">
             <?= cal_t($t, 'Profile'); ?>
         </div>
@@ -56,7 +56,7 @@
         <div class="stats-value"><?= cal_htmlspecialchars($user_email); ?></div>
         <div class="stats-title"><?= cal_t($t, 'Lang'); ?>:</div>
         <div class="stats-value">
-            <form id="main_form" action="<?= CAL_PATH_WEB . '/general/change-language-act'; ?>" method="post">
+            <form id="main_form" action="<?= CAL_PATH_WEB . '/services/change-language-act'; ?>" method="post">
                 <select id="user_lang_select" name="lang" class="selectx w300">
                     <option value="en" <?php if ($user_lang == 'en') { ?>selected<?php } ?>><?= cal_t($t, 'English'); ?></option>
                     <option value="pt-br" <?php if ($user_lang == 'pt-br') { ?>selected<?php } ?>><?= cal_t($t, 'Portuguese'); ?></option>
@@ -88,4 +88,4 @@
 <div class="div-secondary">
     <?php include_once CAL_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc'; ?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc'; ?>

@@ -28,9 +28,9 @@
     // system
     $routes['404'] = 'common/404.php';
     $routes['home/home'] = 'home/home.php';
-    $routes['general/set-timezone-act'] = 'general/set-timezone-act.php';
-    $routes['general/set-cookie-act'] = 'general/set-cookie-act.php';
-    $routes['general/change-language-act'] = 'general/change-language-act.php';
+    $routes['services/set-timezone-act'] = 'services/set-timezone-act.php';
+    $routes['services/set-cookie-act'] = 'services/set-cookie-act.php';
+    $routes['services/change-language-act'] = 'services/change-language-act.php';
 
     // profile - private
     $routes['profile/profile'] = 'profile/profile.php';

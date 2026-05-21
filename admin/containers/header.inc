@@ -16,8 +16,8 @@
 	<meta name="Keywords" content="" />
 	<meta name="Description" content="" />
 	
-	<link rel="shortcut icon" href="../content/img/favicon.png" type="image/x-icon" />
-	<link type="text/css" rel="stylesheet" href="<?= CAL_PATH_ADMIN . "/content/css/site-1.0.0.css" ?>"  media="all" />
+	<link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon" />
+	<link type="text/css" rel="stylesheet" href="<?= CAL_PATH_ADMIN . "/assets/css/styles.css" ?>"  media="all" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<title>
 		Play Flashcards Admin - <?= CAL_ADMIN_VERSION; ?>

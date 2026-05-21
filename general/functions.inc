@@ -203,7 +203,7 @@
         }
 
         if ($_new_lang != $_lang) {
-           cal_redirect(cal_get_base_url(CAL_PATH_WEB) . '/general/change-language-act?lang=' . $_new_lang);
+           cal_redirect(cal_get_base_url(CAL_PATH_WEB) . '/services/change-language-act?lang=' . $_new_lang);
         }
     }
 

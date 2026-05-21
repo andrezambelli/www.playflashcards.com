@@ -13,12 +13,12 @@
     $header_title = cal_t($t, 'login.login-pincode.title') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
         <h1><?= cal_t($t, 'login.login-pincode.title'); ?></h1>
-        <?php include_once CAL_ROOT_WEB . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_WEB . '/containers/message.inc' ?>
         <div class="space"></div>
         <div class="form">
             <form action="<?= CAL_PATH_WEB . '/login/login-pincode-act'; ?>" method="post">
@@ -37,4 +37,4 @@
 <div class="div-secondary">
     <!-- -->
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>

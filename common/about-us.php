@@ -6,7 +6,7 @@
     $header_title = 'Play Flashcards - About Us';
     $header_description = 'Loren';
     $header_index_follow = 'index,follow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     About Us
@@ -14,4 +14,4 @@
 <div class="div-secondary">
     About Us
 </div>˙
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>

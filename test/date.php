@@ -4,7 +4,7 @@
     $header_title = 'Test Date - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <script>
     function padZero(value) {
@@ -52,5 +52,5 @@
 ?>
 <?= $timestamp; ?>
 <hr/>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>
 

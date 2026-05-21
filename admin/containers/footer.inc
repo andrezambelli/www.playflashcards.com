@@ -3,7 +3,7 @@
 		Play Flashcards 2023
 	</div>
 </div>
-<script type="text/javascript" src="../content/js/site-1.0.0.js"></script>
+<script type="text/javascript" src="../assets/js/main.js"></script>
 </body>
 </html>
 <?php include_once "clear-session.inc" ?>

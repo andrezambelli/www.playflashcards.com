@@ -72,7 +72,7 @@
         $total_cookies = $row['count'];
     }
 ?>
-<?php include_once CAL_ROOT_ADMIN . '/include/header.inc' ?>
+<?php include_once CAL_ROOT_ADMIN . '/containers/header.inc' ?>
 <div class="master">
 	<div class="subtitle"><div>Home</div></div>
     <div class="form">

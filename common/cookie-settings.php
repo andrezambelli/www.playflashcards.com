@@ -6,7 +6,7 @@
     $header_title = 'Play Flashcards - Cookie Settings';
     $header_description = 'Loren';
     $header_index_follow = 'index,follow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     Cookie Settings
@@ -14,4 +14,4 @@
 <div class="div-secondary">
     Cookie Settings
 </div>˙
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>

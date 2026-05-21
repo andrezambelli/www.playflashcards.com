@@ -6,7 +6,7 @@
     $header_title = cal_t($t, 'common.terms.title') . ' - Play Flashcards';
     $header_description = cal_t($t, 'common.terms.desc');
     $header_index_follow = 'index,follow';
-    include_once CAL_ROOT_WEB . '/include/header.inc';
+    include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
     <div class="div-start">
@@ -54,4 +54,4 @@
 <div class="div-secondary">
     <!-- -->
 </div>˙
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>

@@ -32,7 +32,7 @@
 <?php include_once CAL_ROOT_ADMIN . "/include/header.inc"; ?>
 <div class="master">
 	<div class="form">
-        <?php include_once CAL_ROOT_ADMIN . '/include/message.inc' ?>
+        <?php include_once CAL_ROOT_ADMIN . '/containers/message.inc' ?>
 		<strong>Atualizar Rate dos Cartões</strong><br/>
 		<br/>
 		Rate dos cartões atualizado com sucesso.

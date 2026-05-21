@@ -7,7 +7,7 @@
     $header_canonical = cal_get_base_url(CAL_PATH_WEB) . '/'. $t['lang'] . '/';
     $header_description = cal_t($t, 'main.desc');
     $header_index_follow = 'index,follow';
-	include_once CAL_ROOT_WEB . '/include/header.inc';
+	include_once CAL_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">
 	<div class="div-start">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 <div class="div-secondary">
-    <?php include_once CAL_ROOT_WEB . '/include/box-signin.inc'; ?>
-    <?php include_once CAL_ROOT_WEB . '/include/box-follow-decks.inc'; ?>
+    <?php include_once CAL_ROOT_WEB . '/containers/box-signin.inc'; ?>
+    <?php include_once CAL_ROOT_WEB . '/containers/box-follow-decks.inc'; ?>
 </div>
-<?php include_once CAL_ROOT_WEB . '/include/footer.inc';?>
+<?php include_once CAL_ROOT_WEB . '/containers/footer.inc';?>
