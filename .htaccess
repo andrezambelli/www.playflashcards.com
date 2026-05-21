@@ -10,7 +10,7 @@ RewriteEngine on
 
 ErrorDocument 404 /common/404.php 
 ErrorDocument 403 /common/403.php
-ErrorDocument 500 /error-500.html
+ErrorDocument 500 /common/error-500.html
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

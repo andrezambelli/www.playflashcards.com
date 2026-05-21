@@ -1,5 +1,4 @@
 <?php
-	global $routes;
 	$routes = [];
 
     // general

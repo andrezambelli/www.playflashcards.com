@@ -88,7 +88,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 
 - Nunca usar travessão em nenhum texto criado
 - Nunca criar arquivos desnecessários. Sempre preferir editar o que já existe
-- Nunca sugerir nem executar deploy, commit ou push sem autorização explícita do usuário
+- Nunca sugerir deploy, commit ou push ao final de mensagens. O usuário sabe quando executar essas ações e solicita quando necessário
 
 ## 7. Regras (ao fazer)
 
