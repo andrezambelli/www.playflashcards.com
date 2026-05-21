@@ -231,7 +231,7 @@
 	function car_get_base_url($_path) {
 		$_protocol = 'http';
 		
-		if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443') {
+		if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443')) {
 			$_protocol = 'https';
 		}
 		

@@ -9,7 +9,7 @@
 <!DOCTYPE html><html lang="<?= $t['lang']; ?>" xml:lang="<?= $t['lang']; ?>">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Content-Language" content="pt-br" />
+	<meta http-equiv="Content-Language" content="<?= $t['lang']; ?>" />
     <meta name="Googlebot" content="<?= $header_index_follow; ?>" />
     <meta name="Robots" content="<?= $header_index_follow; ?>">
 	<meta name="Distribution" content="global" />
