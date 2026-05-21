@@ -152,15 +152,13 @@
             </a>
             <?php if ($total_open_studies > 0) { ?>
                 <div class="stats-value"><?= car_t($t, 'Open Studies'); ?>: <?= $total_open_studies; ?></div>
-                <?php if ($total_open_studies > 0) { ?>
-                    <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-                        <div class="stats-value">
-                            <?= car_t($t, 'Last Open Study'); ?>:
-                            <a href="<?= CAR_PATH_WEB; ?>/dash/study?k=<?= $row['stud_key']; ?>">
-                                <?= car_htmlspecialchars($row['stud_create']); ?>
-                            </a>
-                        </div>
-                    <?php } ?>
+                <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
+                    <div class="stats-value">
+                        <?= car_t($t, 'Last Open Study'); ?>:
+                        <a href="<?= CAR_PATH_WEB; ?>/dash/study?k=<?= $row['stud_key']; ?>">
+                            <?= car_htmlspecialchars($row['stud_create']); ?>
+                        </a>
+                    </div>
                 <?php } ?>
                 <div class="space"></div>
             <?php } ?>

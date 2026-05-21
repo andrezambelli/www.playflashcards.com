@@ -51,7 +51,7 @@
 
             if (($handle = fopen($file, "r")) !== false) {
                 while (($line = fgets($handle)) !== false) {
-                    $values = explode(";", $line);
+                    $values = str_getcsv($line, ';');
 
                     $line_import = false;
 

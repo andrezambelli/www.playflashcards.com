@@ -41,16 +41,15 @@
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=' . $filename);
 
-    $data = array();
-    $lines = '';
+    $output = fopen('php://output', 'w');
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $lines .= str_replace(';', '', $row['card_front']) . ';'. str_replace(';', '', $row['card_back']) . PHP_EOL;
+            fputcsv($output, [$row['card_front'], $row['card_back']], ';');
         }
     }
 
-    echo $lines;
+    fclose($output);
     exit();
 
 

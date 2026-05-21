@@ -29,7 +29,7 @@
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando todos os grupos
-		$sql = sprintf('delete from car_group where user_id = %d', $user_id);
+		$sql = sprintf('delete from car_deck where user_id = %d', $user_id);
 		
 		$result = $mysqli->query($sql);
 		

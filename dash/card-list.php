@@ -30,6 +30,7 @@
 		$deck_id = $row['deck_id'];
 	}
 	
+	// TODO: mover para um cron job dedicado (services/cleanup-act.php)
 	// Apagando todos os cartões que estiverem em branco deste grupo
 	$_sql = sprintf("delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');",
                      $deck_id,
@@ -98,7 +99,6 @@
                 <?php if ($result->num_rows > 0) { ?>
                     <div class="table">
                         <table>
-                            <?php $count = 0; ?>
                             <tr>
                                 <th style="width: 40%">
                                     <?= car_t($t, 'Front'); ?>
@@ -114,7 +114,6 @@
                                 </th>
                             </tr>
                             <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-                                <?php $count += 1; ?>
                                 <tr>
                                     <td>
                                         <?= car_htmlspecialchars($row['card_front']); ?>
