@@ -8,7 +8,6 @@
 
     // Parâmetros
     $user_id = car_get_session_attribute('user_id', 0);
-    $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
 
     // Variáveis
     $user_email = '';
@@ -62,6 +61,7 @@
                     <option value="en" <?php if ($user_lang == 'en') { ?>selected<?php } ?>><?= car_t($t, 'English'); ?></option>
                     <option value="pt-br" <?php if ($user_lang == 'pt-br') { ?>selected<?php } ?>><?= car_t($t, 'Portuguese'); ?></option>
                     <option value="es" <?php if ($user_lang == 'es') { ?>selected<?php } ?>><?= car_t($t, 'Spanish'); ?></option>
+                    <option value="fr" <?php if ($user_lang == 'fr') { ?>selected<?php } ?>><?= car_t($t, 'French'); ?></option>
                 </select>
                 <input type="submit" style="display:none" />
             </form>

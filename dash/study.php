@@ -135,17 +135,15 @@
 <script>
     $(document).ready(function() {
         // Tamanho da fonte de acrodo com a quantidade de caracteres
-        var flipCard = $("#flip_card_back");
-        var textContent = flipCard.text().trim();
-        var contentLength = textContent.length;
-        var fontSize = Math.min(16, 1000 / contentLength); // Máximo de 16px
-        flipCard.css("font-size", fontSize + "px");
+        var flipCardBack = $("#flip_card_back");
+        var textBack = flipCardBack.text().trim();
+        var fontSizeBack = Math.min(16, 1000 / textBack.length);
+        flipCardBack.css("font-size", fontSizeBack + "px");
 
-        var flipCard = $("#flip_card_front");
-        var textContent = flipCard.text().trim();
-        var contentLength = textContent.length;
-        var fontSize = Math.min(18, 1000 / contentLength); // Máximo de 16px
-        flipCard.css("font-size", fontSize + "px");
+        var flipCardFront = $("#flip_card_front");
+        var textFront = flipCardFront.text().trim();
+        var fontSizeFront = Math.min(18, 1000 / textFront.length);
+        flipCardFront.css("font-size", fontSizeFront + "px");
 
         var front = true;
 

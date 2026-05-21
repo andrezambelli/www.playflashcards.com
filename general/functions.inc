@@ -150,8 +150,6 @@
      * Se estiver logado e acessar a página de login, então direciona para a lista de grupos
      */
 	function car_check_login($_t) {
-        $_lang = $_SESSION['lang'];
-
 		$_login = car_get_session_attribute('session_login', '');
 	
 		// se não estiver logado, redireciona para a página de login 

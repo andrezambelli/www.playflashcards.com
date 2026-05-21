@@ -156,6 +156,7 @@ $t = [
     'Sign Out'=>'Desconectar',
     'Spaced Repetition System (SRS)'=>'Sistema de Repetición Espaciada (SRS)',
     'Spanish'=>'Español',
+    'French'=>'Francés',
     'Start'=>'Comenzar',
     'Start Date'=>'Fecha de Inicio',
     'Stats'=>'Estadísticas',

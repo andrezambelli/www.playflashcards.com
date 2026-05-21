@@ -156,6 +156,7 @@ $t = [
     'Sign Out'=>'Sign Out',
     'Spaced Repetition System (SRS)'=>'Spaced Repetition System (SRS)',
     'Spanish'=>'Spanish',
+    'French'=>'French',
     'Start'=>'Start',
     'Start Date'=>'Start Date',
     'Stats'=>'Stats',
