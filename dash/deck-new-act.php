@@ -61,7 +61,7 @@
 
             $redirect = CAR_PATH_WEB . '/dash/deck-edit?k=' . $deck_key;
         } else {
-            car_set_session_error_message('Você não tem permissão para incluir mais um grupo.');
+            car_set_session_error_message('dash.deck-new-act.error');
 
             $redirect = CAR_PATH_WEB . '/dash/deck-list';
         }

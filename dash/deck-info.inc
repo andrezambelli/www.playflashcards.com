@@ -64,7 +64,7 @@
 	
 	// Se não achou o grupo, apresenta mensagem de erro
 	if (!$_found) {
-		car_set_session_error_message('Deck, flashcard or study not found.');
+		car_set_session_error_message('dash.deck-info.not-found');
 
         car_redirect(CAR_PATH_WEB . '/dash/deck-list');
 	}

@@ -109,7 +109,7 @@
 
 				$redirect = CAR_PATH_WEB . '/dash/study?k=' . $stud_key;
 			} else {
-				car_set_session_error_message('The deck has no flashcards.');
+				car_set_session_error_message('dash.study-new-act.no-cards');
 				
 				$redirect = CAR_PATH_WEB . '/dash/study-list?k=' . $deck_key;
 			}
