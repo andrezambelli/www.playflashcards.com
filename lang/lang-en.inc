@@ -106,7 +106,6 @@ $t = [
     'login.login.message2'=>'Please check your inbox, including the spam/trash folder.',
     'login.login.message3'=>'Or, connect with your favorite social media account to access instantly:',
     'login.login.title'=>'Login',
-    'main.desc'=>'Play Flashcards is your ultimate online platform for creating and mastering study cards.',
     'main.start'=>'Begin Your Study Adventure',
     'main.subdesc'=>'Boost your learning experience with customizable flashcards that help you retain knowledge effectively. Discover a new way to enhance your studying and achieve academic success. Start creating your personalized flashcards today!',
     'Name'=>'Name',

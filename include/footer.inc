@@ -21,6 +21,7 @@
         <a href="<?= CAL_PATH_WEB .'/general/change-language-act?lang=en'; ?>" <?php if ($t['lang'] == 'en') { ?>style="font-weight: bold;"<?php } ?>><?= cal_t($t, 'English'); ?></a>
         <a href="<?= CAL_PATH_WEB .'/general/change-language-act?lang=es'; ?>" <?php if ($t['lang'] == 'es') { ?>style="font-weight: bold;"<?php } ?>><?= cal_t($t, 'Spanish'); ?></a>
         <a href="<?= CAL_PATH_WEB .'/general/change-language-act?lang=pt-br'; ?>" <?php if ($t['lang'] == 'pt-br') { ?>style="font-weight: bold;"<?php } ?>><?= cal_t($t, 'Portuguese'); ?></a>
+        <a href="<?= CAL_PATH_WEB .'/general/change-language-act?lang=fr'; ?>" <?php if ($t['lang'] == 'fr') { ?>style="font-weight: bold;"<?php } ?>><?= cal_t($t, 'France'); ?></a>
 	</div>
     <div class="social">
         <a href="https://x.com/playflashcards" target="_blank" title="Play Flashcards X">

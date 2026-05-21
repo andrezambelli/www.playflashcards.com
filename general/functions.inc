@@ -211,12 +211,12 @@
      * Redireciona a página
      */
 	function cal_redirect($_url) {
-		echo '<script>';
-		echo 'window.location.href = "' . $_url . '";';
-		echo '</script>';
-		echo '<noscript>';
-		echo '<meta http-equiv="refresh" content="0;url="' . $_url .'" />';
-		echo '</noscript>';
+		if (!headers_sent()) {
+			header('Location: ' . $_url);
+		} else {
+			echo '<script>window.location.href = "' . $_url . '";</script>';
+		}
+		exit;
 	}
 	
 	/*
