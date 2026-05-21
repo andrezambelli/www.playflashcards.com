@@ -106,6 +106,8 @@ $t = [
     'login.login.message2'=>'Revise su bandeja de entrada, incluida la carpeta de correo no deseado/papelera.',
     'login.login.message3'=>'O bien, conéctese con su cuenta de redes sociales favorita para acceder al instante:',
     'login.login.title'=>'Acceso',
+    'login.login.privacy-label'=>'Aviso',
+    'login.login.privacy'=>'Al iniciar sesión o registrarse en Play Flashcards, acepta nuestra <a href="%s">Política de Privacidad</a> y nuestros <a href="%s">Términos y Condiciones.</a>',
     'main.start'=>'Comienza tu aventura de estudio',
     'main.subdesc'=>'Mejore su experiencia de aprendizaje con tarjetas flash personalizables que lo ayudan a retener el conocimiento de manera efectiva. Descubre una nueva forma de mejorar tus estudios y alcanzar el éxito académico. ¡Empieza a crear tus flashcards personalizadas hoy!',
     'Name'=>'Nombre',

@@ -53,12 +53,8 @@
             </div>
             <div class="space">&nbsp;</div>
             <div class="tip">
-                <?php if ($t['lang'] == 'xpr-br') { ?>
-                    XTODO
-                <?php } else { ?>
-                    <span class="note-text">Important</span>
-                    By logging in or registering on Play Flashcards, you agree to our <a href="<?= CAL_PATH_WEB . '/'. $t['lang'] . '/privacy-policy'; ?>">Privacy Policy</a> and <a href="<?= CAL_PATH_WEB . '/'. $t['lang'] . '/terms-and-conditions'; ?>">Terms and Conditions.</a>
-                <?php } ?>
+                <span class="note-text"><?= cal_t($t, 'login.login.privacy-label'); ?></span>
+                <?= sprintf(cal_t($t, 'login.login.privacy'), CAL_PATH_WEB . '/'. $t['lang'] . '/privacy-policy', CAL_PATH_WEB . '/'. $t['lang'] . '/terms-and-conditions'); ?>
             </div>
         </div>
     </div>

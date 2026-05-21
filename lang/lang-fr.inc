@@ -105,6 +105,8 @@ $t = [
     'login.login.message2'=>"Veuillez vérifier votre boîte de réception, y compris le dossier spam/corbeille.",
     'login.login.message3'=>"Ou connectez-vous avec votre compte de réseau social préféré pour accéder instantanément :",
     'login.login.title'=>"Connexion",
+    'login.login.privacy-label'=>'Avis',
+    'login.login.privacy'=>'En vous connectant ou en vous inscrivant sur Play Flashcards, vous acceptez notre <a href="%s">Politique de Confidentialité</a> et nos <a href="%s">Conditions Générales.</a>',
     'main.desc'=>"Play Flashcards est votre plateforme en ligne ultime pour créer et maîtriser des cartes d'étude.",
     'main.start'=>"Commencez votre aventure d'étude",
     'main.subdesc'=>"Boostez votre expérience d'apprentissage avec des flashcards personnalisables qui vous aident à retenir efficacement les connaissances. Découvrez une nouvelle façon d'améliorer vos études et de réussir vos études. Commencez à créer vos cartes mémoire personnalisées dès aujourd'hui !",

@@ -41,10 +41,6 @@
 
         // Se a URL possui idoma, volta para a mesma página com o novo idioma
         $redirect_url = $redirect_url . '/';
-    } elseif (substr($redirect_url, -strlen('/cards/')) === '/cards/') {
-        $redirect_url = $redirect_url . $original_lang . '/';
-    } elseif (substr($redirect_url, -strlen('/cards')) === '/cards') {
-        $redirect_url = $redirect_url . '/' . $original_lang . '/';
     } elseif (substr($redirect_url, -strlen('.com')) === '.com') {
         $redirect_url = $redirect_url . '/' . $original_lang . '/';
     } elseif (substr($redirect_url, -strlen('.com/')) === '.com/') {

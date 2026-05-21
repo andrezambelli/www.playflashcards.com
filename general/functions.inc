@@ -192,10 +192,6 @@
             $_new_lang = 'fr';
         } elseif (strrpos($_SERVER['REQUEST_URI'], '/index.php') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/index.php')) === '/index.php') {
             $_new_lang = $_lang;
-        } elseif ($_SERVER['REQUEST_URI'] == '/cards/') {
-            $_new_lang = $_lang;
-        } elseif ($_SERVER['REQUEST_URI'] == '/cards') {
-            $_new_lang = $_lang;
         } elseif ($_SERVER['REQUEST_URI'] == '') {
             $_new_lang = $_lang;
         } elseif ($_SERVER['REQUEST_URI'] == '/') {

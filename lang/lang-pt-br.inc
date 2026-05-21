@@ -106,6 +106,8 @@ $t = [
     'login.login.message2'=>'Verifique sua caixa de entrada, incluindo a pasta de spam/lixeira.',
     'login.login.message3'=>'Ou conecte-se com sua conta de mídia social favorita para acessar instantaneamente:',
     'login.login.title'=>'Login',
+    'login.login.privacy-label'=>'Aviso',
+    'login.login.privacy'=>'Ao fazer login ou se registrar no Play Flashcards, você concorda com nossa <a href="%s">Política de Privacidade</a> e nossos <a href="%s">Termos e Condições.</a>',
     'main.start'=>'Comece sua aventura de estudo',
     'main.subdesc'=>'Aumente sua experiência de aprendizado com cartões personalizáveis que ajudam a reter o conhecimento de forma eficaz. Descubra uma nova maneira de aprimorar seus estudos e alcançar o sucesso acadêmico. Comece a criar seus cartões personalizados hoje!',
     'Name'=>'Nome',
