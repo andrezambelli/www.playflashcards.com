@@ -1,0 +1,7 @@
+car-server.php
+general/config.inc
+**/.DS_Store
+.idea/
+.vscode/sftp.json
+.claude
+external-lib/google-api-client-2.12.1/

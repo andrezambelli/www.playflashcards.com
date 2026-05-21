@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /common
+Disallow: /dash
+Disallow: /external-lib
+Disallow: /general
+Disallow: /home
+Disallow: /include
+Disallow: /lang
+Disallow: /profile
+Disallow: /public
+Disallow: /test
+Sitemap: https://www.playflashcards.com/sitemap.xml

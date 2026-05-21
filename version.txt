@@ -1,0 +1,36 @@
+0.0.20
+    23/08/2023 - SRS: Configuração e Play SRS
+               - URL de Contact us no sitemap.xml para outros idiomas
+               - FIX na tradução do <title> nas páginas de Profile
+               - FIX canonical na home
+0.0.19
+    15/08/2023 - http response code 404 e 403
+               - Importar e exportar cartões de estudo
+0.0.18
+    10/08/2023 - Português e Espanhol
+               - URL amigáveis dos grupos públicos
+               - Admin: gerador de sitemaps com URL estáticas e grupos públicos
+0.0.17
+    09/08/2023 - Esqueleto do Admin com quantidade de usuários, sessões e cookies.
+               - Função para apagar todas as sessões
+0.0.16
+    08/08/2023 - Controle de último acesso dos usuários
+               - Ícone e link do Threads.net em todas as páginas do X.com
+               - Botão "Voltar" na edição do grupo e do cartão
+               - Novas imagens do Menu, Close e Icons
+0.0.15
+    06/08/2023 - Conceito de estudos públicos que podem ser indexados
+               - Um novo quadro foi criado para mostrar os estudos públicos na Home e Login
+0.0.14
+    04/08/2023 - Pequenos ajustes e melhorias após o primeiro dia de publicação
+0.0.07
+   > 03/08/2023 - Primeira versão super MVP
+0.0.06
+   > 18/07/2023 - Ajustando o GMT do banco de dados de acordo com o GMT do navegador
+                - Configuração de URLs de idiomas para as páginas públicas
+0.0.05
+   > 15/07/2023 - Versão preparando as URLs públicas de deck e study
+0.0.04
+   > 14/07/2023 - Versão definitiva do Banco de Dados
+0.0.01
+   > 21/06/2023 - Registro e publicação do domínio www.playflashcards.com

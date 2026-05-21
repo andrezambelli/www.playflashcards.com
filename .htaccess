@@ -1,0 +1,42 @@
+#AddOutputFilterByType DEFLATE text/html text/plain application/javascript text/css
+
+AddType application/x-httpd-php config
+Options -Indexes 
+
+RewriteEngine on  
+
+#RewriteCond %{HTTP_HOST}  !^www\.playflashcards\.com$ [NC]
+#RewriteRule ^(.*) https://www.playflashcards.com/$1 [L,R]
+
+ErrorDocument 404 /common/404.php 
+ErrorDocument 403 /common/403.php
+ErrorDocument 500 /error-500.html
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule (.*)$ index.php?page=$1&%1 [L]
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 10 days"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-icon "access plus 1 year"
+</IfModule>
+# END EXPIRES
+
+#BEGIN PAGE SPEED
+<IfModule pagespeed_module>
+    ModPagespeed on
+    ModPagespeedEnableFilters remove_comments,rewrite_javascript,rewrite_css,rewrite_images
+    ModPagespeedEnableFilters elide_attributes,defer_javascript,move_css_to_head
+    ModPagespeedJpegRecompressionQuality -1
+</IfModule>
+#END PAGE SPEED
