@@ -36,6 +36,7 @@
         $deck_public = $row['deck_public'];
 	}
 	
+	// TODO: mover para um cron job dedicado (services/cleanup-act.php)
 	// Apagando todos os cartões que estiverem em branco deste grupo
 	$_sql = sprintf(" delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');", $deck_id, $user_id);
 	

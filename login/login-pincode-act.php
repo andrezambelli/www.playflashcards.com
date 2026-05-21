@@ -14,7 +14,7 @@
 	$redirect = CAR_PATH_WEB . '/login/login';
 
     try {
-		if ($pincode_s == $pincode_p) {
+		if ($pincode_s === $pincode_p) {
 			$user_email = $email;
 
 			include_once CAR_ROOT_WEB . '/login/user-insert-act.inc';

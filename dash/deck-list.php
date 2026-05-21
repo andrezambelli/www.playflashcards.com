@@ -22,6 +22,7 @@
         $total_records = $row['count'];
     }
 
+    // TODO: mover para um cron job dedicado (services/cleanup-act.php)
     // Apagando todos os grupos que estiveram com o nome padrão
     $_sql = sprintf(" delete from car_deck where user_id = %d and deck_name = '%s'",
                     $user_id,
