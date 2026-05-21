@@ -4,7 +4,7 @@
 <?php include CAL_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
     // Parâmetros
-	$redirect_url = trim($_GET['redirect_url']);
+	$redirect_url = cal_get_parameter('redirect_url', '');
 
     // Variáveis
 	$redirect = CAL_PATH_WEB . '/'. $t['lang'] . '/login/login';
@@ -36,7 +36,7 @@
                             } else {
                                 cal_set_session_error_message('login.login-google-act.error');
 
-                                $redirect = CAL_PATH_WEB . '/'. $lang . '/login/login';
+                                $redirect = CAL_PATH_WEB . '/'. $t['lang'] . '/login/login';
                             }
 						} else {
 							cal_set_session_error_message('login.login-google-act.error');

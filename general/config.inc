@@ -85,7 +85,7 @@
 	
 	date_default_timezone_set('America/Sao_Paulo');
 
-	error_reporting(-1);//exibe todas as mensagens de erro e notice
+	error_reporting(CAL_PROD ? 0 : -1);
 
 	// Iniciando o objeto para conexão com o banco de dados
 	$mysqli = new mysqli(CAL_DB_HOST, CAL_DB_USER, CAL_DB_PASSWORD, CAL_DB_NAME);

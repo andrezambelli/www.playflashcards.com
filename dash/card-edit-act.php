@@ -116,9 +116,9 @@
 			cal_redirect(CAL_PATH_WEB . '/dash/card-new-act?k=' . $deck_key); // adiciona um novo card
 		}
 	} else {
-		cal_redirect(CAL_PATH_WEB . '/dash/card-edit?k=' . $card_key); // volta para a view do card
-		
 		cal_set_session_attribute('card_front', $card_front);
         cal_set_session_attribute('card_back', $card_back);
+
+		cal_redirect(CAL_PATH_WEB . '/dash/card-edit?k=' . $card_key);
 	}
 ?>

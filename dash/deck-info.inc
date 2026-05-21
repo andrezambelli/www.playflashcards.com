@@ -64,9 +64,9 @@
 	
 	// Se não achou o grupo, apresenta mensagem de erro
 	if (!$_found) {
-        cal_redirect(CAL_PATH_WEB . '/dash/deck-list');
-
 		cal_set_session_error_message('Deck, flashcard or study not found.');
+
+        cal_redirect(CAL_PATH_WEB . '/dash/deck-list');
 	}
 ?>
 

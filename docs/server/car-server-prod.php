@@ -18,4 +18,6 @@
 	define('CAL_PATH_APP', '');
 	define('CAL_PATH_WEB', CAL_PATH_APP);
 	define('CAL_PATH_ADMIN', CAL_PATH_APP . '/admin');
+
+	define('CAL_SERVICE_KEY', '');
 ?>

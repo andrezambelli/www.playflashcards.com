@@ -1,0 +1,133 @@
+REVISÃO DE CÓDIGO — www + dash
+Gerado em 2026-05-21
+================================================================================
+
+BUGS REAIS
+--------------------------------------------------------------------------------
+
+B1. deck-info.inc linhas 67-69 — cal_redirect antes de cal_set_session_error_message
+    cal_redirect chama exit, então a mensagem de erro nunca é gravada.
+    O grupo não encontrado redireciona sem mensagem de feedback.
+    As duas linhas precisam ser trocadas de ordem.
+
+B2. deck-edit-act.php linhas 58-65 — mesmo padrão
+    Na falha de validação, o cal_redirect vem antes dos cal_set_session_attribute.
+    Os dados do formulário (nome, descrição, cor) nunca são gravados na sessão,
+    então o formulário volta vazio em vez de preservar o que o usuário digitou.
+
+B3. card-edit-act.php linhas 119-122 — mesmo padrão
+    Igual ao B2: card_front e card_back nunca são gravados na sessão quando há
+    erro de validação.
+
+B4. login-google-act.php linha 39 — variável inexistente $lang
+    $redirect = CAL_PATH_WEB . '/'. $lang . '/login/login';
+    $lang não existe nesse contexto. Deveria ser $t['lang'].
+    Ocorre num caminho de erro específico (email ausente no payload do Google).
+
+B5. login-google-act.php linha 7 — $_GET['redirect_url'] sem verificar existência
+    $redirect_url = trim($_GET['redirect_url']);
+    PHP warning se o parâmetro não estiver na URL.
+    Os outros arquivos usam cal_get_parameter.
+
+
+SEGURANÇA
+--------------------------------------------------------------------------------
+
+S1. Open redirect em login
+    O redirect_url nos fluxos de login não valida se a URL pertence ao mesmo domínio.
+    Um atacante poderia usar: playflashcards.com/login?redirect_url=https://site-malicioso.com
+    Presente em login-act.php, login-google-act.php e login-pincode-act.php.
+
+S2. CAL_SERVICE_KEY no repositório público
+    config.inc (root) agora está versionado e contém CAL_SERVICE_KEY.
+    Quem conhecer a chave pode usar o endpoint para enviar emails de PIN arbitrários.
+    Deveria estar em car-server.php.
+
+S3. error_reporting(-1) em general/config.inc
+    Exibe todos os erros e notices em produção, podendo vazar caminhos de arquivo,
+    queries SQL e dados internos.
+
+
+CÓDIGO MORTO / LEGADO
+--------------------------------------------------------------------------------
+
+L1. login.php — bloco xpr-br com XTODO
+    if ($t['lang'] == 'xpr-br') { ?>XTODO<?php }
+    xpr-br nunca é verdadeiro. Código de rascunho esquecido.
+
+L2. login.php — texto de privacidade hardcoded em inglês
+    O aviso de aceite de termos está hardcoded em inglês sem tradução
+    para os outros idiomas.
+
+L3. Referências a /cards/ em functions.inc e change-language-act.php
+    O antigo path do projeto (/cards/, /cards) está hardcoded em cal_check_language
+    e na lógica de redirecionamento de idioma. Esse path não existe mais.
+
+
+INCONSISTÊNCIAS
+--------------------------------------------------------------------------------
+
+I1. Typo na constante CAR_USER_SRS_LIMIT em config.inc
+    const CAR_USER_SRS_LIMIT = 20;  (prefixo CAR em vez de CAL)
+    Todas as outras constantes usam CAL_. Pode causar confusão ou bug se alguém
+    buscar por CAL_USER_SRS_LIMIT.
+
+I2. Paths relativos ../dash/ misturados com CAL_PATH_WEB
+    study-list.php, study.php e profile.php usam ../dash/ e ../profile/ em href,
+    enquanto o padrão do projeto é CAL_PATH_WEB . '/dash/'.
+    Inconsistente e frágil.
+
+I3. JavaScript em study.php com path relativo hardcoded
+    $('#main_form').attr('action', '../dash/study-act');
+    Deveria usar <?= CAL_PATH_WEB ?>.
+
+I4. Mensagens de erro hardcoded em vez de chaves de idioma
+    - deck-info.inc: 'Deck, flashcard or study not found.' (a chave existe nos lang files)
+    - deck-new-act.php: 'Você não tem permissão para incluir mais um grupo.' (português fixo)
+    - study-new-act.php: 'The deck has no flashcards.' (a chave existe nos lang files)
+
+I5. profile.php — $timezone declarada duas vezes (linhas 10 e 18)
+    Duplicação sem efeito funcional, mas ruído.
+
+I6. cal_check_login em functions.inc — $_lang definida e nunca usada
+    $_lang = $_SESSION['lang'];
+    Definida mas não é usada em nenhum momento.
+
+I7. study.php — variável flipCard redeclarada em JavaScript
+    var flipCard = $("#flip_card_back");
+    var flipCard = $("#flip_card_front");  // redeclara a mesma variável
+
+I8. DELETE em operações GET
+    deck-list.php apaga grupos com nome padrão e deck.php apaga cartões em branco
+    ao carregar a página. Side effect inesperado em operações de leitura.
+    Funciona, mas dificulta rastreamento de comportamento.
+
+I9. profile.php — idioma francês ausente no select de idioma
+    O select tem en, pt-br e es mas não tem fr.
+    O francês está no footer e nos arquivos de idioma mas não no perfil.
+
+
+MELHORIAS
+--------------------------------------------------------------------------------
+
+M1. main.php redireciona para a área logada
+    main.php (home pública, rota en, pt-br, es, fr) apenas redireciona para
+    /dash/deck-list. Quem não está logado é redirecionado para login.
+    A home pública não existe — pode ser intencional enquanto o redesign
+    está em andamento, mas vale confirmar.
+
+M2. set-user-last-access-act.inc em containers/
+    Faz uma escrita no banco ao final de cada página.
+    Semanticamente está mais próximo de services/ do que de containers/.
+
+M3. login-pincode-act.php — comparação fraca do pincode
+    if ($pincode_s == $pincode_p)  // deveria ser ===
+
+
+PRIORIDADE SUGERIDA
+--------------------------------------------------------------------------------
+
+Corrigir logo        : B1, B2, B3, B4, B5, S2, S3
+Corrigir antes do redesign : I1, I4, L1, L2, L3, I9
+Durante o redesign   : I2, I3, I5, I6, I7, S1
+Avaliar              : I8, M1, M2, M3

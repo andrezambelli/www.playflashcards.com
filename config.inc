@@ -40,7 +40,6 @@
 
     const CAL_GOOGLE_CLIENT_ID  = '353483523181-otmn1tnj09sbbj1gfvjpeba8tvga5dn2.apps.googleusercontent.com';
     const CAL_SERVICE_URL       = 'https://services.onepropage.com.br/auth/send-pin-user-1.0.0.php';
-    const CAL_SERVICE_KEY       = 'op_7c4f2a9d1e8b3f6a0c5d2e9b4f1a7c3e';
 
     // Se o idioma estiver vazio na sessão
     // Carrega o conteúdo do idioma do navegador na sessão

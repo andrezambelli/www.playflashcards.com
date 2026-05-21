@@ -19,4 +19,6 @@
 	define('CAL_PATH_APP', '');
 	define('CAL_PATH_WEB', CAL_PATH_APP);
 	define('CAL_PATH_ADMIN', CAL_PATH_APP . '/admin');
+
+	define('CAL_SERVICE_KEY', 'op_7c4f2a9d1e8b3f6a0c5d2e9b4f1a7c3e');
 ?>

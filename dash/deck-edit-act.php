@@ -57,11 +57,11 @@
 	
 		cal_redirect(CAL_PATH_WEB . '/dash/deck?k=' . $deck_key);
 	} else {
-		cal_redirect(CAL_PATH_WEB . '/dash/deck-edit?k=' . $deck_key);
-		
 		cal_set_session_attribute('deck_name', $deck_name);
         cal_set_session_attribute('deck_desc', $deck_desc);
         cal_set_session_attribute('deck_bgcolor', $deck_bgcolor);
         cal_set_session_attribute('deck_public', $deck_public);
+
+		cal_redirect(CAL_PATH_WEB . '/dash/deck-edit?k=' . $deck_key);
 	}
 ?>
