@@ -182,5 +182,6 @@ $t = [
     'Welcome'=>'Welcome',
     'Yes'=>'Yes',
     'Last Study'=>'Last Study',
+    'share.title'=>'Share this page with your friends:',
     'main.desc'=>'Create and master custom flashcards with Play Flashcards. Boost learning, retain knowledge effectively, and achieve academic success. Start today!',
     ];

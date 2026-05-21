@@ -182,5 +182,6 @@ $t = [
     'Welcome'=>'Bienvenido',
     'Yes'=>'Sí',
     'Last Study'=>'Último Estudio',
+    'share.title'=>'Comparte esta página con tus amigos:',
     'main.desc'=>'Crea y domina tarjetas personalizadas con Play Flashcards. Impulsar el aprendizaje, retener conocimientos de manera efectiva y lograr el éxito académico. ¡Empieza hoy!',
     ];

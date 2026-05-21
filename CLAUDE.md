@@ -101,6 +101,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Uso: `car_t($t, 'chave')` para texto traduzido, `car_t($t, 'chave')` aceita chave simples ou string direta
 - Chaves compostas usam notação com ponto: `'dash.deck.delete'`, `'login.login.privacy'`
 - Ao adicionar texto visível ao usuário, sempre adicionar a chave nos quatro arquivos de idioma: `lang-en.inc`, `lang-pt-br.inc`, `lang-es.inc`, `lang-fr.inc`
+- O painel admin (`admin/`) usa strings em português fixo no código — isso é intencional, pois é uma área interna sem necessidade de i18n
 
 ### Autenticação
 - `car_check_login($t)` no topo de toda página da área logada (`dash/`, `profile/`)
