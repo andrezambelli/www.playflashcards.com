@@ -18,18 +18,18 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 |---|---|
 | `admin/` | Painel administrativo |
 | `common/` | Páginas comuns: sobre, contato, cookies, termos, privacidade, doação |
+| `containers/` | Blocos reutilizáveis incluídos nas páginas: header, footer, message, share, boxes |
 | `content/` | Imagens e recursos de conteúdo |
 | `dash/` | Área logada: gerenciamento de decks, cartões e sessões de estudo |
-| `docs/` | Documentação local: scripts MySQL, configs Apache, templates de servidor |
-| `docs/server/` | Templates de `car-server.php` para Mac e produção |
+| `docs/` | Documentação local (gitignored): scripts MySQL, templates de servidor |
 | `external-lib/` | Bibliotecas externas (MailerSend) |
 | `general/` | Funções utilitárias (`functions.inc`), handler de sessão |
 | `home/` | Página inicial pública |
-| `include/` | Blocos reutilizáveis: header, footer, mensagens |
 | `lang/` | Arquivos de tradução por idioma |
 | `login/` | Autenticação: login, PIN, Google, logoff |
 | `profile/` | Perfil do usuário e configuração de SRS |
 | `public/` | Baralhos e estudos públicos acessíveis sem login |
+| `services/` | Scripts de serviço sem página: troca de idioma, cookie, último acesso |
 | `test/` | Scripts de teste |
 | `car-server.php` | Configuração de ambiente: credenciais de banco e caminhos absolutos (gitignored) |
 | `general/config.inc` | Conexão com banco e inicialização de sessão (gitignored) |
@@ -48,7 +48,7 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 - URL: `https://www.playflashcards.com/`
 - Deploy: `one deploy playflashcards`
 
-**Templates de ambiente**
+**Templates de ambiente** (em `docs/`, gitignored — apenas local)
 - `docs/server/car-server-mac.php` — referência para o `car-server.php` local
 - `docs/server/car-server-prod.php` — referência para o `car-server.php` de produção
 
@@ -84,14 +84,42 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 | `CAR_USER_MAX_STUDY` | Máximo de sessões de estudo |
 | `CAR_USER_MAX_CARD` | Máximo de cartões por baralho |
 
-## 6. Restrições (nunca)
+## 6. Convenções de código
+
+### Prefixos
+- Todas as funções utilitárias usam prefixo `car_` (ex.: `car_t()`, `car_redirect()`, `car_check_login()`)
+- Todas as constantes de ambiente usam prefixo `CAR_` (ex.: `CAR_PATH_WEB`, `CAR_ROOT_WEB`, `CAR_VERSION`)
+
+### Padrão de arquivos
+- `*.php` sem sufixo = páginas que renderizam HTML
+- `*-act.php` = actions que processam dados e fazem redirect (nunca renderizam HTML)
+- `*.inc` = blocos incluídos por outras páginas (não acessíveis diretamente via URL)
+- Primeira linha de todo arquivo PHP: `<?php /** @var array $t */ ?>` (suprime falso positivo do Intelephense para a variável `$t`)
+
+### i18n
+- Variável `$t` = array associativo de traduções carregado via `lang/lang.inc`
+- Uso: `car_t($t, 'chave')` para texto traduzido, `car_t($t, 'chave')` aceita chave simples ou string direta
+- Chaves compostas usam notação com ponto: `'dash.deck.delete'`, `'login.login.privacy'`
+- Ao adicionar texto visível ao usuário, sempre adicionar a chave nos quatro arquivos de idioma: `lang-en.inc`, `lang-pt-br.inc`, `lang-es.inc`, `lang-fr.inc`
+
+### Autenticação
+- `car_check_login($t)` no topo de toda página da área logada (`dash/`, `profile/`)
+- Páginas públicas (`public/`, `common/`) não requerem login
+
+### Banco de dados
+- Conexão mysqli disponível via `$mysqli` (inicializada em `general/config.inc`)
+- Autocommit desligado: usar `$mysqli->commit()` após operações de escrita
+- Escapar inputs com `$mysqli->real_escape_string()` nas queries interpoladas
+
+## 7. Restrições (nunca)
 
 - Nunca usar travessão em nenhum texto criado
 - Nunca criar arquivos desnecessários. Sempre preferir editar o que já existe
 - Nunca sugerir deploy, commit ou push ao final de mensagens. O usuário sabe quando executar essas ações e solicita quando necessário
 
-## 7. Regras (ao fazer)
+## 8. Regras (ao fazer)
 
 - Ao criar ou editar texto, usar pt-BR correto, com acentos, cedilhas e pontuação
 - Ao modificar qualquer arquivo `.js` ou `.css`, incrementar o valor de `CAR_VERSION` em `config.inc`
+- Ao adicionar ou alterar qualquer constante em `car-server.php` (local ou produção), atualizar também os templates em `docs/server/car-server-mac.php` e `docs/server/car-server-prod.php`
 - Ao identificar durante o trabalho uma regra, padrão ou exceção recorrente que ainda não está documentada, propor a adição neste CLAUDE.md antes de encerrar a conversa

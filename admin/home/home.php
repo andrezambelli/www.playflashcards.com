@@ -99,4 +99,4 @@
         <br/>
     </div>
 </div>
-<?php include_once "../include/footer.inc" ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc' ?>

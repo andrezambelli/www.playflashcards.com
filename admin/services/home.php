@@ -23,7 +23,7 @@
 		$last_session = $row['created'];
 	}
 ?>
-<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/header.inc'; ?>
 <div class="master">
     <div class="subtitle"><div>Serviços</div></div>
 	<div class="form">
@@ -37,4 +37,4 @@
         Apaga todos os registros da tabela car_session. Última sessão: <strong><?= $last_session; ?></strong>. Total = <strong><?= $total_sessions; ?></strong><br/>
     </div>
 </div>
-<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>

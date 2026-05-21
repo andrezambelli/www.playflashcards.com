@@ -9,7 +9,7 @@
 
 	$result_decks = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 ?>
-<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/header.inc'; ?>
 <div class="master">
 	<div class="form">
 		<strong>Sitemap</strong><br/>
@@ -75,4 +75,4 @@
 		Arquivo gerado: <a href="<?= CAR_PATH_WEB . '/sitemap.xml'; ?>"><?= CAR_PATH_WEB . '/sitemap.xml'; ?></a>
 	</div>
 </div>
-<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>

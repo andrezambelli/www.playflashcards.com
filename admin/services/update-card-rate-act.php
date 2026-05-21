@@ -29,7 +29,7 @@
 		car_set_session_error_message($e->getMessage());
 	}
 ?>
-<?php include_once CAR_ROOT_ADMIN . "/include/header.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/header.inc'; ?>
 <div class="master">
 	<div class="form">
         <?php include_once CAR_ROOT_ADMIN . '/containers/message.inc' ?>
@@ -38,5 +38,5 @@
 		Rate dos cartões atualizado com sucesso.
 	</div>
 </div>
-<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc"; ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>
 		

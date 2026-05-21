@@ -7,7 +7,7 @@
 	if (isset($_GET['redirect_url'])) $redirect_url = trim($_GET['redirect_url']);
 ?>
 <div class="master">
-	<?php include_once "../include/message.inc" ?> 
+	<?php include_once CAR_ROOT_ADMIN . '/containers/message.inc' ?>
 	<div class="form">
 		<form action="login-act.php" method="post">
 			<input type="hidden" name="redirect_url" value="<?= car_htmlspecialchars($redirect_url); ?>" />
@@ -33,4 +33,4 @@
 		$('#password').focus(); 
 	});
 </script>
-<?php include_once CAR_ROOT_ADMIN . "/include/footer.inc" ?>
+<?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc' ?>
