@@ -34,10 +34,9 @@
             $xml .= '<url><loc>https://www.playflashcards.com/en/login/login</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
             echo '[OK] Estáticas Login = 1<br/>';
 
-            $xml .= '<url><loc>https://www.playflashcards.com/en/contact-us</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>';
             $xml .= '<url><loc>https://www.playflashcards.com/en/terms-and-conditions</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
             $xml .= '<url><loc>https://www.playflashcards.com/en/privacy-policy</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
-            echo '[OK] Estáticas Footer = 3<br/>';
+            echo '[OK] Estáticas Footer = 2<br/>';
 
             // Grupos públicos
             $count = 0;
