@@ -2,108 +2,186 @@
 <?php
     car_set_session_attribute('current_url', car_current_url());
 
-    $_login = car_get_session_attribute('session_login', 'off');
+    $_login    = car_get_session_attribute('session_login', 'off');
     $_timezone = car_get_session_attribute('timezone', '');
+
+    $asset_v = CAR_PROD ? CAR_VERSION : (string) ($_SERVER['REQUEST_TIME'] ?? time());
+    $asset_v = rawurlencode($asset_v);
 ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
-<!DOCTYPE html><html lang="<?= $t['lang']; ?>" xml:lang="<?= $t['lang']; ?>">
+<!DOCTYPE html>
+<html lang="<?= $t['lang'] ?>" xml:lang="<?= $t['lang'] ?>">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Content-Language" content="<?= $t['lang']; ?>" />
-    <meta name="Googlebot" content="<?= $header_index_follow; ?>" />
-    <meta name="Robots" content="<?= $header_index_follow; ?>">
-	<meta name="Distribution" content="global" />
-	<meta name="Author" content="Play Flashcards 2023" />
-	<meta name="Copyright" content="Play Flashcards 2023" />
-	<meta name="Keywords" content="playflashcards, flashcards" />
-	<meta name="Description" content="<?php if (isset($header_description)) { echo car_htmlspecialchars($header_description); } ?>" />
-	<meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="<?= $header_index_follow ?? 'noindex,nofollow' ?>">
+    <meta name="description" content="<?= car_htmlspecialchars($header_description ?? '') ?>">
+    <meta name="author" content="Play Flashcards">
 
-    <meta property="og:type" content="website" />
-	<meta property="og:url" content="<?php if (isset($header_canonical)) { echo car_htmlspecialchars($header_canonical); } ?>" />
-	<meta property="og:title" content="<?php if (isset($header_title)) { echo car_htmlspecialchars($header_title); } ?>" />
-	<meta property="og:description" content="<?php if (isset($header_description)) { echo car_htmlspecialchars($header_description); } ?>" />
-	<?php if (isset($header_canonical) & !empty($header_canonical)) { ?>
-		<link rel="canonical" href="<?= $header_canonical; ?>" />
-	<?php } ?>
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= car_get_base_url(CAR_PATH_WEB) . '/assets/img/icon.png'; ?>" />
- 	<link type="text/css" rel="stylesheet" href="<?= car_get_base_url(CAR_PATH_WEB) . '/assets/css/styles.css'; ?>"  media="all" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="<?= car_get_base_url(CAR_PATH_WEB) . '/assets/js/main.js' ?>"></script>
-	<title>
-		<?= car_htmlspecialchars($header_title); ?>
-	</title>
-	<link rel=”shortcut icon” href=”<?= car_get_base_url(CAR_PATH_WEB) . '/favicon.ico'; ?>”>
-	<link rel="icon" type="image/png" href="<?= car_get_base_url(CAR_PATH_WEB) . '/assets/img/favicon.png' ?>">
-	<link rel="shortcut icon" type="image/png"  href="<?= car_get_base_url(CAR_PATH_WEB) . '/assets/img/favicon.png' ?>" />
-    <?php if ($_SERVER['REQUEST_URI'] == '' || $_SERVER['REQUEST_URI'] == '/') { ?>
-        <?php // estamos na raiz e no site de produção ?>
-        <link rel="alternate" hreflang="en" href="https://www.playflashcards.com/en/">
-        <link rel="alternate" hreflang="pt-br" href="https://www.playflashcards.com/pt-br/">
-        <link rel="alternate" hreflang="es" href="https://www.playflashcards.com/es/">
-        <link rel="alternate" hreflang="fr" href="https://www.playflashcards.com/fr/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= car_htmlspecialchars($header_canonical ?? '') ?>">
+    <meta property="og:title" content="<?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?>">
+    <meta property="og:description" content="<?= car_htmlspecialchars($header_description ?? '') ?>">
+
+    <?php if (!empty($header_canonical)) { ?>
+        <link rel="canonical" href="<?= car_htmlspecialchars($header_canonical) ?>">
     <?php } ?>
-    <?php if (CAR_PROD and isset($_COOKIE['consent_key'])) { ?>
-		<?php include_once CAR_ROOT_GENERAL . '/ga.inc'; ?>
-	<?php } ?>
+
+    <?php if ($_SERVER['REQUEST_URI'] === '' || $_SERVER['REQUEST_URI'] === '/') { ?>
+        <link rel="alternate" hreflang="en"    href="https://www.playflashcards.com/en/">
+        <link rel="alternate" hreflang="pt-br" href="https://www.playflashcards.com/pt-br/">
+        <link rel="alternate" hreflang="es"    href="https://www.playflashcards.com/es/">
+        <link rel="alternate" hreflang="fr"    href="https://www.playflashcards.com/fr/">
+    <?php } ?>
+
+    <link rel="icon" type="image/png" href="<?= CAR_PATH_WEB ?>/assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= CAR_PATH_WEB ?>/assets/img/icon.png">
+
+    <!-- Fonte Geist -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-5.3.8.min.css">
+    <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-icons-1.13.1.min.css">
+    <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/styles.css?v=<?= $asset_v ?>">
+
+    <script src="<?= CAR_PATH_WEB ?>/assets/js/bootstrap-5.3.8.bundle.min.js" defer></script>
+    <script src="<?= CAR_PATH_WEB ?>/assets/js/main.js?v=<?= $asset_v ?>" defer></script>
+
+    <?php if (CAR_PROD && isset($_COOKIE['consent_key'])) { ?>
+        <?php include_once CAR_ROOT_GENERAL . '/ga.inc'; ?>
+    <?php } ?>
+
+    <title><?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?></title>
 </head>
 <body>
-    <?php if (empty($_timezone)) { ?>
-        <script>
-            $(document).ready(function() {
-                // Atualiza o timezone do navegador na sessão do usuário
-                $.ajax({
-                    url: "<?= CAR_PATH_WEB . '/services/set-timezone-act'; ?>",
-                    type: "POST",
-                    data: {timezone: getTimezoneFormated()},
-                    success: function (response) {
-                    },
-                    error: function (xhr, status, error) {
-                    }
-                });
+
+<?php if (empty($_timezone)) { ?>
+    <script>
+        (function() {
+            var offset = new Date().getTimezoneOffset();
+            var h = Math.floor(Math.abs(offset) / 60);
+            var m = Math.abs(offset) % 60;
+            var tz = (offset < 0 ? '+' : '-') + (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+            fetch('<?= CAR_PATH_WEB ?>/services/set-timezone-act', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'timezone=' + encodeURIComponent(tz)
             });
-        </script>
-    <?php } ?>
-	<div id="div-content">
-        <div class="div-header">
-            <div class="container">
-                <div class="logo">
-                    <?php if ($_login == 'off') { ?>
-                        <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/'; ?>">
-                            <img src="<?= CAR_PATH_WEB . '/assets/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
-                        </a>
-                    <?php } else { ?>
-                        <a href="<?= CAR_PATH_WEB . '/dash/deck-list'; ?>">
-                            <img src="<?= CAR_PATH_WEB . '/assets/img/playflashcards-logo.png'; ?>" width="40px" height="40px" alt="Play Flashcards" />
-                        </a>
-                    <?php } ?>
-                    <span>
-                        Play Flashcards
-                    </span>
+        })();
+    </script>
+<?php } ?>
+
+<?php
+    $lang_labels = ['en' => 'EN', 'pt-br' => 'PT', 'es' => 'ES', 'fr' => 'FR'];
+    $lang_current = $lang_labels[$t['lang']] ?? strtoupper($t['lang']);
+?>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
+            <span class="brand-mark" aria-hidden="true">
+                <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            Play Flashcards
+        </a>
+
+        <!-- Toggler mobile -->
+        <button class="navbar-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#main-navbar"
+                aria-controls="main-navbar"
+                aria-expanded="false"
+                aria-label="<?= car_t($t, 'Menu') ?>">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+
+            <?php if ($_login === 'off') { ?>
+
+                <!-- Links centrais (público) -->
+                <ul class="navbar-nav mx-auto gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#"><?= car_t($t, 'Features') ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#"><?= car_t($t, 'Public Decks') ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#"><?= car_t($t, 'Pricing') ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Help') ?></a>
+                    </li>
+                </ul>
+
+                <!-- Direita: idioma + sign in + get started -->
+                <div class="d-flex align-items-center gap-2 ms-lg-3">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link text-secondary text-decoration-none dropdown-toggle d-inline-flex align-items-center gap-1"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <i class="bi bi-globe" aria-hidden="true"></i>
+                            <?= $lang_current ?>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <?php
+                                $langs = [
+                                    'en'    => 'English',
+                                    'es'    => 'Español',
+                                    'fr'    => 'Français',
+                                    'pt-br' => 'Português',
+                                ];
+                                foreach ($langs as $code => $name) {
+                                    $active = $t['lang'] === $code;
+                            ?>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
+                                   href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>">
+                                    <span class="text-mono text-secondary" style="width:22px"><?= $lang_labels[$code] ?></span>
+                                    <?= $name ?>
+                                    <?php if ($active) { ?>
+                                        <i class="bi bi-check ms-auto text-primary" aria-hidden="true"></i>
+                                    <?php } ?>
+                                </a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <a class="nav-link text-body px-2"
+                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Sign in') ?></a>
+                    <a class="btn btn-primary"
+                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Get Started') ?></a>
                 </div>
-                <div class="menu" id="btn_menu_div">
-                    <img id="menu_img" src="<?= CAR_PATH_WEB . '/assets/img/menu.png'; ?>" width="40px" height="40px" alt="<?= car_t($t, 'Menu'); ?>" />
-                    <img id="close_img" src="<?= CAR_PATH_WEB . '/assets/img/close.png'; ?>" width="40px" height="40px" alt="<?= car_t($t, 'Menu'); ?>" />
-                </div>
-            </div>
-            <div id="menu_div">
-                <div class="menu">
-                    <?php if ($_login == 'off') { ?>
-                        <div><a href="<?= CAR_PATH_WEB . '/'. $t['lang'] . '/'; ?>"><?= car_t($t, 'Home'); ?></a></div>
-                        <div><a href="<?= CAR_PATH_WEB . '/'. $t['lang'] . '/login/login'; ?>"><?= car_t($t, 'Get Started'); ?></a></div>
-                    <?php } else { ?>
-                        <div class="title"><?= car_t($t, 'Welcome'); ?></div>
-                        <div><a href="<?= CAR_PATH_WEB . '/dash/deck-list'; ?>"><?= car_t($t, 'Decks'); ?></a></div>
-                        <div><a href="<?= CAR_PATH_WEB . '/dash/deck-new-act'; ?>"><?= car_t($t, 'New Deck'); ?></a></div>
-                        <div><a href="<?= CAR_PATH_WEB . '/profile/profile'; ?>"><?= car_t($t, 'Profile'); ?></a></div>
-                    <?php } ?>
-                    <div class="title">Play Flashcards</div>
-                    <div><a href="<?= CAR_PATH_WEB . '/'. $t['lang'] . '/contact-us'; ?>"><?= car_t($t, 'Contact us'); ?></a></div>
-                    <div><a href="<?= CAR_PATH_WEB . '/'. $t['lang'] . '/terms-and-conditions'; ?>"><?= car_t($t, 'Terms and Conditions'); ?></a></div>
-                    <div><a href="<?= CAR_PATH_WEB . '/'. $t['lang'] . '/privacy-policy'; ?>"><?= car_t($t, 'Privacy Policy'); ?></a></div>
-                </div>
-            </div>
+
+            <?php } else { ?>
+
+                <!-- Links área logada -->
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB ?>/dash/deck-list"><?= car_t($t, 'Decks') ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB ?>/profile/profile"><?= car_t($t, 'Profile') ?></a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB ?>/login/logoff-act"><?= car_t($t, 'Sign Out') ?></a>
+                    </li>
+                </ul>
+
+            <?php } ?>
+
         </div>
-        <header>
-            <!-- -->
-        </header>
+    </div>
+</nav>
+
+<!-- Espaço para a navbar fixa -->
+<div style="height: var(--app-header-h);"></div>

@@ -8,9 +8,10 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 
 - PHP (sem framework)
 - MySQL
-- CSS próprio (sem framework adicional)
-- jQuery 3.6.1
-- JavaScript
+- Bootstrap 5.3.8 (CSS + JS bundle, arquivos locais em `assets/`)
+- Bootstrap Icons 1.13.1 (arquivo local em `assets/css/`)
+- CSS próprio mínimo em `assets/css/styles.css` (apenas overrides e tokens que o Bootstrap não cobre)
+- JavaScript vanilla (sem jQuery, sem framework)
 
 ## 3. Estrutura
 
@@ -117,6 +118,8 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Nunca usar travessão em nenhum texto criado
 - Nunca criar arquivos desnecessários. Sempre preferir editar o que já existe
 - Nunca sugerir deploy, commit ou push ao final de mensagens. O usuário sabe quando executar essas ações e solicita quando necessário
+- Nunca usar jQuery. O projeto foi migrado para JavaScript vanilla + Bootstrap 5. jQuery foi removido completamente
+- Nunca adicionar CSS próprio para algo que o Bootstrap já resolve nativamente. Verificar se existe classe Bootstrap antes de criar estilo customizado
 
 ## 8. Regras (ao fazer)
 
@@ -124,3 +127,5 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Ao modificar qualquer arquivo `.js` ou `.css`, incrementar o valor de `CAR_VERSION` em `config.inc`
 - Ao adicionar ou alterar qualquer constante em `car-server.php` (local ou produção), atualizar também os templates em `docs/server/car-server-mac.php` e `docs/server/car-server-prod.php`
 - Ao identificar durante o trabalho uma regra, padrão ou exceção recorrente que ainda não está documentada, propor a adição neste CLAUDE.md antes de encerrar a conversa
+- Ao escrever JavaScript, usar vanilla JS com `fetch()` para requisições assíncronas e `document.addEventListener('DOMContentLoaded', ...)` para inicializações. Seguir o padrão do `assets/js/main.js`
+- Ao referenciar o design visual do redesign, consultar `docs/redesign/claude_design/` apenas como referência de aparência (cores, layout, tipografia), nunca como fonte de código a copiar
