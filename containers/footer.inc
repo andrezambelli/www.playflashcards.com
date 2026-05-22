@@ -14,45 +14,42 @@
     </div>
 <?php } ?>
 
-<footer class="py-4 mt-auto">
-    <div class="container">
-        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3">
-            <!-- Links institucionais -->
-            <div class="d-flex flex-wrap gap-3">
-                <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Contact us') ?></a>
-                <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions' ?>"><?= car_t($t, 'Terms and Conditions') ?></a>
-                <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy' ?>"><?= car_t($t, 'Privacy Policy') ?></a>
-            </div>
-            <!-- Redes sociais -->
-            <div class="d-flex gap-2">
-                <a href="https://x.com/playflashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no X">
-                    <img src="<?= CAR_PATH_WEB ?>/assets/img/x.png" alt="X" width="20" height="20">
-                </a>
-                <a href="https://www.threads.net/@play_flashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no Threads">
-                    <img src="<?= CAR_PATH_WEB ?>/assets/img/threads.png" alt="Threads" width="20" height="20">
-                </a>
-            </div>
+<footer class="border-top mt-auto py-4 bg-body-secondary">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+
+        <!-- Brand + versão -->
+        <div class="d-flex align-items-center gap-2">
+            <a class="d-flex align-items-center gap-2 text-decoration-none text-body fw-bold"
+               href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                Play Flashcards
+            </a>
+            <span class="badge text-mono ms-1"><?= CAR_VERSION ?></span>
         </div>
 
-        <hr class="my-3" style="border-color: var(--bs-border-color);">
-
-        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-2">
-            <!-- Seletor de idioma -->
-            <div class="d-flex flex-wrap gap-3">
-                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=en"
-                   class="<?= $t['lang'] === 'en' ? 'lang-active' : '' ?>"><?= car_t($t, 'English') ?></a>
-                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=es"
-                   class="<?= $t['lang'] === 'es' ? 'lang-active' : '' ?>"><?= car_t($t, 'Spanish') ?></a>
-                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=pt-br"
-                   class="<?= $t['lang'] === 'pt-br' ? 'lang-active' : '' ?>"><?= car_t($t, 'Portuguese') ?></a>
-                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=fr"
-                   class="<?= $t['lang'] === 'fr' ? 'lang-active' : '' ?>"><?= car_t($t, 'France') ?></a>
-            </div>
-            <!-- Versão -->
-            <span class="label-uc">
-                <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">Play Flashcards <?= CAR_VERSION ?></a>
-            </span>
+        <!-- Links + idiomas + redes sociais -->
+        <div class="d-flex flex-wrap align-items-center gap-3 small text-secondary">
+            <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Contact') ?></a>
+            <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions' ?>"><?= car_t($t, 'Terms') ?></a>
+            <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy' ?>"><?= car_t($t, 'Privacy') ?></a>
+            <span aria-hidden="true">·</span>
+            <a class="text-decoration-none <?= $t['lang'] === 'en'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=en">English</a>
+            <a class="text-decoration-none <?= $t['lang'] === 'es'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=es">Español</a>
+            <a class="text-decoration-none <?= $t['lang'] === 'fr'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=fr">Français</a>
+            <a class="text-decoration-none <?= $t['lang'] === 'pt-br' ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=pt-br">Português</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://x.com/playflashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no X" class="text-secondary">
+                <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.threads.net/@play_flashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no Threads" class="text-secondary">
+                <i class="bi bi-threads" aria-hidden="true"></i>
+            </a>
         </div>
+
     </div>
 </footer>
 
