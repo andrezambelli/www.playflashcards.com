@@ -97,6 +97,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - `*-act.php` = actions que processam dados e fazem redirect (nunca renderizam HTML)
 - `*.inc` = blocos incluídos por outras páginas (não acessíveis diretamente via URL)
 - Primeira linha de todo arquivo PHP: `<?php /** @var array $t */ ?>` (suprime falso positivo do Intelephense para a variável `$t`)
+- Comentários no código devem ser escritos em pt-BR e, preferencialmente, em letra minúscula
 
 ### i18n
 - Variável `$t` = array associativo de traduções carregado via `lang/lang.inc`
