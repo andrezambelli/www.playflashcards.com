@@ -77,6 +77,7 @@
     $lang_labels = ['en' => 'EN', 'pt-br' => 'PT', 'es' => 'ES', 'fr' => 'FR'];
     $lang_current = $lang_labels[$t['lang']] ?? strtoupper($t['lang']);
 ?>
+<?php if (empty($header_no_navbar)) { ?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
@@ -198,3 +199,4 @@
 
 <!-- Espaço para a navbar fixa -->
 <div style="height: var(--app-header-h);"></div>
+<?php } ?>

@@ -2,7 +2,7 @@
     include_once 'general/config.inc';
     include_once 'general/functions.inc';
 
-    const CAR_VERSION = '0.0.31';
+    const CAR_VERSION = '0.0.32';
 
     // Controla a versão para recarregar o arquivo de idioma na sessão
     if (!isset($_SESSION['version'])) {
@@ -40,6 +40,9 @@
 
     const CAR_GOOGLE_CLIENT_ID  = '353483523181-otmn1tnj09sbbj1gfvjpeba8tvga5dn2.apps.googleusercontent.com';
     const CAR_SERVICE_URL       = 'https://services.onepropage.com.br/auth/send-pin-user-1.0.0.php';
+
+    // em produção envia e-mail real; em desenvolvimento usa código fixo 111111 sem envio
+    define('CAR_SEND_EMAIL', CAR_PROD);
 
     // Se o idioma estiver vazio na sessão
     // Carrega o conteúdo do idioma do navegador na sessão

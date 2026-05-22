@@ -14,6 +14,7 @@
     </div>
 <?php } ?>
 
+<?php if (empty($footer_auth)) { ?>
 <footer class="border-top mt-auto py-4 bg-body-secondary">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-2 gap-md-0">
@@ -73,6 +74,7 @@
         </div>
     </div>
 </footer>
+<?php } ?>
 
 </body>
 </html>

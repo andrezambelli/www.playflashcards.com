@@ -102,11 +102,11 @@
                          array(&$database_session, 'clean'));
 
 	if (!isset($_SESSION)) {
-		session_cache_expire(14400); // 10 dias
-		session_set_cookie_params(864000); // 10 dias
+		session_cache_expire(5256000); // ~10 anos
+		session_set_cookie_params(315360000); // ~10 anos
 		session_start([
-			'cookie_lifetime' => 86400,
-		]); //php5
+			'cookie_lifetime' => 315360000,
+		]);
 	}
 	
 	// Verificar a coneção
