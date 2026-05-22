@@ -98,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="row g-5">
+            <div class="row gy-5 gx-4">
 
                 <div class="col-md-4">
                     <div class="d-inline-flex align-items-center justify-content-center rounded-2 bg-primary-subtle mb-3" style="width:40px;height:40px">

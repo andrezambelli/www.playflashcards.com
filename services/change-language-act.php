@@ -49,6 +49,11 @@
         $redirect_url = CAR_PATH_WEB . '/'. $original_lang . '/';
     }
 
-    $redirect = str_replace('/'. $original_lang . '/', '/' . $new_lang . '/', $redirect_url);
+    $redirect = str_replace('/' . $original_lang . '/', '/' . $new_lang . '/', $redirect_url);
+
+    // Se o idioma não estava na URL (ex: /), redireciona para a home do novo idioma
+    if ($redirect === $redirect_url) {
+        $redirect = CAR_PATH_WEB . '/' . $new_lang . '/';
+    }
 
     car_redirect($redirect);

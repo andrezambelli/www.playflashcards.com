@@ -123,8 +123,19 @@
                 </ul>
 
                 <!-- Direita: idioma + sign in + get started -->
-                <div class="d-flex align-items-center gap-2 ms-lg-3">
-                    <div class="dropdown">
+                <div class="d-flex align-items-center gap-2 ms-lg-3 car-navbar-actions">
+
+                    <?php
+                        $langs = [
+                            'en'    => 'English',
+                            'es'    => 'Español',
+                            'fr'    => 'Français',
+                            'pt-br' => 'Português',
+                        ];
+                    ?>
+
+                    <!-- Idioma: dropdown (desktop) -->
+                    <div class="dropdown d-none d-lg-block">
                         <button class="btn btn-sm btn-link text-secondary text-decoration-none dropdown-toggle d-inline-flex align-items-center gap-1"
                                 type="button"
                                 data-bs-toggle="dropdown"
@@ -133,16 +144,7 @@
                             <?= $lang_current ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <?php
-                                $langs = [
-                                    'en'    => 'English',
-                                    'es'    => 'Español',
-                                    'fr'    => 'Français',
-                                    'pt-br' => 'Português',
-                                ];
-                                foreach ($langs as $code => $name) {
-                                    $active = $t['lang'] === $code;
-                            ?>
+                            <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
                                    href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>">
@@ -156,6 +158,19 @@
                             <?php } ?>
                         </ul>
                     </div>
+
+                    <!-- Idioma: inline (mobile) -->
+                    <div class="d-flex d-lg-none align-items-center gap-1">
+                        <i class="bi bi-globe text-secondary me-1" style="font-size:0.8125rem" aria-hidden="true"></i>
+                        <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
+                            <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>"
+                               class="car-lang-pill <?= $active ? 'active' : '' ?>"
+                               title="<?= $name ?>">
+                                <?= $lang_labels[$code] ?>
+                            </a>
+                        <?php } ?>
+                    </div>
+
                     <a class="nav-link text-body px-2"
                        href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Sign in') ?></a>
                     <a class="btn btn-primary"
