@@ -123,7 +123,6 @@ $t = [
     'login.login.privacy-label'=>'Aviso',
     'login.login.privacy'=>'Ao fazer login ou se registrar no Play Flashcards, você concorda com nossa <a href="%s">Política de Privacidade</a> e nossos <a href="%s">Termos e Condições.</a>',
     'main.start'=>'Comece sua aventura de estudo',
-    'main.subdesc'=>'Aumente sua experiência de aprendizado com cartões personalizáveis que ajudam a reter o conhecimento de forma eficaz. Descubra uma nova maneira de aprimorar seus estudos e alcançar o sucesso acadêmico. Comece a criar seus cartões personalizados hoje!',
     'Menu'=>'Menu',
     'Name'=>'Nome',
     'New'=>'Novo',
@@ -195,4 +194,13 @@ $t = [
     'Yes'=>"Sim",
     'Last Study'=>"Último Estudo",
     'share.title'=>'Compartilhe esta página com seus amigos:',
-    'main.desc'=>"Crie e domine cartões de estudo personalizados com o Play Flashcards. Impulsione o aprendizado, retenha o conhecimento de forma eficaz e alcance o sucesso acadêmico. Começa hoje!",    ];
+    'main.desc'=>"Crie e domine cartões de estudo personalizados com o Play Flashcards. Impulsione o aprendizado, retenha o conhecimento de forma eficaz e alcance o sucesso acadêmico. Começa hoje!",
+    'home.hero.badge'=>'Beta Aberto',
+    'home.hero.h1-before'=>'Flashcards que',
+    'home.hero.h1-accent'=>'realmente',
+    'home.hero.h1-after'=>'funcionam.',
+    'home.hero.subtitle'=>'Ajuste sua repetição espaçada do jeito que você estuda. Simples, rápido e focado.',
+    'home.hero.cta-primary'=>'Comece a estudar',
+    'home.hero.cta-secondary'=>'Explorar baralhos públicos',
+    'home.hero.footnote'=>'Gratuito para sempre para uso pessoal · Sem cartão de crédito',
+    ];
