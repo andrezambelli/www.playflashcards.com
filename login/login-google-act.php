@@ -5,7 +5,13 @@
 <?php
     $redirect = CAR_PATH_WEB . '/'. $t['lang'] . '/login/login';
 
+    function car_google_fail(string $redirect) {
+        car_set_session_error_message('login.login-google-act.error');
+        car_redirect($redirect);
+    }
+
     function car_google_exchange_code(string $code): array {
+        $google_base_url = car_get_base_url(CAR_PATH_WEB);
         $ch = curl_init('https://oauth2.googleapis.com/token');
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
@@ -14,7 +20,7 @@
                 'code'          => $code,
                 'client_id'     => CAR_GOOGLE_CLIENT_ID,
                 'client_secret' => CAR_GOOGLE_CLIENT_SECRET,
-                'redirect_uri'  => CAR_BASE_URL . '/login/login-google-act',
+                'redirect_uri'  => $google_base_url . '/login/login-google-act',
                 'grant_type'    => 'authorization_code',
             ]),
             CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
@@ -36,6 +42,10 @@
     }
 
     try {
+        if (!defined('CAR_GOOGLE_CLIENT_ID') || !defined('CAR_GOOGLE_CLIENT_SECRET')) {
+            car_google_fail($redirect);
+        }
+
         $code         = car_get_parameter('code', '');
         $state_get    = car_get_parameter('state', '');
         // cookie tem prioridade: sobrevive à mudança de domínio localhost <-> playflashcards.localhost
@@ -48,22 +58,19 @@
         setcookie('car_google_state', '', ['expires' => time() - 3600, 'path' => '/', 'domain' => CAR_PROD ? '' : '.localhost']);
 
         if (empty($code) || empty($state_get) || empty($state_stored) || $state_get !== $state_stored) {
-            car_set_session_error_message('login.login-google-act.error');
-            car_redirect($redirect);
+            car_google_fail($redirect);
         }
 
         $token = car_google_exchange_code($code);
 
         if (empty($token['access_token'])) {
-            car_set_session_error_message('login.login-google-act.error');
-            car_redirect($redirect);
+            car_google_fail($redirect);
         }
 
         $userinfo = car_google_userinfo($token['access_token']);
 
         if (empty($userinfo['email'])) {
-            car_set_session_error_message('login.login-google-act.error');
-            car_redirect($redirect);
+            car_google_fail($redirect);
         }
 
         $user_email = $userinfo['email'];
@@ -77,7 +84,7 @@
 
     } catch (Exception $e) {
         $mysqli->rollback();
-        car_set_session_error_message($e->getMessage());
+        car_set_session_error_message('login.login-google-act.error');
         $redirect = CAR_PATH_WEB . '/'. $t['lang'] . '/login/login';
     }
 

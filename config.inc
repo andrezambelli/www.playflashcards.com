@@ -2,7 +2,7 @@
     include_once 'general/config.inc';
     include_once 'general/functions.inc';
 
-    const CAR_VERSION = '0.0.32';
+    const CAR_VERSION = '0.0.34';
 
     // Controla a versão para recarregar o arquivo de idioma na sessão
     if (!isset($_SESSION['version'])) {
@@ -37,9 +37,6 @@
     const CAR_USER_SRS_SEQUENCE = 5;
     const CAR_USER_SRS_RATE = 75;
     const CAR_USER_SRS_DAYS = 7;
-
-    const CAR_GOOGLE_CLIENT_ID  = '704231876387-j7n27a2q5vpue8ptj8d7jc3oi2goed0b.apps.googleusercontent.com';
-    const CAR_SERVICE_URL       = 'https://services.onepropage.com.br/auth/send-pin-user-1.0.0.php';
 
     // em produção envia e-mail real; em desenvolvimento usa código fixo 111111 sem envio
     define('CAR_SEND_EMAIL', CAR_PROD);
