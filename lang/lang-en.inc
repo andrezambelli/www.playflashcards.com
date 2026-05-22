@@ -203,4 +203,5 @@ $t = [
     'home.hero.cta-primary'=>'Start studying',
     'home.hero.cta-secondary'=>'Explore public decks',
     'home.hero.footnote'=>'Free forever for personal use · No card required',
+    'home.hero.card-hint'=>'Tap card or press SPACE',
     ];

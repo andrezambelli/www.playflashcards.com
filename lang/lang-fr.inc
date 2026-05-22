@@ -204,4 +204,5 @@ $t = [
     'home.hero.cta-primary'=>'Commencer à étudier',
     'home.hero.cta-secondary'=>'Explorer les paquets publics',
     'home.hero.footnote'=>'Gratuit à vie pour usage personnel · Sans carte bancaire',
+    'home.hero.card-hint'=>'Appuyez sur la carte ou sur ESPACE',
     ];
