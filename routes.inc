@@ -71,10 +71,6 @@
     $routes['es/contact-us'] = 'common/contact-us.php';
     $routes['fr/contact-us'] = 'common/contact-us.php';
 
-    $routes['contact-us-act'] = 'common/contact-us-act.php';
-    $routes['contact-us-thanks'] = 'common/contact-us-thanks.php';
-    $routes['contact-us-error'] = 'common/contact-us-error.php';
-
     $routes['en/cookie-settings'] = 'common/cookie-settings.php';
     $routes['pt-br/cookie-settings'] = 'common/cookie-settings.php';
     $routes['es/cookie-settings'] = 'common/cookie-settings.php';

@@ -95,7 +95,7 @@
 
             <!-- nota de privacidade (usa $t diretamente para preservar as tags <a> da tradução) -->
             <p class="form-text mt-4">
-                <?= sprintf($t['login.login.privacy'] ?? '', CAR_PATH_WEB . '/'. $t['lang'] . '/privacy-policy', CAR_PATH_WEB . '/'. $t['lang'] . '/terms-and-conditions'); ?>
+                <?= sprintf($t['login.login.privacy'] ?? '', CAR_PATH_WEB . '/'. $t['lang'] . '/terms-and-conditions', CAR_PATH_WEB . '/'. $t['lang'] . '/privacy-policy'); ?>
             </p>
         </div>
 
