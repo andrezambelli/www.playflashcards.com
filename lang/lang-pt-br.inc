@@ -131,6 +131,7 @@ $t = [
     'login.login.label'=>'Entrar ou cadastrar',
     'login.login.heading'=>'Bem-vindo.',
     'login.login.subtitle'=>'Enviaremos um código por email. Sem senhas para memorizar.',
+    'login.login.google-btn'=>'Continuar com o Google',
     'or'=>'ou',
     'main.start'=>'Comece sua aventura de estudo',
     'Menu'=>'Menu',

@@ -134,6 +134,7 @@ $t = [
     'login.login.label'=>"Se connecter ou s'inscrire",
     'login.login.heading'=>'Bienvenue.',
     'login.login.subtitle'=>'Nous vous enverrons un code par e-mail. Pas de mot de passe à retenir.',
+    'login.login.google-btn'=>'Continuer avec Google',
     'or'=>'ou',
     'main.desc'=>"Play Flashcards est votre plateforme en ligne ultime pour créer et maîtriser des cartes d'étude.",
     'main.start'=>"Commencez votre aventure d'étude",

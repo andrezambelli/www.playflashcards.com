@@ -131,6 +131,7 @@ $t = [
     'login.login.label'=>'Sign in or sign up',
     'login.login.heading'=>'Welcome.',
     'login.login.subtitle'=>'We\'ll email you a one-time code. No passwords to remember.',
+    'login.login.google-btn'=>'Continue with Google',
     'or'=>'or',
     'main.start'=>'Begin Your Study Adventure',
     'Menu'=>'Menu',

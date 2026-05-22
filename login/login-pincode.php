@@ -13,6 +13,13 @@
         car_redirect(CAR_PATH_WEB . '/'. $t['lang'] . '/login/login');
     }
 
+    if ($sent_at > 0 && (time() - $sent_at) > 600) {
+        car_set_session_attribute('pincode', '');
+        car_set_session_attribute('code_sent_at', 0);
+        car_set_session_error_message('login.login-pincode-act.expired');
+        car_redirect(CAR_PATH_WEB . '/'. $t['lang'] . '/login/login');
+    }
+
     $header_title       = car_t($t, 'login.login-pincode.title') . ' - Play Flashcards';
     $header_description = '';
     $header_index_follow = 'noindex,nofollow';

@@ -38,7 +38,7 @@
     const CAR_USER_SRS_RATE = 75;
     const CAR_USER_SRS_DAYS = 7;
 
-    const CAR_GOOGLE_CLIENT_ID  = '353483523181-otmn1tnj09sbbj1gfvjpeba8tvga5dn2.apps.googleusercontent.com';
+    const CAR_GOOGLE_CLIENT_ID  = '704231876387-j7n27a2q5vpue8ptj8d7jc3oi2goed0b.apps.googleusercontent.com';
     const CAR_SERVICE_URL       = 'https://services.onepropage.com.br/auth/send-pin-user-1.0.0.php';
 
     // em produção envia e-mail real; em desenvolvimento usa código fixo 111111 sem envio
