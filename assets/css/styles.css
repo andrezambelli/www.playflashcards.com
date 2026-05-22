@@ -340,31 +340,58 @@ footer a:hover {
     }
 }
 
-/* ── Card stack (hero preview) ───────────────────────────── */
+/* ── pilha de cartões da home ───────────────────────────── */
+.car-card-preview-section {
+    padding: 0 1.5rem 3rem;
+}
 .car-card-stack {
     position: relative;
+    width: min(100%, 980px);
+    height: 280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .car-card-ghost {
     position: absolute;
-    inset: 0;
-    background: #ffffff;
-    border: 1px solid var(--bs-border-color);
-    border-radius: 1.25rem;
+    width: 520px;
+    height: 210px;
+    background: #f8f8f6;
+    border: 1px solid #deded8;
+    border-radius: var(--bs-border-radius-lg);
+    box-shadow: var(--app-shadow-sm);
+    padding: 1rem 1.25rem;
+    color: var(--bs-secondary-color);
 }
-.car-card-ghost--back {
-    transform: rotate(-5deg) translate(-4px, 2px);
-    box-shadow: var(--app-shadow-xs);
+.car-card-ghost--left {
+    transform: rotate(-6deg) translate(-78px, 36px);
     z-index: 0;
+}
+.car-card-ghost--right {
+    transform: rotate(4deg) translate(82px, 22px);
+    z-index: 1;
+    opacity: 0.92;
+}
+.car-card-ghost-count {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1rem;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
 }
 .car-card-preview {
     position: relative;
     z-index: 2;
+    width: 380px;
+    max-width: calc(100vw - 3rem);
+    height: 210px;
     background: #ffffff;
     border: 1px solid var(--bs-border-color);
-    border-radius: 1.25rem;
+    border-radius: var(--bs-border-radius-lg);
     box-shadow: var(--app-shadow-md);
-    padding: 1.25rem 1.5rem;
-    aspect-ratio: 16 / 10;
+    padding: 1.25rem 1.4rem 1.15rem;
     display: flex;
     flex-direction: column;
 }
@@ -372,6 +399,11 @@ footer a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.car-card-preview-shortcut {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.75rem;
+    color: var(--bs-secondary-color);
 }
 .car-card-preview-body {
     flex: 1;
@@ -385,9 +417,9 @@ footer a:hover {
     align-items: center;
 }
 .car-card-preview-text {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 500;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     text-align: center;
     line-height: 1.2;
 }
@@ -395,6 +427,93 @@ footer a:hover {
     font-size: 0.75rem;
     font-family: var(--bs-font-monospace);
     color: var(--bs-tertiary-color);
+}
+@media (min-width: 768px) {
+    .car-card-preview-section {
+        padding-bottom: 3.75rem;
+    }
+    .car-card-stack {
+        height: 300px;
+    }
+}
+@media (max-width: 575.98px) {
+    .car-card-preview-section {
+        padding-inline: 0.75rem;
+    }
+    .car-card-stack {
+        height: 240px;
+    }
+    .car-card-ghost {
+        width: 360px;
+        height: 190px;
+    }
+    .car-card-ghost--left {
+        transform: rotate(-6deg) translate(-48px, 34px);
+    }
+    .car-card-ghost--right {
+        transform: rotate(4deg) translate(50px, 22px);
+    }
+    .car-card-preview {
+        height: 200px;
+    }
+    .car-card-preview-text {
+        font-size: 1.45rem;
+    }
+}
+
+/* ── Scroll suave + offset para navbar fixa ─────────────── */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--app-header-h) + 1.5rem);
+}
+
+/* ── Páginas de documento (privacy, terms) ───────────────── */
+.car-doc-sidebar {
+    position: static;
+}
+@media (min-width: 992px) {
+    .car-doc-sidebar {
+        position: sticky;
+        top: calc(var(--app-header-h) + 1.5rem);
+    }
+}
+.car-doc-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+.car-doc-toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+    padding: 0.3rem 0.75rem;
+    border-left: 2px solid var(--bs-border-color);
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+}
+.car-doc-toc a:hover {
+    color: var(--bs-body-color);
+}
+.car-doc-toc-num {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.6875rem;
+    color: var(--bs-tertiary-color);
+    flex-shrink: 0;
+}
+.car-doc-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+.car-doc-section:first-of-type {
+    padding-top: 0;
+}
+.car-doc-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 /* ── Flashcard (play) ────────────────────────────────────── */
