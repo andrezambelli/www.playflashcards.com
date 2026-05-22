@@ -90,6 +90,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 ### Prefixos
 - Todas as funções utilitárias usam prefixo `car_` (ex.: `car_t()`, `car_redirect()`, `car_check_login()`)
 - Todas as constantes de ambiente usam prefixo `CAR_` (ex.: `CAR_PATH_WEB`, `CAR_ROOT_WEB`, `CAR_VERSION`)
+- Todas as classes CSS customizadas usam prefixo `car-` (ex.: `car-brand-mark`, `car-flashcard`, `car-message-error`). Isso diferencia visualmente as classes próprias das classes nativas do Bootstrap
 
 ### Padrão de arquivos
 - `*.php` sem sufixo = páginas que renderizam HTML

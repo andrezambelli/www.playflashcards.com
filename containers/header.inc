@@ -83,7 +83,7 @@
 
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
-            <span class="brand-mark" aria-hidden="true">
+            <span class="car-brand-mark" aria-hidden="true">
                 <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
                 </svg>
@@ -146,7 +146,7 @@
                             <li>
                                 <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
                                    href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>">
-                                    <span class="text-mono text-secondary" style="width:22px"><?= $lang_labels[$code] ?></span>
+                                    <span class="car-text-mono text-secondary" style="width:22px"><?= $lang_labels[$code] ?></span>
                                     <?= $name ?>
                                     <?php if ($active) { ?>
                                         <i class="bi bi-check ms-auto text-primary" aria-hidden="true"></i>

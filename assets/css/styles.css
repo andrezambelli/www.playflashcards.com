@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
     font-weight: 600;
 }
-.label-uc {
+.car-label-uc {
     font-family: var(--bs-font-monospace);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--bs-tertiary-color);
     font-weight: 500;
 }
-.text-mono {
+.car-text-mono {
     font-family: var(--bs-font-monospace);
 }
 
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
     height: var(--app-header-h);
     align-items: center;
 }
-.brand-mark {
+.car-brand-mark {
     width: 26px;
     height: 26px;
     background: var(--bs-body-color);
@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Alertas de mensagem ─────────────────────────────────── */
-.div-message-error {
+.car-message-error {
     padding: 0.75rem 1rem;
     background-color: var(--bs-danger-bg-subtle);
     border: 1px solid var(--bs-danger);
@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
     font-size: 0.875rem;
 }
-.div-message-success {
+.car-message-success {
     padding: 0.75rem 1rem;
     background-color: var(--bs-success-bg-subtle);
     border: 1px solid var(--bs-success);
@@ -250,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Cookie consent ──────────────────────────────────────── */
-.cookie-banner {
+.car-cookie-banner {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -269,7 +269,7 @@ footer a:hover {
 }
 
 /* ── Flashcard (play) ────────────────────────────────────── */
-.flashcard {
+.car-flashcard {
     width: 100%;
     max-width: 640px;
     aspect-ratio: 16 / 10;
@@ -286,16 +286,16 @@ footer a:hover {
     cursor: pointer;
     transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms, background 240ms, color 240ms, border-color 240ms;
 }
-.flashcard:hover {
+.car-flashcard:hover {
     transform: translateY(-2px);
     box-shadow: var(--app-shadow-lg);
 }
-.flashcard.flipped {
+.car-flashcard.flipped {
     background: #1A1C23;
     color: #FAFAF7;
     border-color: #1A1C23;
 }
-.flashcard-side {
+.car-flashcard-side {
     position: absolute;
     top: 1rem;
     left: 1.25rem;
@@ -305,23 +305,23 @@ footer a:hover {
     text-transform: uppercase;
     color: var(--bs-tertiary-color);
 }
-.flashcard.flipped .flashcard-side {
+.car-flashcard.flipped .car-flashcard-side {
     color: rgba(255,255,255,0.4);
 }
-.flashcard-text {
+.car-flashcard-text {
     font-size: 2.75rem;
     font-weight: 500;
     letter-spacing: -0.025em;
     text-align: center;
     line-height: 1.15;
 }
-.flashcard-hint {
+.car-flashcard-hint {
     position: absolute;
     bottom: 1rem;
     font-size: 0.75rem;
     font-family: var(--bs-font-monospace);
     color: var(--bs-tertiary-color);
 }
-.flashcard.flipped .flashcard-hint {
+.car-flashcard.flipped .car-flashcard-hint {
     color: rgba(255,255,255,0.35);
 }

@@ -2,7 +2,7 @@
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 
 <?php if (!isset($_COOKIE['consent_key'])) { ?>
-    <div id="cookie-banner" class="cookie-banner">
+    <div id="cookie-banner" class="car-cookie-banner">
         <div class="container d-flex flex-column flex-sm-row align-items-sm-center gap-2">
             <span class="flex-grow-1"><?= car_t($t, 'include.footer.cookie-warning') ?></span>
             <button type="button"
@@ -21,14 +21,14 @@
         <div class="d-flex align-items-center gap-2">
             <a class="d-flex align-items-center gap-2 text-decoration-none text-body fw-bold"
                href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
-                <span class="brand-mark" aria-hidden="true">
+                <span class="car-brand-mark" aria-hidden="true">
                     <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
                     </svg>
                 </span>
                 Play Flashcards
             </a>
-            <span class="badge text-mono ms-1"><?= CAR_VERSION ?></span>
+            <span class="badge car-text-mono ms-1"><?= CAR_VERSION ?></span>
         </div>
 
         <!-- Links + idiomas + redes sociais -->
