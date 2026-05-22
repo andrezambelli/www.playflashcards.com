@@ -205,4 +205,12 @@ $t = [
     'home.hero.cta-secondary'=>'Explorer les paquets publics',
     'home.hero.footnote'=>'Gratuit à vie pour usage personnel · Sans carte bancaire',
     'home.hero.card-hint'=>'Appuyez sur la carte ou sur ESPACE',
+    'home.features.eyebrow'=>'Conçu pour la concentration',
+    'home.features.title'=>'Trois choses, bien faites.',
+    'home.features.1.title'=>'SRS Personnalisable',
+    'home.features.1.desc'=>"Définissez la durée de la session, le seuil de précision et la fenêtre de révision. L'algorithme s'adapte à votre façon d'étudier, pas l'inverse.",
+    'home.features.2.title'=>'Paquets publics et privés',
+    'home.features.2.desc'=>"Gardez vos paquets privés ou partagez une URL pour que n'importe qui puisse étudier. Importez et exportez en CSV en un clic. Vos données, votre choix.",
+    'home.features.3.title'=>'Clavier avant tout',
+    'home.features.3.desc'=>"ESPACE pour retourner, flèches pour répondre, ÉCHAP pour quitter. Conçu pour ceux qui préfèrent le clavier pendant une session d'étude.",
     ];

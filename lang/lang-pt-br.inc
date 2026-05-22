@@ -204,4 +204,12 @@ $t = [
     'home.hero.cta-secondary'=>'Explorar baralhos públicos',
     'home.hero.footnote'=>'Gratuito para sempre para uso pessoal · Sem cartão de crédito',
     'home.hero.card-hint'=>'Toque no cartão ou pressione ESPAÇO',
+    'home.features.eyebrow'=>'Feito para o foco',
+    'home.features.title'=>'Três coisas, bem feitas.',
+    'home.features.1.title'=>'SRS Configurável',
+    'home.features.1.desc'=>'Configure o tamanho da sessão, o limite de acerto e o intervalo de revisão. O algoritmo se adapta à sua forma de estudar, não o contrário.',
+    'home.features.2.title'=>'Baralhos públicos e privados',
+    'home.features.2.desc'=>'Mantenha seus baralhos privados ou compartilhe uma URL para qualquer pessoa estudar. Importe e exporte CSV com um clique. Seus dados, sua escolha.',
+    'home.features.3.title'=>'Teclado em primeiro lugar',
+    'home.features.3.desc'=>'ESPAÇO para virar, setas para responder, ESC para sair. Feito para quem prefere o teclado durante uma sessão de estudo.',
     ];

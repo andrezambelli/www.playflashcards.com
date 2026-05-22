@@ -204,4 +204,12 @@ $t = [
     'home.hero.cta-secondary'=>'Explore public decks',
     'home.hero.footnote'=>'Free forever for personal use · No card required',
     'home.hero.card-hint'=>'Tap card or press SPACE',
+    'home.features.eyebrow'=>'Built for focus',
+    'home.features.title'=>'Three things, done well.',
+    'home.features.1.title'=>'Tunable SRS',
+    'home.features.1.desc'=>'Set session length, accuracy threshold and revival window. The algorithm adapts to how you actually study, not the other way around.',
+    'home.features.2.title'=>'Public and private decks',
+    'home.features.2.desc'=>'Keep personal decks private or share a URL for anyone to study. Import and export CSV in one click. Your data, your call.',
+    'home.features.3.title'=>'Keyboard-first',
+    'home.features.3.desc'=>'SPACE to flip, arrows to respond, ESC to leave. Built for people who prefer the keyboard during a study sprint.',
     ];
