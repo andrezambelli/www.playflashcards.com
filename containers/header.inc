@@ -55,7 +55,7 @@
 
     <title><?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?></title>
 </head>
-<body>
+<body class="<?= !isset($_COOKIE['consent_key']) ? 'car-has-cookie-banner' : '' ?>">
 
 <?php if (empty($_timezone)) { ?>
     <script>
@@ -136,7 +136,7 @@
 
                     <!-- Idioma: dropdown (desktop) -->
                     <div class="dropdown d-none d-lg-block">
-                        <button class="btn btn-sm btn-link text-secondary text-decoration-none dropdown-toggle d-inline-flex align-items-center gap-1"
+                        <button class="btn btn-link text-secondary text-decoration-none dropdown-toggle d-inline-flex align-items-center gap-1"
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -186,7 +186,7 @@
                         <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB ?>/profile/profile"><?= car_t($t, 'Profile') ?></a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB ?>/login/logoff-act"><?= car_t($t, 'Sign Out') ?></a>
+                        <a class="btn btn-outline-secondary" href="<?= CAR_PATH_WEB ?>/login/logoff-act"><?= car_t($t, 'Sign Out') ?></a>
                     </li>
                 </ul>
 

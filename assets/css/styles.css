@@ -78,14 +78,20 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Botões ──────────────────────────────────────────────── */
 .btn {
     font-weight: 500;
+    line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
     --bs-btn-font-size: 0.8125rem;
     --bs-btn-padding-x: 0.85rem;
     --bs-btn-padding-y: 0.4rem;
+    --bs-btn-border-radius: var(--bs-border-radius);
 }
 .btn-sm {
-    --bs-btn-font-size: 0.75rem;
-    --bs-btn-padding-x: 0.55rem;
-    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-font-size: 0.8125rem;
+    --bs-btn-padding-x: 0.85rem;
+    --bs-btn-padding-y: 0.4rem;
 }
 .btn-lg {
     --bs-btn-font-size: 0.875rem;
@@ -282,18 +288,32 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
 }
 
-/* ── Cookie consent ──────────────────────────────────────── */
+/* ── consentimento de cookies ────────────────────────────── */
 .car-cookie-banner {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
     z-index: 1050;
     background: var(--bs-body-bg);
-    border-top: 1px solid var(--bs-border-color);
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
-    padding: 0.875rem 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-xl);
+    box-shadow: var(--app-shadow-lg);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
     font-size: 0.8125rem;
+}
+body.car-has-cookie-banner footer {
+    padding-bottom: 7.25rem !important;
+}
+@media (max-width: 575.98px) {
+    body.car-has-cookie-banner footer {
+        padding-bottom: 9.5rem !important;
+    }
+    .car-cookie-banner .btn {
+        width: 100%;
+    }
 }
 
 /* ── Footer ──────────────────────────────────────────────── */

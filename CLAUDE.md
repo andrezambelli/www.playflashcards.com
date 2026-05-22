@@ -122,6 +122,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Nunca sugerir deploy, commit ou push ao final de mensagens. O usuário sabe quando executar essas ações e solicita quando necessário
 - Nunca usar jQuery. O projeto foi migrado para JavaScript vanilla + Bootstrap 5. jQuery foi removido completamente
 - Nunca adicionar CSS próprio para algo que o Bootstrap já resolve nativamente. Verificar se existe classe Bootstrap antes de criar estilo customizado
+- Nunca alterar o estilo de um botão isolado fora do hero. Mudanças de espaçamento, padding, fonte ou raio de botões devem ser aplicadas ao padrão global de botões
 
 ## 8. Regras (ao fazer)
 

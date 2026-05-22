@@ -3,10 +3,10 @@
 
 <?php if (!isset($_COOKIE['consent_key'])) { ?>
     <div id="cookie-banner" class="car-cookie-banner">
-        <div class="container d-flex flex-column flex-sm-row align-items-sm-center gap-2">
+        <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
             <span class="flex-grow-1"><?= car_t($t, 'include.footer.cookie-warning') ?></span>
             <button type="button"
-                    class="btn btn-primary btn-sm flex-shrink-0"
+                    class="btn btn-primary flex-shrink-0"
                     onclick="setCookieGDPR('<?= CAR_PATH_WEB ?>/services/set-cookie-act')">
                 <?= car_t($t, 'Accept') ?>
             </button>
