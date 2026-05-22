@@ -160,7 +160,7 @@
                     </div>
 
                     <!-- Idioma: inline (mobile) -->
-                    <div class="d-flex d-lg-none align-items-center gap-1">
+                    <div class="d-flex d-lg-none align-items-center gap-1 py-2">
                         <i class="bi bi-globe text-secondary me-1" style="font-size:0.8125rem" aria-hidden="true"></i>
                         <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>"
