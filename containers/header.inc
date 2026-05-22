@@ -122,7 +122,7 @@
                     </li>
                 </ul>
 
-                <!-- Direita: idioma + sign in + get started -->
+                <!-- Direita: idioma + CTA -->
                 <div class="d-flex align-items-center gap-2 ms-lg-3 car-navbar-actions">
 
                     <?php
@@ -171,8 +171,6 @@
                         <?php } ?>
                     </div>
 
-                    <a class="nav-link text-body px-2"
-                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Sign in') ?></a>
                     <a class="btn btn-primary"
                        href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Get Started') ?></a>
                 </div>
