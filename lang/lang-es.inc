@@ -78,6 +78,7 @@ $t = [
     'dash.home.session-subtitle'=>'El SRS selecciona las tarjetas que necesitan más atención',
     'dash.home.streak'=>'Racha',
     'dash.home.today-session'=>'Sesión de hoy',
+    'Dashboard'=>'Dashboard',
     'days'=>'días',
     'deck'=>'grupo',
     'Deck'=>'Grupo',

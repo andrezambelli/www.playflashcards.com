@@ -79,6 +79,7 @@ $t = [
     'dash.home.session-subtitle'=>"Le SRS sélectionne les fiches qui méritent le plus d'attention",
     'dash.home.streak'=>"Série",
     'dash.home.today-session'=>"Séance du jour",
+    'Dashboard'=>"Dashboard",
     'days'=>"jours",
     'deck'=>"paquet",
     'Deck'=>"Paquet",

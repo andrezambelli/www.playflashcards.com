@@ -180,14 +180,8 @@
 
                 <!-- Links área logada -->
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB ?>/dash/deck-list"><?= car_t($t, 'Decks') ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB ?>/profile/profile"><?= car_t($t, 'Profile') ?></a>
-                    </li>
                     <li class="nav-item ms-lg-2">
-                        <a class="btn btn-outline-secondary" href="<?= CAR_PATH_WEB ?>/login/logoff-act"><?= car_t($t, 'Sign Out') ?></a>
+                        <a class="btn btn-primary" href="<?= CAR_PATH_WEB ?>/dash/home"><?= car_t($t, 'Dashboard') ?></a>
                     </li>
                 </ul>
 
