@@ -9,7 +9,7 @@
 	$pincode_s    = car_get_session_attribute('pincode', '');
 	$sent_at      = (int) car_get_session_attribute('code_sent_at', 0);
 
-    $pincode_p = car_get_parameter('pincode', '');
+    $pincode_p = preg_replace('/\D/', '', car_get_parameter('pincode', ''));
 
     // Variáveis
 	$redirect = CAR_PATH_WEB . '/login/login';

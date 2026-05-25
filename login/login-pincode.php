@@ -37,20 +37,24 @@
             <?= car_t($t, 'login.login-pincode.sent-to') ?>
             <strong><?= car_htmlspecialchars($email) ?></strong>.
         </p>
-        <p class="text-secondary mb-4"><?= car_t($t, 'login.login-pincode.message2') ?></p>
 
         <form action="<?= CAR_PATH_WEB . '/login/login-pincode-act'; ?>" method="post">
             <div class="mb-3">
-                <label class="form-label" for="pincode"><?= car_t($t, 'Code') ?></label>
-                <input type="text"
-                       name="pincode"
-                       id="pincode"
-                       value=""
-                       maxlength="6"
-                       class="form-control form-control-lg car-text-mono text-center"
-                       placeholder="------"
-                       autocomplete="one-time-code"
-                       style="font-size:1.5rem;letter-spacing:0.4em" />
+                <label class="visually-hidden" for="pincode-digit-1"><?= car_t($t, 'Code') ?></label>
+                <div class="car-pincode-grid">
+                    <?php for ($i = 1; $i <= 6; $i++) { ?>
+                        <input type="text"
+                               id="pincode-digit-<?= $i ?>"
+                               class="car-pincode-digit<?= $i === 4 ? ' car-pincode-digit-gap' : '' ?>"
+                               value=""
+                               maxlength="<?= $i === 1 ? '6' : '1' ?>"
+                               placeholder="_"
+                               inputmode="numeric"
+                               autocomplete="<?= $i === 1 ? 'one-time-code' : 'off' ?>"
+                               <?= $i === 1 ? 'autofocus' : '' ?> />
+                    <?php } ?>
+                </div>
+                <input type="hidden" name="pincode" id="pincode" value="">
             </div>
             <button type="submit" class="btn btn-primary btn-lg w-100">
                 <?= car_t($t, 'Check the Code') ?>
@@ -74,6 +78,7 @@
                 <span class="car-auth-countdown car-text-mono"></span>
             </a>
         </div>
+        <p class="car-auth-note small text-secondary text-center mt-4 mb-0"><?= car_t($t, 'login.login-pincode.message2') ?></p>
         <script>
         document.addEventListener('DOMContentLoaded', function () {
             var linkResend = document.getElementById('link-resend');
@@ -81,6 +86,63 @@
             var els        = [linkResend, linkChange];
             var countdowns = document.querySelectorAll('.car-auth-countdown');
             var seconds    = <?= (int) $remaining ?>;
+            var pinValue   = document.getElementById('pincode');
+            var pinDigits  = Array.prototype.slice.call(document.querySelectorAll('.car-pincode-digit'));
+
+            function syncPinValue() {
+                pinValue.value = pinDigits.map(function (el) {
+                    return el.value;
+                }).join('');
+            }
+
+            pinDigits.forEach(function (el, index) {
+                el.addEventListener('input', function () {
+                    var digits = el.value.replace(/\D/g, '').slice(0, 6);
+
+                    if (digits.length > 1) {
+                        digits.split('').forEach(function (digit, offset) {
+                            if (pinDigits[index + offset]) {
+                                pinDigits[index + offset].value = digit;
+                            }
+                        });
+
+                        var nextIndex = Math.min(index + digits.length, pinDigits.length - 1);
+                        pinDigits[nextIndex].focus();
+                    } else {
+                        el.value = digits;
+
+                        if (digits !== '' && pinDigits[index + 1]) {
+                            pinDigits[index + 1].focus();
+                        }
+                    }
+
+                    syncPinValue();
+                });
+
+                el.addEventListener('keydown', function (e) {
+                    if (e.key === 'Backspace' && el.value === '' && pinDigits[index - 1]) {
+                        pinDigits[index - 1].focus();
+                    }
+                });
+
+                el.addEventListener('paste', function (e) {
+                    e.preventDefault();
+
+                    var text = (e.clipboardData || window.clipboardData).getData('text');
+                    var digits = text.replace(/\D/g, '').slice(0, 6);
+
+                    digits.split('').forEach(function (digit, offset) {
+                        if (pinDigits[offset]) {
+                            pinDigits[offset].value = digit;
+                        }
+                    });
+
+                    syncPinValue();
+                    if (digits.length > 0) {
+                        pinDigits[Math.min(digits.length, pinDigits.length) - 1].focus();
+                    }
+                });
+            });
 
             linkResend.addEventListener('click', function (e) {
                 e.preventDefault();

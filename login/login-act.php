@@ -59,9 +59,8 @@
 				$redirect = CAR_PATH_WEB . '/'. $t['lang'] . '/login/login';
 			}
 		} else {
-			// modo desenvolvimento: código fixo, sem envio de e-mail
 			$pincode = '111111';
-			$ok      = true;
+			$ok = true;
 		}
 
 		if ($ok) {
