@@ -58,6 +58,7 @@ $t = [
     'dash.deck-edit-act.name'=>'The name of the deck is mandatory.',
     'dash.deck-edit.message1'=>'By enabling public access to this deck, the content will be visible to any user on the internet. The deck URL will be publicly accessible, allowing anyone to create, view, and participate in studies in this deck.',
     'dash.deck-edit.message2'=>'Please consider the sensitivity of the study material before enabling public access.',
+    'dash.deck-edit.public-switch'=>'Public access',
     'dash.deck-edit.public'=>'Allow the studies of this deck to be public.',
     'dash.deck.delete'=>'Deleting this deck will also remove all flashcards and all study sessions associated with it.',
     'dash.deck.study-title'=>'Start a new study session',

@@ -90,11 +90,11 @@
 
                 <div class="mb-3">
                     <label class="form-label"><?= car_t($t, 'Public Access Settings') ?></label>
-                    <div class="form-check">
+                    <div class="form-check form-switch">
                         <input type="checkbox" id="deck_public" name="deck_public" value="1"
-                               class="form-check-input" <?php if ($deck_public) { ?>checked<?php } ?>>
+                               class="form-check-input" role="switch" <?php if ($deck_public) { ?>checked<?php } ?>>
                         <label for="deck_public" class="form-check-label">
-                            <?= car_t($t, 'dash.deck-edit.public') ?>
+                            <?= car_t($t, 'dash.deck-edit.public-switch') ?>
                         </label>
                     </div>
                     <div class="form-text"><?= car_t($t, 'dash.deck-edit.message1') ?></div>

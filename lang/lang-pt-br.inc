@@ -58,6 +58,7 @@ $t = [
     'dash.deck-edit-act.name'=>'O nome do grupo é obrigatório.',
     'dash.deck-edit.message1'=>'Ao habilitar o acesso público a este grupo, o conteúdo ficará visível para qualquer usuário na internet. A URL do grupo será acessível publicamente, permitindo que qualquer pessoa crie, visualize e participe de estudos deste grupo.',
     'dash.deck-edit.message2'=>'Por favor, considere a sensibilidade do material de estudo antes de permitir o acesso público.',
+    'dash.deck-edit.public-switch'=>'Acesso público',
     'dash.deck-edit.public'=>'Permita que os estudos deste grupo sejam públicos.',
     'dash.deck.delete'=>'Apagar este grupo também removerá todos os cartões e todas as sessões de estudo associadas a ele.',
     'dash.deck.study-title'=>'Iniciar nova sessão de estudo',

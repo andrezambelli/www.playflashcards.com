@@ -59,6 +59,7 @@ $t = [
     'dash.deck-edit-act.name'=>"Le nom du paquet est obligatoire.",
     'dash.deck-edit.message1'=>"En autorisant l'accès public à ce paquet, le contenu sera visible par tout utilisateur sur Internet. L'URL du paquet sera accessible au public, permettant à quiconque de créer, de visualiser et de participer à des études dans ce paquet.",
     'dash.deck-edit.message2'=>"Veuillez tenir compte de la sensibilité du matériel d'étude avant d'autoriser l'accès public.",
+    'dash.deck-edit.public-switch'=>"Accès public",
     'dash.deck-edit.public'=>"Autoriser les études de ce paquet à être publiques.",
     'dash.deck.delete'=>"La suppression de ce paquet supprimera également toutes les cartes mémoire et toutes les sessions d'étude qui y sont associées.",
     'dash.deck.study-title'=>"Démarrer une nouvelle session d'étude",
