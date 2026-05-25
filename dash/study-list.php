@@ -103,7 +103,7 @@
                         $_sl_color = $_sl_acc < 50 ? 'bg-danger' : ($_sl_acc < 75 ? 'bg-warning' : 'bg-success');
                     ?>
                     <tr <?= $_sl_open ? 'style="cursor: pointer" onclick="location.href=\'' . CAR_PATH_WEB . '/dash/study?k=' . car_htmlspecialchars($row['stud_key']) . '\'"' : '' ?>>
-                        <td class="small fw-medium">
+                        <td class="small fw-medium car-text-mono">
                             <?= car_htmlspecialchars($row['stud_begin']) ?>
                             <?php if ($_sl_open) { ?>
                             <span class="badge ms-1"><?= car_t($t, 'dash.study-list.open') ?></span>
