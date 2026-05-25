@@ -56,4 +56,10 @@
         $redirect = CAR_PATH_WEB . '/' . $new_lang . '/';
     }
 
+    // parâmetro explícito tem prioridade (usado em páginas sem prefixo de idioma na URL)
+    $param_redirect = car_get_parameter('redirect_url', '');
+    if (!empty($param_redirect) && strpos($param_redirect, CAR_PATH_WEB) === 0) {
+        $redirect = $param_redirect;
+    }
+
     car_redirect($redirect);
