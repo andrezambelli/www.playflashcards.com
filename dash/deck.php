@@ -1,213 +1,179 @@
 <?php /** @var array $t */ ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php' ;?>
-<?php include_once CAR_ROOT_WEB . '/config.inc' ;?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
+<?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php car_check_login($t); ?>
 <?php
-	car_set_session_attribute('read_database', 'on');
+    car_set_session_attribute('read_database', 'on');
 
-	// Parâmetros
-	$user_id = car_get_session_attribute('user_id', 0);
-
+    $user_id = car_get_session_attribute('user_id', 0);
     $deck_key = car_get_parameter('k', '');
 
-    // Variáveis
-	$deck_id = 0;
-    $deck_desc = '';
-    $deck_url = '';
-    $deck_public = 0;
-    $total_cards = 0;
+    $deck_id               = 0;
+    $deck_name             = '';
+    $deck_desc             = '';
+    $deck_url              = '';
+    $deck_public           = 0;
+    $total_cards           = 0;
     $total_private_studies = 0;
-    $total_open_studies = 0;
-    $total_public_studies = 0;
-    $last_study_key = 0;
 
-	// Procurando informação do grupo
-	$sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_url, deck_public from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_url, deck_public
+                      from car_deck
+                     where deck_key = '%s' and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
-	$result = $mysqli->query($sql);
+    $result = $mysqli->query($sql);
 
-	while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-		$deck_id = $row['deck_id'];
-        $deck_desc = $row['deck_desc'];
-        $deck_url = $row['deck_url'];
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $deck_id     = $row['deck_id'];
+        $deck_name   = $row['deck_name'];
+        $deck_desc   = $row['deck_desc'];
+        $deck_url    = $row['deck_url'];
         $deck_public = $row['deck_public'];
-	}
-	
-	// TODO: mover para um cron job dedicado (services/cleanup-act.php)
-	// Apagando todos os cartões que estiverem em branco deste grupo
-	$_sql = sprintf(" delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');", $deck_id, $user_id);
-	
-	$_result = $mysqli->query($_sql);
-	
-	$mysqli->commit();
-	
-	// Procurando a quantidade de cartões do grupo
-	$sql = sprintf(' select count(*) as count from car_card where deck_id = %d and user_id = %d',
-                    $deck_id,
-                    $user_id);
-	
-	$result_count = $mysqli->query($sql);
-	
-	while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
-        $total_cards = $row['count'];
-	}
-
-    // Procurando a quantidade de estudos privados do grupo que pertencem ao usuário logado
-    $sql = sprintf(' select count(*) as count from car_study where deck_id = %d and user_id = %d',
-                    $deck_id,
-                    $user_id);
-
-    $result_count = $mysqli->query($sql);
-
-    while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
-        $total_private_studies = $row['count'];
     }
 
-    // Procurando a quantidade de estudos públicos do grupo (estudos de qualquer usuário)
-    $sql = sprintf(' select count(*) as count from car_study where deck_id = %d and user_id != %d and stud_public = 1',
-                    $deck_id,
-                    $user_id);
-
-    $result_count = $mysqli->query($sql);
-
-    while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
-        $total_public_studies = $row['count'];
+    if ($deck_id === 0) {
+        car_set_session_error_message('dash.deck-info.not-found');
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
     }
 
-    // Procurando a quantidade de estudos abertos que pertencem ao usuário logado
-    $sql = sprintf(' select count(*) as count from car_study where user_id = %d and deck_id = %d and stud_end is null',
-                    $user_id,
-                    $deck_id);
+    // apagar cartões em branco
+    $sql = sprintf("delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '')",
+                    $deck_id, $user_id);
+    $mysqli->query($sql);
+    $mysqli->commit();
 
-    $result_count = $mysqli->query($sql);
-
-    while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
-        $total_open_studies = $row['count'];
+    // total de cartões
+    $sql = sprintf('select count(*) as count from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $result = $mysqli->query($sql);
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $total_cards = (int) $row['count'];
     }
 
-    if ($total_open_studies > 0) {
-        // Procurando informações do último estudo aberto que pertence ao usuário logado
-        $sql = sprintf(' 
-                            select a.stud_key, a.stud_create
-                              from car_study a
-                             where a.user_id = %d
-                               and a.deck_id = %d
-                               and a.stud_end is null
-                             order by a.stud_id desc
-                             limit 1',
-                        $user_id,
-                        $deck_id);
-
-        $result = $mysqli->query($sql);
+    // total de estudos do usuário neste baralho
+    $sql = sprintf('select count(*) as count from car_study where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $result = $mysqli->query($sql);
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $total_private_studies = (int) $row['count'];
     }
 ?>
 <?php
-    $header_title = car_t($t, 'Deck') . ' - Play Flashcards';
-    $dash_active = 'decks';
-    $dash_breadcrumb = [[car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'], [car_t($t, 'Deck')]];
+    $header_title    = car_htmlspecialchars($deck_name) . ' - Play Flashcards';
+    $dash_active     = 'decks';
+    $dash_breadcrumb = [[car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'], [$deck_name]];
     include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
-<div class="div-primary">
-    <div class="div-start">
-        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
-        <div class="title">
-            <?= car_t($t, 'Deck'); ?>
+
+<div>
+
+    <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-start mb-4 gap-3 flex-wrap">
+        <div>
+            <div class="car-label-uc d-flex align-items-center gap-1 mb-1">
+                <?php if ($deck_public) { ?>
+                    <i class="bi bi-globe2" aria-hidden="true"></i>
+                    <?= car_t($t, 'dash.home.public') ?>
+                <?php } else { ?>
+                    <i class="bi bi-lock" aria-hidden="true"></i>
+                    <?= car_t($t, 'dash.home.private') ?>
+                <?php } ?>
+            </div>
+            <h1 class="h3 fw-semibold mb-1"><?= car_htmlspecialchars($deck_name) ?></h1>
+            <?php if (!empty($deck_desc)) { ?>
+                <p class="text-secondary small mb-0"><?= car_htmlspecialchars($deck_desc) ?></p>
+            <?php } ?>
         </div>
-        <?php include_once CAR_ROOT_WEB . '/dash/deck-info.inc'; ?>
-        <?php if (!empty($deck_desc)) { ?>
-            <div class="stats-value">
+        <a href="<?= CAR_PATH_WEB ?>/dash/deck-edit?k=<?= car_htmlspecialchars($deck_key) ?>"
+           class="btn btn-outline-secondary flex-shrink-0">
+            <i class="bi bi-pencil" aria-hidden="true"></i>
+            <?= car_t($t, 'Edit Deck') ?>
+        </a>
+    </div>
+
+    <!-- Cartões -->
+    <div class="card mb-3">
+        <div class="card-body d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-collection text-primary fs-4 flex-shrink-0" aria-hidden="true"></i>
                 <div>
-                    <?= car_htmlspecialchars($deck_desc); ?>
+                    <div class="fw-medium"><?= car_t($t, 'Flashcards') ?></div>
+                    <div class="car-text-mono small text-secondary"><?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?></div>
                 </div>
             </div>
-        <?php } ?>
-        <div class="stats-value">
-            <a href="<?= CAR_PATH_WEB; ?>/dash/deck-edit?k=<?= $deck_key; ?>" class="buttonx">
-                <?= car_t($t, 'Edit Deck'); ?>
-            </a>
-        </div>
-        <div class="space"></div>
-        <?php if ($_found) { ?>
-            <a href="<?= CAR_PATH_WEB; ?>/dash/card-list?k=<?= $deck_key; ?>" class="button w100p">
-                <?= car_t($t, 'Flashcards'); ?>
-            </a>
-            <div class="stats-value">
-                <a href="<?= CAR_PATH_WEB; ?>/dash/card-new-act?k=<?= $deck_key; ?>" class="buttonx">
-                    <?= car_t($t, 'New Flashcard'); ?>
+            <div class="d-flex gap-2 flex-shrink-0">
+                <a href="<?= CAR_PATH_WEB ?>/dash/card-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-plus" aria-hidden="true"></i>
+                    <?= car_t($t, 'New Flashcard') ?>
+                </a>
+                <a href="<?= CAR_PATH_WEB ?>/dash/card-list?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-outline-secondary btn-sm">
+                    <?= car_t($t, 'Edit') ?>
                 </a>
             </div>
-            <div class="space"></div>
-            <?php if ($deck_public) { ?>
-                <div class="stats-title"><?= car_t($t, 'Total Flashcards'); ?>:</div>
-                <div class="stats-value">
-                    <?= $total_cards; ?>
-                </div>
-            <?php } ?>
-            <div class="space"></div>
-            <a href="<?= CAR_PATH_WEB; ?>/dash/study-list?k=<?= $deck_key; ?>" class="button w100p">
-                <?= car_t($t, 'Studies'); ?>
-            </a>
-            <?php if ($total_open_studies > 0) { ?>
-                <div class="stats-value"><?= car_t($t, 'Open Studies'); ?>: <?= $total_open_studies; ?></div>
-                <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-                    <div class="stats-value">
-                        <?= car_t($t, 'Last Open Study'); ?>:
-                        <a href="<?= CAR_PATH_WEB; ?>/dash/study?k=<?= $row['stud_key']; ?>">
-                            <?= car_htmlspecialchars($row['stud_create']); ?>
-                        </a>
-                    </div>
-                <?php } ?>
-                <div class="space"></div>
-            <?php } ?>
-            <?php include_once CAR_ROOT_WEB . '/dash/new-study.inc'; ?>
-            <div class="space"></div>
-            <div class="stats-title"><?= car_t($t, 'Total Private Studies'); ?>:</div>
-            <div class="stats-value">
-                <?= $total_private_studies; ?>
-            </div>
-            <div class="space"></div>
-            <div class="stats-title"><?= car_t($t, 'Total Public Studies'); ?>:</div>
-            <div class="stats-value">
-                <?= $total_public_studies; ?>
-            </div>
-            <div class="space"></div>
-            <div class="stats-title"><?= car_t($t, 'Public Study URL'); ?>:</div>
-            <?php if ($deck_public) { ?>
-                <div class="stats-value-url">
-                    <a href="<?= car_get_base_url(CAR_PATH_WEB). '/deck/'. $deck_key . '/'. $deck_url; ?>">
-                        <?= car_get_base_url(CAR_PATH_WEB). '/deck/'. $deck_key . '/'. $deck_url; ?>
-                    </a>
-                </div>
-            <?php } else { ?>
-                <div class="stats-value">
-                    <?= car_t($t, 'This deck is private.'); ?>
-                </div>
-            <?php } ?>
-            <div class="space"></div>
-            <div class="stats-title"><?= car_t($t, 'Delete Deck'); ?>:</div>
-            <div class="stats-value">
-                <table class="tip-table">
-                    <tr>
-                        <td class="td1">
-                            <a href="<?= CAR_PATH_WEB; ?>/dash/deck-delete?k=<?= $deck_key; ?>" class="buttonx w75">
-                                <?= car_t($t, 'Delete'); ?>
-                            </a>
-                        </td>
-                        <td class="td2">
-                            <div class="tip">
-                                <?= car_t($t, 'dash.deck.delete'); ?><br/>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        <?php } ?>
+        </div>
     </div>
+
+    <!-- Estudar -->
+    <div class="card mb-4">
+        <div class="card-body d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-play-circle text-success fs-4 flex-shrink-0" aria-hidden="true"></i>
+                <div>
+                    <div class="fw-medium"><?= car_t($t, 'Study') ?></div>
+                    <div class="car-text-mono small text-secondary"><?= $total_private_studies ?> <?= car_t($t, 'profile.srs.unit-sessions') ?></div>
+                </div>
+            </div>
+            <div class="d-flex gap-2 flex-shrink-0">
+                <a href="<?= CAR_PATH_WEB ?>/dash/study-list?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-outline-secondary btn-sm">
+                    <?= car_t($t, 'Studies') ?>
+                </a>
+                <a href="<?= CAR_PATH_WEB ?>/dash/study-srs-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-outline-secondary btn-sm">
+                    SRS
+                </a>
+                <a href="<?= CAR_PATH_WEB ?>/dash/study-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-primary btn-sm">
+                    <i class="bi bi-play-fill" aria-hidden="true"></i>
+                    <?= car_t($t, 'Study') ?>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <?php if ($deck_public) { ?>
+    <!-- URL pública -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="car-label-uc mb-2"><?= car_t($t, 'Public Study URL') ?></div>
+            <div class="text-truncate small">
+                <a href="<?= car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url ?>"
+                   class="text-decoration-none" target="_blank" rel="noopener noreferrer">
+                    <?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url) ?>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+
+    <!-- Zona de perigo -->
+    <div class="card border-danger">
+        <div class="card-body d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <div>
+                <div class="fw-medium text-danger"><?= car_t($t, 'Delete Deck') ?></div>
+                <div class="small text-secondary"><?= car_t($t, 'dash.deck.delete') ?></div>
+            </div>
+            <a href="<?= CAR_PATH_WEB ?>/dash/deck-delete?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="btn btn-outline-danger btn-sm flex-shrink-0">
+                <?= car_t($t, 'Delete') ?>
+            </a>
+        </div>
+    </div>
+
 </div>
-<div class="div-secondary">
-    <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
-</div>
+
 <?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
