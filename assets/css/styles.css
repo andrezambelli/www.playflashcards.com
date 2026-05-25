@@ -684,6 +684,78 @@ html {
     }
 }
 
+/* ── Tela de play (estudo fullscreen) ───────────────────── */
+.car-play-stage {
+    min-height: 100vh;
+    background: var(--bs-body-bg);
+    display: flex;
+    flex-direction: column;
+}
+.car-play-header {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    flex-shrink: 0;
+}
+.car-play-canvas {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+}
+.car-play-btn {
+    flex: 1;
+    padding: 1rem;
+    border-radius: var(--bs-border-radius-lg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--bs-border-color);
+    background: var(--bs-body-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    cursor: pointer;
+    transition: transform 120ms, box-shadow 120ms, background 120ms;
+}
+.car-play-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--app-shadow-sm);
+}
+.car-play-btn.know {
+    color: var(--bs-success-text-emphasis);
+    border-color: var(--bs-success);
+}
+.car-play-btn.know:hover {
+    background: var(--bs-success-bg-subtle);
+}
+.car-play-btn.dont {
+    color: var(--bs-danger-text-emphasis);
+    border-color: var(--bs-danger);
+}
+.car-play-btn.dont:hover {
+    background: var(--bs-danger-bg-subtle);
+}
+.car-play-btn-kbd {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.6875rem;
+    color: var(--bs-tertiary-color);
+}
+.car-kbd {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.625rem;
+    padding: 1px 5px;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 4px;
+    background: var(--bs-white);
+    color: var(--bs-tertiary-color);
+}
+
 /* ── Flashcard (play) ────────────────────────────────────── */
 .car-flashcard {
     width: 100%;

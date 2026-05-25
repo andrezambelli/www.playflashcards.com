@@ -27,10 +27,12 @@
 
 		if (CAR_SEND_EMAIL) {
 			$payload = (string) json_encode([
-				'site_id'  => 'www.playflashcards.com',
-				'app_name' => 'Play Flashcards',
-				'email'    => $email,
-				'pin'      => $pincode,
+				'site_id'   => 'www.playflashcards.com',
+				'app_name'  => 'Play Flashcards',
+				'from_name' => 'No Reply - Play Flashcards by One PRO Page',
+				'lang'      => $t['lang'],
+				'email'     => $email,
+				'pin'       => $pincode,
 			]);
 
 			$ch = curl_init(CAR_SERVICE_URL);
