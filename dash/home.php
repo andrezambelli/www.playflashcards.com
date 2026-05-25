@@ -13,20 +13,12 @@
     // data formatada
     $date_label = date('l, F j');
 
-    // lista de baralhos com total de cartões
-    $decks = [];
-    $sql = sprintf('
-        select d.deck_key, d.deck_name, d.deck_desc, d.deck_public,
-               count(c.card_id) as total_cards
-          from car_deck d
-          left join car_card c on c.deck_id = d.deck_id and c.user_id = d.user_id
-         where d.user_id = %d
-         group by d.deck_id, d.deck_key, d.deck_name, d.deck_desc, d.deck_public
-         order by d.deck_name',
-        $user_id);
+    // contagem de baralhos para o stat card
+    $total_decks = 0;
+    $sql = sprintf('select count(*) as count from car_deck where user_id = %d', $user_id);
     $result = $mysqli->query($sql);
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $decks[] = $row;
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $total_decks = (int) $row['count'];
     }
 ?>
 <?php
@@ -88,7 +80,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'Decks') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500"><?= count($decks) ?></div>
+                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500"><?= $total_decks ?></div>
                 </div>
             </div>
         </div>
@@ -119,69 +111,7 @@
     <!-- Baralhos -->
     <h2 class="h6 fw-semibold mb-3"><?= car_t($t, 'Decks') ?></h2>
 
-    <?php if (empty($decks)) { ?>
-
-        <div class="text-center py-5 text-secondary">
-            <i class="bi bi-layers fs-1 mb-3 d-block" aria-hidden="true"></i>
-            <p class="mb-3"><?= car_t($t, 'dash.home.no-decks') ?></p>
-            <a href="<?= CAR_PATH_WEB ?>/dash/deck-new-act" class="btn btn-primary">
-                <i class="bi bi-plus" aria-hidden="true"></i>
-                <?= car_t($t, 'New Deck') ?>
-            </a>
-        </div>
-
-    <?php } else { ?>
-
-        <div class="row g-3">
-            <?php foreach ($decks as $deck) { ?>
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column gap-3">
-
-                        <div>
-                            <div class="car-label-uc d-flex align-items-center gap-1 mb-1">
-                                <?php if ($deck['deck_public']) { ?>
-                                    <i class="bi bi-globe2" aria-hidden="true"></i>
-                                    <?= car_t($t, 'dash.home.public') ?>
-                                <?php } else { ?>
-                                    <i class="bi bi-lock" aria-hidden="true"></i>
-                                    <?= car_t($t, 'dash.home.private') ?>
-                                <?php } ?>
-                            </div>
-                            <a href="<?= CAR_PATH_WEB ?>/dash/deck?k=<?= car_htmlspecialchars($deck['deck_key']) ?>"
-                               class="text-decoration-none text-body">
-                                <div class="fw-semibold"><?= car_htmlspecialchars($deck['deck_name']) ?></div>
-                            </a>
-                            <?php if (!empty($deck['deck_desc'])) { ?>
-                                <div class="small text-secondary text-truncate mt-1"><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
-                            <?php } ?>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-auto">
-                            <div class="d-flex gap-4">
-                                <div>
-                                    <div class="car-label-uc"><?= car_t($t, 'profile.srs.unit-cards') ?></div>
-                                    <div class="car-text-mono small fw-medium"><?= (int) $deck['total_cards'] ?></div>
-                                </div>
-                                <div>
-                                    <div class="car-label-uc"><?= car_t($t, 'dash.home.due') ?></div>
-                                    <div class="car-text-mono small fw-medium text-secondary">—</div>
-                                </div>
-                            </div>
-                            <a href="<?= CAR_PATH_WEB ?>/dash/study-new-act?k=<?= car_htmlspecialchars($deck['deck_key']) ?>"
-                               class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1 flex-shrink-0">
-                                <i class="bi bi-play-fill" aria-hidden="true"></i>
-                                <?= car_t($t, 'Study') ?>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-
-    <?php } ?>
+    <?php include CAR_ROOT_WEB . '/dash/deck-grid.inc'; ?>
 
 </div>
 
