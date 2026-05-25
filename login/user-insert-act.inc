@@ -66,6 +66,7 @@
 
 	car_set_session_attribute('session_login', 'on'); // logado!
 	car_set_session_attribute('user_id', $user_id); // armazenando o user_id na sessão
+	car_set_session_attribute('user_email', $user_email); // armazenando o e-mail para a sidebar do dashboard
 	car_set_session_attribute('user_max_deck', $user_max_deck); // armazenando o número máximo de grupos por usuário
 	car_set_session_attribute('user_max_card', $user_max_card); // armazenando o número máximo de cartões por grupo
 	car_set_session_attribute('user_max_study', $user_max_study); // armazenando o número máximo de estudos por grupo

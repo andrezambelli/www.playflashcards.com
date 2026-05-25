@@ -10,9 +10,9 @@
 ?>
 <?php
     $header_title = car_t($t, 'Delete your Account') . ' - Play Flashcards';
-    $header_description = '';
-    $header_index_follow = 'noindex,nofollow';
-    include_once CAR_ROOT_WEB . '/containers/header.inc';
+    $dash_active = 'profile';
+    $dash_breadcrumb = [[car_t($t, 'Profile'), CAR_PATH_WEB . '/profile/profile'], [car_t($t, 'Delete your Account')]];
+    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
 <script>
 	$(document).ready(function() {
@@ -49,4 +49,4 @@
 <div class="div-secondary">
     <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>

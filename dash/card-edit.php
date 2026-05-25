@@ -69,9 +69,9 @@
 ?>
 <?php
     $header_title = car_t($t, 'Edit Flashcard') . ' - Play Flashcards';
-    $header_description = '';
-    $header_index_follow = 'noindex,nofollow';
-    include_once CAR_ROOT_WEB . '/containers/header.inc';
+    $dash_active = 'decks';
+    $dash_breadcrumb = [[car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'], [car_t($t, 'Edit Flashcard')]];
+    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
 <script>
     $(document).ready(function() {
@@ -152,4 +152,4 @@
 <div class="div-secondary">
     <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
 </div>
-<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
