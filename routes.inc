@@ -39,6 +39,7 @@
     $routes['profile/srs-act'] = 'profile/srs-act.php';
 
     // deck - private
+    $routes['dash/home'] = 'dash/home.php';
     $routes['dash/deck-list'] = 'dash/deck-list.php';
     $routes['dash/deck'] = 'dash/deck.php';
     $routes['dash/deck-new-act'] = 'dash/deck-new-act.php';

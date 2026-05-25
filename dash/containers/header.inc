@@ -93,7 +93,6 @@
         </nav>
 
         <!-- Lista de baralhos -->
-        <?php if (!empty($sidebar_decks)) { ?>
         <nav class="car-nav-section car-nav-section--decks" aria-label="<?= car_t($t, 'Decks') ?>">
             <div class="car-nav-section-title"><?= car_t($t, 'Decks') ?></div>
             <?php foreach ($sidebar_decks as $sd) { ?>
@@ -109,7 +108,6 @@
                 <?= car_t($t, 'New Deck') ?>
             </a>
         </nav>
-        <?php } ?>
 
         <!-- Configurações -->
         <nav class="car-nav-section mt-auto" aria-label="<?= car_t($t, 'Settings') ?>">
