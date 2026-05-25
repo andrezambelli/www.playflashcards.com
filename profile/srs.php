@@ -118,7 +118,7 @@
                 <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
                 <?= car_t($t, 'Restore Default Values') ?>
             </button>
-            <button type="submit" id="srs-save" class="btn btn-primary" disabled>
+            <button type="submit" class="btn btn-primary">
                 <?= car_t($t, 'Save') ?>
             </button>
         </div>
@@ -128,20 +128,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    var fields   = ['srs_limit', 'srs_rate', 'srs_sequence', 'srs_days'];
-    var originals = {};
-    var saveBtn  = document.getElementById('srs-save');
+    var fields = ['srs_limit', 'srs_rate', 'srs_sequence', 'srs_days'];
 
     fields.forEach(function (id) {
         var slider  = document.getElementById(id);
-        originals[id] = slider.value;
         var display = document.getElementById(id + '_val');
         slider.addEventListener('input', function () {
             display.textContent = slider.value;
-            var changed = fields.some(function (f) {
-                return document.getElementById(f).value !== originals[f];
-            });
-            saveBtn.disabled = !changed;
         });
     });
 
