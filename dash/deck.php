@@ -165,14 +165,14 @@
         </div>
 
         <div class="col-6 col-md-3">
-            <div class="card h-100">
+            <a href="<?= CAR_PATH_WEB ?>/dash/study-list?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="card h-100 text-decoration-none text-body car-card-link">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'profile.srs.unit-sessions') ?></div>
                     <div class="h4 fw-semibold mb-1 car-text-mono"><?= $total_private_studies ?></div>
-                    <a href="<?= CAR_PATH_WEB ?>/dash/study-list?k=<?= car_htmlspecialchars($deck_key) ?>"
-                       class="small text-secondary text-decoration-none"><?= car_t($t, 'dash.deck.history') ?></a>
+                    <div class="small text-secondary"><?= car_t($t, 'dash.deck.history') ?></div>
                 </div>
-            </div>
+            </a>
         </div>
 
     </div>
