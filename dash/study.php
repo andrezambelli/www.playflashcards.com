@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.classList.remove('flip-out');
             void card.offsetWidth; // força reflow para o jump sem transição
             card.classList.remove('flip-start');
-        }, 180);
+        }, 280);
     }
 
     function answer(value) {
@@ -292,10 +292,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('btn_false').addEventListener('click', function () { answer('false'); });
 
     document.addEventListener('keydown', function (e) {
-        if      (e.key === ' ')                    { e.preventDefault(); flip(); }
-        else if (e.key === 'ArrowRight' && flipped) { answer('true'); }
-        else if (e.key === 'ArrowLeft'  && flipped) { answer('false'); }
-        else if (e.key === 'Escape')                { location.href = exitUrl; }
+        if      (e.key === ' ')         { e.preventDefault(); flip(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); answer('true'); }
+        else if (e.key === 'ArrowLeft')  { e.preventDefault(); answer('false'); }
+        else if (e.key === 'Escape')     { location.href = exitUrl; }
     });
 });
 </script>

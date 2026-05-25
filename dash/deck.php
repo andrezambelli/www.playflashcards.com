@@ -64,6 +64,14 @@
         $total_private_studies = (int) $row['count'];
     }
 
+    // sessão de estudo em aberto (sem data de fim)
+    $open_study_key = '';
+    $sql = sprintf("select stud_key from car_study where deck_id = %d and user_id = %d and stud_end is null order by stud_begin desc limit 1", $deck_id, $user_id);
+    $result = $mysqli->query($sql);
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $open_study_key = $row['stud_key'];
+    }
+
     // url pública
     $public_url = car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url;
 
@@ -175,6 +183,28 @@
             <div class="fw-medium"><?= car_t($t, 'dash.deck.study-title') ?></div>
         </div>
         <div class="card-body">
+
+            <?php if (!empty($open_study_key)) { ?>
+            <div class="d-flex align-items-start gap-3 p-3 mb-3 rounded-3"
+                 style="background: var(--bs-warning-bg-subtle); border: 1px solid var(--bs-warning)">
+                <i class="bi bi-exclamation-triangle text-warning-emphasis flex-shrink-0" style="margin-top: 1px" aria-hidden="true"></i>
+                <div class="flex-grow-1">
+                    <div class="small fw-medium mb-2"><?= car_t($t, 'dash.deck.open-session') ?></div>
+                    <div class="d-flex gap-2">
+                        <a href="<?= CAR_PATH_WEB ?>/dash/study?k=<?= car_htmlspecialchars($open_study_key) ?>"
+                           class="btn btn-sm btn-warning">
+                            <?= car_t($t, 'Continue') ?>
+                        </a>
+                        <a href="<?= CAR_PATH_WEB ?>/dash/study-delete-act?k=<?= car_htmlspecialchars($open_study_key) ?>"
+                           class="btn btn-sm btn-outline-secondary">
+                            <?= car_t($t, 'Delete') ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="small text-secondary mb-2"><?= car_t($t, 'dash.deck.open-session-or') ?></div>
+            <?php } ?>
+
             <div class="row g-2">
 
                 <div class="col-md-6">

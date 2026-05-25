@@ -776,12 +776,11 @@ html {
     transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms, background 240ms, color 240ms, border-color 240ms;
 }
 .car-flashcard:hover {
-    transform: translateY(-2px);
     box-shadow: var(--app-shadow-lg);
 }
 .car-flashcard.flip-out {
     transform: rotateY(90deg) !important;
-    transition: transform 180ms ease-in !important;
+    transition: transform 280ms ease-in !important;
 }
 .car-flashcard.flip-start {
     transform: rotateY(-90deg) !important;
