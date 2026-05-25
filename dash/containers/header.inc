@@ -90,7 +90,7 @@
                 <i class="bi bi-house" aria-hidden="true"></i>
                 <?= car_t($t, 'Dashboard') ?>
             </a>
-            <a class="car-app-nav-item <?= ($dash_active ?? '') === 'decks' ? 'active' : '' ?>"
+            <a class="car-app-nav-item <?= ($dash_active ?? '') === 'decks' && empty($dash_deck_key ?? '') ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/dash/deck-list">
                 <i class="bi bi-layers" aria-hidden="true"></i>
                 <?= car_t($t, 'Decks') ?>
@@ -101,7 +101,7 @@
         <nav class="car-nav-section car-nav-section--decks" aria-label="<?= car_t($t, 'Decks') ?>">
             <div class="car-nav-section-title"><?= car_t($t, 'Decks') ?></div>
             <?php foreach ($sidebar_decks as $sd) { ?>
-            <a class="car-app-nav-item car-app-nav-item--deck"
+            <a class="car-app-nav-item car-app-nav-item--deck <?= ($dash_deck_key ?? '') === $sd['deck_key'] ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/dash/deck?k=<?= car_htmlspecialchars($sd['deck_key']) ?>">
                 <span class="car-nav-deck-dot" aria-hidden="true"></span>
                 <span class="car-app-nav-label"><?= car_htmlspecialchars($sd['deck_name']) ?></span>

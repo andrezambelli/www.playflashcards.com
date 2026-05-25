@@ -29,6 +29,7 @@
 <?php
     $header_title    = car_t($t, 'Delete Deck') . ' - Play Flashcards';
     $dash_active     = 'decks';
+    $dash_deck_key   = $deck_key;
     $dash_breadcrumb = [
         [car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'],
         [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],

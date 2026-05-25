@@ -57,6 +57,7 @@
 <?php
     $header_title    = car_htmlspecialchars($deck_name) . ' - Play Flashcards';
     $dash_active     = 'decks';
+    $dash_deck_key   = $deck_key;
     $dash_breadcrumb = [
         [car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'],
         [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],
@@ -72,7 +73,11 @@
     <div class="d-flex justify-content-between align-items-center mb-4 gap-3 flex-wrap">
         <div>
             <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Flashcards') ?></h1>
-            <p class="text-secondary small mb-0"><?= car_htmlspecialchars($deck_name) ?></p>
+            <a href="<?= CAR_PATH_WEB ?>/dash/deck?k=<?= car_htmlspecialchars($deck_key) ?>"
+           class="text-secondary small text-decoration-none">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            <?= car_htmlspecialchars($deck_name) ?>
+        </a>
         </div>
         <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
            class="btn btn-primary flex-shrink-0">
@@ -88,26 +93,35 @@
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr>
-                            <th><?= car_t($t, 'Front') ?></th>
-                            <th><?= car_t($t, 'Back') ?></th>
-                            <th class="text-end"><?= car_t($t, 'Accuracy Rate') ?></th>
-                            <th></th>
+                            <th class="small text-secondary fw-normal"><?= car_t($t, 'Front') ?></th>
+                            <th class="small text-secondary fw-normal"><?= car_t($t, 'Back') ?></th>
+                            <th class="small text-secondary fw-normal" style="width: 120px"><?= car_t($t, 'Accuracy Rate') ?></th>
+                            <th style="width: 32px"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-                        <tr>
-                            <td class="align-middle"><?= car_htmlspecialchars($row['card_front']) ?></td>
-                            <td class="align-middle text-secondary"><?= car_htmlspecialchars($row['card_back']) ?></td>
-                            <td class="align-middle text-end car-text-mono">
-                                <?= car_percent($row['card_true'], $row['card_true'] + $row['card_false']) ?>%
+                        <?php
+                            $_cl_attempts = (int) $row['card_true'] + (int) $row['card_false'];
+                            $_cl_acc      = car_percent((int) $row['card_true'], $_cl_attempts);
+                            $_cl_color    = $_cl_acc < 50 ? 'bg-danger' : ($_cl_acc < 75 ? 'bg-warning' : 'bg-success');
+                        ?>
+                        <tr style="cursor: pointer" onclick="location.href='<?= CAR_PATH_WEB ?>/dash/card-edit?k=<?= car_htmlspecialchars($row['card_key']) ?>'">
+                            <td class="small fw-medium"><?= car_htmlspecialchars($row['card_front']) ?></td>
+                            <td class="small text-secondary"><?= car_htmlspecialchars($row['card_back']) ?></td>
+                            <td>
+                                <?php if ($_cl_attempts > 0) { ?>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-shrink-0" style="width: 40px; height: 4px" role="progressbar" aria-valuenow="<?= $_cl_acc ?>" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar <?= $_cl_color ?>" style="width: <?= $_cl_acc ?>%"></div>
+                                    </div>
+                                    <span class="car-text-mono small"><?= $_cl_acc ?>%</span>
+                                </div>
+                                <?php } else { ?>
+                                <span class="small text-secondary">&mdash;</span>
+                                <?php } ?>
                             </td>
-                            <td class="align-middle text-end">
-                                <a href="<?= CAR_PATH_WEB ?>/dash/card-edit?k=<?= car_htmlspecialchars($row['card_key']) ?>"
-                                   class="btn btn-outline-secondary btn-sm">
-                                    <?= car_t($t, 'Edit') ?>
-                                </a>
-                            </td>
+                            <td><i class="bi bi-chevron-right small text-primary" aria-hidden="true"></i></td>
                         </tr>
                         <?php } ?>
                     </tbody>

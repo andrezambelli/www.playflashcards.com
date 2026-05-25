@@ -108,9 +108,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-outline-secondary {
     --bs-btn-color: var(--bs-body-color);
-    --bs-btn-border-color: #D5D4CC;
+    --bs-btn-border-color: var(--bs-primary-border-subtle);
     --bs-btn-hover-bg: var(--bs-tertiary-bg);
-    --bs-btn-hover-border-color: #D5D4CC;
+    --bs-btn-hover-border-color: var(--bs-primary-border-subtle);
     --bs-btn-hover-color: var(--bs-body-color);
 }
 
@@ -215,6 +215,14 @@ h1, h2, h3, h4, h5, h6 {
 .card-header {
     border-bottom-color: #EFEEE8;
     font-weight: 600;
+}
+.car-card-link {
+    border-color: var(--bs-primary-border-subtle) !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.car-card-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--app-shadow-md);
 }
 
 /* ── Formulários ─────────────────────────────────────────── */

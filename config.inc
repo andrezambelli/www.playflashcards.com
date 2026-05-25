@@ -2,7 +2,7 @@
     include_once 'general/config.inc';
     include_once 'general/functions.inc';
 
-    const CAR_VERSION = '0.0.35';
+    const CAR_VERSION = '0.0.36';
 
     // Controla a versão para recarregar o arquivo de idioma na sessão
     if (!isset($_SESSION['version'])) {
