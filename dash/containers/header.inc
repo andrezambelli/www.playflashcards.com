@@ -132,7 +132,7 @@
     </aside>
 
     <!-- Coluna principal -->
-    <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex flex-column min-vh-100" style="min-width: 0; overflow-x: hidden">
 
         <!-- Topbar -->
         <div class="car-app-topbar">
