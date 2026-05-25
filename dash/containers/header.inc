@@ -9,8 +9,6 @@
 
     $_timezone = car_get_session_attribute('timezone', '');
     $user_id   = car_get_session_attribute('user_id', 0);
-    $user_email = car_get_session_attribute('user_email', '');
-    $user_initial = strtoupper(substr($user_email, 0, 1));
 
     $asset_v = CAR_PROD ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());
     $asset_v = rawurlencode($asset_v);
@@ -118,7 +116,7 @@
             <div class="car-nav-section-title"><?= car_t($t, 'Settings') ?></div>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'srs' ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/profile/srs">
-                <i class="bi bi-brain" aria-hidden="true"></i>
+                <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
                 <?= car_t($t, 'SRS') ?>
             </a>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'profile' ? 'active' : '' ?>"
@@ -126,15 +124,12 @@
                 <i class="bi bi-person" aria-hidden="true"></i>
                 <?= car_t($t, 'Profile') ?>
             </a>
+            <a class="car-app-nav-item text-secondary"
+               href="<?= CAR_PATH_WEB ?>/login/logoff-act">
+                <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                <?= car_t($t, 'Sign Out') ?>
+            </a>
         </nav>
-
-        <!-- User chip -->
-        <a class="car-app-user-chip" href="<?= CAR_PATH_WEB ?>/profile/profile">
-            <div class="car-app-avatar" aria-hidden="true"><?= car_htmlspecialchars($user_initial) ?></div>
-            <div class="min-w-0 flex-grow-1">
-                <div class="small text-truncate"><?= car_htmlspecialchars($user_email) ?></div>
-            </div>
-        </a>
 
     </aside>
 
@@ -172,15 +167,6 @@
                 </ol>
             </nav>
             <?php } ?>
-
-            <!-- Sign out (lado direito) -->
-            <div class="ms-auto">
-                <a class="btn btn-sm btn-outline-secondary"
-                   href="<?= CAR_PATH_WEB ?>/login/logoff-act">
-                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
-                    <span class="d-none d-lg-inline"><?= car_t($t, 'Sign Out') ?></span>
-                </a>
-            </div>
 
         </div>
 

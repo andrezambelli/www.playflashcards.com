@@ -52,13 +52,18 @@
             <div class="car-nav-section-title"><?= car_t($t, 'Settings') ?></div>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'srs' ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/profile/srs">
-                <i class="bi bi-brain" aria-hidden="true"></i>
+                <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
                 <?= car_t($t, 'SRS') ?>
             </a>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'profile' ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/profile/profile">
                 <i class="bi bi-person" aria-hidden="true"></i>
                 <?= car_t($t, 'Profile') ?>
+            </a>
+            <a class="car-app-nav-item text-secondary"
+               href="<?= CAR_PATH_WEB ?>/login/logoff-act">
+                <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                <?= car_t($t, 'Sign Out') ?>
             </a>
         </nav>
 
