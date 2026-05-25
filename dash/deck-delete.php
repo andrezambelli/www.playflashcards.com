@@ -4,55 +4,68 @@
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php car_check_login($t); ?>
 <?php
-	// Parâmetros 
-	$user_id = car_get_session_attribute('user_id', 0);
-    $read_database = car_get_session_attribute('read_database', 'on');
-
+    $user_id  = car_get_session_attribute('user_id', 0);
     $deck_key = car_get_parameter('k', '');
+
+    $deck_id   = 0;
+    $deck_name = '';
+
+    $sql = sprintf("select deck_id, deck_name from car_deck where deck_key = '%s' and user_id = %d",
+                    $mysqli->real_escape_string(car_never_null($deck_key)),
+                    $user_id);
+
+    $result = $mysqli->query($sql);
+
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $deck_id   = $row['deck_id'];
+        $deck_name = $row['deck_name'];
+    }
+
+    if ($deck_id === 0) {
+        car_set_session_error_message('dash.deck-info.not-found');
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+    }
 ?>
 <?php
-    $header_title = car_t($t, 'Delete Deck') . ' - Play Flashcards';
-    $dash_active = 'decks';
-    $dash_breadcrumb = [[car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'], [car_t($t, 'Delete Deck')]];
+    $header_title    = car_t($t, 'Delete Deck') . ' - Play Flashcards';
+    $dash_active     = 'decks';
+    $dash_breadcrumb = [
+        [car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'],
+        [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],
+        [car_t($t, 'Delete Deck')]
+    ];
     include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
-<script>
-	$(document).ready(function() {
-		$('#yes_btn').click(function(event) {
-			event.preventDefault();
-			$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/dash/deck-delete-act');
-			$('#main_form').submit();
-		});
-	
-		$('#no_btn').click(function(event) {
-			event.preventDefault();
-				$('#stse_answer').val('false');
-				$('#main_form').attr('action', '<?= CAR_PATH_WEB; ?>/dash/deck');
-				$('#main_form').submit();
-		});
-	});
-</script>
-<div class="div-primary">
-    <div class="div-start">
-        <?php include_once CAR_ROOT_WEB . '/containers/message.inc' ?>
-        <div class="title">
-            <?= car_t($t, 'Delete Deck'); ?>
-        </div>
-        <?php include_once CAR_ROOT_WEB . '/dash/deck-info.inc'; ?>
-        <?php if ($_found) { ?>
-            <div>
-                <form id="main_form" method="post">
-                    <input type="hidden" name="k" value="<?= $deck_key; ?>" />
-                    <?= car_t($t, 'dash.deck-delete-question'); ?><br/>
-                    <span class="note-text"><?= car_t($t, 'Warning'); ?>:</span> <?= car_t($t, 'dash.deck-delete.warning'); ?><br/>
-                    <input type="button" id="yes_btn" value="<?= car_t($t, 'Yes'); ?>" class="buttonx" />
-                    <input type="button" id="no_btn" value="<?= car_t($t, 'No'); ?>" class="buttonx" />
+
+<div style="max-width: 560px">
+
+    <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
+
+    <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Delete Deck') ?></h1>
+    <p class="text-secondary small mb-4"><?= car_t($t, 'dash.deck-delete-question') ?></p>
+
+    <div class="card border-danger-subtle">
+        <div class="card-body">
+            <p class="small text-secondary mb-4">
+                <span class="fw-semibold text-danger-emphasis"><?= car_t($t, 'Warning') ?>:</span>
+                <?= car_t($t, 'dash.deck-delete.warning') ?>
+            </p>
+            <div class="d-flex gap-2">
+                <a href="<?= CAR_PATH_WEB ?>/dash/deck?k=<?= car_htmlspecialchars($deck_key) ?>"
+                   class="btn btn-outline-secondary">
+                    <?= car_t($t, 'Cancel') ?>
+                </a>
+                <form method="post" action="<?= CAR_PATH_WEB ?>/dash/deck-delete-act">
+                    <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key) ?>">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash" aria-hidden="true"></i>
+                        <?= car_t($t, 'Yes') ?>, <?= car_t($t, 'Delete') ?>
+                    </button>
                 </form>
             </div>
-        <?php } ?>
+        </div>
     </div>
+
 </div>
-<div class="div-secondary">
-    <?php include_once CAR_ROOT_WEB . '/home/secondary.inc'; ?>
-</div>
+
 <?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
