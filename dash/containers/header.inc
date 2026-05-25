@@ -85,6 +85,11 @@
 
         <!-- Navegação principal -->
         <nav class="car-nav-section" aria-label="<?= car_t($t, 'Navigation') ?>">
+            <a class="car-app-nav-item <?= ($dash_active ?? '') === 'home' ? 'active' : '' ?>"
+               href="<?= CAR_PATH_WEB ?>/dash/home">
+                <i class="bi bi-house" aria-hidden="true"></i>
+                <?= car_t($t, 'Dashboard') ?>
+            </a>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'decks' ? 'active' : '' ?>"
                href="<?= CAR_PATH_WEB ?>/dash/deck-list">
                 <i class="bi bi-layers" aria-hidden="true"></i>

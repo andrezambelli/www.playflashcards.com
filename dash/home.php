@@ -31,7 +31,7 @@
 ?>
 <?php
     $header_title    = 'Play Flashcards';
-    $dash_active     = '';
+    $dash_active     = 'home';
     $dash_breadcrumb = [];
     include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
