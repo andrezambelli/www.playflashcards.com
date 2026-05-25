@@ -224,13 +224,6 @@
                 </a>
             </div>
 
-            <div class="border-top pt-3 text-center">
-                <a href="<?= CAR_PATH_WEB ?>/dash/study-delete-act?k=<?= car_htmlspecialchars($stud_key) ?>"
-                   class="small text-secondary text-decoration-none">
-                    <?= car_t($t, 'Delete Study') ?>
-                </a>
-            </div>
-
         </div>
 
         <?php } else { ?>
