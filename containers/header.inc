@@ -133,6 +133,7 @@
                             'fr'    => 'Français',
                             'pt-br' => 'Português',
                         ];
+                        $lang_redirect_url = urlencode(car_current_url());
                     ?>
 
                     <!-- Idioma: dropdown (desktop) -->
@@ -148,7 +149,7 @@
                             <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
-                                   href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>">
+                                   href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>">
                                     <span class="car-text-mono text-secondary" style="width:22px"><?= $lang_labels[$code] ?></span>
                                     <?= $name ?>
                                     <?php if ($active) { ?>
@@ -164,7 +165,7 @@
                     <div class="d-flex d-lg-none align-items-center gap-1 py-2">
                         <i class="bi bi-globe text-secondary me-1" style="font-size:0.8125rem" aria-hidden="true"></i>
                         <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
-                            <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>"
+                            <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
                                class="car-lang-pill <?= $active ? 'active' : '' ?>"
                                title="<?= $name ?>">
                                 <?= $lang_labels[$code] ?>

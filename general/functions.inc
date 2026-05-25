@@ -194,7 +194,7 @@
         }
 
         if ($_new_lang != $_lang) {
-           car_redirect(car_get_base_url(CAR_PATH_WEB) . '/services/change-language-act?lang=' . $_new_lang);
+           car_redirect(car_get_base_url(CAR_PATH_WEB) . '/services/change-language-act?lang=' . $_new_lang . '&redirect_url=' . urlencode(car_current_url()));
         }
     }
 
@@ -249,7 +249,12 @@
      * Retorna a URL do navegador
      */
 	function car_current_url() {
-		$_protocol    = strpos(strtolower($_SERVER['HTTP_HOST']),'localhost') === 0 ? 'http' : 'https';
+		$_protocol = 'http';
+
+		if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443')) {
+			$_protocol = 'https';
+		}
+
 		$_host        = $_SERVER['HTTP_HOST'];
 		$_request_uri = $_SERVER['REQUEST_URI'];
  

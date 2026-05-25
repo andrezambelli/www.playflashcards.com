@@ -58,8 +58,32 @@
 
     // parâmetro explícito tem prioridade (usado em páginas sem prefixo de idioma na URL)
     $param_redirect = car_get_parameter('redirect_url', '');
-    if (!empty($param_redirect) && strpos($param_redirect, CAR_PATH_WEB) === 0) {
-        $redirect = $param_redirect;
+    if (!empty($param_redirect)) {
+        $redirect = car_safe_redirect_url($param_redirect, $redirect);
+
+        $parsed = parse_url($redirect);
+        $path = $parsed['path'] ?? '';
+        $parts = explode('/', ltrim($path, '/'));
+        $valid_langs = ['en', 'pt-br', 'es', 'fr'];
+
+        if (!empty($parts[0]) && in_array($parts[0], $valid_langs)) {
+            $parts[0] = $new_lang;
+            $new_path = '/' . implode('/', $parts);
+            $redirect = '';
+
+            if (!empty($parsed['scheme']) && !empty($parsed['host'])) {
+                $redirect = $parsed['scheme'] . '://' . $parsed['host'];
+                if (!empty($parsed['port'])) {
+                    $redirect .= ':' . $parsed['port'];
+                }
+            }
+
+            $redirect .= $new_path;
+
+            if (!empty($parsed['query'])) {
+                $redirect .= '?' . $parsed['query'];
+            }
+        }
     }
 
     car_redirect($redirect);
