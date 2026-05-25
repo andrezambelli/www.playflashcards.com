@@ -26,6 +26,21 @@
         car_redirect(CAR_PATH_WEB . '/dash/deck-list');
     }
 
+    // verifica o limite de cartões antes de exibir o formulário
+    $user_max_card = car_get_session_attribute('user_max_card', CAR_USER_MAX_CARD);
+
+    $sql = sprintf('select count(*) as count from car_card where user_id = %d and deck_id = %d', $user_id, $deck_id);
+    $result = $mysqli->query($sql);
+    $user_count_card = 0;
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $user_count_card = $row['count'];
+    }
+
+    if ($user_count_card >= $user_max_card) {
+        car_set_session_error_message('dash.card-new.act.error');
+        car_redirect(CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key);
+    }
+
     $card_front = car_get_session_attribute('new_card_front', '');
     $card_back  = car_get_session_attribute('new_card_back', '');
 

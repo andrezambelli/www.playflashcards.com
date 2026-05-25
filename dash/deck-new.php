@@ -4,6 +4,22 @@
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php car_check_login($t); ?>
 <?php
+    $user_id       = car_get_session_attribute('user_id', 0);
+    $user_max_deck = car_get_session_attribute('user_max_deck', CAR_USER_MAX_DECK);
+
+    // verifica o limite antes de exibir o formulário
+    $sql = sprintf('select count(*) as count from car_deck where user_id = %d', $user_id);
+    $result = $mysqli->query($sql);
+    $user_count_deck = 0;
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $user_count_deck = $row['count'];
+    }
+
+    if ($user_count_deck >= $user_max_deck) {
+        car_set_session_error_message('dash.deck-new-act.error');
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+    }
+
     $deck_name    = car_get_session_attribute('new_deck_name', '');
     $deck_desc    = car_get_session_attribute('new_deck_desc', '');
     $deck_bgcolor = car_get_session_attribute('new_deck_bgcolor', CAR_DECK_BGCOLOR_DEFAULT);
