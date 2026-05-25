@@ -129,12 +129,13 @@
     <div class="row g-3 mb-4">
 
         <div class="col-6 col-md-3">
-            <div class="card h-100">
+            <a href="<?= CAR_PATH_WEB ?>/dash/card-list?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="card h-100 text-decoration-none text-body car-card-link">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'Flashcards') ?></div>
                     <div class="h4 fw-semibold mb-0 car-text-mono"><?= $total_cards ?></div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-6 col-md-3">
