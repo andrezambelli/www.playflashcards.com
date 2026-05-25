@@ -33,12 +33,6 @@
         car_redirect(CAR_PATH_WEB . '/dash/deck-list');
     }
 
-    // apagar cartões em branco
-    $sql = sprintf("delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '')",
-                    $deck_id, $user_id);
-    $mysqli->query($sql);
-    $mysqli->commit();
-
     // total de cartões
     $sql = sprintf('select count(*) as count from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
     $result_count = $mysqli->query($sql);
@@ -80,7 +74,7 @@
             <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Flashcards') ?></h1>
             <p class="text-secondary small mb-0"><?= car_htmlspecialchars($deck_name) ?></p>
         </div>
-        <a href="<?= CAR_PATH_WEB ?>/dash/card-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+        <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
            class="btn btn-primary flex-shrink-0">
             <i class="bi bi-plus" aria-hidden="true"></i>
             <?= car_t($t, 'New Flashcard') ?>
@@ -153,7 +147,7 @@
         <div class="text-center py-5 text-secondary mb-4">
             <i class="bi bi-collection fs-1 mb-3 d-block" aria-hidden="true"></i>
             <p class="mb-3"><?= car_t($t, 'This deck has no flashcards.') ?></p>
-            <a href="<?= CAR_PATH_WEB ?>/dash/card-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+            <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
                class="btn btn-primary">
                 <i class="bi bi-plus" aria-hidden="true"></i>
                 <?= car_t($t, 'New Flashcard') ?>

@@ -4,53 +4,23 @@
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php car_check_login($t); ?>
 <?php
-    $user_id       = car_get_session_attribute('user_id', 0);
-    $read_database = car_get_session_attribute('read_database', 'on');
+    $deck_name    = car_get_session_attribute('new_deck_name', '');
+    $deck_desc    = car_get_session_attribute('new_deck_desc', '');
+    $deck_bgcolor = car_get_session_attribute('new_deck_bgcolor', CAR_DECK_BGCOLOR_DEFAULT);
+    $deck_public  = car_get_session_attribute('new_deck_public', '0');
 
-    $deck_key    = car_get_parameter('k', '');
-
-    $deck_id      = 0;
-    $deck_name    = '';
-    $deck_desc    = '';
-    $deck_bgcolor = '';
-    $deck_public  = '0';
-
-    if ($read_database == 'on') {
-        $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_bgcolor, deck_public
-                          from car_deck
-                         where deck_key = '%s' and user_id = %d",
-                        $mysqli->real_escape_string(car_never_null($deck_key)),
-                        $user_id);
-
-        $result = $mysqli->query($sql);
-
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $deck_id      = $row['deck_id'];
-            $deck_name    = $row['deck_name'];
-            $deck_desc    = $row['deck_desc'];
-            $deck_bgcolor = $row['deck_bgcolor'];
-            $deck_public  = $row['deck_public'];
-        }
-
-        if ($deck_id === 0) {
-            car_set_session_error_message('dash.deck-info.not-found');
-            car_redirect(CAR_PATH_WEB . '/dash/deck-list');
-        }
-    } else {
-        $deck_name    = car_get_session_attribute('deck_name', '');
-        $deck_desc    = car_get_session_attribute('deck_desc', '');
-        $deck_bgcolor = car_get_session_attribute('deck_bgcolor', '');
-        $deck_public  = car_get_session_attribute('deck_public', '0');
-    }
-
+    // limpa os valores de repopulação após ler
+    $_SESSION['new_deck_name']    = null;
+    $_SESSION['new_deck_desc']    = null;
+    $_SESSION['new_deck_bgcolor'] = null;
+    $_SESSION['new_deck_public']  = null;
 ?>
 <?php
-    $header_title    = car_t($t, 'Edit Deck') . ' - Play Flashcards';
+    $header_title    = car_t($t, 'New Deck') . ' - Play Flashcards';
     $dash_active     = 'decks';
     $dash_breadcrumb = [
         [car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'],
-        [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],
-        [car_t($t, 'Edit Deck')]
+        [car_t($t, 'New Deck')]
     ];
     include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
 ?>
@@ -60,13 +30,12 @@
     <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
 
     <div class="d-flex justify-content-between align-items-center mb-4 gap-3 flex-wrap">
-        <h1 class="h3 fw-semibold mb-0"><?= car_t($t, 'Edit Deck') ?></h1>
+        <h1 class="h3 fw-semibold mb-0"><?= car_t($t, 'New Deck') ?></h1>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <form action="<?= CAR_PATH_WEB ?>/dash/deck-edit-act" method="post">
-                <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key) ?>">
+            <form action="<?= CAR_PATH_WEB ?>/dash/deck-new-act" method="post">
                 <input type="hidden" name="deck_bgcolor" value="<?= car_htmlspecialchars($deck_bgcolor) ?>">
 
                 <div class="mb-3">
@@ -108,7 +77,7 @@
                     <button type="submit" class="btn btn-primary">
                         <?= car_t($t, 'Save Deck') ?>
                     </button>
-                    <a href="<?= CAR_PATH_WEB . '/dash/deck?k=' . car_htmlspecialchars($deck_key) ?>"
+                    <a href="<?= CAR_PATH_WEB ?>/dash/deck-list"
                        class="btn btn-outline-secondary">
                         <?= car_t($t, 'To Back') ?>
                     </a>

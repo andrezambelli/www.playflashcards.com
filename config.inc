@@ -26,7 +26,6 @@
     const CAR_USER_MAX_STUDY = 500; // precisa ser a mesma definição do banco de dados
     const CAR_USER_MAX_CARD = 100;  // precisa ser a mesma definição do banco de dados
 
-    const CAR_DECK_NAME_DEFAULT = 'NEW_DELETE_GROUP';
     const CAR_DECK_BGCOLOR_DEFAULT = 'fef161';
 
     const CAR_SYSTEM_LANG_DEFAULT = 'en';

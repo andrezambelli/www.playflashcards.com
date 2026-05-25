@@ -42,12 +42,14 @@
     $routes['dash/home'] = 'dash/home.php';
     $routes['dash/deck-list'] = 'dash/deck-list.php';
     $routes['dash/deck'] = 'dash/deck.php';
+    $routes['dash/deck-new'] = 'dash/deck-new.php';
     $routes['dash/deck-new-act'] = 'dash/deck-new-act.php';
     $routes['dash/deck-edit'] = 'dash/deck-edit.php';
     $routes['dash/deck-edit-act'] = 'dash/deck-edit-act.php';
     $routes['dash/deck-delete'] = 'dash/deck-delete.php';
     $routes['dash/deck-delete-act'] = 'dash/deck-delete-act.php';
     $routes['dash/card-list'] = 'dash/card-list.php';
+    $routes['dash/card-new'] = 'dash/card-new.php';
     $routes['dash/card-new-act'] = 'dash/card-new-act.php';
     $routes['dash/card-edit'] = 'dash/card-edit.php';
     $routes['dash/card-edit-act'] = 'dash/card-edit-act.php';

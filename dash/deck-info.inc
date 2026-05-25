@@ -71,9 +71,7 @@
 ?>
 
 <?php if ($_found) { ?>
-    <?php if ($_deck_name != CAR_DECK_NAME_DEFAULT) { ?>
-        <a href="<?= CAR_PATH_WEB; ?>/dash/deck?k=<?= $deck_key; ?>" class="button w100p">
-            <?= car_htmlspecialchars($_deck_name); ?>
-        </a>
-    <?php } ?>
+    <a href="<?= CAR_PATH_WEB; ?>/dash/deck?k=<?= $deck_key; ?>" class="button w100p">
+        <?= car_htmlspecialchars($_deck_name); ?>
+    </a>
 <?php } ?>

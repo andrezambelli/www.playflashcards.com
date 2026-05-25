@@ -24,7 +24,7 @@
     <div class="text-center py-5 text-secondary">
         <i class="bi bi-layers fs-1 mb-3 d-block" aria-hidden="true"></i>
         <p class="mb-3"><?= car_t($t, 'dash.home.no-decks') ?></p>
-        <a href="<?= CAR_PATH_WEB ?>/dash/deck-new-act" class="btn btn-primary">
+        <a href="<?= CAR_PATH_WEB ?>/dash/deck-new" class="btn btn-primary">
             <i class="bi bi-plus" aria-hidden="true"></i>
             <?= car_t($t, 'New Deck') ?>
         </a>

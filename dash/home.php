@@ -39,7 +39,7 @@
             <p class="text-secondary small mb-0">— <?= car_t($t, 'dash.home.cards-due') ?></p>
         </div>
         <div class="d-flex gap-2">
-            <a href="<?= CAR_PATH_WEB ?>/dash/deck-new-act" class="btn btn-outline-secondary">
+            <a href="<?= CAR_PATH_WEB ?>/dash/deck-new" class="btn btn-outline-secondary">
                 <i class="bi bi-plus" aria-hidden="true"></i>
                 <?= car_t($t, 'New Deck') ?>
             </a>

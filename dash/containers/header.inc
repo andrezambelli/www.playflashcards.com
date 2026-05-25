@@ -108,7 +108,7 @@
             </a>
             <?php } ?>
             <a class="car-app-nav-item text-secondary"
-               href="<?= CAR_PATH_WEB ?>/dash/deck-new-act">
+               href="<?= CAR_PATH_WEB ?>/dash/deck-new">
                 <i class="bi bi-plus" aria-hidden="true"></i>
                 <?= car_t($t, 'New Deck') ?>
             </a>

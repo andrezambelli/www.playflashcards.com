@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="d-flex gap-2 flex-shrink-0">
-                <a href="<?= CAR_PATH_WEB ?>/dash/card-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
+                <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
                    class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-plus" aria-hidden="true"></i>
                     <?= car_t($t, 'New Flashcard') ?>

@@ -114,7 +114,7 @@
 		if ($fwd == 'view') {
 			car_redirect(CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key); // direciona para a view de grupo
 		} else {
-			car_redirect(CAR_PATH_WEB . '/dash/card-new-act?k=' . $deck_key); // adiciona um novo card
+			car_redirect(CAR_PATH_WEB . '/dash/card-new?k=' . $deck_key); // abre formulário de novo cartão
 		}
 	} else {
 		car_set_session_attribute('card_front', $card_front);
