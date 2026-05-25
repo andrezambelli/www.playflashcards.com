@@ -707,6 +707,7 @@ html {
     align-items: center;
     padding: 2rem 1.5rem;
     gap: 2rem;
+    perspective: 1200px;
 }
 .car-play-btn {
     flex: 1;
@@ -777,6 +778,14 @@ html {
 .car-flashcard:hover {
     transform: translateY(-2px);
     box-shadow: var(--app-shadow-lg);
+}
+.car-flashcard.flip-out {
+    transform: rotateY(90deg) !important;
+    transition: transform 180ms ease-in !important;
+}
+.car-flashcard.flip-start {
+    transform: rotateY(-90deg) !important;
+    transition: none !important;
 }
 .car-flashcard.flipped {
     background: #1A1C23;

@@ -264,10 +264,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var exitUrl    = <?= json_encode($_deck_url) ?>;
 
     function flip() {
-        flipped = !flipped;
-        card.classList.toggle('flipped', flipped);
-        cardSide.textContent = flipped ? labelBack : labelFront;
-        cardText.textContent = flipped ? backText : frontText;
+        if (card.classList.contains('flip-out') || card.classList.contains('flip-start')) return;
+        card.classList.add('flip-out');
+        setTimeout(function () {
+            flipped = !flipped;
+            card.classList.toggle('flipped', flipped);
+            cardSide.textContent = flipped ? labelBack : labelFront;
+            cardText.textContent = flipped ? backText : frontText;
+            card.classList.add('flip-start');
+            card.classList.remove('flip-out');
+            void card.offsetWidth; // força reflow para o jump sem transição
+            card.classList.remove('flip-start');
+        }, 180);
     }
 
     function answer(value) {
