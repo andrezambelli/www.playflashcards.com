@@ -159,7 +159,7 @@
             <div class="car-flashcard-hint"><?= car_t($t, 'dash.study.flip-hint') ?></div>
         </div>
 
-        <div id="play_actions" class="d-flex gap-3 w-100 d-none" style="max-width: 640px">
+        <div id="play_actions" class="d-flex gap-3 w-100" style="max-width: 640px">
             <button type="button" id="btn_false" class="car-play-btn dont">
                 <span><?= car_t($t, 'False Btn') ?></span>
                 <span class="car-play-btn-kbd">←</span>
@@ -270,9 +270,6 @@ document.addEventListener('DOMContentLoaded', function () {
         card.classList.toggle('flipped', flipped);
         cardSide.textContent = flipped ? labelBack : labelFront;
         cardText.textContent = flipped ? backText : frontText;
-        if (flipped) {
-            actions.classList.remove('d-none');
-        }
     }
 
     function answer(value) {
