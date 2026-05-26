@@ -53,28 +53,12 @@
     <div class="card mb-4">
         <div class="card-body">
             <div class="fw-semibold small mb-1"><?= car_t($t, 'profile.srs.pending-title') ?></div>
-            <p class="form-text mb-0"><?= car_t($t, 'profile.srs.pending-rule') ?></p>
+            <p class="form-text mb-0"><?= car_t_html($t, 'profile.srs.pending-rule') ?></p>
         </div>
     </div>
 
     <form id="srs-form" action="<?= CAR_PATH_WEB ?>/profile/srs-act" method="post">
         <div class="d-flex flex-column gap-2 mb-3">
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-baseline gap-2 mb-1">
-                        <div class="fw-semibold small"><?= car_t($t, 'Number of Cards per Study Session') ?></div>
-                        <div class="d-flex align-items-baseline gap-1 flex-shrink-0">
-                            <span id="srs_limit_val" class="car-text-mono" style="font-size: 1.375rem; font-weight: 500"><?= (int) $srs_limit ?></span>
-                            <span class="small text-secondary"><?= car_t($t, 'profile.srs.unit-cards') ?></span>
-                        </div>
-                    </div>
-                    <div class="form-text mb-3"><?= car_t($t, 'profile.srs.limit-definition') ?></div>
-                    <input type="range" id="srs_limit" name="srs_limit"
-                           min="1" max="50" value="<?= (int) $srs_limit ?>"
-                           class="form-range">
-                </div>
-            </div>
 
             <div class="card">
                 <div class="card-body">
@@ -120,6 +104,22 @@
                     <div class="form-text mb-3"><?= car_t($t, 'profile.srs.days-definition') ?></div>
                     <input type="range" id="srs_days" name="srs_days"
                            min="0" max="60" value="<?= (int) $srs_days ?>"
+                           class="form-range">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline gap-2 mb-1">
+                        <div class="fw-semibold small"><?= car_t($t, 'Number of Cards per Study Session') ?></div>
+                        <div class="d-flex align-items-baseline gap-1 flex-shrink-0">
+                            <span id="srs_limit_val" class="car-text-mono" style="font-size: 1.375rem; font-weight: 500"><?= (int) $srs_limit ?></span>
+                            <span class="small text-secondary"><?= car_t($t, 'profile.srs.unit-cards') ?></span>
+                        </div>
+                    </div>
+                    <div class="form-text mb-3"><?= car_t($t, 'profile.srs.limit-definition') ?></div>
+                    <input type="range" id="srs_limit" name="srs_limit"
+                           min="1" max="50" value="<?= (int) $srs_limit ?>"
                            class="form-range">
                 </div>
             </div>

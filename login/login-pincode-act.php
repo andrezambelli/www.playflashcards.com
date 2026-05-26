@@ -29,9 +29,9 @@
 			include_once CAR_ROOT_WEB . '/login/user-insert-act.inc';
 
 			if (empty($redirect_url)) {
-				$redirect = CAR_PATH_WEB . '/dash/deck-list';
+				$redirect = CAR_PATH_WEB . '/dash/home';
 			} else {
-				$redirect = car_safe_redirect_url($redirect_url, CAR_PATH_WEB . '/dash/deck-list');
+				$redirect = car_safe_redirect_url($redirect_url, CAR_PATH_WEB . '/dash/home');
 			}
 		} else {
 			car_set_session_error_message('login.login-pincode-act.invalid');

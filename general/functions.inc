@@ -170,6 +170,15 @@
         }
     }
 
+    // variante que não escapa HTML — usar apenas em strings de tradução com HTML seguro e controlado
+    function car_t_html($_t, $_key) {
+        if (isset($_t[$_key])) {
+            return $_t[$_key];
+        } else {
+            return '*' . $_key;
+        }
+    }
+
     /*
      * Se o idioma da URL for diferente do idioma do parâmetro,
      * Então redireciona para a mesma página do idioma do parâmtro
