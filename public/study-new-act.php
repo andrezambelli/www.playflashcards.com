@@ -40,7 +40,8 @@
 		// Procurando o deck_id
 		$sql = sprintf("select deck_id
                           from car_deck
-                         where deck_key = '%s'",
+                         where deck_key = '%s'
+                           and deck_public = 1",
                         $mysqli->real_escape_string(car_never_null($deck_key)));
 		
 		$result = $mysqli->query($sql);
@@ -48,6 +49,11 @@
 		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$deck_id = $row['deck_id'];
 		}
+
+        if ($deck_id === 0) {
+            include_once CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
 
         // Apaga todos os cards em branco do usuarios
         $_sql = sprintf("delete from car_card

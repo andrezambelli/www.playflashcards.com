@@ -30,6 +30,11 @@
 			$stud_id = $row['stud_id'];
 			$deck_key = $row['deck_key'];
 		}
+
+        if ($stud_id === 0) {
+            include_once CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
 		
 		// Apagando a sessão do estudo
 		$sql = sprintf('delete from car_study_session

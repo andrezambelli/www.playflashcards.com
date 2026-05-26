@@ -53,6 +53,11 @@
 		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$deck_id = $row['deck_id'];
 		}
+
+        if ($deck_id === 0) {
+            include_once CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
 		
 		// Antes de criar, contar a quantidade de estudos pendentes desde usuario e grupo
 		$sql = sprintf('select count(*) as count

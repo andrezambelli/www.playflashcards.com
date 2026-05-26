@@ -156,6 +156,7 @@ $t = [
     'Sign in'=>"Se connecter",
     'Import'=>"Importer",
     'Important'=>"Important",
+    'footer.created-by'=>"créé par",
     'include.footer.cookie-warning'=>"Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser le trafic du site Web. En cliquant sur 'Accepter', vous consentez à l'utilisation de cookies.",
     'Incorrectly Answered'=>"Réponse incorrecte",
     'lang'=>"fr",

@@ -215,13 +215,6 @@
 
             <?php } ?>
 
-            <?php } else { ?>
-
-            <div class="text-center text-secondary py-5">
-                <i class="bi bi-exclamation-circle fs-1 mb-3 d-block" aria-hidden="true"></i>
-                <p><?= car_t($t, 'Deck not found.') ?></p>
-            </div>
-
             <?php } ?>
 
         </div>

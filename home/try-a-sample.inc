@@ -1,85 +1,65 @@
 <?php /** @var array $t */ ?>
-<section class="py-5">
+<?php
+    $sample_decks_data = json_decode(file_get_contents(CAR_ROOT_WEB . '/assets/data/try-a-sample.json'), true) ?? [];
+    $sample_decks      = array_values(array_filter(
+        $sample_decks_data['decks'] ?? [],
+        fn($deck) => ($deck['active'] ?? true) === true
+                  && ($deck['home'] ?? true) === true
+                  && ($deck['lang'] ?? 'en') === $t['lang']
+    ));
+    if (empty($sample_decks)) {
+        $sample_decks = array_values(array_filter(
+            $sample_decks_data['decks'] ?? [],
+            fn($deck) => ($deck['active'] ?? true) === true
+                      && ($deck['home'] ?? true) === true
+                      && ($deck['lang'] ?? 'en') === 'en'
+        ));
+    }
+?>
+<section id="try-a-sample" class="py-5">
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="h3 fw-bold mb-0"><?= car_t($t, 'home.sample-decks.title') ?></h2>
-            <a href="#" class="text-body-secondary text-decoration-none small d-flex align-items-center gap-1">
-                <?= car_t($t, 'home.sample-decks.all') ?>
-                <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
         </div>
 
         <div class="row g-4">
 
+            <?php foreach ($sample_decks as $sample_deck) { ?>
+            <?php
+                $sample_name = $sample_deck['title'] ?? '';
+                $sample_desc = $sample_deck['desc'] ?? '';
+                $sample_link = $sample_deck['link'] ?? '#';
+                if (strpos($sample_link, '/') === 0) {
+                    $sample_link = CAR_PATH_WEB . $sample_link;
+                }
+            ?>
             <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-center gap-1 py-1 rounded-pill bg-primary-subtle car-label-uc text-primary mb-3">
-                            <i class="bi bi-globe2" aria-hidden="true"></i>
-                            <?= car_t($t, 'home.sample-decks.public-badge') ?>
-                        </div>
-                        <h3 class="h5 fw-bold mb-1">Car Brands and Origins</h3>
-                        <p class="text-body-secondary small flex-grow-1">Country of origin for every major automaker.</p>
-                        <div class="d-flex gap-4 mt-2">
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.cards-label') ?></p>
-                                <p class="fw-bold mb-0">64</p>
+                <a href="<?= car_htmlspecialchars($sample_link) ?>" class="card h-100 text-decoration-none text-body car-card-link">
+                    <div class="card-body d-flex flex-column gap-3">
+                        <div>
+                            <div class="car-label-uc d-flex align-items-center gap-1 mb-1">
+                                <i class="bi bi-globe2" aria-hidden="true"></i>
+                                <?= car_t($t, 'home.sample-decks.public-badge') ?>
                             </div>
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.accuracy-label') ?></p>
-                                <p class="fw-bold mb-0">94%</p>
-                            </div>
+                            <div class="fw-semibold"><?= car_htmlspecialchars($sample_name) ?></div>
+                            <?php if (!empty($sample_desc)) { ?>
+                                <div class="small text-secondary text-truncate mt-1"><?= car_htmlspecialchars($sample_desc) ?></div>
+                            <?php } ?>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-center gap-1 py-1 rounded-pill bg-primary-subtle car-label-uc text-primary mb-3">
-                            <i class="bi bi-globe2" aria-hidden="true"></i>
-                            <?= car_t($t, 'home.sample-decks.public-badge') ?>
-                        </div>
-                        <h3 class="h5 fw-bold mb-1">FIFA World Cup Champions</h3>
-                        <p class="text-body-secondary small flex-grow-1">Winners, hosts and finals from 1930 to present.</p>
-                        <div class="d-flex gap-4 mt-2">
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.cards-label') ?></p>
-                                <p class="fw-bold mb-0">22</p>
-                            </div>
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.accuracy-label') ?></p>
-                                <p class="fw-bold mb-0">88%</p>
+                        <div class="mt-auto">
+                            <div class="d-flex gap-4 mt-3">
+                                <div>
+                                    <div class="car-label-uc"><?= car_t($t, 'home.sample-decks.cards-label') ?></div>
+                                    <div class="car-text-mono small fw-medium"><?= (int) ($sample_deck['cards'] ?? 0) ?></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-center gap-1 py-1 rounded-pill bg-primary-subtle car-label-uc text-primary mb-3">
-                            <i class="bi bi-globe2" aria-hidden="true"></i>
-                            <?= car_t($t, 'home.sample-decks.public-badge') ?>
-                        </div>
-                        <h3 class="h5 fw-bold mb-1">Countries and Capitals</h3>
-                        <p class="text-body-secondary small flex-grow-1">Capital cities for 200 countries worldwide.</p>
-                        <div class="d-flex gap-4 mt-2">
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.cards-label') ?></p>
-                                <p class="fw-bold mb-0">47</p>
-                            </div>
-                            <div>
-                                <p class="car-label-uc mb-1"><?= car_t($t, 'home.sample-decks.accuracy-label') ?></p>
-                                <p class="fw-bold mb-0">81%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
 
         </div>
     </div>

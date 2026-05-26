@@ -40,8 +40,8 @@
     }
 
     if ($deck_id === 0) {
-        car_set_session_error_message('dash.deck-info.not-found');
-        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+        include_once CAR_ROOT_WEB . '/common/404.php';
+        exit;
     }
 
     // total de cartões

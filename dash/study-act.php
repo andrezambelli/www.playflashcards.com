@@ -36,6 +36,11 @@
             $stud_id = $row['stud_id'];
         }
 
+        if ($stud_id === 0) {
+            include_once CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
+
         // Procurando o card_id na sessão do estudo
         $sql = sprintf('select a.card_id,
                                b.card_true,

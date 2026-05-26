@@ -1,0 +1,124 @@
+{
+    "decks": [
+        {
+            "id": 1,
+            "active": true,
+            "home": true,
+            "lang": "en",
+            "title": "Car Brands and Origins",
+            "desc": "Country of origin for every major automaker.",
+            "cards": 64,
+            "link": "https://www.playflashcards.com/deck/mxfuns6df2vs/car-brands-and-origins"
+        },
+        {
+            "id": 2,
+            "active": true,
+            "home": true,
+            "lang": "en",
+            "title": "Empowered Women Around the World",
+            "desc": "Influential women who shaped history and continue to make a difference.",
+            "cards": 12,
+            "link": "https://www.playflashcards.com/deck/np6lwmd8gr14/empowered-women-around-the-world"
+        },
+        {
+            "id": 3,
+            "active": true,
+            "home": true,
+            "lang": "en",
+            "title": "FIFA World Cup Champions",
+            "desc": "Winners, hosts and finals from 1930 to present.",
+            "cards": 21,
+            "link": "https://www.playflashcards.com/deck/mwj34xtpug9e/fifa-world-cup-champions"
+        },
+        {
+            "id": 4,
+            "active": true,
+            "home": true,
+            "lang": "es",
+            "title": "Marcas de autos y orígenes",
+            "desc": "País de origen de las principales automotrices.",
+            "cards": 64,
+            "link": "https://www.playflashcards.com/deck/mxfuns6df2vs/car-brands-and-origins"
+        },
+        {
+            "id": 5,
+            "active": true,
+            "home": true,
+            "lang": "es",
+            "title": "Mujeres empoderadas alrededor del mundo",
+            "desc": "Mujeres influyentes que marcaron la historia y siguen generando impacto.",
+            "cards": 12,
+            "link": "https://www.playflashcards.com/deck/np6lwmd8gr14/empowered-women-around-the-world"
+        },
+        {
+            "id": 6,
+            "active": true,
+            "home": true,
+            "lang": "es",
+            "title": "Campeones de la Copa Mundial FIFA",
+            "desc": "Ganadores, sedes y finales desde 1930 hasta hoy.",
+            "cards": 21,
+            "link": "https://www.playflashcards.com/deck/mwj34xtpug9e/fifa-world-cup-champions"
+        },
+        {
+            "id": 7,
+            "active": true,
+            "home": true,
+            "lang": "fr",
+            "title": "Marques automobiles et origines",
+            "desc": "Pays d'origine des principaux constructeurs automobiles.",
+            "cards": 64,
+            "link": "https://www.playflashcards.com/deck/mxfuns6df2vs/car-brands-and-origins"
+        },
+        {
+            "id": 8,
+            "active": true,
+            "home": true,
+            "lang": "fr",
+            "title": "Femmes influentes dans le monde",
+            "desc": "Femmes influentes qui ont marqué l'histoire et continuent d'inspirer.",
+            "cards": 12,
+            "link": "https://www.playflashcards.com/deck/np6lwmd8gr14/empowered-women-around-the-world"
+        },
+        {
+            "id": 9,
+            "active": true,
+            "home": true,
+            "lang": "fr",
+            "title": "Champions de la Coupe du monde FIFA",
+            "desc": "Vainqueurs, pays hôtes et finales de 1930 à aujourd'hui.",
+            "cards": 21,
+            "link": "https://www.playflashcards.com/deck/mwj34xtpug9e/fifa-world-cup-champions"
+        },
+        {
+            "id": 10,
+            "active": true,
+            "home": true,
+            "lang": "pt-br",
+            "title": "Marcas de carros e origens",
+            "desc": "País de origem das principais montadoras.",
+            "cards": 64,
+            "link": "https://www.playflashcards.com/deck/mxfuns6df2vs/car-brands-and-origins"
+        },
+        {
+            "id": 11,
+            "active": true,
+            "home": true,
+            "lang": "pt-br",
+            "title": "Mulheres inspiradoras pelo mundo",
+            "desc": "Mulheres influentes que marcaram a história e continuam gerando impacto.",
+            "cards": 12,
+            "link": "https://www.playflashcards.com/deck/np6lwmd8gr14/empowered-women-around-the-world"
+        },
+        {
+            "id": 12,
+            "active": true,
+            "home": true,
+            "lang": "pt-br",
+            "title": "Campeões da Copa do Mundo FIFA",
+            "desc": "Vencedores, sedes e finais de 1930 até hoje.",
+            "cards": 21,
+            "link": "https://www.playflashcards.com/deck/mwj34xtpug9e/fifa-world-cup-champions"
+        }
+    ]
+}

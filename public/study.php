@@ -64,6 +64,11 @@
             $has_study  = true;
         }
 
+        if (!$has_study) {
+            include_once CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
+
         if ($has_study && empty($stud_end)) {
             $sql = sprintf("select b.stse_order,
                                    c.card_front,
@@ -119,6 +124,11 @@
                 $stud_end = $row['stud_end'];
             }
         }
+    }
+
+    if (!$has_study) {
+        include_once CAR_ROOT_WEB . '/common/404.php';
+        exit;
     }
 
     $asset_v = CAR_PROD ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());

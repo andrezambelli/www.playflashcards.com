@@ -42,7 +42,7 @@
 
             <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2 gap-md-0 small text-secondary">
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-3 flex-wrap">
                     <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Contact') ?></a>
                     <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions' ?>"><?= car_t($t, 'Terms') ?></a>
                     <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy' ?>"><?= car_t($t, 'Privacy') ?></a>
@@ -53,6 +53,14 @@
                     <a href="https://www.threads.net/@play_flashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no Threads" class="d-none d-md-inline text-secondary">
                         <i class="bi bi-threads" aria-hidden="true"></i>
                     </a>
+                    <span aria-hidden="true">·</span>
+                    <span>
+                        <?= car_t($t, 'footer.created-by') ?>
+                        <a class="text-decoration-none text-secondary"
+                           href="https://www.onepropage.com.br"
+                           target="_blank"
+                           rel="noopener">One PRO Page</a>
+                    </span>
                 </div>
 
             </div>

@@ -155,6 +155,7 @@ $t = [
     'Sign in'=>'Sign in',
     'Import'=>'Import',
     'Important'=>'Important',
+    'footer.created-by'=>'created by',
     'include.footer.cookie-warning'=>'We use cookies to enhance your browsing experience and analyze website traffic. By clicking "Accept," you consent to the use of cookies.',
     'Incorrectly Answered'=>'Incorrectly Answered',
     'lang'=>'en',

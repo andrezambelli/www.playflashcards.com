@@ -45,6 +45,11 @@
 				$deck_key = $row['deck_key'];
 			}
 
+            if ($deck_id === 0) {
+                include_once CAR_ROOT_WEB . '/common/404.php';
+                exit;
+            }
+
             // Atualizando o cartão
             $sql = sprintf("update car_card
                                set card_front = '%s',

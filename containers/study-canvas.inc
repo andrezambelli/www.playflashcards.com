@@ -156,19 +156,6 @@
 
         </div>
 
-        <?php } else { ?>
-
-        <div class="text-center text-secondary py-5">
-            <i class="bi bi-exclamation-circle fs-1 mb-3 d-block" aria-hidden="true"></i>
-            <p><?= car_t($t, 'Study not found.') ?></p>
-            <?php if (!$_is_public) { ?>
-            <!-- área logada: link de retorno para a lista de baralhos -->
-            <a href="<?= CAR_PATH_WEB ?>/dash/deck-list" class="btn btn-outline-secondary btn-sm">
-                <?= car_t($t, 'Decks') ?>
-            </a>
-            <?php } ?>
-        </div>
-
         <?php } ?>
 
     </div>
