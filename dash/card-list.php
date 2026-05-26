@@ -220,4 +220,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>
+        </div><!-- .car-app-page -->
+
+    </div><!-- coluna principal -->
+
+</div><!-- .car-app-shell -->
+
+<?php include CAR_ROOT_WEB . '/dash/sidebar.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/containers/footer.inc'; ?>

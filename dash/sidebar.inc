@@ -1,12 +1,6 @@
 <?php /** @var array $t */ ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 
-        </div><!-- .car-app-page -->
-
-    </div><!-- coluna principal -->
-
-</div><!-- .car-app-shell -->
-
 <!-- Sidebar mobile (offcanvas) -->
 <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="car-mobile-sidebar" style="width: 260px">
     <div class="offcanvas-header border-bottom py-2">
@@ -74,9 +68,3 @@
 
     </div>
 </div>
-
-<?php include CAR_ROOT_WEB . '/containers/footer-html.inc'; ?>
-
-</body>
-</html>
-<?php include_once CAR_ROOT_WEB . '/services/set-user-last-access-act.inc'; ?>
