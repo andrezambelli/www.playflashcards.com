@@ -3,16 +3,18 @@
     $_dg_user_id = car_get_session_attribute('user_id', 0);
     $_dg_decks   = [];
 
-    // configuração SRS do usuário para calcular pendente por baralho
-    $_dg_srs_rate     = CAR_USER_SRS_RATE;
-    $_dg_srs_sequence = CAR_USER_SRS_SEQUENCE;
-    $_dg_srs_days     = CAR_USER_SRS_DAYS;
-    $_dg_srs_result   = $mysqli->query(sprintf('select user_srs_rate, user_srs_sequence, user_srs_days
-                                                   from car_user where user_id = %d', $_dg_user_id));
-    if ($_dg_srs_row = $_dg_srs_result->fetch_array(MYSQLI_ASSOC)) {
-        $_dg_srs_rate     = (int) $_dg_srs_row['user_srs_rate'];
-        $_dg_srs_sequence = (int) $_dg_srs_row['user_srs_sequence'];
-        $_dg_srs_days     = (int) $_dg_srs_row['user_srs_days'];
+    // usa settings SRS passados pelo chamador (ex: home.php) ou busca do banco
+    if (!isset($_dg_srs_rate)) {
+        $_dg_srs_rate     = CAR_USER_SRS_RATE;
+        $_dg_srs_sequence = CAR_USER_SRS_SEQUENCE;
+        $_dg_srs_days     = CAR_USER_SRS_DAYS;
+        $_dg_srs_result   = $mysqli->query(sprintf('select user_srs_rate, user_srs_sequence, user_srs_days
+                                                       from car_user where user_id = %d', $_dg_user_id));
+        if ($_dg_srs_row = $_dg_srs_result->fetch_array(MYSQLI_ASSOC)) {
+            $_dg_srs_rate     = (int) $_dg_srs_row['user_srs_rate'];
+            $_dg_srs_sequence = (int) $_dg_srs_row['user_srs_sequence'];
+            $_dg_srs_days     = (int) $_dg_srs_row['user_srs_days'];
+        }
     }
 
     $_dg_sql = sprintf('select d.deck_key,
@@ -22,17 +24,19 @@
                                count(c.card_id) as total_cards,
                                coalesce(sum(c.card_true), 0) as total_true,
                                coalesce(sum(c.card_false), 0) as total_false,
-                               (select count(*)
-                                  from car_card c2
-                                 where c2.deck_id = d.deck_id
-                                   and c2.user_id = d.user_id
-                                   and (c2.card_rate < %d
-                                        or c2.card_sequence < %d
-                                        or c2.card_last_study < DATE_SUB(NOW(), INTERVAL %d DAY))
-                               ) as pending_cards
+                               coalesce(p.pending_cards, 0) as pending_cards
                           from car_deck d
                           left join car_card c on c.deck_id = d.deck_id
-                                                and c.user_id = d.user_id
+                                               and c.user_id = d.user_id
+                          left join (
+                            select deck_id, count(*) as pending_cards
+                              from car_card
+                             where user_id = %d
+                               and (card_rate < %d
+                                    or card_sequence < %d
+                                    or card_last_study < DATE_SUB(NOW(), INTERVAL %d DAY))
+                             group by deck_id
+                          ) p on p.deck_id = d.deck_id
                          where d.user_id = %d
                          group by d.deck_id,
                                   d.deck_key,
@@ -40,7 +44,7 @@
                                   d.deck_desc,
                                   d.deck_public
                          order by d.deck_name',
-                        $_dg_srs_rate, $_dg_srs_sequence, $_dg_srs_days, $_dg_user_id);
+                        $_dg_user_id, $_dg_srs_rate, $_dg_srs_sequence, $_dg_srs_days, $_dg_user_id);
 
     $_dg_result = $mysqli->query($_dg_sql);
     while ($_dg_row = $_dg_result->fetch_array(MYSQLI_ASSOC)) {
@@ -104,9 +108,7 @@
                             </div>
                             <div>
                                 <div class="car-label-uc"><?= car_t($t, 'dash.home.due') ?></div>
-                                <div class="car-text-mono small fw-medium <?= (int) $_dg_deck['pending_cards'] > 0 ? '' : 'text-secondary' ?>">
-                                    <?= (int) $_dg_deck['pending_cards'] > 0 ? (int) $_dg_deck['pending_cards'] : '—' ?>
-                                </div>
+                                <div class="car-text-mono small fw-medium"><?= (int) $_dg_deck['pending_cards'] ?></div>
                             </div>
                         </div>
                     </div>
