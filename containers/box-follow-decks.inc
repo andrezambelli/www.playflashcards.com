@@ -5,7 +5,7 @@
 ?>
 <?php if ($result->num_rows > 0) { ?>
 <div class="card">
-    <div class="card-header fw-medium"><?= car_t($t, 'Samples') ?></div>
+    <div class="card-header fw-medium"><?= car_t($t, 'public.deck.more-decks') ?></div>
     <div class="list-group list-group-flush">
         <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)) { ?>
         <a href="<?= CAR_PATH_WEB . '/deck/' . $row['deck_key'] ?>"

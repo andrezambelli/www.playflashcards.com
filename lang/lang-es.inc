@@ -283,4 +283,5 @@ $t = [
     'home.sample-decks.cards-label'=>'Tarjetas',
     'home.sample-decks.accuracy-label'=>'Precisión',
     'public.deck.signup-desc'=>'Crea una cuenta gratuita para guardar estudios, registrar tu precisión y crear tus propios mazos de tarjetas.',
+    'public.deck.more-decks'=>'Más mazos',
     ];

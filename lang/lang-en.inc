@@ -283,4 +283,5 @@ $t = [
     'home.sample-decks.cards-label'=>'Cards',
     'home.sample-decks.accuracy-label'=>'Accuracy',
     'public.deck.signup-desc'=>'Create a free account to save studies, track your accuracy and build your own flashcard decks.',
+    'public.deck.more-decks'=>'More decks',
     ];

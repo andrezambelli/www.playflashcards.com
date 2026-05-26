@@ -283,4 +283,5 @@ $t = [
     'home.sample-decks.cards-label'=>'Cartões',
     'home.sample-decks.accuracy-label'=>'Acerto',
     'public.deck.signup-desc'=>'Crie uma conta gratuita para salvar estudos, acompanhar seu acerto e criar seus próprios baralhos de flashcards.',
+    'public.deck.more-decks'=>'Mais baralhos',
     ];

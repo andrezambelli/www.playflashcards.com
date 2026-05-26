@@ -284,4 +284,5 @@ $t = [
     'home.sample-decks.cards-label'=>'Cartes',
     'home.sample-decks.accuracy-label'=>'Précision',
     'public.deck.signup-desc'=>'Créez un compte gratuit pour sauvegarder des études, suivre votre précision et créer vos propres paquets de cartes.',
+    'public.deck.more-decks'=>'Plus de paquets',
     ];
