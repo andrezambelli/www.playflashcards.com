@@ -121,7 +121,7 @@
         <?php if (!empty($deck_key)) { ?>
         <a href="<?= car_htmlspecialchars($_deck_url) ?>"
            class="btn btn-sm btn-link text-secondary text-decoration-none d-inline-flex align-items-center gap-1 px-0">
-            <i class="bi bi-x" aria-hidden="true"></i>
+            <span class="car-kbd">ESC</span>
             <?= car_t($t, 'dash.study.exit') ?>
         </a>
         <?php } ?>
@@ -172,7 +172,7 @@
 
         <div class="d-none d-md-flex gap-4 text-secondary" style="font-size: 0.75rem">
             <div class="d-flex align-items-center gap-2">
-                <span class="car-kbd">SPACE</span>
+                <span class="car-kbd"><?= car_t($t, 'dash.study.key-space') ?></span>
                 <?= car_t($t, 'Front') ?> / <?= car_t($t, 'Back') ?>
             </div>
             <div class="d-flex align-items-center gap-2">
@@ -256,16 +256,22 @@ document.addEventListener('keydown', function (e) {
 <?php if ($has_study && $has_card) { ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    var card       = document.getElementById('car_flashcard');
-    var actions    = document.getElementById('play_actions');
-    var cardSide   = document.getElementById('card_side');
-    var cardText   = document.getElementById('card_text');
-    var flipped    = false;
-    var frontText  = <?= json_encode($card_front) ?>;
-    var backText   = <?= json_encode($card_back) ?>;
-    var labelFront = <?= json_encode(car_t($t, 'Front')) ?>;
-    var labelBack  = <?= json_encode(car_t($t, 'Back')) ?>;
-    var exitUrl    = <?= json_encode($_deck_url) ?>;
+    var card            = document.getElementById('car_flashcard');
+    var actions         = document.getElementById('play_actions');
+    var cardSide        = document.getElementById('card_side');
+    var cardText        = document.getElementById('card_text');
+    var btnFalseText    = document.querySelector('#btn_false span:first-child');
+    var btnTrueText     = document.querySelector('#btn_true span:first-child');
+    var flipped         = false;
+    var frontText       = <?= json_encode($card_front) ?>;
+    var backText        = <?= json_encode($card_back) ?>;
+    var labelFront      = <?= json_encode(car_t($t, 'Front')) ?>;
+    var labelBack       = <?= json_encode(car_t($t, 'Back')) ?>;
+    var labelFalse      = <?= json_encode(car_t($t, 'False Btn')) ?>;
+    var labelTrue       = <?= json_encode(car_t($t, 'True Btn')) ?>;
+    var labelFalseFlip  = <?= json_encode(car_t($t, 'dash.study.false-flipped')) ?>;
+    var labelTrueFlip   = <?= json_encode(car_t($t, 'dash.study.true-flipped')) ?>;
+    var exitUrl         = <?= json_encode($_deck_url) ?>;
 
     function flip() {
         if (card.classList.contains('flip-out') || card.classList.contains('flip-start')) return;
@@ -273,8 +279,10 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             flipped = !flipped;
             card.classList.toggle('flipped', flipped);
-            cardSide.textContent = flipped ? labelBack : labelFront;
-            cardText.textContent = flipped ? backText : frontText;
+            cardSide.textContent     = flipped ? labelBack       : labelFront;
+            cardText.textContent     = flipped ? backText        : frontText;
+            btnFalseText.textContent = flipped ? labelFalseFlip  : labelFalse;
+            btnTrueText.textContent  = flipped ? labelTrueFlip   : labelTrue;
             card.classList.add('flip-start');
             card.classList.remove('flip-out');
             void card.offsetWidth; // força reflow para o jump sem transição

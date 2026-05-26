@@ -789,6 +789,10 @@ html {
 .car-play-btn-kbd {
     font-family: var(--bs-font-monospace);
     font-size: 0.6875rem;
+    padding: 1px 6px;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 4px;
+    background: var(--bs-white);
     color: var(--bs-tertiary-color);
 }
 .car-kbd {
