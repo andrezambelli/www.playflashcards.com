@@ -224,13 +224,11 @@
                 </form>
             </div>
 
-            <div class="border-top pt-3 text-center">
-                <form action="<?= CAR_PATH_WEB ?>/study/study-delete-act" method="post" class="d-inline">
-                    <input type="hidden" name="k" value="<?= car_htmlspecialchars($stud_key) ?>">
-                    <button type="submit" class="btn btn-link small text-secondary text-decoration-none p-0">
-                        <?= car_t($t, 'Delete Study') ?>
-                    </button>
-                </form>
+            <div class="text-center">
+                <a href="<?= car_htmlspecialchars($_deck_url) ?>"
+                   class="btn btn-link text-secondary text-decoration-none small">
+                    <?= car_t($t, 'dash.study.exit') ?>
+                </a>
             </div>
 
         </div>
@@ -291,18 +289,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     card.addEventListener('click', flip);
     card.addEventListener('keydown', function (e) {
-        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+        if      (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+        else if (e.key === 'Escape')                 { e.preventDefault(); location.href = exitUrl; }
     });
 
     document.getElementById('btn_true').addEventListener('click', function () { answer('true'); });
     document.getElementById('btn_false').addEventListener('click', function () { answer('false'); });
 
     document.addEventListener('keydown', function (e) {
-        if      (e.key === ' ')         { e.preventDefault(); flip(); }
+        if      (e.key === ' ')          { e.preventDefault(); flip(); }
         else if (e.key === 'ArrowRight') { e.preventDefault(); answer('true'); }
         else if (e.key === 'ArrowLeft')  { e.preventDefault(); answer('false'); }
-        else if (e.key === 'Escape')     { location.href = exitUrl; }
-    });
+        else if (e.key === 'Escape')     { e.preventDefault(); location.href = exitUrl; }
+    }, true);
 });
 </script>
 <?php } ?>

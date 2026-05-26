@@ -12,7 +12,25 @@
 	$deck_id = 0;
 	
 	$redirect = CAR_PATH_WEB . '/deck/' . $deck_key;
-	
+
+	if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+		car_redirect($redirect);
+	}
+
+	// reutiliza estudo público aberto da mesma sessão do browser
+	$_session_study_key = 'car_pub_' . $deck_key;
+	if (!empty($_SESSION[$_session_study_key])) {
+		$sql = sprintf("select stud_key from car_study where stud_key = '%s' and user_id = %d and stud_end is null limit 1",
+						$mysqli->real_escape_string($_SESSION[$_session_study_key]),
+						$user_id);
+		$result = $mysqli->query($sql);
+		if ($result->num_rows > 0) {
+			$mysqli->close();
+			car_redirect(CAR_PATH_WEB . '/study/' . $_SESSION[$_session_study_key]);
+		}
+		unset($_SESSION[$_session_study_key]);
+	}
+
 	try {
 		// Procurando o deck_id
 		$sql = sprintf(" select deck_id from car_deck where deck_key = '%s'",
@@ -97,6 +115,7 @@
 
             $mysqli->commit();
 
+            $_SESSION[$_session_study_key] = $stud_key;
             $redirect = CAR_PATH_WEB . '/study/' . $stud_key;
         } else {
             car_set_session_error_message('dash.study-new-act.no-cards');

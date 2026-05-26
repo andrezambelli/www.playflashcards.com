@@ -752,7 +752,6 @@ html {
     align-items: center;
     padding: 2rem 1.5rem;
     gap: 2rem;
-    perspective: 1200px;
 }
 .car-play-btn {
     flex: 1;
@@ -807,6 +806,7 @@ html {
     width: 100%;
     max-width: 640px;
     aspect-ratio: 16 / 10;
+    will-change: transform;
     background: #ffffff;
     border: 1px solid var(--bs-border-color);
     border-radius: 1.25rem;
@@ -818,7 +818,7 @@ html {
     padding: 3rem;
     position: relative;
     cursor: pointer;
-    transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms, background 240ms, color 240ms, border-color 240ms;
+    transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms;
 }
 .car-flashcard:hover {
     box-shadow: var(--app-shadow-lg);
