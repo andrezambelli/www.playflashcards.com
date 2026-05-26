@@ -175,22 +175,19 @@
      * Então redireciona para a mesma página do idioma do parâmtro
      */
     function car_check_language($_lang) {
-        $_new_lang = 'en';
+        $uri = $_SERVER['REQUEST_URI'];
 
-        if (strrpos($_SERVER['REQUEST_URI'], '/en/') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/en')) === '/en') {
+        if (strrpos($uri, '/en/') !== false || substr($uri, -strlen('/en')) === '/en') {
             $_new_lang = 'en';
-        } elseif (strrpos($_SERVER['REQUEST_URI'], '/pt-br/') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/pt-br')) === '/pt-br') {
+        } elseif (strrpos($uri, '/pt-br/') !== false || substr($uri, -strlen('/pt-br')) === '/pt-br') {
             $_new_lang = 'pt-br';
-        } elseif (strrpos($_SERVER['REQUEST_URI'], '/es/') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/es')) === '/es') {
+        } elseif (strrpos($uri, '/es/') !== false || substr($uri, -strlen('/es')) === '/es') {
             $_new_lang = 'es';
-        } elseif (strrpos($_SERVER['REQUEST_URI'], '/fr/') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/fr')) === '/fr') {
+        } elseif (strrpos($uri, '/fr/') !== false || substr($uri, -strlen('/fr')) === '/fr') {
             $_new_lang = 'fr';
-        } elseif (strrpos($_SERVER['REQUEST_URI'], '/index.php') !== false || substr($_SERVER['REQUEST_URI'], -strlen('/index.php')) === '/index.php') {
-            $_new_lang = $_lang;
-        } elseif ($_SERVER['REQUEST_URI'] == '') {
-            $_new_lang = $_lang;
-        } elseif ($_SERVER['REQUEST_URI'] == '/') {
-            $_new_lang = $_lang;
+        } else {
+            // URL sem prefixo de idioma (ex: /deck/..., /study/..., /): não interferir
+            return;
         }
 
         if ($_new_lang != $_lang) {

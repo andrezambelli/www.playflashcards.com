@@ -54,9 +54,9 @@
 
     $redirect = str_replace('/' . $original_lang . '/', '/' . $new_lang . '/', $redirect_url);
 
-    // Se o idioma não estava na URL (ex: /), redireciona para a home do novo idioma
+    // Se o idioma não estava na URL (ex: /deck/...), mantém a mesma URL — SESSION já foi atualizado
     if ($redirect === $redirect_url) {
-        $redirect = CAR_PATH_WEB . '/' . $new_lang . '/';
+        $redirect = !empty($redirect_url) ? $redirect_url : CAR_PATH_WEB . '/' . $new_lang . '/';
     }
 
     // parâmetro explícito tem prioridade (usado em páginas sem prefixo de idioma na URL)
