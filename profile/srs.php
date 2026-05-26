@@ -50,6 +50,13 @@
     <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Spaced Repetition System (SRS)') ?></h1>
     <p class="text-secondary small mb-4"><?= car_t($t, 'profile.srs.definition') ?></p>
 
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="fw-semibold small mb-1"><?= car_t($t, 'profile.srs.pending-title') ?></div>
+            <p class="form-text mb-0"><?= car_t($t, 'profile.srs.pending-rule') ?></p>
+        </div>
+    </div>
+
     <form id="srs-form" action="<?= CAR_PATH_WEB ?>/profile/srs-act" method="post">
         <div class="d-flex flex-column gap-2 mb-3">
 

@@ -226,11 +226,7 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'dash.home.due') ?></div>
-                    <?php if ($pending_cards > 0) { ?>
-                        <div class="h4 fw-semibold mb-1 car-text-mono"><?= $pending_cards ?></div>
-                    <?php } else { ?>
-                        <div class="h4 fw-semibold mb-1 car-text-mono text-secondary">&mdash;</div>
-                    <?php } ?>
+                    <div class="h4 fw-semibold mb-1 car-text-mono"><?= $pending_cards ?></div>
                     <div class="small text-secondary"><?= car_t($t, 'SRS') ?></div>
                 </div>
             </div>
