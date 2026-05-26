@@ -59,7 +59,9 @@
         </form>
 
         <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0">
-            <div id="card_side" class="car-flashcard-side"><?= car_t($t, 'Front') ?></div>
+            <div id="card_side" class="car-flashcard-side">
+                <?= car_t($t, 'Front') ?> &middot; <?= $stse_order ?>/<?= $stud_total ?>
+            </div>
             <div id="card_text" class="car-flashcard-text"><?= car_htmlspecialchars($card_front) ?></div>
             <div class="car-flashcard-hint"><?= car_t($t, 'dash.study.flip-hint') ?></div>
         </div>
@@ -200,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var labelTrue       = <?= json_encode(car_t($t, 'True Btn')) ?>;
     var labelFalseFlip  = <?= json_encode(car_t($t, 'dash.study.false-flipped')) ?>;
     var labelTrueFlip   = <?= json_encode(car_t($t, 'dash.study.true-flipped')) ?>;
+    var cardStep        = <?= json_encode($stse_order . '/' . $stud_total) ?>;
     var exitUrl         = <?= json_encode($_deck_url) ?>;
 
     function flip() {
@@ -208,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             flipped = !flipped;
             card.classList.toggle('flipped', flipped);
-            cardSide.textContent     = flipped ? labelBack      : labelFront;
+            cardSide.textContent     = (flipped ? labelBack : labelFront) + ' · ' + cardStep;
             cardText.textContent     = flipped ? backText       : frontText;
             btnFalseText.textContent = flipped ? labelFalseFlip : labelFalse;
             btnTrueText.textContent  = flipped ? labelTrueFlip  : labelTrue;

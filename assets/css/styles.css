@@ -408,7 +408,7 @@ footer a:hover {
 }
 .car-card-ghost {
     position: absolute;
-    width: 520px;
+    width: 380px;
     height: 210px;
     background: #f8f8f6;
     border: 1px solid #deded8;
@@ -440,8 +440,8 @@ footer a:hover {
     width: 380px;
     max-width: calc(100vw - 3rem);
     height: 210px;
-    background: #ffffff;
-    border: 1px solid var(--bs-border-color);
+    background: #fff3a3;
+    border: 1px solid #eadb72;
     border-radius: var(--bs-border-radius-lg);
     box-shadow: var(--app-shadow-md);
     padding: 1.25rem 1.4rem 1.15rem;
@@ -497,8 +497,8 @@ footer a:hover {
         height: 240px;
     }
     .car-card-ghost {
-        width: 360px;
-        height: 190px;
+        width: min(380px, calc(100vw - 3rem));
+        height: 200px;
     }
     .car-card-ghost--left {
         transform: rotate(-6deg) translate(-48px, 34px);
@@ -811,8 +811,8 @@ html {
     max-width: 640px;
     aspect-ratio: 16 / 10;
     will-change: transform;
-    background: #ffffff;
-    border: 1px solid var(--bs-border-color);
+    background: #fff3a3;
+    border: 1px solid #eadb72;
     border-radius: 1.25rem;
     box-shadow: var(--app-shadow-md);
     display: flex;
@@ -836,9 +836,9 @@ html {
     transition: none !important;
 }
 .car-flashcard.flipped {
-    background: #1A1C23;
-    color: #FAFAF7;
-    border-color: #1A1C23;
+    background: #ffffff;
+    color: var(--bs-body-color);
+    border-color: var(--bs-border-color);
 }
 .car-flashcard-side {
     position: absolute;
@@ -851,7 +851,7 @@ html {
     color: var(--bs-tertiary-color);
 }
 .car-flashcard.flipped .car-flashcard-side {
-    color: rgba(255,255,255,0.4);
+    color: var(--bs-tertiary-color);
 }
 .car-flashcard-text {
     font-size: 2.75rem;
@@ -868,5 +868,5 @@ html {
     color: var(--bs-tertiary-color);
 }
 .car-flashcard.flipped .car-flashcard-hint {
-    color: rgba(255,255,255,0.35);
+    color: var(--bs-tertiary-color);
 }
