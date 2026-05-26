@@ -17,9 +17,16 @@
     $deck_url     = '';
 
     if ($read_database == 'on') {
-        $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_bgcolor, deck_public, deck_url
+        $sql = sprintf("select deck_id,
+                               deck_key,
+                               deck_name,
+                               deck_desc,
+                               deck_bgcolor,
+                               deck_public,
+                               deck_url
                           from car_deck
-                         where deck_key = '%s' and user_id = %d",
+                         where deck_key = '%s'
+                           and user_id = %d",
                         $mysqli->real_escape_string(car_never_null($deck_key)),
                         $user_id);
 

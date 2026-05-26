@@ -17,7 +17,11 @@
     $deck_id   = 0;
     $deck_name = '';
 
-    $sql = sprintf("select deck_id, deck_name from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id,
+                           deck_name
+                      from car_deck
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
@@ -34,7 +38,12 @@
     }
 
     // total de cartões
-    $sql = sprintf('select count(*) as count from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_card
+                     where deck_id = %d
+                       and user_id = %d',
+                    $deck_id,
+                    $user_id);
     $result_count = $mysqli->query($sql);
     while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
         $total_records = $row['count'];
@@ -43,9 +52,14 @@
     $total_pages = ceil($total_records / $records_per_page);
 
     // lista de cartões
-    $sql = sprintf('select card_key, card_front, card_back, card_true, card_false
+    $sql = sprintf('select card_key,
+                           card_front,
+                           card_back,
+                           card_true,
+                           card_false
                       from car_card
-                     where deck_id = %d and user_id = %d
+                     where deck_id = %d
+                       and user_id = %d
                      order by card_front
                      limit %d, %d',
                     $deck_id, $user_id,

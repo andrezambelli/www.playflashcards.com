@@ -15,7 +15,12 @@
 
     // lista de baralhos para a sidebar
     $sidebar_decks = [];
-    $sql_decks = sprintf('select deck_key, deck_name from car_deck where user_id = %d order by deck_name', $user_id);
+    $sql_decks = sprintf('select deck_key,
+                                 deck_name
+                            from car_deck
+                           where user_id = %d
+                           order by deck_name',
+                          $user_id);
     $result_decks = $mysqli->query($sql_decks);
     while ($row_deck = $result_decks->fetch_array(MYSQLI_ASSOC)) {
         $sidebar_decks[] = $row_deck;

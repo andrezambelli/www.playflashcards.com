@@ -10,7 +10,11 @@
     $deck_id   = 0;
     $deck_name = '';
 
-    $sql = sprintf("select deck_id, deck_name from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id,
+                           deck_name
+                      from car_deck
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 

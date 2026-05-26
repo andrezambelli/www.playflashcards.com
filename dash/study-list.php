@@ -18,9 +18,14 @@
     $deck_name = '';
 
     $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
-    $mysqli->query(sprintf("SET time_zone = '%s'", $timezone));
+    $sql = sprintf("set time_zone = '%s'", $timezone);
+    $mysqli->query($sql);
 
-    $sql = sprintf("select deck_id, deck_name from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id,
+                           deck_name
+                      from car_deck
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
@@ -35,7 +40,12 @@
         car_redirect(CAR_PATH_WEB . '/dash/deck-list');
     }
 
-    $sql = sprintf('select count(*) as count from car_study where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_study
+                     where deck_id = %d
+                       and user_id = %d',
+                    $deck_id,
+                    $user_id);
     $result_count = $mysqli->query($sql);
     while ($row = $result_count->fetch_array(MYSQLI_ASSOC)) {
         $total_records = $row['count'];
@@ -43,9 +53,15 @@
 
     $total_pages = ceil($total_records / $records_per_page);
 
-    $sql = sprintf('select stud_key, stud_total, stud_true, stud_false, stud_begin, stud_end
+    $sql = sprintf('select stud_key,
+                           stud_total,
+                           stud_true,
+                           stud_false,
+                           stud_begin,
+                           stud_end
                       from car_study
-                     where deck_id = %d and user_id = %d
+                     where deck_id = %d
+                       and user_id = %d
                      order by stud_id desc
                      limit %d, %d',
                     $deck_id, $user_id,

@@ -16,10 +16,11 @@
 	
 	try {
 		// Procurando a chave do grupo
-		$sql = sprintf(" 
-                        select a.card_id, b.deck_id, b.deck_key
-                          from car_card a, 
-                               car_deck b 
+		$sql = sprintf("select a.card_id,
+                               b.deck_id,
+                               b.deck_key
+                          from car_card a,
+                               car_deck b
                          where a.card_key = '%s'
                            and a.user_id = %d
                            and a.deck_id = b.deck_id
@@ -37,14 +38,14 @@
 		}
 		
 		// Apagando todos as sessões de estudos deste grupo que ainda não foram finalizados
-		$sql = sprintf('
-                        delete from car_study_session
+		$sql = sprintf('delete from car_study_session
                          where user_id = %d
                            and stud_id in (
-                        select stud_id
-                          from car_study
-                         where deck_id = %d
-                           and user_id = %d)',
+                               select stud_id
+                                 from car_study
+                                where deck_id = %d
+                                  and user_id = %d
+                           )',
                         $user_id,
                         $deck_id,
                         $user_id);
@@ -54,7 +55,10 @@
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando todos os estudos deste grupo que ainda não foram finalizados
-		$sql = sprintf('delete from car_study where deck_id = %d and user_id = %d and stud_end is null',
+		$sql = sprintf('delete from car_study
+                         where deck_id = %d
+                           and user_id = %d
+                           and stud_end is null',
                         $deck_id,
                         $user_id);
 		
@@ -63,7 +67,11 @@
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando o cartão
-		$sql = sprintf('delete from car_card where card_id = %d and user_id = %d', $card_id, $user_id);
+		$sql = sprintf('delete from car_card
+                         where card_id = %d
+                           and user_id = %d',
+                        $card_id,
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		 

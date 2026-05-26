@@ -13,10 +13,15 @@
     $user_create = '';
 
     $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
-    $sql = sprintf("SET time_zone = '%s'", $timezone);
+    $sql = sprintf("set time_zone = '%s'", $timezone);
     $mysqli->query($sql);
 
-    $sql = sprintf('select user_email, user_lang, user_create from car_user where user_id = %d', $user_id);
+    $sql = sprintf('select user_email,
+                           user_lang,
+                           user_create
+                      from car_user
+                     where user_id = %d',
+                    $user_id);
     $result = $mysqli->query($sql);
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $user_email  = $row['user_email'];

@@ -15,7 +15,10 @@
 
     try {
         // Procurando informação do grupo
-        $sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
+        $sql = sprintf("select deck_id
+                          from car_deck
+                         where deck_key = '%s'
+                           and user_id = %d",
                                 $mysqli->real_escape_string(car_never_null($deck_key)),
                                 $user_id);
 
@@ -26,21 +29,39 @@
         }
 
         // Apagando todas as sessões desse grupo
-        $sql = sprintf('delete from car_study_session where user_id = %d and stud_id in (select stud_id from car_study where deck_id = %d and user_id = %d)', $user_id, $deck_id, $user_id);
+        $sql = sprintf('delete from car_study_session
+                         where user_id = %d
+                           and stud_id in (
+                               select stud_id
+                                 from car_study
+                                where deck_id = %d
+                                  and user_id = %d
+                           )',
+                        $user_id,
+                        $deck_id,
+                        $user_id);
 
         $result = $mysqli->query($sql);
 
         if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando todos os estudos desse grupo
-        $sql = sprintf('delete from car_study where deck_id = %d and user_id = %d', $deck_id, $user_id);
+        $sql = sprintf('delete from car_study
+                         where deck_id = %d
+                           and user_id = %d',
+                        $deck_id,
+                        $user_id);
 
         $result = $mysqli->query($sql);
 
         if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando todos os cartões desse estudo
-        $sql = sprintf('delete from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+        $sql = sprintf('delete from car_card
+                         where deck_id = %d
+                           and user_id = %d',
+                        $deck_id,
+                        $user_id);
 
         $result = $mysqli->query($sql);
 
@@ -68,7 +89,10 @@
                                 $card_key = car_generate_key(12);
 
                                 // A chave do cartão precisa ser única no banco de dados
-                                $sql = sprintf(" select count(1) as count from car_card where card_key = '%s'", $mysqli->real_escape_string(car_never_null($card_key)));
+                                $sql = sprintf("select count(1) as count
+                                                  from car_card
+                                                 where card_key = '%s'",
+                                                $mysqli->real_escape_string(car_never_null($card_key)));
 
                                 $result = $mysqli->query($sql);
 
@@ -80,10 +104,9 @@
                             }
 
                             // Inserindo o cartão
-                            $sql = sprintf(" 
-                                        insert into car_card
+                            $sql = sprintf("insert into car_card
                                         (user_id, deck_id, card_front, card_back, card_key)
-                                        values (%d, %d, '%s', '%s', '%s')",
+                                    values (%d, %d, '%s', '%s', '%s')",
                                 $user_id,
                                 $deck_id,
                                 $mysqli->real_escape_string(car_never_null($card_front)),

@@ -15,7 +15,13 @@
     car_set_session_attribute('read_database', 'on');
 
     if ($read_database == 'on') {
-        $sql = sprintf('select user_srs_limit, user_srs_rate, user_srs_sequence, user_srs_days from car_user where user_id = %d', $user_id);
+        $sql = sprintf('select user_srs_limit,
+                               user_srs_rate,
+                               user_srs_sequence,
+                               user_srs_days
+                          from car_user
+                         where user_id = %d',
+                        $user_id);
         $result = $mysqli->query($sql);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $srs_limit    = $row['user_srs_limit'];

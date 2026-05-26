@@ -12,31 +12,47 @@
 
 	try {
 		// Apagando todos as sessões de estudo
-		$sql = sprintf(' delete from car_study_session where user_id = %d and stud_id in (select stud_id from car_study where user_id = %d)', $user_id, $user_id);
+		$sql = sprintf('delete from car_study_session
+                         where user_id = %d
+                           and stud_id in (
+                               select stud_id
+                                 from car_study
+                                where user_id = %d
+                           )',
+                        $user_id,
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		
 		// Apagando todos os estudos
-		$sql = sprintf(' delete from car_study where user_id = %d', $user_id);
+		$sql = sprintf('delete from car_study
+                         where user_id = %d',
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		
 		// Apagando todos os cartões do grupo
-		$sql = sprintf('delete from car_card where user_id = %d', $user_id);
+		$sql = sprintf('delete from car_card
+                         where user_id = %d',
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		 
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando todos os grupos
-		$sql = sprintf('delete from car_deck where user_id = %d', $user_id);
+		$sql = sprintf('delete from car_deck
+                         where user_id = %d',
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
         // Apagando o usuário
-        $sql = sprintf('delete from car_user where user_id = %d', $user_id);
+        $sql = sprintf('delete from car_user
+                         where user_id = %d',
+                        $user_id);
 
         $result = $mysqli->query($sql);
 

@@ -20,12 +20,16 @@
 
     // ajustar timezone
     $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
-    $mysqli->query(sprintf("SET time_zone = '%s'", $timezone));
+    $sql = sprintf("set time_zone = '%s'", $timezone);
+    $mysqli->query($sql);
 
     if ($read_database == 'on') {
-        $sql = sprintf("select card_id, card_front, card_back
+        $sql = sprintf("select card_id,
+                               card_front,
+                               card_back
                           from car_card
-                         where card_key = '%s' and user_id = %d",
+                         where card_key = '%s'
+                           and user_id = %d",
                         $mysqli->real_escape_string(car_never_null($card_key)),
                         $user_id);
 
@@ -41,9 +45,18 @@
     }
 
     // stats e info do baralho
-    $sql = sprintf("select a.card_true, a.card_false, a.card_sequence, b.deck_key, b.deck_name, a.card_last_study
-                      from car_card a, car_deck b
-                     where a.card_key = '%s' and a.user_id = %d and a.deck_id = b.deck_id and b.user_id = %d",
+    $sql = sprintf("select a.card_true,
+                           a.card_false,
+                           a.card_sequence,
+                           b.deck_key,
+                           b.deck_name,
+                           a.card_last_study
+                      from car_card a,
+                           car_deck b
+                     where a.card_key = '%s'
+                       and a.user_id = %d
+                       and a.deck_id = b.deck_id
+                       and b.user_id = %d",
                     $mysqli->real_escape_string(car_never_null($card_key)),
                     $user_id,
                     $user_id);

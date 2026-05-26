@@ -30,7 +30,10 @@
         try {
             // Localiza o deck pelo deck_key
             $deck_id = 0;
-            $sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
+            $sql = sprintf("select deck_id
+                              from car_deck
+                             where deck_key = '%s'
+                               and user_id = %d",
                             $mysqli->real_escape_string(car_never_null($deck_key)),
                             $user_id);
             $result = $mysqli->query($sql);
@@ -43,7 +46,12 @@
                 $redirect = CAR_PATH_WEB . '/dash/deck-list';
             } else {
                 // Verifica o limite de cartões do baralho
-                $sql = sprintf('select count(*) as count from car_card where user_id = %d and deck_id = %d', $user_id, $deck_id);
+                $sql = sprintf('select count(*) as count
+                                  from car_card
+                                 where user_id = %d
+                                   and deck_id = %d',
+                                $user_id,
+                                $deck_id);
                 $result = $mysqli->query($sql);
                 $user_count_card = 0;
                 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -57,7 +65,10 @@
                     $card_key = null;
                     while ($card_key == null) {
                         $card_key = car_generate_key(12);
-                        $sql = sprintf(" select count(1) as count from car_card where card_key = '%s'", $mysqli->real_escape_string(car_never_null($card_key)));
+                        $sql = sprintf("select count(1) as count
+                                          from car_card
+                                         where card_key = '%s'",
+                                        $mysqli->real_escape_string(car_never_null($card_key)));
                         $result = $mysqli->query($sql);
                         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                             if ($row['count'] >= 1) $card_key = null;
@@ -65,9 +76,9 @@
                     }
 
                     // Insere o cartão com os dados reais do formulário
-                    $sql = sprintf(" insert into car_card
-                                            (user_id, deck_id, card_key, card_front, card_back)
-                                           values (%d, %d, '%s', '%s', '%s')",
+                    $sql = sprintf("insert into car_card
+                                        (user_id, deck_id, card_key, card_front, card_back)
+                                    values (%d, %d, '%s', '%s', '%s')",
                                     $user_id,
                                     $deck_id,
                                     $mysqli->real_escape_string(car_never_null($card_key)),
@@ -78,13 +89,27 @@
                     if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
                     // Invalida sessões de estudo em andamento (baralho foi modificado)
-                    $sql = sprintf('delete from car_study_session where user_id = %d and stud_id in (select stud_id from car_study where deck_id = %d and user_id = %d and stud_end is null)',
-                                    $user_id, $deck_id, $user_id);
+                    $sql = sprintf('delete from car_study_session
+                                     where user_id = %d
+                                       and stud_id in (
+                                           select stud_id
+                                             from car_study
+                                            where deck_id = %d
+                                              and user_id = %d
+                                              and stud_end is null
+                                       )',
+                                    $user_id,
+                                    $deck_id,
+                                    $user_id);
                     $result = $mysqli->query($sql);
                     if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
-                    $sql = sprintf('delete from car_study where deck_id = %d and user_id = %d and stud_end is null',
-                                    $deck_id, $user_id);
+                    $sql = sprintf('delete from car_study
+                                     where deck_id = %d
+                                       and user_id = %d
+                                       and stud_end is null',
+                                    $deck_id,
+                                    $user_id);
                     $result = $mysqli->query($sql);
                     if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 

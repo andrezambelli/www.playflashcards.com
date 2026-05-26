@@ -26,9 +26,10 @@
 	if (!car_has_session_error_message()) {
 		try {
 			// Procurando a chave do grupo pela chave do cartão
-			$sql = sprintf(" 
-                            select b.deck_id, b.deck_key
-                              from car_card a, car_deck b
+			$sql = sprintf("select b.deck_id,
+                                   b.deck_key
+                              from car_card a,
+                                   car_deck b
                              where a.card_key = '%s'
                                and a.user_id = %d
                                and a.deck_id = b.deck_id
@@ -45,8 +46,7 @@
 			}
 
             // Atualizando o cartão
-            $sql = sprintf(" 
-                            update car_card
+            $sql = sprintf("update car_card
                                set card_front = '%s',
                                    card_back = '%s',
                                    card_update = now()
@@ -63,8 +63,7 @@
 
             if ($delete_stats == 'true') {
                 // Apagando as estatísticas
-                $sql = sprintf(" 
-                            update car_card
+                $sql = sprintf("update car_card
                                set card_true = 0,
                                    card_false = 0,
                                    card_sequence = 0
@@ -78,15 +77,15 @@
                 if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
                 // Apagando todos os estudos deste grupo que ainda não foram finalizados
-                $sql = sprintf('
-                                delete from car_study_session
+                $sql = sprintf('delete from car_study_session
                                  where user_id = %d
                                    and stud_id in (
-                                 select stud_id 
-                                   from car_study 
-                                  where deck_id = %d 
-                                    and user_id = %d 
-                                    and stud_end is null)',
+                                       select stud_id
+                                         from car_study
+                                        where deck_id = %d
+                                          and user_id = %d
+                                          and stud_end is null
+                                   )',
                                 $user_id,
                                 $deck_id,
                                 $user_id);
@@ -95,9 +94,12 @@
 
                 if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
-                $sql = sprintf('delete from car_study where deck_id = %d and user_id = %d and stud_end is null',
-                    $deck_id,
-                    $user_id);
+                $sql = sprintf('delete from car_study
+                                 where deck_id = %d
+                                   and user_id = %d
+                                   and stud_end is null',
+                                $deck_id,
+                                $user_id);
 
                 $result = $mysqli->query($sql);
 

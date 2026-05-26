@@ -15,7 +15,8 @@
 	
 	try {
 		// Procurando o identificador do estudo
-		$sql = sprintf(" select a.stud_id, b.deck_key
+		$sql = sprintf("select a.stud_id,
+                               b.deck_key
                            from car_study a,
 								car_deck b
                           where a.stud_key = '%s'
@@ -34,14 +35,22 @@
 		}
 		
 		// Apagando a sessão do estudo
-		$sql = sprintf('delete from car_study_session where stud_id = %d and user_id = %d', $stud_id, $user_id);
+		$sql = sprintf('delete from car_study_session
+                         where stud_id = %d
+                           and user_id = %d',
+                        $stud_id,
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		 
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		// Apagando o estudo
-		$sql = sprintf('delete from car_study where stud_id = %d and user_id = %d', $stud_id, $user_id);
+		$sql = sprintf('delete from car_study
+                         where stud_id = %d
+                           and user_id = %d',
+                        $stud_id,
+                        $user_id);
 		
 		$result = $mysqli->query($sql);
 		

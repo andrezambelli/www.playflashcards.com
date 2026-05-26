@@ -8,7 +8,10 @@
     $user_max_deck = car_get_session_attribute('user_max_deck', CAR_USER_MAX_DECK);
 
     // verifica o limite antes de exibir o formulário
-    $sql = sprintf('select count(*) as count from car_deck where user_id = %d', $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_deck
+                     where user_id = %d',
+                    $user_id);
     $result = $mysqli->query($sql);
     $user_count_deck = 0;
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {

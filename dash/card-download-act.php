@@ -13,7 +13,10 @@
 	$deck_id = 0;
 
     // Procurando informação do grupo
-    $sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id
+                      from car_deck
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
@@ -24,11 +27,12 @@
     }
 
     // Procurando os cartões do grupo
-    $sql = sprintf('select card_front, card_back
-                            from car_card
-                           where deck_id = %d
-                             and user_id = %d
-                           order by card_front',
+    $sql = sprintf('select card_front,
+                           card_back
+                      from car_card
+                     where deck_id = %d
+                       and user_id = %d
+                     order by card_front',
                     $deck_id,
                     $user_id);
 
@@ -51,5 +55,4 @@
 
     fclose($output);
     exit();
-
 

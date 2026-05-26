@@ -23,7 +23,10 @@
 
     try {
         // Procurando o stud_id
-        $sql = sprintf(" select stud_id from car_study where stud_key = '%s' and user_id = %d",
+        $sql = sprintf("select stud_id
+                          from car_study
+                         where stud_key = '%s'
+                           and user_id = %d",
                         $mysqli->real_escape_string(car_never_null($stud_key)),
                         $user_id);
 
@@ -34,9 +37,11 @@
         }
 
         // Procurando o card_id na sessão do estudo
-        $sql = sprintf(' 
-                        select a.card_id, b.card_true, b.card_false
-                          from car_study_session a, car_card b
+        $sql = sprintf('select a.card_id,
+                               b.card_true,
+                               b.card_false
+                          from car_study_session a,
+                               car_card b
                          where a.stud_id = %d
                            and a.user_id = %d
                            and a.stse_order = %d
@@ -58,8 +63,7 @@
 
         if ($card_id != 0) {
             // Atualizando a resposta
-            $sql = sprintf(' 
-                        update car_study_session
+            $sql = sprintf('update car_study_session
                            set stse_answer = %d
                          where stse_order = %d
                            and user_id = %d
@@ -74,12 +78,23 @@
             if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
             // Procurando as respostas certas e erradas da sessão de estudo
-            $sql = sprintf("
-                        select sum(stud_true) as stud_true, sum(stud_false) as stud_false
+            $sql = sprintf("select sum(stud_true) as stud_true,
+                                   sum(stud_false) as stud_false
                           from (
-                          select count(*) as stud_true, '0' as stud_false from car_study_session where stse_answer = 1 and stud_id = %d and user_id = %d
-                          union all
-                          select '0' as stud_true, count(*) as stud_true from car_study_session where stse_answer = 0 and stud_id = %d and user_id = %d) as t1",
+                                select count(*) as stud_true,
+                                       '0' as stud_false
+                                  from car_study_session
+                                 where stse_answer = 1
+                                   and stud_id = %d
+                                   and user_id = %d
+                                 union all
+                                select '0' as stud_true,
+                                       count(*) as stud_true
+                                  from car_study_session
+                                 where stse_answer = 0
+                                   and stud_id = %d
+                                   and user_id = %d
+                               ) as t1",
                 $stud_id,
                 $user_id,
                 $stud_id,
@@ -98,9 +113,8 @@
             }
 
             // Atualizando a quantidade de respostas certas (true) e erradas (false)
-            $sql = sprintf('
-                        update car_study
-                           set stud_true = %d, 
+            $sql = sprintf('update car_study
+                           set stud_true = %d,
                                stud_false = %d
                          where stud_id = %d
                            and user_id = %d',
@@ -119,8 +133,7 @@
                     $card_true += 1;
                     $card_rate = car_percent($card_true, $card_true + $card_false);
 
-                    $sql = sprintf('
-                                update car_card
+                    $sql = sprintf('update car_card
                                    set card_true = %d,
                                        card_rate = %d,
                                        card_sequence = card_sequence + 1,
@@ -136,8 +149,7 @@
                     $card_false += 1;
                     $card_rate = car_percent($card_true, $card_true + $card_false);
 
-                    $sql = sprintf('
-                                update car_card
+                    $sql = sprintf('update car_card
                                    set card_false = %d,
                                        card_rate = %d,
                                        card_sequence = 0,

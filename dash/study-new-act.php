@@ -18,7 +18,10 @@
 	
 	try {
 		// Procurando o identificador do grupo
-		$sql = sprintf(" select deck_id from car_deck where deck_key = '%s' and user_id = %d",
+		$sql = sprintf("select deck_id
+                          from car_deck
+                         where deck_key = '%s'
+                           and user_id = %d",
                         $mysqli->real_escape_string(car_never_null($deck_key)),
                         $user_id);
 		
@@ -29,7 +32,13 @@
 		}
 		
 		// Antes de criar, contar a quantidade de estudos pendentes desde usuario e grupo
-		$sql = sprintf(' select count(*) as count from car_study where user_id = %d and deck_id = %d and stud_end is null', $user_id, $deck_id);
+		$sql = sprintf('select count(*) as count
+                          from car_study
+                         where user_id = %d
+                           and deck_id = %d
+                           and stud_end is null',
+                        $user_id,
+                        $deck_id);
 		
 		$result = $mysqli->query($sql);
 		
@@ -39,7 +48,12 @@
 		
 		if ($user_count_study < $user_max_study) {
 			// Apaga todos os cards em branco do usuarios
-			$_sql = sprintf(" delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');", $deck_id, $user_id);
+			$_sql = sprintf("delete from car_card
+                              where deck_id = %d
+                                and user_id = %d
+                                and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '')",
+                            $deck_id,
+                            $user_id);
 			
 			$_result = $mysqli->query($_sql);
 			
@@ -52,7 +66,10 @@
 				$stud_key = car_generate_key(12);
 				
 				// A chave do estudo precisa ser única no banco de dados
-				$sql = sprintf(" select count(1) as count from car_study where stud_key = '%s'", $mysqli->real_escape_string(car_never_null($stud_key)));
+				$sql = sprintf("select count(1) as count
+                                  from car_study
+                                 where stud_key = '%s'",
+                                $mysqli->real_escape_string(car_never_null($stud_key)));
 				
 				$result = $mysqli->query($sql);
 				
@@ -65,7 +82,12 @@
 			
 			// Procurando o total de cartões deste grupo
 			$stud_total = 0;
-			$sql = sprintf('select count(1) as count from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+			$sql = sprintf('select count(1) as count
+                              from car_card
+                             where deck_id = %d
+                               and user_id = %d',
+                            $deck_id,
+                            $user_id);
 			
 			$result = $mysqli->query($sql);
 			
@@ -75,9 +97,8 @@
 			
 			if ($stud_total > 0) {
 				// Inserindo o estudo
-				$sql = sprintf(" 
-                                insert into car_study
-                                (user_id, deck_id, stud_key, stud_total)
+				$sql = sprintf("insert into car_study
+                                    (user_id, deck_id, stud_key, stud_total)
                                 values (%d, %d, '%s', %d)",
                                 $user_id,
                                 $deck_id,
@@ -91,9 +112,8 @@
 				if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 				
 				// Inserindo os cartões na sessão do estudo
-				$sql = sprintf('
-                                insert into car_study_session
-                                (stse_order, user_id, stud_id, card_id)
+				$sql = sprintf('insert into car_study_session
+                                    (stse_order, user_id, stud_id, card_id)
                                 select row_number() over (order by RAND()) as stse_order, %d, %d, card_id
                                   from car_card
                                  where deck_id = %d

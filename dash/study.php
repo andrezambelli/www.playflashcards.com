@@ -27,10 +27,19 @@
     $has_card  = false;
 
     $timezone = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
-    $mysqli->query(sprintf("SET time_zone = '%s'", $timezone));
+    $sql = sprintf("set time_zone = '%s'", $timezone);
+    $mysqli->query($sql);
 
-    $sql = sprintf("select b.deck_key, b.deck_name, a.stud_id, a.stud_begin, a.stud_end, a.stud_total, a.stud_true, a.stud_false
-                      from car_study a, car_deck b
+    $sql = sprintf("select b.deck_key,
+                           b.deck_name,
+                           a.stud_id,
+                           a.stud_begin,
+                           a.stud_end,
+                           a.stud_total,
+                           a.stud_true,
+                           a.stud_false
+                      from car_study a,
+                           car_deck b
                      where a.stud_key = '%s'
                        and a.user_id = %d
                        and a.deck_id = b.deck_id
@@ -54,8 +63,12 @@
     }
 
     if ($has_study && empty($stud_end)) {
-        $sql = sprintf("select b.stse_order, c.card_front, c.card_back
-                          from car_study a, car_study_session b, car_card c
+        $sql = sprintf("select b.stse_order,
+                               c.card_front,
+                               c.card_back
+                          from car_study a,
+                               car_study_session b,
+                               car_card c
                          where a.stud_key = '%s'
                            and a.user_id = %d
                            and a.stud_id = b.stud_id
@@ -81,11 +94,29 @@
     }
 
     if ($has_study && !$has_card && empty($stud_end)) {
-        $mysqli->query(sprintf('update car_study set stud_end = now() where stud_id = %d and user_id = %d', $stud_id, $user_id));
-        $mysqli->query(sprintf('delete from car_study_session where stud_id = %d and user_id = %d', $stud_id, $user_id));
+        $sql = sprintf('update car_study
+                           set stud_end = now()
+                         where stud_id = %d
+                           and user_id = %d',
+                        $stud_id,
+                        $user_id);
+        $mysqli->query($sql);
+
+        $sql = sprintf('delete from car_study_session
+                         where stud_id = %d
+                           and user_id = %d',
+                        $stud_id,
+                        $user_id);
+        $mysqli->query($sql);
         $mysqli->commit();
 
-        $result = $mysqli->query(sprintf('select stud_end from car_study where stud_id = %d and user_id = %d', $stud_id, $user_id));
+        $sql = sprintf('select stud_end
+                          from car_study
+                         where stud_id = %d
+                           and user_id = %d',
+                        $stud_id,
+                        $user_id);
+        $result = $mysqli->query($sql);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $stud_end = $row['stud_end'];
         }

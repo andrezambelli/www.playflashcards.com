@@ -3,17 +3,24 @@
     $_dg_user_id = car_get_session_attribute('user_id', 0);
     $_dg_decks   = [];
 
-    $_dg_sql = sprintf('
-        select d.deck_key, d.deck_name, d.deck_desc, d.deck_public,
-               count(c.card_id) as total_cards,
-               coalesce(sum(c.card_true), 0) as total_true,
-               coalesce(sum(c.card_false), 0) as total_false
-          from car_deck d
-          left join car_card c on c.deck_id = d.deck_id and c.user_id = d.user_id
-         where d.user_id = %d
-         group by d.deck_id, d.deck_key, d.deck_name, d.deck_desc, d.deck_public
-         order by d.deck_name',
-        $_dg_user_id);
+    $_dg_sql = sprintf('select d.deck_key,
+                               d.deck_name,
+                               d.deck_desc,
+                               d.deck_public,
+                               count(c.card_id) as total_cards,
+                               coalesce(sum(c.card_true), 0) as total_true,
+                               coalesce(sum(c.card_false), 0) as total_false
+                          from car_deck d
+                          left join car_card c on c.deck_id = d.deck_id
+                                                and c.user_id = d.user_id
+                         where d.user_id = %d
+                         group by d.deck_id,
+                                  d.deck_key,
+                                  d.deck_name,
+                                  d.deck_desc,
+                                  d.deck_public
+                         order by d.deck_name',
+                        $_dg_user_id);
 
     $_dg_result = $mysqli->query($_dg_sql);
     while ($_dg_row = $_dg_result->fetch_array(MYSQLI_ASSOC)) {

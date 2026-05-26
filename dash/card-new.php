@@ -10,7 +10,11 @@
     $deck_id   = 0;
     $deck_name = '';
 
-    $sql = sprintf("select deck_id, deck_name from car_deck where deck_key = '%s' and user_id = %d",
+    $sql = sprintf("select deck_id,
+                           deck_name
+                      from car_deck
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
@@ -29,7 +33,12 @@
     // verifica o limite de cartões antes de exibir o formulário
     $user_max_card = car_get_session_attribute('user_max_card', CAR_USER_MAX_CARD);
 
-    $sql = sprintf('select count(*) as count from car_card where user_id = %d and deck_id = %d', $user_id, $deck_id);
+    $sql = sprintf('select count(*) as count
+                      from car_card
+                     where user_id = %d
+                       and deck_id = %d',
+                    $user_id,
+                    $deck_id);
     $result = $mysqli->query($sql);
     $user_count_card = 0;
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {

@@ -23,16 +23,15 @@
             $dech_url = car_text_to_url($deck_name);
 
 			// Atualizando o grupo
-			$sql = sprintf(" 
-                            update car_deck
-                            set deck_name = '%s',
-                                deck_desc = '%s',
-                                deck_url = '%s',
-                                deck_bgcolor = '%s',
-                                deck_public = %d,
-                                deck_update = now()
-                            where deck_key = '%s'
-                              and user_id = %d",
+			$sql = sprintf("update car_deck
+                               set deck_name = '%s',
+                                   deck_desc = '%s',
+                                   deck_url = '%s',
+                                   deck_bgcolor = '%s',
+                                   deck_public = %d,
+                                   deck_update = now()
+                             where deck_key = '%s'
+                               and user_id = %d",
                             $mysqli->real_escape_string(car_never_null($deck_name)),
                             $mysqli->real_escape_string(car_never_null($deck_desc)),
                             $mysqli->real_escape_string(car_never_null($dech_url)),

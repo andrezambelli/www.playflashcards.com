@@ -17,9 +17,15 @@
     $total_cards           = 0;
     $total_private_studies = 0;
 
-    $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_url, deck_public
+    $sql = sprintf("select deck_id,
+                           deck_key,
+                           deck_name,
+                           deck_desc,
+                           deck_url,
+                           deck_public
                       from car_deck
-                     where deck_key = '%s' and user_id = %d",
+                     where deck_key = '%s'
+                       and user_id = %d",
                     $mysqli->real_escape_string(car_never_null($deck_key)),
                     $user_id);
 
@@ -39,7 +45,12 @@
     }
 
     // total de cartões
-    $sql = sprintf('select count(*) as count from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_card
+                     where deck_id = %d
+                       and user_id = %d',
+                    $deck_id,
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $total_cards = (int) $row['count'];
@@ -49,7 +60,13 @@
     $deck_accuracy     = 0;
     $deck_total_true   = 0;
     $deck_total_attempts = 0;
-    $sql = sprintf('select coalesce(sum(card_true), 0) as total_true, coalesce(sum(card_true + card_false), 0) as total_attempts from car_card where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $sql = sprintf('select coalesce(sum(card_true), 0) as total_true,
+                           coalesce(sum(card_true + card_false), 0) as total_attempts
+                      from car_card
+                     where deck_id = %d
+                       and user_id = %d',
+                    $deck_id,
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $deck_total_true     = (int) $row['total_true'];
@@ -58,7 +75,12 @@
     $deck_accuracy = car_percent($deck_total_true, $deck_total_attempts);
 
     // total de sessões de estudo do usuário neste baralho
-    $sql = sprintf('select count(*) as count from car_study where deck_id = %d and user_id = %d', $deck_id, $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_study
+                     where deck_id = %d
+                       and user_id = %d',
+                    $deck_id,
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $total_private_studies = (int) $row['count'];
@@ -66,7 +88,15 @@
 
     // sessão de estudo em aberto (sem data de fim)
     $open_study_key = '';
-    $sql = sprintf("select stud_key from car_study where deck_id = %d and user_id = %d and stud_end is null order by stud_begin desc limit 1", $deck_id, $user_id);
+    $sql = sprintf("select stud_key
+                      from car_study
+                     where deck_id = %d
+                       and user_id = %d
+                       and stud_end is null
+                     order by stud_begin desc
+                     limit 1",
+                    $deck_id,
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $open_study_key = $row['stud_key'];
@@ -76,7 +106,12 @@
     $srs_rate     = CAR_USER_SRS_RATE;
     $srs_sequence = CAR_USER_SRS_SEQUENCE;
     $srs_days     = CAR_USER_SRS_DAYS;
-    $sql = sprintf('select user_srs_rate, user_srs_sequence, user_srs_days from car_user where user_id = %d', $user_id);
+    $sql = sprintf('select user_srs_rate,
+                           user_srs_sequence,
+                           user_srs_days
+                      from car_user
+                     where user_id = %d',
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $srs_rate     = (int) $row['user_srs_rate'];
@@ -102,9 +137,15 @@
 
     // preview: 5 cartões com menor taxa de acerto (cartões sem tentativas ficam por último)
     $preview_cards = [];
-    $sql = sprintf("select card_key, card_front, card_back, card_true, card_false, (card_true + card_false) as total_attempts
+    $sql = sprintf("select card_key,
+                           card_front,
+                           card_back,
+                           card_true,
+                           card_false,
+                           (card_true + card_false) as total_attempts
                       from car_card
-                     where deck_id = %d and user_id = %d
+                     where deck_id = %d
+                       and user_id = %d
                      order by case when (card_true + card_false) = 0 then 1 else 0 end asc,
                               (card_true / (card_true + card_false)) asc
                      limit 5",

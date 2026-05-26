@@ -23,19 +23,18 @@
     if (!car_has_session_error_message()) {
         try {
             // Atualizando as informações na tabela do usuário
-            $sql = sprintf(' 
-                                update car_user
-                                   set user_srs_limit = %d,
-                                       user_srs_rate = %d,
-                                       user_srs_sequence = %d,
-                                       user_srs_days = %d,
-                                       user_update = now() 
-                                 where user_id = %d',
-                                $srs_limit,
-                                $srs_rate,
-                                $srs_sequence,
-                                $srs_days,
-                                $user_id);
+            $sql = sprintf('update car_user
+                               set user_srs_limit = %d,
+                                   user_srs_rate = %d,
+                                   user_srs_sequence = %d,
+                                   user_srs_days = %d,
+                                   user_update = now()
+                             where user_id = %d',
+                            $srs_limit,
+                            $srs_rate,
+                            $srs_sequence,
+                            $srs_days,
+                            $user_id);
 
             $result = $mysqli->query($sql);
 

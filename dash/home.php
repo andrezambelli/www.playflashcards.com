@@ -7,7 +7,7 @@
     $user_id   = car_get_session_attribute('user_id', 0);
     $timezone  = car_get_session_attribute('timezone', CAR_TIMEZONE_DEFAULT);
 
-    $sql = sprintf("SET time_zone = '%s'", $timezone);
+    $sql = sprintf("set time_zone = '%s'", $timezone);
     $mysqli->query($sql);
 
     // data formatada
@@ -15,7 +15,10 @@
 
     // contagem de baralhos para o stat card
     $total_decks = 0;
-    $sql = sprintf('select count(*) as count from car_deck where user_id = %d', $user_id);
+    $sql = sprintf('select count(*) as count
+                      from car_deck
+                     where user_id = %d',
+                    $user_id);
     $result = $mysqli->query($sql);
     if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $total_decks = (int) $row['count'];
