@@ -28,7 +28,7 @@
     $header_title    = 'Play Flashcards';
     $dash_active     = 'home';
     $dash_breadcrumb = [];
-    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
 <div>
@@ -120,4 +120,4 @@
 
 </div>
 
-<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>

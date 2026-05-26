@@ -75,35 +75,7 @@
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="border-top py-4 bg-body-secondary">
-    <div class="container-fluid px-4">
-        <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-2 gap-md-0">
-
-            <div class="d-flex align-items-center gap-2">
-                <a class="d-flex align-items-center gap-2 text-decoration-none text-body fw-bold"
-                   href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
-                    <span class="car-brand-mark" aria-hidden="true">
-                        <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    Play Flashcards
-                </a>
-                <span class="badge car-text-mono ms-1"><?= CAR_VERSION ?></span>
-            </div>
-
-            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2 gap-md-0 small text-secondary">
-                <div class="d-flex align-items-center gap-3">
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Contact') ?></a>
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions' ?>"><?= car_t($t, 'Terms') ?></a>
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy' ?>"><?= car_t($t, 'Privacy') ?></a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</footer>
+<?php include CAR_ROOT_WEB . '/containers/footer-html.inc'; ?>
 
 </body>
 </html>

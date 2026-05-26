@@ -79,7 +79,7 @@
         [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],
         [car_t($t, 'Studies')]
     ];
-    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
 <div>
@@ -192,4 +192,4 @@
 
 </div>
 
-<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>

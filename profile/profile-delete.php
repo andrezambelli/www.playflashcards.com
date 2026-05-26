@@ -11,7 +11,7 @@
     $header_title    = car_t($t, 'Delete your Account') . ' - Play Flashcards';
     $dash_active     = 'profile';
     $dash_breadcrumb = [[car_t($t, 'Profile'), CAR_PATH_WEB . '/profile/profile'], [car_t($t, 'Delete your Account')]];
-    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
 <div style="max-width: 560px">
@@ -43,4 +43,4 @@
 
 </div>
 
-<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>

@@ -67,7 +67,7 @@
         [car_t($t, 'Flashcards'), CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key],
         [car_t($t, 'New Flashcard')]
     ];
-    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
 <div>
@@ -128,4 +128,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>

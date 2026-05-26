@@ -39,7 +39,7 @@
     $header_title      = car_t($t, 'Profile') . ' - Play Flashcards';
     $dash_active       = 'profile';
     $dash_breadcrumb   = [[car_t($t, 'Profile')]];
-    include_once CAR_ROOT_WEB . '/dash/containers/header.inc';
+    include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
 <div style="max-width: 720px">
@@ -139,4 +139,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/dash/footer.inc'; ?>
