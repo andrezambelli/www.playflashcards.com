@@ -447,6 +447,24 @@ footer a:hover {
     padding: 1.25rem 1.4rem 1.15rem;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms;
+}
+.car-card-preview:hover {
+    box-shadow: var(--app-shadow-lg);
+}
+.car-card-preview.flip-out {
+    transform: rotateY(90deg) !important;
+    transition: transform 280ms ease-in !important;
+}
+.car-card-preview.flip-start {
+    transform: rotateY(-90deg) !important;
+    transition: none !important;
+}
+.car-card-preview.flipped {
+    background: #ffffff;
+    border-color: var(--bs-border-color);
 }
 .car-card-preview-header {
     display: flex;

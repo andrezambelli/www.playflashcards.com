@@ -110,7 +110,7 @@
 
             <?php if ($_login === 'off') { ?>
 
-                <!-- Links centrais (público) -->
+                <!-- links centrais comentados até as páginas públicas ficarem prontas
                 <ul class="navbar-nav mx-auto gap-1">
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="#"><?= car_t($t, 'Features') ?></a>
@@ -125,9 +125,10 @@
                         <a class="nav-link text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Help') ?></a>
                     </li>
                 </ul>
+                -->
 
                 <!-- Direita: idioma + CTA -->
-                <div class="d-flex align-items-center gap-2 ms-lg-3 car-navbar-actions">
+                <div class="d-flex align-items-center gap-2 ms-lg-auto car-navbar-actions">
 
                     <?php
                         $langs = [

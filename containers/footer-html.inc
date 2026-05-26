@@ -55,16 +55,6 @@
                     </a>
                 </div>
 
-                <span class="d-none d-md-inline mx-3" aria-hidden="true">·</span>
-
-                <?php $lang_redirect_url = urlencode(car_current_url()); ?>
-                <div class="d-flex align-items-center gap-3">
-                    <a class="text-decoration-none <?= $t['lang'] === 'en'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=en&redirect_url=<?= $lang_redirect_url ?>">English</a>
-                    <a class="text-decoration-none <?= $t['lang'] === 'es'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=es&redirect_url=<?= $lang_redirect_url ?>">Español</a>
-                    <a class="text-decoration-none <?= $t['lang'] === 'fr'    ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=fr&redirect_url=<?= $lang_redirect_url ?>">Français</a>
-                    <a class="text-decoration-none <?= $t['lang'] === 'pt-br' ? 'text-body fw-medium' : 'text-secondary' ?>" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=pt-br&redirect_url=<?= $lang_redirect_url ?>">Português</a>
-                </div>
-
             </div>
         </div>
     </div>
