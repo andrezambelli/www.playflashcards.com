@@ -54,7 +54,7 @@
             }
 
             if ($total_cards > 0) {
-                $sql = sprintf('select card_front, card_back from car_card where deck_id = %d order by card_id asc limit 10', $deck_id);
+                $sql = sprintf('select card_front, card_back from car_card where deck_id = %d order by card_front asc', $deck_id);
                 $result = $mysqli->query($sql);
                 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                     $preview_cards[] = $row;
