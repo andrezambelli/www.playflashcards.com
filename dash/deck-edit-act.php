@@ -20,7 +20,7 @@
 
 	if (!car_has_session_error_message()) {
 		try {
-            $dech_url = car_text_to_url($deck_name);
+            $deck_url = car_text_to_url($deck_name);
 
 			// Atualizando o grupo
 			$sql = sprintf("update car_deck
@@ -34,7 +34,7 @@
                                and user_id = %d",
                             $mysqli->real_escape_string(car_never_null($deck_name)),
                             $mysqli->real_escape_string(car_never_null($deck_desc)),
-                            $mysqli->real_escape_string(car_never_null($dech_url)),
+                            $mysqli->real_escape_string(car_never_null($deck_url)),
                             $mysqli->real_escape_string(car_never_null($deck_bgcolor)),
                             $mysqli->real_escape_string($deck_public),
                             $mysqli->real_escape_string(car_never_null($deck_key)),

@@ -26,7 +26,12 @@
 		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$deck_id = $row['deck_id'];
 		}
-		
+
+        if ($deck_id === 0) {
+            car_set_session_error_message('dash.deck-info.not-found');
+            car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+        }
+
 		// Apagando todos as sessões de estudo
 		$sql = sprintf('delete from car_study_session
                          where user_id = %d

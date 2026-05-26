@@ -71,7 +71,11 @@
             $file = $_FILES['input_file']['tmp_name'];
 
             if (($handle = fopen($file, "r")) !== false) {
+                $card_count = 0;
+
                 while (($line = fgets($handle)) !== false) {
+                    if ($card_count >= CAR_USER_MAX_CARD) break;
+
                     $values = str_getcsv($line, ';');
 
                     $line_import = false;
@@ -116,6 +120,8 @@
                             $result = $mysqli->query($sql);
 
                             if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
+
+                            $card_count++;
                         } else {
                             $line_import = true;
                         }

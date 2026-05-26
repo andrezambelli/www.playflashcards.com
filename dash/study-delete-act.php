@@ -12,7 +12,11 @@
     // Variáveis
 	$stud_id = 0;
 	$deck_key = '';
-	
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+    }
+
 	try {
 		// Procurando o identificador do estudo
 		$sql = sprintf("select a.stud_id,
@@ -33,7 +37,12 @@
 			$stud_id = $row['stud_id'];
 			$deck_key = $row['deck_key'];
 		}
-		
+
+        if ($stud_id === 0) {
+            car_set_session_error_message('dash.deck-info.not-found');
+            car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+        }
+
 		// Apagando a sessão do estudo
 		$sql = sprintf('delete from car_study_session
                          where stud_id = %d

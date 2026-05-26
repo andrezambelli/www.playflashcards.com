@@ -13,7 +13,11 @@
 	$card_id = 0;
 	$deck_id = 0;
 	$deck_key = '';
-	
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+    }
+
 	try {
 		// Procurando a chave do grupo
 		$sql = sprintf("select a.card_id,
@@ -36,7 +40,12 @@
 			$deck_id = $row['deck_id'];
 			$deck_key = $row['deck_key'];
 		}
-		
+
+        if ($card_id === 0) {
+            car_set_session_error_message('dash.deck-info.not-found');
+            car_redirect(CAR_PATH_WEB . '/dash/deck-list');
+        }
+
 		// Apagando sessões que referenciam este cartão (inclui outros usuários em decks públicos)
 		$sql = sprintf('delete from car_study_session
                          where card_id = %d',

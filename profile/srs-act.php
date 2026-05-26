@@ -15,10 +15,10 @@
     car_set_session_attribute('read_database', 'off');
 
     // Verifica os parâmetros
-    if (!is_numeric($srs_limit) or $srs_limit < 1 or $srs_limit > 999) car_set_session_error_message('profile.srs-act.card_study_value');
+    if (!is_numeric($srs_limit) or $srs_limit < 1 or $srs_limit > 50) car_set_session_error_message('profile.srs-act.card_study_value');
     elseif (!is_numeric($srs_rate) or $srs_rate < 1 or $srs_rate > 100) car_set_session_error_message('profile.srs-act.rate_value');
-    elseif (!is_numeric($srs_sequence) or $srs_sequence < 0 or $srs_sequence > 999) car_set_session_error_message('profile.srs-act.sequence_value');
-    elseif (!is_numeric($srs_days) or $srs_days < 0 or $srs_days > 999) car_set_session_error_message('profile.srs-act.days_value');
+    elseif (!is_numeric($srs_sequence) or $srs_sequence < 0 or $srs_sequence > 20) car_set_session_error_message('profile.srs-act.sequence_value');
+    elseif (!is_numeric($srs_days) or $srs_days < 0 or $srs_days > 60) car_set_session_error_message('profile.srs-act.days_value');
 
     if (!car_has_session_error_message()) {
         try {

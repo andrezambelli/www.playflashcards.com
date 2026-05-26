@@ -196,10 +196,12 @@
                         <div class="fw-medium text-danger small"><?= car_t($t, 'Delete Flashcard') ?></div>
                         <div class="small text-secondary"><?= car_t($t, 'dash.card-edit.delete') ?></div>
                     </div>
-                    <a href="<?= CAR_PATH_WEB ?>/dash/card-delete-act?k=<?= car_htmlspecialchars($card_key) ?>"
-                       class="btn btn-outline-danger btn-sm flex-shrink-0">
-                        <?= car_t($t, 'Delete') ?>
-                    </a>
+                    <form method="post" action="<?= CAR_PATH_WEB ?>/dash/card-delete-act" style="display: contents">
+                        <input type="hidden" name="k" value="<?= car_htmlspecialchars($card_key) ?>">
+                        <button type="submit" class="btn btn-outline-danger btn-sm flex-shrink-0">
+                            <?= car_t($t, 'Delete') ?>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

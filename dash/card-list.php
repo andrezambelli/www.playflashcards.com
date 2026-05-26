@@ -9,7 +9,7 @@
     $user_id  = car_get_session_attribute('user_id', 0);
     $deck_key = car_get_parameter('k', '');
 
-    $current_page     = (int) car_get_parameter('current_page', 0);
+    $current_page     = max(0, (int) car_get_parameter('current_page', 0));
     $total_records    = 0;
     $total_pages      = 0;
     $records_per_page = 25;

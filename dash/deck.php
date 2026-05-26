@@ -263,10 +263,12 @@
                            class="btn btn-sm btn-warning">
                             <?= car_t($t, 'Continue') ?>
                         </a>
-                        <a href="<?= CAR_PATH_WEB ?>/dash/study-delete-act?k=<?= car_htmlspecialchars($open_study_key) ?>"
-                           class="btn btn-sm btn-outline-secondary">
-                            <?= car_t($t, 'Delete') ?>
-                        </a>
+                        <form method="post" action="<?= CAR_PATH_WEB ?>/dash/study-delete-act" style="display: contents">
+                            <input type="hidden" name="k" value="<?= car_htmlspecialchars($open_study_key) ?>">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                <?= car_t($t, 'Delete') ?>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
