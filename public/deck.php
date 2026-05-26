@@ -80,6 +80,11 @@
             $page_deck_url = $pages[2];
         }
 
+        if (!$has_deck) {
+            include CAR_ROOT_WEB . '/common/404.php';
+            exit;
+        }
+
         if ($deck_url != $page_deck_url || $page_redirect) {
             car_redirect(CAR_PATH_WEB . '/deck/' . $deck_key . '/' . $deck_url);
         }
