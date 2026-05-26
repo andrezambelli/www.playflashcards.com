@@ -3,6 +3,7 @@
 <?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
+    // área pública: usa o user_id master para estudos sem login
     $user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
 
     $stud_key   = '';
@@ -94,6 +95,10 @@
 
     $_progress_pct = ($has_card && $stud_total > 0) ? round(($stse_order - 1) / $stud_total * 100) : 100;
     $_deck_url     = CAR_PATH_WEB . '/deck/' . rawurlencode($deck_key);
+
+    // variáveis específicas da área pública passadas para o canvas
+    $_form_action  = CAR_PATH_WEB . '/study/study-act';
+    $_is_public    = true;
 ?>
 <!DOCTYPE html>
 <html lang="<?= $t['lang'] ?>" xml:lang="<?= $t['lang'] ?>">
@@ -115,205 +120,7 @@
 
 <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
 
-<div class="car-play-stage">
-
-    <div class="car-play-header">
-        <?php if (!empty($deck_key)) { ?>
-        <a href="<?= car_htmlspecialchars($_deck_url) ?>"
-           class="btn btn-sm btn-link text-secondary text-decoration-none d-inline-flex align-items-center gap-1 px-0">
-            <span class="car-kbd">ESC</span>
-            <?= car_t($t, 'dash.study.exit') ?>
-        </a>
-        <?php } ?>
-        <?php if ($has_study && $has_card) { ?>
-        <div class="flex-grow-1 d-flex align-items-center gap-3" style="max-width: 360px">
-            <div class="progress flex-grow-1" style="height: 4px" role="progressbar"
-                 aria-valuenow="<?= $_progress_pct ?>" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: <?= $_progress_pct ?>%"></div>
-            </div>
-            <span class="car-text-mono small text-secondary">
-                <?= str_pad($stse_order, 2, '0', STR_PAD_LEFT) ?> / <?= str_pad($stud_total, 2, '0', STR_PAD_LEFT) ?>
-            </span>
-        </div>
-        <?php } ?>
-        <?php if (!empty($deck_name)) { ?>
-        <div class="ms-auto">
-            <div class="car-label-uc"><?= car_htmlspecialchars($deck_name) ?></div>
-        </div>
-        <?php } ?>
-    </div>
-
-    <div class="car-play-canvas">
-
-        <?php if ($has_study && $has_card) { ?>
-
-        <form id="study_form" method="post" action="<?= CAR_PATH_WEB ?>/study/study-act">
-            <input type="hidden" name="k" value="<?= car_htmlspecialchars($stud_key) ?>">
-            <input type="hidden" name="stse_order" value="<?= $stse_order ?>">
-            <input type="hidden" id="stse_answer" name="stse_answer" value="">
-        </form>
-
-        <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0">
-            <div id="card_side" class="car-flashcard-side"><?= car_t($t, 'Front') ?></div>
-            <div id="card_text" class="car-flashcard-text"><?= car_htmlspecialchars($card_front) ?></div>
-            <div class="car-flashcard-hint"><?= car_t($t, 'dash.study.flip-hint') ?></div>
-        </div>
-
-        <div id="play_actions" class="d-flex gap-3 w-100" style="max-width: 640px">
-            <button type="button" id="btn_false" class="car-play-btn dont">
-                <span><?= car_t($t, 'False Btn') ?></span>
-                <span class="car-play-btn-kbd">←</span>
-            </button>
-            <button type="button" id="btn_true" class="car-play-btn know">
-                <span><?= car_t($t, 'True Btn') ?></span>
-                <span class="car-play-btn-kbd">→</span>
-            </button>
-        </div>
-
-        <div class="d-none d-md-flex gap-4 text-secondary" style="font-size: 0.75rem">
-            <div class="d-flex align-items-center gap-2">
-                <span class="car-kbd"><?= car_t($t, 'dash.study.key-space') ?></span>
-                <?= car_t($t, 'Front') ?> / <?= car_t($t, 'Back') ?>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-                <span class="car-kbd">← →</span>
-                <?= car_t($t, 'dash.study.respond') ?>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-                <span class="car-kbd">ESC</span>
-                <?= car_t($t, 'dash.study.exit') ?>
-            </div>
-        </div>
-
-        <?php } elseif ($has_study && !$has_card) { ?>
-
-        <div style="max-width: 480px; width: 100%">
-
-            <div class="text-center mb-4">
-                <div class="car-label-uc mb-2"><?= car_t($t, 'Results') ?></div>
-                <?php
-                    $_acc       = car_percent($stud_true, $stud_total);
-                    $_acc_color = $_acc < 50 ? 'text-danger' : ($_acc < 75 ? 'text-warning' : 'text-success');
-                ?>
-                <div class="display-4 fw-semibold car-text-mono mb-1 <?= $_acc_color ?>"><?= $_acc ?>%</div>
-                <div class="text-secondary small"><?= $stud_true ?> / <?= $stud_total ?> <?= car_t($t, 'Correctly Answered') ?></div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-body d-flex flex-column gap-2">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-secondary small"><?= car_t($t, 'Start Date') ?></span>
-                        <span class="small car-text-mono"><?= car_htmlspecialchars($stud_begin) ?></span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-secondary small"><?= car_t($t, 'Study Time') ?></span>
-                        <span class="small car-text-mono"><?= car_diff_dates($stud_begin, $stud_end) ?></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="car-label-uc text-center mb-3"><?= car_t($t, 'dash.study.study-again') ?></div>
-
-            <div class="d-flex flex-column gap-2 mb-4">
-                <form action="<?= CAR_PATH_WEB ?>/deck/study-new-act" method="post">
-                    <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key) ?>">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-layers" aria-hidden="true"></i>
-                        <?= car_t($t, 'dash.deck.study-full') ?>
-                    </button>
-                </form>
-            </div>
-
-            <div class="text-center">
-                <a href="<?= car_htmlspecialchars($_deck_url) ?>"
-                   class="btn btn-link text-secondary text-decoration-none small d-inline-flex align-items-center gap-1">
-                    <span class="car-kbd">ESC</span>
-                    <?= car_t($t, 'dash.study.exit') ?>
-                </a>
-            </div>
-
-        </div>
-
-        <?php } else { ?>
-
-        <div class="text-center text-secondary py-5">
-            <i class="bi bi-exclamation-circle fs-1 mb-3 d-block" aria-hidden="true"></i>
-            <p><?= car_t($t, 'Study not found.') ?></p>
-        </div>
-
-        <?php } ?>
-
-    </div>
-
-</div>
-
-<?php if ($has_study && !$has_card) { ?>
-<script>
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { location.href = <?= json_encode($_deck_url) ?>; }
-});
-</script>
-<?php } ?>
-<?php if ($has_study && $has_card) { ?>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var card            = document.getElementById('car_flashcard');
-    var actions         = document.getElementById('play_actions');
-    var cardSide        = document.getElementById('card_side');
-    var cardText        = document.getElementById('card_text');
-    var btnFalseText    = document.querySelector('#btn_false span:first-child');
-    var btnTrueText     = document.querySelector('#btn_true span:first-child');
-    var flipped         = false;
-    var frontText       = <?= json_encode($card_front) ?>;
-    var backText        = <?= json_encode($card_back) ?>;
-    var labelFront      = <?= json_encode(car_t($t, 'Front')) ?>;
-    var labelBack       = <?= json_encode(car_t($t, 'Back')) ?>;
-    var labelFalse      = <?= json_encode(car_t($t, 'False Btn')) ?>;
-    var labelTrue       = <?= json_encode(car_t($t, 'True Btn')) ?>;
-    var labelFalseFlip  = <?= json_encode(car_t($t, 'dash.study.false-flipped')) ?>;
-    var labelTrueFlip   = <?= json_encode(car_t($t, 'dash.study.true-flipped')) ?>;
-    var exitUrl         = <?= json_encode($_deck_url) ?>;
-
-    function flip() {
-        if (card.classList.contains('flip-out') || card.classList.contains('flip-start')) return;
-        card.classList.add('flip-out');
-        setTimeout(function () {
-            flipped = !flipped;
-            card.classList.toggle('flipped', flipped);
-            cardSide.textContent     = flipped ? labelBack       : labelFront;
-            cardText.textContent     = flipped ? backText        : frontText;
-            btnFalseText.textContent = flipped ? labelFalseFlip  : labelFalse;
-            btnTrueText.textContent  = flipped ? labelTrueFlip   : labelTrue;
-            card.classList.add('flip-start');
-            card.classList.remove('flip-out');
-            void card.offsetWidth; // força reflow para o jump sem transição
-            card.classList.remove('flip-start');
-        }, 280);
-    }
-
-    function answer(value) {
-        document.getElementById('stse_answer').value = value;
-        document.getElementById('study_form').submit();
-    }
-
-    card.addEventListener('click', flip);
-    card.addEventListener('keydown', function (e) {
-        if      (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
-        else if (e.key === 'Escape')                 { e.preventDefault(); location.href = exitUrl; }
-    });
-
-    document.getElementById('btn_true').addEventListener('click', function () { answer('true'); });
-    document.getElementById('btn_false').addEventListener('click', function () { answer('false'); });
-
-    document.addEventListener('keydown', function (e) {
-        if      (e.key === ' ')          { e.preventDefault(); flip(); }
-        else if (e.key === 'ArrowRight') { e.preventDefault(); answer('true'); }
-        else if (e.key === 'ArrowLeft')  { e.preventDefault(); answer('false'); }
-        else if (e.key === 'Escape')     { e.preventDefault(); location.href = exitUrl; }
-    }, true);
-});
-</script>
-<?php } ?>
+<?php include_once CAR_ROOT_WEB . '/containers/study-canvas.inc'; ?>
 
 </body>
 </html>
