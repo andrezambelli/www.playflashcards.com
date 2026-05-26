@@ -226,7 +226,8 @@
 
             <div class="text-center">
                 <a href="<?= car_htmlspecialchars($_deck_url) ?>"
-                   class="btn btn-link text-secondary text-decoration-none small">
+                   class="btn btn-link text-secondary text-decoration-none small d-inline-flex align-items-center gap-1">
+                    <span class="car-kbd">ESC</span>
                     <?= car_t($t, 'dash.study.exit') ?>
                 </a>
             </div>
