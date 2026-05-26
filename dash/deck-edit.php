@@ -14,9 +14,10 @@
     $deck_desc    = '';
     $deck_bgcolor = '';
     $deck_public  = '0';
+    $deck_url     = '';
 
     if ($read_database == 'on') {
-        $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_bgcolor, deck_public
+        $sql = sprintf("select deck_id, deck_key, deck_name, deck_desc, deck_bgcolor, deck_public, deck_url
                           from car_deck
                          where deck_key = '%s' and user_id = %d",
                         $mysqli->real_escape_string(car_never_null($deck_key)),
@@ -30,6 +31,7 @@
             $deck_desc    = $row['deck_desc'];
             $deck_bgcolor = $row['deck_bgcolor'];
             $deck_public  = $row['deck_public'];
+            $deck_url     = $row['deck_url'];
         }
 
         if ($deck_id === 0) {
@@ -89,15 +91,37 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label"><?= car_t($t, 'Public Access Settings') ?></label>
-                    <div class="form-check form-switch">
+                    <label class="form-label"><?= car_t($t, 'dash.deck.visibility-title') ?></label>
+                    <div class="form-check form-switch mb-2">
                         <input type="checkbox" id="deck_public" name="deck_public" value="1"
                                class="form-check-input" role="switch" <?php if ($deck_public) { ?>checked<?php } ?>>
                         <label for="deck_public" class="form-check-label">
                             <?= car_t($t, 'dash.deck-edit.public-switch') ?>
                         </label>
                     </div>
-                    <div class="form-text"><?= car_t($t, 'dash.deck-edit.message1') ?></div>
+                    <div class="form-text mb-2"><?= car_t($t, 'dash.deck-edit.message1') ?></div>
+                    <div id="deck-url-preview" class="<?php if (!$deck_public) { ?>d-none<?php } ?>">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="input-group input-group-sm" style="min-width: 0">
+                                <input type="text" class="form-control car-text-mono"
+                                       id="deck-edit-public-url"
+                                       value="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url) ?>"
+                                       readonly>
+                                <button class="btn btn-outline-secondary d-inline-flex align-items-center gap-1"
+                                        type="button" id="btn-edit-copy-url">
+                                    <i class="bi bi-clipboard" id="edit-copy-icon" aria-hidden="true"></i>
+                                    <span id="edit-copy-label"><?= car_t($t, 'dash.deck.visibility-copy') ?></span>
+                                </button>
+                            </div>
+                            <a href="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url) ?>"
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-secondary flex-shrink-0"
+                               title="<?= car_t($t, 'dash.deck.visibility-open') ?>">
+                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="form-text"><?= car_t($t, 'dash.deck-edit.url-hint') ?></div>
+                    </div>
                 </div>
 
                 <div class="alert alert-warning small mb-4" role="alert">
@@ -120,5 +144,31 @@
     </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle  = document.getElementById('deck_public');
+    var preview = document.getElementById('deck-url-preview');
+    toggle.addEventListener('change', function () {
+        preview.classList.toggle('d-none', !toggle.checked);
+    });
+
+    var btn   = document.getElementById('btn-edit-copy-url');
+    var input = document.getElementById('deck-edit-public-url');
+    var icon  = document.getElementById('edit-copy-icon');
+    var label = document.getElementById('edit-copy-label');
+    var orig  = label.textContent;
+    btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(input.value).then(function () {
+            icon.className    = 'bi bi-clipboard-check';
+            label.textContent = '<?= car_t($t, 'dash.deck.visibility-copied') ?>';
+            setTimeout(function () {
+                icon.className    = 'bi bi-clipboard';
+                label.textContent = orig;
+            }, 2000);
+        });
+    });
+});
+</script>
 
 <?php include_once CAR_ROOT_WEB . '/dash/containers/footer.inc'; ?>

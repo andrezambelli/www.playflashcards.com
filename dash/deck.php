@@ -336,21 +336,81 @@
         </div>
     </div>
 
-    <?php if ($deck_public) { ?>
-    <!-- URL pública -->
+    <!-- Visibilidade -->
     <div class="card mb-4">
+        <div class="card-header">
+            <div class="fw-medium"><?= car_t($t, 'dash.deck.visibility-title') ?></div>
+        </div>
         <div class="card-body">
-            <div class="car-label-uc mb-2"><?= car_t($t, 'Public Study URL') ?></div>
-            <div class="text-truncate small">
+
+            <div class="d-flex align-items-start gap-3 mb-3">
+                <?php if ($deck_public) { ?>
+                    <i class="bi bi-globe2 text-primary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                <?php } else { ?>
+                    <i class="bi bi-lock text-secondary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                <?php } ?>
+                <div>
+                    <div class="fw-medium mb-1">
+                        <?= ucfirst(car_t($t, $deck_public ? 'dash.home.public' : 'dash.home.private')) ?>
+                    </div>
+                    <div class="small text-secondary">
+                        <?php if ($deck_public) { ?>
+                            <?= car_t($t, 'dash.deck.visibility-public-desc') ?>
+                        <?php } else { ?>
+                            <?= sprintf(
+                                car_t($t, 'dash.deck.visibility-private-desc'),
+                                '<a href="' . CAR_PATH_WEB . '/dash/deck-edit?k=' . car_htmlspecialchars($deck_key) . '">' . car_t($t, 'Edit Deck') . '</a>'
+                            ) ?>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php if ($deck_public) { ?>
+            <div class="d-flex align-items-center gap-2 mb-3">
+                <div class="input-group input-group-sm" style="min-width: 0">
+                    <input type="text" class="form-control car-text-mono"
+                           id="deck-public-url"
+                           value="<?= car_htmlspecialchars($public_url) ?>"
+                           readonly>
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center gap-1"
+                            type="button" id="btn-copy-url">
+                        <i class="bi bi-clipboard" id="copy-icon" aria-hidden="true"></i>
+                        <span id="copy-label"><?= car_t($t, 'dash.deck.visibility-copy') ?></span>
+                    </button>
+                </div>
                 <a href="<?= car_htmlspecialchars($public_url) ?>"
-                   class="text-decoration-none d-inline-flex align-items-center gap-1"
-                   target="_blank" rel="noopener noreferrer">
-                    <?= car_htmlspecialchars($public_url) ?>
-                    <i class="bi bi-box-arrow-up-right flex-shrink-0" style="font-size: .75rem" aria-hidden="true"></i>
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-secondary flex-shrink-0"
+                   title="<?= car_t($t, 'dash.deck.visibility-open') ?>">
+                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
                 </a>
             </div>
+            <?php } ?>
+
         </div>
     </div>
+
+    <?php if ($deck_public) { ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var btn   = document.getElementById('btn-copy-url');
+        var input = document.getElementById('deck-public-url');
+        var icon  = document.getElementById('copy-icon');
+        var label = document.getElementById('copy-label');
+        var orig  = label.textContent;
+        btn.addEventListener('click', function () {
+            navigator.clipboard.writeText(input.value).then(function () {
+                icon.className  = 'bi bi-clipboard-check';
+                label.textContent = '<?= car_t($t, 'dash.deck.visibility-copied') ?>';
+                setTimeout(function () {
+                    icon.className  = 'bi bi-clipboard';
+                    label.textContent = orig;
+                }, 2000);
+            });
+        });
+    });
+    </script>
     <?php } ?>
 
     <!-- Zona de perigo -->
