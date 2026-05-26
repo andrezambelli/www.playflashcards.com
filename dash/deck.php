@@ -72,6 +72,31 @@
         $open_study_key = $row['stud_key'];
     }
 
+    // configuração SRS do usuário
+    $srs_rate     = CAR_USER_SRS_RATE;
+    $srs_sequence = CAR_USER_SRS_SEQUENCE;
+    $srs_days     = CAR_USER_SRS_DAYS;
+    $sql = sprintf('select user_srs_rate, user_srs_sequence, user_srs_days from car_user where user_id = %d', $user_id);
+    $result = $mysqli->query($sql);
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $srs_rate     = (int) $row['user_srs_rate'];
+        $srs_sequence = (int) $row['user_srs_sequence'];
+        $srs_days     = (int) $row['user_srs_days'];
+    }
+
+    // cartões pendentes via SRS (mesma lógica de study-srs-new-act.php)
+    $pending_cards = 0;
+    $sql = sprintf('select count(*) as count
+                      from car_card
+                     where deck_id = %d
+                       and user_id = %d
+                       and (card_rate < %d or card_sequence < %d or card_last_study < DATE_SUB(NOW(), INTERVAL %d DAY))',
+                    $deck_id, $user_id, $srs_rate, $srs_sequence, $srs_days);
+    $result = $mysqli->query($sql);
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $pending_cards = (int) $row['count'];
+    }
+
     // url pública
     $public_url = car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url;
 
@@ -133,7 +158,8 @@
                class="card h-100 text-decoration-none text-body car-card-link">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'Flashcards') ?></div>
-                    <div class="h4 fw-semibold mb-0 car-text-mono"><?= $total_cards ?></div>
+                    <div class="h4 fw-semibold mb-1 car-text-mono"><?= $total_cards ?></div>
+                    <div class="small text-secondary"><?= car_t($t, 'dash.deck.cards') ?></div>
                 </div>
             </a>
         </div>
@@ -159,7 +185,11 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'dash.home.due') ?></div>
-                    <div class="h4 fw-semibold mb-1 car-text-mono text-secondary">&mdash;</div>
+                    <?php if ($pending_cards > 0) { ?>
+                        <div class="h4 fw-semibold mb-1 car-text-mono"><?= $pending_cards ?></div>
+                    <?php } else { ?>
+                        <div class="h4 fw-semibold mb-1 car-text-mono text-secondary">&mdash;</div>
+                    <?php } ?>
                     <div class="small text-secondary"><?= car_t($t, 'SRS') ?></div>
                 </div>
             </div>
@@ -169,7 +199,7 @@
             <a href="<?= CAR_PATH_WEB ?>/dash/study-list?k=<?= car_htmlspecialchars($deck_key) ?>"
                class="card h-100 text-decoration-none text-body car-card-link">
                 <div class="card-body">
-                    <div class="car-label-uc mb-2"><?= car_t($t, 'profile.srs.unit-sessions') ?></div>
+                    <div class="car-label-uc mb-2"><?= car_t($t, 'Studies') ?></div>
                     <div class="h4 fw-semibold mb-1 car-text-mono"><?= $total_private_studies ?></div>
                     <div class="small text-secondary"><?= car_t($t, 'dash.deck.history') ?></div>
                 </div>

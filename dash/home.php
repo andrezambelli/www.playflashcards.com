@@ -53,40 +53,42 @@
     <!-- Stats -->
     <div class="row g-3 mb-4">
         <div class="col-md-3 col-6">
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'dash.home.due-today') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500">—</div>
+                    <div class="h4 fw-semibold mb-0 car-text-mono text-secondary">&mdash;</div>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-6">
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'Accuracy') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500">—</div>
+                    <div class="h4 fw-semibold mb-0 car-text-mono text-secondary">&mdash;</div>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-6">
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'dash.home.streak') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500">—</div>
+                    <div class="h4 fw-semibold mb-0 car-text-mono text-secondary">&mdash;</div>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-6">
-            <div class="card">
+            <a href="<?= CAR_PATH_WEB ?>/dash/deck-list"
+               class="card h-100 text-decoration-none text-body car-card-link">
                 <div class="card-body">
                     <div class="car-label-uc mb-2"><?= car_t($t, 'Decks') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.75rem; font-weight: 500"><?= $total_decks ?></div>
+                    <div class="h4 fw-semibold mb-1 car-text-mono"><?= $total_decks ?></div>
+                    <div class="small text-secondary"><?= car_t($t, 'dash.home.view-decks') ?></div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
-    <!-- Sessão de hoje -->
+    <!-- Estudo de hoje -->
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center gap-3">
             <div>

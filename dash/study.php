@@ -206,21 +206,18 @@
                 </div>
             </div>
 
+            <div class="car-label-uc text-center mb-3"><?= car_t($t, 'dash.study.study-again') ?></div>
+
             <div class="d-flex flex-column gap-2 mb-4">
                 <a href="<?= CAR_PATH_WEB ?>/dash/study-srs-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
                    class="btn btn-primary">
                     <i class="bi bi-stars" aria-hidden="true"></i>
-                    <?= car_t($t, 'Play SRS') ?>
+                    <?= car_t($t, 'dash.deck.study-smart') ?>
                 </a>
                 <a href="<?= CAR_PATH_WEB ?>/dash/study-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
                    class="btn btn-outline-secondary">
                     <i class="bi bi-layers" aria-hidden="true"></i>
-                    <?= car_t($t, 'New Study') ?>
-                </a>
-                <a href="<?= car_htmlspecialchars($_deck_url) ?>"
-                   class="btn btn-link text-secondary text-decoration-none">
-                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                    <?= car_t($t, 'dash.study.back-to-deck') ?>
+                    <?= car_t($t, 'dash.deck.study-full') ?>
                 </a>
             </div>
 
@@ -242,6 +239,13 @@
 
 </div>
 
+<?php if ($has_study && !$has_card) { ?>
+<script>
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { location.href = <?= json_encode($_deck_url) ?>; }
+});
+</script>
+<?php } ?>
 <?php if ($has_study && $has_card) { ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
