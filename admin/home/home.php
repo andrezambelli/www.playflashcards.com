@@ -10,7 +10,8 @@
     $total_cookies = 0;
 
     // Número de usuários
-    $sql = "select count(*) as count from car_user";
+    $sql = 'select count(*) as count
+              from car_user';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -19,7 +20,8 @@
     }
 
     // Número de grupos
-    $sql = "select count(*) as count from car_deck";
+    $sql = 'select count(*) as count
+              from car_deck';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -28,7 +30,8 @@
     }
 
     // Número de estudos
-    $sql = "select count(*) as count from car_study";
+    $sql = 'select count(*) as count
+              from car_study';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -37,7 +40,9 @@
     }
 
     // Número de sessões de estudo privado
-    $sql = "select count(*) as count from car_study where stud_public = 0";
+    $sql = 'select count(*) as count
+              from car_study
+             where stud_public = 0';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -46,7 +51,9 @@
     }
 
     // Número de sessões de estudo público
-    $sql = "select count(*) as count from car_study where stud_public = 1";
+    $sql = 'select count(*) as count
+              from car_study
+             where stud_public = 1';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -55,7 +62,8 @@
     }
 
     // Número de sessões
-    $sql = "select count(*) as count from car_session";
+    $sql = 'select count(*) as count
+              from car_session';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -64,7 +72,8 @@
     }
 
     // Número de cookies
-    $sql = "select count(*) as count from car_cookie";
+    $sql = 'select count(*) as count
+              from car_cookie';
 
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 

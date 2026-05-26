@@ -31,9 +31,15 @@
         $pages    = explode('/', $pages);
         $deck_key = $pages[1];
 
-        $sql = sprintf("select user_id, deck_id, deck_name, deck_desc, deck_url, deck_follow
+        $sql = sprintf("select user_id,
+                               deck_id,
+                               deck_name,
+                               deck_desc,
+                               deck_url,
+                               deck_follow
                           from car_deck
-                         where deck_key = '%s' and deck_public = 1",
+                         where deck_key = '%s'
+                           and deck_public = 1",
                         $mysqli->real_escape_string(car_never_null($deck_key)));
         $result = $mysqli->query($sql);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -47,14 +53,22 @@
         }
 
         if ($has_deck) {
-            $sql = sprintf('select count(1) as count from car_card where deck_id = %d', $deck_id);
+            $sql = sprintf('select count(1) as count
+                              from car_card
+                             where deck_id = %d',
+                            $deck_id);
             $result = $mysqli->query($sql);
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $total_cards = (int) $row['count'];
             }
 
             if ($total_cards > 0) {
-                $sql = sprintf('select card_front, card_back from car_card where deck_id = %d order by card_front asc', $deck_id);
+                $sql = sprintf('select card_front,
+                                       card_back
+                                  from car_card
+                                 where deck_id = %d
+                                 order by card_front asc',
+                                $deck_id);
                 $result = $mysqli->query($sql);
                 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                     $preview_cards[] = $row;

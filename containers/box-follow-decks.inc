@@ -1,6 +1,11 @@
 <?php /** @var array $t */ ?>
 <?php
-    $sql    = 'select deck_key, deck_name from car_deck where deck_follow = 1 and deck_public = 1 order by deck_name asc';
+    $sql    = 'select deck_key,
+                      deck_name
+                 from car_deck
+                where deck_follow = 1
+                  and deck_public = 1
+                order by deck_name asc';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 ?>
 <?php if ($result->num_rows > 0) { ?>

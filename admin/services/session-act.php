@@ -3,7 +3,7 @@
 <?php 
 	try {
 		// apagando as respostas
-		$sql = "delete from car_session";
+		$sql = 'delete from car_session';
 		
 		$result = $mysqli->query($sql);
 		
@@ -25,4 +25,3 @@
 	</div>
 </div>
 <?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>
-		

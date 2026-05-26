@@ -6,7 +6,8 @@
 	$last_session = 0;
 
 	// contando quantas linhas de session
-	$sql = "select count(*) as count from car_session";
+	$sql = 'select count(*) as count
+              from car_session';
 
 	$result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 
@@ -15,7 +16,10 @@
 	}
 
 	// contando quantas linhas de session
-	$sql = "select created from car_session order by created desc limit 1";
+	$sql = 'select created
+              from car_session
+             order by created desc
+             limit 1';
 
 	$result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 	

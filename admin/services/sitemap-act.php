@@ -5,7 +5,11 @@
     $today = date("Y-m-d");
 
 	// Procurando os grupos que podem ser indexados
-    $sql = sprintf('select deck_key, deck_url from car_deck where deck_public = 1 and deck_follow = 1');
+    $sql = 'select deck_key,
+                   deck_url
+              from car_deck
+             where deck_public = 1
+               and deck_follow = 1';
 
 	$result_decks = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 ?>

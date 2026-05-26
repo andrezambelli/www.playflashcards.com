@@ -15,9 +15,12 @@
 
     // Atualiza o idioma no usuário
     if ($user_id != CAR_USER_ID_MASTER) {
-        $sql = sprintf("update car_user set user_lang = '%s', user_update = now() where user_id = %d",
-            $mysqli->real_escape_string($new_lang),
-            $user_id);
+        $sql = sprintf("update car_user
+                           set user_lang = '%s',
+                               user_update = now()
+                         where user_id = %d",
+                        $mysqli->real_escape_string($new_lang),
+                        $user_id);
 
         $result = $mysqli->query($sql);
 

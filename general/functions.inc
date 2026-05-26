@@ -132,7 +132,7 @@
 	 */
 	function car_last_insert_id($_mysqli) {
 		$_id = 0;
-		$_sql = " select last_insert_id() AS last_insert_id;";
+		$_sql = 'select last_insert_id() as last_insert_id';
 		$_result = $_mysqli->query($_sql, MYSQLI_USE_RESULT);
 	
 		while (list($_last_insert_id) = $_result->fetch_row()) {

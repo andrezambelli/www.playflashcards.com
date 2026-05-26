@@ -21,9 +21,10 @@
 			$id = $this->db->real_escape_string(car_never_null($id));
 			$record = '';
 			
-			$sql = " SELECT value ".
-					" FROM car_session ".
-					" WHERE id = '$id' ";
+			$sql = sprintf("select value
+                              from car_session
+                             where id = '%s'",
+                            $id);
 			
 			$result = $this->db->query($sql, MYSQLI_STORE_RESULT);
 			if (!empty($result) && $result != ''){
@@ -45,10 +46,12 @@
 			
 			$value = $this->db->real_escape_string(car_never_null($value));
 			
-			$sql = " REPLACE ".
-					" INTO car_session ".
-					" (id, access, value)" .
-					" VALUES ('$id', '$access', '$value') ";
+			$sql = sprintf("replace into car_session
+                                (id, access, value)
+                            values ('%s', '%s', '%s')",
+                            $id,
+                            $access,
+                            $value);
 			
 			$result = $this->db->query($sql);
 			$this->db->commit();
@@ -59,9 +62,9 @@
 		
 		function destroy($id) {
 			$id = $this->db->real_escape_string(car_never_null($id));
-			$sql = " DELETE ".
-					" FROM car_session ".
-					" WHERE id = '$id' ";
+			$sql = sprintf("delete from car_session
+                             where id = '%s'",
+                            $id);
 			
 			$result = $this->db->query($sql);
 			$this->db->commit();
@@ -73,9 +76,9 @@
 		function clean($max) {
 			$old = time() - $max;
 			$old = $this->db->real_escape_string(car_never_null($old));
-			$sql = " DELETE ".
-					" FROM car_session ".
-					" WHERE access < '$old' ";
+			$sql = sprintf("delete from car_session
+                             where access < '%s'",
+                            $old);
 			
 			$result = $this->db->query($sql);
 			$this->db->commit();

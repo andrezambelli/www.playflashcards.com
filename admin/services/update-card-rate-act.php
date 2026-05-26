@@ -3,7 +3,11 @@
 <?php 
 	try {
 		// apagando as respostas
-        $sql = "select card_id, card_true, card_false from car_card order by card_id asc";
+        $sql = 'select card_id,
+                       card_true,
+                       card_false
+                  from car_card
+                 order by card_id asc';
 
         $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
 		
@@ -15,7 +19,11 @@
             $false = $row['card_false'];
             $rate = car_percent($true, $true + $false);
 
-            $sql = sprintf('update car_card set card_rate = %d where card_id = %d', $rate, $id);
+            $sql = sprintf('update car_card
+                               set card_rate = %d
+                             where card_id = %d',
+                            $rate,
+                            $id);
 
             $_result = $mysqli->query($sql);
 
@@ -39,4 +47,3 @@
 	</div>
 </div>
 <?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>
-		

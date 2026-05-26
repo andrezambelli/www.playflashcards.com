@@ -10,9 +10,9 @@
     // Grava o cookie de 30 dias no navegador
     setcookie('consent_key', $cook_key, time() + (30 * 24 * 60 * 60), '/');
 
-    $sql = sprintf(" insert into car_cookie
-                            (user_id, cook_key)
-                            values (%d, '%s')",
+    $sql = sprintf("insert into car_cookie
+                        (user_id, cook_key)
+                    values (%d, '%s')",
                     $user_id,
                     $mysqli->real_escape_string(car_never_null($cook_key)));
 

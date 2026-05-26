@@ -9,7 +9,7 @@
 
     car_set_session_attribute('timezone', $timezone);
 
-    $sql = sprintf("SET time_zone = '%s'", $mysqli->real_escape_string($timezone));
+    $sql = sprintf("set time_zone = '%s'", $mysqli->real_escape_string($timezone));
 
     $mysqli->query($sql);
 
