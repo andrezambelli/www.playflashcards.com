@@ -74,6 +74,8 @@
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 		
 		$mysqli->commit();
+
+		car_set_session_alert_message('dash.deck-delete.success');
 	} catch(Exception $e) {
 		$mysqli->rollback();
 		

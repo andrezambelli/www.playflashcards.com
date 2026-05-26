@@ -150,6 +150,21 @@
         </div>
     </div>
 
+    <div class="card border-danger-subtle mt-4">
+        <div class="card-body">
+            <h2 class="h6 fw-semibold text-danger-emphasis mb-2"><?= car_t($t, 'Delete Deck') ?></h2>
+            <p class="small text-secondary mb-3">
+                <span class="fw-semibold text-danger-emphasis"><?= car_t($t, 'Warning') ?>:</span>
+                <?= car_t($t, 'dash.deck-delete.warning') ?>
+            </p>
+            <a href="<?= CAR_PATH_WEB ?>/dash/deck-delete?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash" aria-hidden="true"></i>
+                <?= car_t($t, 'Delete Deck') ?>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 <script>

@@ -55,6 +55,7 @@ $t = [
     'dash.card.upload-act.success2'=>'Upload realizado com sucesso. Mas algumas linhas do arquivo não foram adicionadas. Reveja a estrutura do seu arquivo.',
     'dash.deck-delete-question'=>'Tem certeza de que deseja apagar este grupo?',
     'dash.deck-delete.warning'=>'Ao apagar este grupo, você perderá permanentemente todos os seus cartões e estudos associados a ele. Essa ação não pode ser desfeita.',
+    'dash.deck-delete.success'=>'Grupo apagado com sucesso.',
     'dash.deck-edit-act.name'=>'O nome do grupo é obrigatório.',
     'dash.deck-edit.message1'=>'Ao habilitar o acesso público a este grupo, o conteúdo ficará visível para qualquer usuário na internet. A URL do grupo será acessível publicamente, permitindo que qualquer pessoa crie, visualize e participe de estudos deste grupo.',
     'dash.deck-edit.message2'=>'Por favor, considere a sensibilidade do material de estudo antes de permitir o acesso público.',

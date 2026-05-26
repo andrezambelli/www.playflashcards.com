@@ -56,7 +56,7 @@
                 <?= car_t($t, 'dash.deck-delete.warning') ?>
             </p>
             <div class="d-flex gap-2">
-                <a href="<?= CAR_PATH_WEB ?>/dash/deck?k=<?= car_htmlspecialchars($deck_key) ?>"
+                <a href="<?= CAR_PATH_WEB ?>/dash/deck-edit?k=<?= car_htmlspecialchars($deck_key) ?>"
                    class="btn btn-outline-secondary">
                     <?= car_t($t, 'Cancel') ?>
                 </a>

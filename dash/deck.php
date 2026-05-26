@@ -313,70 +313,6 @@
         </div>
     </div>
 
-    <!-- Preview de cartões -->
-    <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center gap-3">
-            <div>
-                <div class="fw-medium"><?= car_t($t, 'Flashcards') ?></div>
-                <div class="form-text mt-1"><?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?></div>
-            </div>
-            <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
-               class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1 flex-shrink-0">
-                <i class="bi bi-plus" aria-hidden="true"></i>
-                <?= car_t($t, 'New Flashcard') ?>
-            </a>
-        </div>
-
-        <?php if (!empty($preview_cards)) { ?>
-        <div class="table-responsive">
-            <table class="table table-hover mb-0">
-                <thead>
-                    <tr>
-                        <th class="small text-secondary fw-normal"><?= car_t($t, 'Front') ?></th>
-                        <th class="small text-secondary fw-normal"><?= car_t($t, 'Back') ?></th>
-                        <th class="small text-secondary fw-normal" style="width: 120px"><?= car_t($t, 'Accuracy Rate') ?></th>
-                        <th style="width: 32px"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($preview_cards as $_pc) { ?>
-                    <?php
-                        $_pc_attempts = (int) $_pc['total_attempts'];
-                        $_pc_acc      = car_percent((int) $_pc['card_true'], $_pc_attempts);
-                        $_pc_color    = $_pc_acc < 50 ? 'bg-danger' : ($_pc_acc < 75 ? 'bg-warning' : 'bg-success');
-                    ?>
-                    <tr style="cursor: pointer" onclick="location.href='<?= CAR_PATH_WEB ?>/dash/card-edit?k=<?= car_htmlspecialchars($_pc['card_key']) ?>'">
-                        <td class="small fw-medium"><?= car_htmlspecialchars($_pc['card_front']) ?></td>
-                        <td class="small text-secondary"><?= car_htmlspecialchars($_pc['card_back']) ?></td>
-                        <td>
-                            <?php if ($_pc_attempts > 0) { ?>
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="progress flex-shrink-0" style="width: 40px; height: 4px" role="progressbar" aria-valuenow="<?= $_pc_acc ?>" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar <?= $_pc_color ?>" style="width: <?= $_pc_acc ?>%"></div>
-                                </div>
-                                <span class="car-text-mono small"><?= $_pc_acc ?>%</span>
-                            </div>
-                            <?php } else { ?>
-                            <span class="small text-secondary">&mdash;</span>
-                            <?php } ?>
-                        </td>
-                        <td><i class="bi bi-chevron-right small text-primary" aria-hidden="true"></i></td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-        <?php } ?>
-
-        <div class="card-footer text-center py-2">
-            <a href="<?= CAR_PATH_WEB ?>/dash/card-list?k=<?= car_htmlspecialchars($deck_key) ?>"
-               class="btn btn-sm btn-link text-secondary text-decoration-none">
-                <?= car_t($t, 'dash.deck.view-all') ?>
-                <i class="bi bi-arrow-right small" aria-hidden="true"></i>
-            </a>
-        </div>
-    </div>
-
     <!-- Visibilidade -->
     <div class="card mb-4">
         <div class="card-header">
@@ -454,16 +390,68 @@
     </script>
     <?php } ?>
 
-    <!-- Zona de perigo -->
-    <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap pt-4 mt-2 border-top">
-        <div>
-            <div class="fw-medium text-danger small"><?= car_t($t, 'Delete Deck') ?></div>
-            <div class="small text-secondary"><?= car_t($t, 'dash.deck.delete') ?></div>
+    <!-- Preview de cartões -->
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center gap-3">
+            <div>
+                <div class="fw-medium"><?= car_t($t, 'Flashcards') ?></div>
+                <div class="form-text mt-1"><?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?></div>
+            </div>
+            <a href="<?= CAR_PATH_WEB ?>/dash/card-new?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1 flex-shrink-0">
+                <i class="bi bi-plus" aria-hidden="true"></i>
+                <?= car_t($t, 'New Flashcard') ?>
+            </a>
         </div>
-        <a href="<?= CAR_PATH_WEB ?>/dash/deck-delete?k=<?= car_htmlspecialchars($deck_key) ?>"
-           class="btn btn-outline-danger btn-sm flex-shrink-0">
-            <?= car_t($t, 'Delete') ?>
-        </a>
+
+        <?php if (!empty($preview_cards)) { ?>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th class="small text-secondary fw-normal"><?= car_t($t, 'Front') ?></th>
+                        <th class="small text-secondary fw-normal"><?= car_t($t, 'Back') ?></th>
+                        <th class="small text-secondary fw-normal" style="width: 120px"><?= car_t($t, 'Accuracy Rate') ?></th>
+                        <th style="width: 32px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($preview_cards as $_pc) { ?>
+                    <?php
+                        $_pc_attempts = (int) $_pc['total_attempts'];
+                        $_pc_acc      = car_percent((int) $_pc['card_true'], $_pc_attempts);
+                        $_pc_color    = $_pc_acc < 50 ? 'bg-danger' : ($_pc_acc < 75 ? 'bg-warning' : 'bg-success');
+                    ?>
+                    <tr style="cursor: pointer" onclick="location.href='<?= CAR_PATH_WEB ?>/dash/card-edit?k=<?= car_htmlspecialchars($_pc['card_key']) ?>'">
+                        <td class="small fw-medium"><?= car_htmlspecialchars($_pc['card_front']) ?></td>
+                        <td class="small text-secondary"><?= car_htmlspecialchars($_pc['card_back']) ?></td>
+                        <td>
+                            <?php if ($_pc_attempts > 0) { ?>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="progress flex-shrink-0" style="width: 40px; height: 4px" role="progressbar" aria-valuenow="<?= $_pc_acc ?>" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar <?= $_pc_color ?>" style="width: <?= $_pc_acc ?>%"></div>
+                                </div>
+                                <span class="car-text-mono small"><?= $_pc_acc ?>%</span>
+                            </div>
+                            <?php } else { ?>
+                            <span class="small text-secondary">&mdash;</span>
+                            <?php } ?>
+                        </td>
+                        <td><i class="bi bi-chevron-right small text-primary" aria-hidden="true"></i></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php } ?>
+
+        <div class="card-footer text-center py-2">
+            <a href="<?= CAR_PATH_WEB ?>/dash/card-list?k=<?= car_htmlspecialchars($deck_key) ?>"
+               class="btn btn-sm btn-link text-secondary text-decoration-none">
+                <?= car_t($t, 'dash.deck.view-all') ?>
+                <i class="bi bi-arrow-right small" aria-hidden="true"></i>
+            </a>
+        </div>
     </div>
 
 </div>

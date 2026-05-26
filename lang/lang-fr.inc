@@ -56,6 +56,7 @@ $t = [
     'dash.card.upload-act.success2'=>"Téléchargement effectué avec succès. Mais certaines lignes du fichier n'ont pas été ajoutées. Vérifiez la structure de votre fichier.",
     'dash.deck-delete-question'=>"Voulez-vous vraiment supprimer ce paquet ?",
     'dash.deck-delete.warning'=>"En supprimant ce paquet, vous perdrez définitivement toutes vos cartes mémoire et les études qui y sont associées. Cette action ne peut pas être annulée.",
+    'dash.deck-delete.success'=>"Paquet supprimé avec succès.",
     'dash.deck-edit-act.name'=>"Le nom du paquet est obligatoire.",
     'dash.deck-edit.message1'=>"En autorisant l'accès public à ce paquet, le contenu sera visible par tout utilisateur sur Internet. L'URL du paquet sera accessible au public, permettant à quiconque de créer, de visualiser et de participer à des études dans ce paquet.",
     'dash.deck-edit.message2'=>"Veuillez tenir compte de la sensibilité du matériel d'étude avant d'autoriser l'accès public.",

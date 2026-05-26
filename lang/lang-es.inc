@@ -55,6 +55,7 @@ $t = [
     'dash.card.upload-act.success2'=>'Carga realizada con éxito. Pero algunas líneas del archivo no se agregaron. Revisa la estructura de tu archivo.',
     'dash.deck-delete-question'=>'¿Seguro que quieres eliminar este grupo?',
     'dash.deck-delete.warning'=>'Al eliminar este grupo, perderá de forma permanente todas sus tarjetas didácticas y estudios asociados con él. Esta acción no se puede deshacer.',
+    'dash.deck-delete.success'=>'Grupo eliminado correctamente.',
     'dash.deck-edit-act.name'=>'El nombre del grupo es obligatorio.',
     'dash.deck-edit.message1'=>'Al habilitar el acceso público a este grupo, el contenido será visible para cualquier usuario en Internet. La URL del grupo será de acceso público, lo que permitirá a cualquier persona crear, ver y participar en estudios en este grupo.',
     'dash.deck-edit.message2'=>'Tenga en cuenta la sensibilidad del material de estudio antes de habilitar el acceso público.',

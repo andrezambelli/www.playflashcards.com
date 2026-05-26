@@ -37,16 +37,24 @@
 			$deck_key = $row['deck_key'];
 		}
 		
-		// Apagando todos as sessões de estudos deste grupo que ainda não foram finalizados
+		// Apagando sessões que referenciam este cartão (inclui outros usuários em decks públicos)
 		$sql = sprintf('delete from car_study_session
-                         where user_id = %d
-                           and stud_id in (
-                               select stud_id
-                                 from car_study
-                                where deck_id = %d
-                                  and user_id = %d
-                           )',
-                        $user_id,
+                         where card_id = %d',
+                        $card_id);
+
+		$result = $mysqli->query($sql);
+
+		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
+
+		// Apagando sessões restantes dos estudos incompletos deste grupo (outros cartões do mesmo estudo)
+		$sql = sprintf('delete from car_study_session
+                         where stud_id in (
+                             select stud_id
+                               from car_study
+                              where deck_id = %d
+                                and user_id = %d
+                                and stud_end is null
+                         )',
                         $deck_id,
                         $user_id);
 
@@ -54,18 +62,18 @@
 
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
-        // Apagando todos os estudos deste grupo que ainda não foram finalizados
+		// Apagando estudos incompletos deste grupo
 		$sql = sprintf('delete from car_study
                          where deck_id = %d
                            and user_id = %d
                            and stud_end is null',
                         $deck_id,
                         $user_id);
-		
+
 		$result = $mysqli->query($sql);
-		
+
 		if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
-		
+
 		// Apagando o cartão
 		$sql = sprintf('delete from car_card
                          where card_id = %d

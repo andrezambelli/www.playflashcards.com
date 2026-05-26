@@ -55,6 +55,7 @@ $t = [
     'dash.card.upload-act.success2'=>'Upload performed successfully. But some lines from the file were not added. Review your file structure.',
     'dash.deck-delete-question'=>'Are you sure you want to delete this deck?',
     'dash.deck-delete.warning'=>'By deleting this deck, you will permanently lose all your flashcards and studies associated with it. This action cannot be undone.',
+    'dash.deck-delete.success'=>'Deck deleted successfully.',
     'dash.deck-edit-act.name'=>'The name of the deck is mandatory.',
     'dash.deck-edit.message1'=>'By enabling public access to this deck, the content will be visible to any user on the internet. The deck URL will be publicly accessible, allowing anyone to create, view, and participate in studies in this deck.',
     'dash.deck-edit.message2'=>'Please consider the sensitivity of the study material before enabling public access.',
