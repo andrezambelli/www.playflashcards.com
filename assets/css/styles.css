@@ -821,6 +821,7 @@ html {
     align-items: center;
     padding: 3rem;
     position: relative;
+    overflow: hidden;
     cursor: pointer;
     transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms;
 }
@@ -859,6 +860,8 @@ html {
     letter-spacing: -0.025em;
     text-align: center;
     line-height: 1.15;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .car-flashcard-hint {
     position: absolute;
@@ -869,4 +872,13 @@ html {
 }
 .car-flashcard.flipped .car-flashcard-hint {
     color: var(--bs-tertiary-color);
+}
+@media (max-width: 575.98px) {
+    .car-play-canvas {
+        padding: 1.25rem 1rem;
+        gap: 1.25rem;
+    }
+    .car-flashcard {
+        aspect-ratio: 1 / 1;
+    }
 }

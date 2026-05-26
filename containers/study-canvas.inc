@@ -205,6 +205,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var cardStep        = <?= json_encode($stse_order . '/' . $stud_total) ?>;
     var exitUrl         = <?= json_encode($_deck_url) ?>;
 
+    function fitCardText() {
+        var style = getComputedStyle(card);
+        var padV  = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+        var avail = card.clientHeight - padV;
+        var size  = 44;
+        cardText.style.fontSize = size + 'px';
+        while (cardText.scrollHeight > avail && size > 12) {
+            size--;
+            cardText.style.fontSize = size + 'px';
+        }
+    }
+
     function flip() {
         if (card.classList.contains('flip-out') || card.classList.contains('flip-start')) return;
         card.classList.add('flip-out');
@@ -219,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.classList.remove('flip-out');
             void card.offsetWidth; // força reflow para o jump sem transição
             card.classList.remove('flip-start');
+            fitCardText();
         }, 280);
     }
 
@@ -236,6 +249,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('btn_true').addEventListener('click', function () { answer('true'); });
     document.getElementById('btn_false').addEventListener('click', function () { answer('false'); });
+
+    fitCardText();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitCardText, 100);
+    });
 
     // capture phase: intercepta esc antes de qualquer elemento filho receber o evento
     document.addEventListener('keydown', function (e) {
