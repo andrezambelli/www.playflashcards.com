@@ -170,15 +170,15 @@
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
-                                <th><?= car_t($t, 'Front') ?></th>
-                                <th><?= car_t($t, 'Back') ?></th>
+                                <th class="small text-secondary fw-normal"><?= car_t($t, 'Front') ?></th>
+                                <th class="small text-secondary fw-normal"><?= car_t($t, 'Back') ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($preview_cards as $_pc) { ?>
                             <tr>
-                                <td class="fw-medium"><?= car_htmlspecialchars($_pc['card_front']) ?></td>
-                                <td class="text-secondary"><?= car_htmlspecialchars($_pc['card_back']) ?></td>
+                                <td class="small fw-medium"><?= car_htmlspecialchars($_pc['card_front']) ?></td>
+                                <td class="small text-secondary"><?= car_htmlspecialchars($_pc['card_back']) ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
