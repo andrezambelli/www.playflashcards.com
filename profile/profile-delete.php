@@ -10,7 +10,7 @@
 <?php
     $header_title    = car_t($t, 'Delete your Account') . ' - Play Flashcards';
     $dash_active     = 'profile';
-    $dash_breadcrumb = [[car_t($t, 'Profile'), CAR_PATH_WEB . '/profile/profile'], [car_t($t, 'Delete your Account')]];
+    $dash_breadcrumb = [[car_t($t, 'Profile'), CAR_PATH_WEB . '/profile/home'], [car_t($t, 'Delete your Account')]];
     include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
@@ -28,7 +28,7 @@
                 <?= car_t($t, 'profile.profile-delete.warning') ?>
             </p>
             <div class="d-flex gap-2">
-                <a href="<?= CAR_PATH_WEB ?>/profile/profile" class="btn btn-outline-secondary">
+                <a href="<?= CAR_PATH_WEB ?>/profile/home" class="btn btn-outline-secondary">
                     <?= car_t($t, 'Cancel') ?>
                 </a>
                 <form method="post" action="<?= CAR_PATH_WEB ?>/profile/profile-delete-act">

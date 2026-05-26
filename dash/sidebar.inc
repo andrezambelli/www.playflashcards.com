@@ -55,7 +55,7 @@
                 <?= car_t($t, 'SRS') ?>
             </a>
             <a class="car-app-nav-item <?= ($dash_active ?? '') === 'profile' ? 'active' : '' ?>"
-               href="<?= CAR_PATH_WEB ?>/profile/profile">
+               href="<?= CAR_PATH_WEB ?>/profile/home">
                 <i class="bi bi-person" aria-hidden="true"></i>
                 <?= car_t($t, 'Profile') ?>
             </a>

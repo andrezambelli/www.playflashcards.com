@@ -32,7 +32,7 @@
     $routes['services/change-language-act'] = 'services/change-language-act.php';
 
     // profile - private
-    $routes['profile/profile'] = 'profile/profile.php';
+    $routes['profile/home'] = 'profile/home.php';
     $routes['profile/profile-delete'] = 'profile/profile-delete.php';
     $routes['profile/profile-delete-act'] = 'profile/profile-delete-act.php';
     $routes['profile/srs'] = 'profile/srs.php';

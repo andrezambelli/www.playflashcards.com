@@ -47,10 +47,10 @@
     <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
 
     <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Profile') ?></h1>
-    <p class="text-secondary small mb-4"><?= car_t($t, 'Preferences') ?> &amp; <?= car_t($t, 'Stats') ?></p>
+    <p class="text-secondary small mb-4"><?= car_t($t, 'Preferences') ?></p>
 
     <!-- Preferências -->
-    <div class="card mb-3">
+    <div class="card mb-4">
         <div class="card-header"><?= car_t($t, 'Preferences') ?></div>
         <div class="card-body">
             <div class="row g-3 align-items-center">
@@ -61,7 +61,7 @@
                 <div class="col-md-4 form-label mb-0"><?= car_t($t, 'Language') ?></div>
                 <div class="col-md-8">
                     <form id="lang-form" action="<?= CAR_PATH_WEB ?>/services/change-language-act" method="get">
-                        <input type="hidden" name="redirect_url" value="<?= CAR_PATH_WEB ?>/profile/profile">
+                        <input type="hidden" name="redirect_url" value="<?= CAR_PATH_WEB ?>/profile/home">
                         <select id="lang-select" name="lang" class="form-select form-select-sm" style="max-width: 280px">
                             <option value="en"    <?= $user_lang === 'en'    ? 'selected' : '' ?>>English</option>
                             <option value="pt-br" <?= $user_lang === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
@@ -74,31 +74,9 @@
                 <div class="col-md-4 form-label mb-0"><?= car_t($t, 'Timezone') ?></div>
                 <div class="col-md-8 small car-text-mono">GMT<?= car_htmlspecialchars($timezone) ?></div>
 
-            </div>
-        </div>
-    </div>
+                <div class="col-md-4 form-label mb-0"><?= car_t($t, 'profile.stats.member-since') ?></div>
+                <div class="col-md-8 small car-text-mono"><?= car_htmlspecialchars($member_since) ?></div>
 
-    <!-- Stats -->
-    <div class="card mb-4">
-        <div class="card-header"><?= car_t($t, 'Stats') ?></div>
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-3 col-6">
-                    <div class="car-label-uc mb-1"><?= car_t($t, 'profile.stats.sessions') ?></div>
-                    <div class="car-text-mono fw-500" style="font-size: 1.375rem; font-weight: 500">—</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="car-label-uc mb-1"><?= car_t($t, 'profile.stats.cards') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.375rem; font-weight: 500">—</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="car-label-uc mb-1"><?= car_t($t, 'profile.stats.accuracy') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.375rem; font-weight: 500">—</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="car-label-uc mb-1"><?= car_t($t, 'profile.stats.member-since') ?></div>
-                    <div class="car-text-mono" style="font-size: 1.375rem; font-weight: 500"><?= car_htmlspecialchars($member_since) ?></div>
-                </div>
             </div>
         </div>
     </div>
