@@ -39,7 +39,7 @@
 		
 		if ($user_count_study < $user_max_study) {
 			// Apaga todos os cards em branco do usuarios
-			$_sql = sprintf(" delete from car_card where deck_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');", $deck_id);
+			$_sql = sprintf(" delete from car_card where deck_id = %d and user_id = %d and (card_front is null or trim(card_front) = '' or card_back is null or trim(card_back) = '');", $deck_id, $user_id);
 			
 			$_result = $mysqli->query($_sql);
 			
@@ -96,10 +96,12 @@
                                 (stse_order, user_id, stud_id, card_id)
                                 select row_number() over (order by RAND()) as stse_order, %d, %d, card_id
                                   from car_card
-                                 where deck_id = %d',
+                                 where deck_id = %d
+                                   and user_id = %d',
                                 $user_id,
                                 $stud_id,
-                                $deck_id);
+                                $deck_id,
+                                $user_id);
 				
 				$result = $mysqli->query($sql);
 				

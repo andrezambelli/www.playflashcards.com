@@ -31,8 +31,10 @@
                               from car_card a, car_deck b
                              where a.card_key = '%s'
                                and a.user_id = %d
-                               and a.deck_id = b.deck_id",
+                               and a.deck_id = b.deck_id
+                               and b.user_id = %d",
                             $mysqli->real_escape_string(car_never_null($card_key)),
+                            $user_id,
                             $user_id);
 				
 			$result = $mysqli->query($sql);
@@ -78,12 +80,14 @@
                 // Apagando todos os estudos deste grupo que ainda não foram finalizados
                 $sql = sprintf('
                                 delete from car_study_session
-                                 where stud_id in (
+                                 where user_id = %d
+                                   and stud_id in (
                                  select stud_id 
                                    from car_study 
                                   where deck_id = %d 
                                     and user_id = %d 
                                     and stud_end is null)',
+                                $user_id,
                                 $deck_id,
                                 $user_id);
 

@@ -41,10 +41,12 @@
                            and a.user_id = %d
                            and a.stse_order = %d
                            and a.stse_answer is null
-                           and a.card_id = b.card_id',
+                           and a.card_id = b.card_id
+                           and b.user_id = %d',
                         $stud_id,
                         $user_id,
-                        $stse_order);
+                        $stse_order,
+                        $user_id);
 
         $result = $mysqli->query($sql);
 

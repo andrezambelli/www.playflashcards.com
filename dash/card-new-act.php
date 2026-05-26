@@ -78,8 +78,8 @@
                     if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 
                     // Invalida sessões de estudo em andamento (baralho foi modificado)
-                    $sql = sprintf('delete from car_study_session where stud_id in (select stud_id from car_study where deck_id = %d and user_id = %d and stud_end is null)',
-                                    $deck_id, $user_id);
+                    $sql = sprintf('delete from car_study_session where user_id = %d and stud_id in (select stud_id from car_study where deck_id = %d and user_id = %d and stud_end is null)',
+                                    $user_id, $deck_id, $user_id);
                     $result = $mysqli->query($sql);
                     if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
 

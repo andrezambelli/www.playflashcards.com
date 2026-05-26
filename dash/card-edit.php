@@ -43,8 +43,9 @@
     // stats e info do baralho
     $sql = sprintf("select a.card_true, a.card_false, a.card_sequence, b.deck_key, b.deck_name, a.card_last_study
                       from car_card a, car_deck b
-                     where a.card_key = '%s' and a.user_id = %d and a.deck_id = b.deck_id",
+                     where a.card_key = '%s' and a.user_id = %d and a.deck_id = b.deck_id and b.user_id = %d",
                     $mysqli->real_escape_string(car_never_null($card_key)),
+                    $user_id,
                     $user_id);
 
     $result = $mysqli->query($sql);

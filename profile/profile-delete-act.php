@@ -12,7 +12,7 @@
 
 	try {
 		// Apagando todos as sessões de estudo
-		$sql = sprintf(' delete from car_study_session where stud_id in (select stud_id from car_study where user_id = %d)', $user_id);
+		$sql = sprintf(' delete from car_study_session where user_id = %d and stud_id in (select stud_id from car_study where user_id = %d)', $user_id, $user_id);
 		
 		$result = $mysqli->query($sql);
 		

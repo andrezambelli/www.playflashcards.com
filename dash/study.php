@@ -33,8 +33,10 @@
                       from car_study a, car_deck b
                      where a.stud_key = '%s'
                        and a.user_id = %d
-                       and a.deck_id = b.deck_id",
+                       and a.deck_id = b.deck_id
+                       and b.user_id = %d",
                     $mysqli->real_escape_string(car_never_null($stud_key)),
+                    $user_id,
                     $user_id);
 
     $result = $mysqli->query($sql);
@@ -57,11 +59,15 @@
                          where a.stud_key = '%s'
                            and a.user_id = %d
                            and a.stud_id = b.stud_id
+                           and b.user_id = %d
                            and b.card_id = c.card_id
+                           and c.user_id = %d
                            and b.stse_answer is null
                          order by b.stse_order
                         limit 1",
                         $mysqli->real_escape_string(car_never_null($stud_key)),
+                        $user_id,
+                        $user_id,
                         $user_id);
 
         $result = $mysqli->query($sql);

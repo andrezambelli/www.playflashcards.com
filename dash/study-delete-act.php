@@ -20,8 +20,10 @@
 								car_deck b
                           where a.stud_key = '%s'
                             and a.user_id = %d
-							and a.deck_id = b.deck_id",
+							and a.deck_id = b.deck_id
+							and b.user_id = %d",
 		 				    $mysqli->real_escape_string(car_never_null($stud_key)),
+		 					$user_id,
 		 					$user_id);
 		
 		$result = $mysqli->query($sql);
