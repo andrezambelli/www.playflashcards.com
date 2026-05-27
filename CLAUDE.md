@@ -20,7 +20,6 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 | `admin/` | Painel administrativo |
 | `common/` | Páginas comuns: sobre, contato, cookies, termos, privacidade, doação |
 | `containers/` | Blocos reutilizáveis incluídos nas páginas: header, footer, message, share, boxes |
-| `content/` | Imagens e recursos de conteúdo |
 | `dash/` | Área logada: gerenciamento de decks, cartões e sessões de estudo |
 | `docs/` | Documentação local (gitignored): scripts MySQL, templates de servidor |
 | `external-lib/` | Bibliotecas externas (MailerSend) |
@@ -31,9 +30,8 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 | `profile/` | Perfil do usuário e configuração de SRS |
 | `public/` | Baralhos e estudos públicos acessíveis sem login |
 | `services/` | Scripts de serviço sem página: troca de idioma, cookie, último acesso |
-| `test/` | Scripts de teste |
 | `car-server.php` | Configuração de ambiente: credenciais de banco e caminhos absolutos (gitignored) |
-| `general/config.inc` | Conexão com banco e inicialização de sessão (gitignored) |
+| `general/db.inc` | Conexão com banco e inicialização de sessão (gitignored) |
 | `config.inc` | Configuração global: versão, constantes de negócio, idioma e rotas |
 | `routes.inc` | Mapeamento de rotas URL para arquivos PHP |
 
@@ -97,7 +95,11 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - `*-act.php` = actions que processam dados e fazem redirect (nunca renderizam HTML)
 - `*.inc` = blocos incluídos por outras páginas (não acessíveis diretamente via URL)
 - Primeira linha de todo arquivo PHP: `<?php /** @var array $t */ ?>` (suprime falso positivo do Intelephense para a variável `$t`)
+- Avisos do Intelephense sobre funções e constantes indefinidas em `*-act.php` são falsos positivos: o Intelephense não consegue resolver includes com `$_SERVER['DOCUMENT_ROOT']`. Ignorar.
 - Comentários no código devem ser escritos em pt-BR e, preferencialmente, em letra minúscula
+
+### Includes especiais
+- `login/user-insert-act.inc`: espera que `$user_email` seja definido pelo arquivo que o inclui. Todo arquivo que inclui este `.inc` deve também incluir `lang/lang.inc` antes, pois ele acessa `$t['lang']` ao inserir novos usuários.
 
 ### i18n
 - Variável `$t` = array associativo de traduções carregado via `lang/lang.inc`

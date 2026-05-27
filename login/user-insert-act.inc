@@ -4,7 +4,7 @@
     // Variáveis
 	$user_id = 0;
     $user_lang = CAR_SYSTEM_LANG_DEFAULT;
-	$user_max_group = 0;
+	$user_max_deck = 0;
 	$user_max_card = 0;
 	$user_max_study = 0;
 	

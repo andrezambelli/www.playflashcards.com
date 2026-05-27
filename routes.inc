@@ -18,7 +18,6 @@
     $routes['login/login-pincode'] = 'login/login-pincode.php';
     $routes['login/login-pincode-act'] = 'login/login-pincode-act.php';
     $routes['login/login-google-act'] = 'login/login-google-act.php';
-    $routes['login/login-master-act'] = 'login/login-master-act.php';
 
     $routes['deck/study-new-act'] = 'public/study-new-act.php';
     $routes['study/study-act'] = 'public/study-act.php';

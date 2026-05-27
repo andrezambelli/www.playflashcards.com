@@ -141,11 +141,11 @@
                         $card_id,
                         $user_id);
                 }
+
+                $result = $mysqli->query($sql);
+
+                if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
             }
-
-            $result = $mysqli->query($sql);
-
-            if (!$result) { error_log($mysqli->sqlstate . ' - ' . $mysqli->error); throw new Exception('error.db'); }
         }
         $mysqli->commit();
     } catch(Exception $e) {
