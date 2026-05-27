@@ -29,6 +29,62 @@
             ['front' => 'Menor número primo',                  'back' => '2'],
             ['front' => 'Significado de "serendipidade"',      'back' => 'Uma descoberta feliz e inesperada'],
         ],
+        'de' => [
+            ['front' => 'Hauptstadt von Island',               'back' => 'Reykjavik'],
+            ['front' => 'Was ist Photosynthese?',              'back' => 'Pflanzen wandeln Licht in Energie um'],
+            ['front' => 'Suchkürzel im Browser',               'back' => 'Ctrl + F oder Command + F'],
+            ['front' => 'Kleinste Primzahl',                   'back' => '2'],
+            ['front' => 'Bedeutung von "Serendipität"',        'back' => 'Eine glückliche, unerwartete Entdeckung'],
+        ],
+        'it' => [
+            ['front' => 'Capitale dell\'Islanda',              'back' => 'Reykjavik'],
+            ['front' => 'Cos\'è la fotosintesi?',              'back' => 'Le piante trasformano la luce in energia'],
+            ['front' => 'Scorciatoia di ricerca nel browser',  'back' => 'Ctrl + F o Command + F'],
+            ['front' => 'Il numero primo più piccolo',         'back' => '2'],
+            ['front' => 'Significato di "serendipità"',        'back' => 'Una scoperta felice e inaspettata'],
+        ],
+        'ja' => [
+            ['front' => 'アイスランドの首都',                  'back' => 'レイキャビーク'],
+            ['front' => '光合成とは何ですか？',                'back' => '植物が光をエネルギーに変える仕組み'],
+            ['front' => 'ブラウザ検索のショートカット',        'back' => 'Ctrl + F または Command + F'],
+            ['front' => '最小の素数',                          'back' => '2'],
+            ['front' => '「セレンディピティ」の意味',          'back' => '偶然の幸運な発見'],
+        ],
+        'zh' => [
+            ['front' => '冰岛的首都',                          'back' => '雷克雅未克'],
+            ['front' => '什么是光合作用？',                    'back' => '植物将光转化为能量'],
+            ['front' => '浏览器搜索快捷键',                    'back' => 'Ctrl + F 或 Command + F'],
+            ['front' => '最小的质数',                          'back' => '2'],
+            ['front' => '"serendipity"的含义',                 'back' => '意外的幸运收获'],
+        ],
+        'nl' => [
+            ['front' => 'Hoofdstad van IJsland',               'back' => 'Reykjavik'],
+            ['front' => 'Wat is fotosynthese?',                'back' => 'Planten zetten licht om in energie'],
+            ['front' => 'Sneltoets zoeken in de browser',      'back' => 'Ctrl + F of Command + F'],
+            ['front' => 'Kleinste priemgetal',                 'back' => '2'],
+            ['front' => 'Betekenis van "serendipiteit"',       'back' => 'Een gelukkige, onverwachte ontdekking'],
+        ],
+        'pl' => [
+            ['front' => 'Stolica Islandii',                    'back' => 'Reykjavik'],
+            ['front' => 'Czym jest fotosynteza?',              'back' => 'Rośliny zamieniają światło w energię'],
+            ['front' => 'Skrót wyszukiwania w przeglądarce',   'back' => 'Ctrl + F lub Command + F'],
+            ['front' => 'Najmniejsza liczba pierwsza',         'back' => '2'],
+            ['front' => 'Znaczenie słowa "serendypiczność"',   'back' => 'Szczęśliwe, nieoczekiwane odkrycie'],
+        ],
+        'ru' => [
+            ['front' => 'Столица Исландии',                    'back' => 'Рейкьявик'],
+            ['front' => 'Что такое фотосинтез?',               'back' => 'Растения преобразуют свет в энергию'],
+            ['front' => 'Горячая клавиша поиска в браузере',   'back' => 'Ctrl + F или Command + F'],
+            ['front' => 'Наименьшее простое число',            'back' => '2'],
+            ['front' => 'Значение «серендипность»',            'back' => 'Счастливое неожиданное открытие'],
+        ],
+        'hi' => [
+            ['front' => 'आइसलैंड की राजधानी',                 'back' => 'रेक्जाविक'],
+            ['front' => 'प्रकाश संश्लेषण क्या है?',           'back' => 'पौधे प्रकाश को ऊर्जा में बदलते हैं'],
+            ['front' => 'ब्राउज़र में खोज का शॉर्टकट',       'back' => 'Ctrl + F या Command + F'],
+            ['front' => 'सबसे छोटी अभाज्य संख्या',            'back' => '2'],
+            ['front' => '"serendipity" का अर्थ',               'back' => 'एक सुखद और अप्रत्याशित खोज'],
+        ],
     ];
     $home_card_preview_lang     = $home_card_preview_examples[$t['lang']] ?? $home_card_preview_examples['en'];
     $home_card_preview_selected = $home_card_preview_lang[array_rand($home_card_preview_lang)];

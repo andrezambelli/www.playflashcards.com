@@ -33,14 +33,30 @@
     } elseif (substr($redirect_url, -3) === '/en' || substr($redirect_url, -4) === '/en/' ||
         substr($redirect_url, -5) === '/pt-br' || substr($redirect_url, -6) === '/pt-br/' ||
         substr($redirect_url, -3) === '/es' || substr($redirect_url, -4) === '/es/' ||
-        substr($redirect_url, -3) === '/fr' || substr($redirect_url, -4) === '/fr/') {
+        substr($redirect_url, -3) === '/fr' || substr($redirect_url, -4) === '/fr/' ||
+        substr($redirect_url, -3) === '/de' || substr($redirect_url, -4) === '/de/' ||
+        substr($redirect_url, -3) === '/it' || substr($redirect_url, -4) === '/it/' ||
+        substr($redirect_url, -3) === '/ja' || substr($redirect_url, -4) === '/ja/' ||
+        substr($redirect_url, -3) === '/zh' || substr($redirect_url, -4) === '/zh/' ||
+        substr($redirect_url, -3) === '/nl' || substr($redirect_url, -4) === '/nl/' ||
+        substr($redirect_url, -3) === '/pl' || substr($redirect_url, -4) === '/pl/' ||
+        substr($redirect_url, -3) === '/ru' || substr($redirect_url, -4) === '/ru/' ||
+        substr($redirect_url, -3) === '/hi' || substr($redirect_url, -4) === '/hi/') {
 
         // Se a URL termina idoma, volta para a mesma página com o novo idioma
         $redirect_url = CAR_PATH_WEB . '/' . $new_lang . '/';
     } elseif (substr($redirect_url, -strlen('/en')) === '/en' ||
         substr($redirect_url, -strlen('/pt-br')) === '/pt-br' ||
         substr($redirect_url, -strlen('/es')) === '/es' ||
-        substr($redirect_url, -strlen('/fr')) === '/fr') {
+        substr($redirect_url, -strlen('/fr')) === '/fr' ||
+        substr($redirect_url, -strlen('/de')) === '/de' ||
+        substr($redirect_url, -strlen('/it')) === '/it' ||
+        substr($redirect_url, -strlen('/ja')) === '/ja' ||
+        substr($redirect_url, -strlen('/zh')) === '/zh' ||
+        substr($redirect_url, -strlen('/nl')) === '/nl' ||
+        substr($redirect_url, -strlen('/pl')) === '/pl' ||
+        substr($redirect_url, -strlen('/ru')) === '/ru' ||
+        substr($redirect_url, -strlen('/hi')) === '/hi') {
 
         // Se a URL possui idoma, volta para a mesma página com o novo idioma
         $redirect_url = $redirect_url . '/';
@@ -67,7 +83,7 @@
         $parsed = parse_url($redirect);
         $path = $parsed['path'] ?? '';
         $parts = explode('/', ltrim($path, '/'));
-        $valid_langs = ['en', 'pt-br', 'es', 'fr'];
+        $valid_langs = ['en', 'pt-br', 'es', 'fr', 'de', 'it', 'ja', 'zh', 'nl', 'pl', 'ru', 'hi'];
 
         if (!empty($parts[0]) && in_array($parts[0], $valid_langs)) {
             $parts[0] = $new_lang;

@@ -110,7 +110,7 @@
 <?php } ?>
 
 <?php
-    $lang_labels = ['en' => 'EN', 'pt-br' => 'PT', 'es' => 'ES', 'fr' => 'FR'];
+    $lang_labels = ['en' => 'EN', 'pt-br' => 'PT', 'es' => 'ES', 'fr' => 'FR', 'de' => 'DE', 'it' => 'IT', 'ja' => 'JA', 'zh' => 'ZH', 'nl' => 'NL', 'pl' => 'PL', 'ru' => 'RU', 'hi' => 'HI'];
     $lang_current = $lang_labels[$t['lang']] ?? strtoupper($t['lang']);
 ?>
 <?php if (empty($header_no_navbar)) { ?>
@@ -169,6 +169,14 @@
                             'es'    => 'Español',
                             'fr'    => 'Français',
                             'pt-br' => 'Português',
+                            'de'    => 'Deutsch',
+                            'it'    => 'Italiano',
+                            'nl'    => 'Nederlands',
+                            'pl'    => 'Polski',
+                            'ru'    => 'Русский',
+                            'ja'    => '日本語',
+                            'zh'    => '中文',
+                            'hi'    => 'हिंदी',
                         ];
                         $lang_redirect_url = urlencode(car_current_url());
                     ?>

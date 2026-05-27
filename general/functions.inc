@@ -203,6 +203,22 @@
             $_new_lang = 'es';
         } elseif (strrpos($uri, '/fr/') !== false || substr($uri, -strlen('/fr')) === '/fr') {
             $_new_lang = 'fr';
+        } elseif (strrpos($uri, '/de/') !== false || substr($uri, -strlen('/de')) === '/de') {
+            $_new_lang = 'de';
+        } elseif (strrpos($uri, '/it/') !== false || substr($uri, -strlen('/it')) === '/it') {
+            $_new_lang = 'it';
+        } elseif (strrpos($uri, '/ja/') !== false || substr($uri, -strlen('/ja')) === '/ja') {
+            $_new_lang = 'ja';
+        } elseif (strrpos($uri, '/zh/') !== false || substr($uri, -strlen('/zh')) === '/zh') {
+            $_new_lang = 'zh';
+        } elseif (strrpos($uri, '/nl/') !== false || substr($uri, -strlen('/nl')) === '/nl') {
+            $_new_lang = 'nl';
+        } elseif (strrpos($uri, '/pl/') !== false || substr($uri, -strlen('/pl')) === '/pl') {
+            $_new_lang = 'pl';
+        } elseif (strrpos($uri, '/ru/') !== false || substr($uri, -strlen('/ru')) === '/ru') {
+            $_new_lang = 'ru';
+        } elseif (strrpos($uri, '/hi/') !== false || substr($uri, -strlen('/hi')) === '/hi') {
+            $_new_lang = 'hi';
         } else {
             // URL sem prefixo de idioma (ex: /deck/..., /study/..., /): não interferir
             return;

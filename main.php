@@ -6,7 +6,7 @@
 <?php
     // redireciona raiz sem prefixo de idioma (ex: /) para /{lang}/
     $_uri_first = explode('/', trim(strtok($_SERVER['REQUEST_URI'] ?? '/', '?'), '/'))[0] ?? '';
-    if (!in_array($_uri_first, ['en', 'pt-br', 'es', 'fr'])) {
+    if (!in_array($_uri_first, ['en', 'pt-br', 'es', 'fr', 'de', 'it', 'ja', 'zh', 'nl', 'pl', 'ru', 'hi'])) {
         car_redirect(car_get_base_url(CAR_PATH_WEB) . '/' . $t['lang'] . '/');
     }
     unset($_uri_first);

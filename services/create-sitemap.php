@@ -4,7 +4,7 @@
     $today = date('Y-m-d');
     $base  = 'https://www.playflashcards.com';
     $root  = CAR_ROOT_WEB;
-    $langs = ['en', 'pt-br', 'es', 'fr'];
+    $langs = ['en', 'pt-br', 'es', 'fr', 'de', 'it', 'ja', 'zh', 'nl', 'pl', 'ru', 'hi'];
     $logs  = [];
     $urls  = [];
 

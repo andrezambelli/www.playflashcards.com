@@ -63,10 +63,18 @@
                     <form id="lang-form" action="<?= CAR_PATH_WEB ?>/services/change-language-act" method="get">
                         <input type="hidden" name="redirect_url" value="<?= CAR_PATH_WEB ?>/profile/home">
                         <select id="lang-select" name="lang" class="form-select form-select-sm" style="max-width: 280px">
-                            <option value="en"    <?= $user_lang === 'en'    ? 'selected' : '' ?>>English</option>
-                            <option value="pt-br" <?= $user_lang === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
-                            <option value="es"    <?= $user_lang === 'es'    ? 'selected' : '' ?>>Español</option>
-                            <option value="fr"    <?= $user_lang === 'fr'    ? 'selected' : '' ?>>Français</option>
+                            <option value="en"    <?= $t['lang'] === 'en'    ? 'selected' : '' ?>>English</option>
+                            <option value="pt-br" <?= $t['lang'] === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
+                            <option value="es"    <?= $t['lang'] === 'es'    ? 'selected' : '' ?>>Español</option>
+                            <option value="fr"    <?= $t['lang'] === 'fr'    ? 'selected' : '' ?>>Français</option>
+                            <option value="de"    <?= $t['lang'] === 'de'    ? 'selected' : '' ?>>Deutsch</option>
+                            <option value="it"    <?= $t['lang'] === 'it'    ? 'selected' : '' ?>>Italiano</option>
+                            <option value="ja"    <?= $t['lang'] === 'ja'    ? 'selected' : '' ?>>日本語</option>
+                            <option value="zh"    <?= $t['lang'] === 'zh'    ? 'selected' : '' ?>>中文</option>
+                            <option value="nl"    <?= $t['lang'] === 'nl'    ? 'selected' : '' ?>>Nederlands</option>
+                            <option value="pl"    <?= $t['lang'] === 'pl'    ? 'selected' : '' ?>>Polski</option>
+                            <option value="ru"    <?= $t['lang'] === 'ru'    ? 'selected' : '' ?>>Русский</option>
+                            <option value="hi"    <?= $t['lang'] === 'hi'    ? 'selected' : '' ?>>हिंदी</option>
                         </select>
                     </form>
                 </div>

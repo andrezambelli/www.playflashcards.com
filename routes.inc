@@ -2,16 +2,32 @@
 	$routes = [];
 
     // general
-    $routes['en'] = 'main.php';
+    $routes['en']    = 'main.php';
     $routes['pt-br'] = 'main.php';
-    $routes['fr'] = 'main.php';
-    $routes['es'] = 'main.php';
+    $routes['fr']    = 'main.php';
+    $routes['es']    = 'main.php';
+    $routes['de']    = 'main.php';
+    $routes['it']    = 'main.php';
+    $routes['ja']    = 'main.php';
+    $routes['zh']    = 'main.php';
+    $routes['nl']    = 'main.php';
+    $routes['pl']    = 'main.php';
+    $routes['ru']    = 'main.php';
+    $routes['hi']    = 'main.php';
 
     // login - public
-    $routes['en/login/login'] = 'login/login.php';
+    $routes['en/login/login']    = 'login/login.php';
     $routes['pt-br/login/login'] = 'login/login.php';
-    $routes['fr/login/login'] = 'login/login.php';
-    $routes['es/login/login'] = 'login/login.php';
+    $routes['fr/login/login']    = 'login/login.php';
+    $routes['es/login/login']    = 'login/login.php';
+    $routes['de/login/login']    = 'login/login.php';
+    $routes['it/login/login']    = 'login/login.php';
+    $routes['ja/login/login']    = 'login/login.php';
+    $routes['zh/login/login']    = 'login/login.php';
+    $routes['nl/login/login']    = 'login/login.php';
+    $routes['pl/login/login']    = 'login/login.php';
+    $routes['ru/login/login']    = 'login/login.php';
+    $routes['hi/login/login']    = 'login/login.php';
 
     $routes['login/login-act'] = 'login/login-act.php';
     $routes['login/logoff-act'] = 'login/logoff-act.php';
@@ -64,23 +80,55 @@
     $routes['dash/card-upload-act'] = 'dash/card-upload-act.php';
 
     // common - public
-    $routes['en/contact-us'] = 'common/contact-us.php';
+    $routes['en/contact-us']    = 'common/contact-us.php';
     $routes['pt-br/contact-us'] = 'common/contact-us.php';
-    $routes['es/contact-us'] = 'common/contact-us.php';
-    $routes['fr/contact-us'] = 'common/contact-us.php';
+    $routes['es/contact-us']    = 'common/contact-us.php';
+    $routes['fr/contact-us']    = 'common/contact-us.php';
+    $routes['de/contact-us']    = 'common/contact-us.php';
+    $routes['it/contact-us']    = 'common/contact-us.php';
+    $routes['ja/contact-us']    = 'common/contact-us.php';
+    $routes['zh/contact-us']    = 'common/contact-us.php';
+    $routes['nl/contact-us']    = 'common/contact-us.php';
+    $routes['pl/contact-us']    = 'common/contact-us.php';
+    $routes['ru/contact-us']    = 'common/contact-us.php';
+    $routes['hi/contact-us']    = 'common/contact-us.php';
 
-    $routes['en/cookie-settings'] = 'common/cookie-settings.php';
+    $routes['en/cookie-settings']    = 'common/cookie-settings.php';
     $routes['pt-br/cookie-settings'] = 'common/cookie-settings.php';
-    $routes['es/cookie-settings'] = 'common/cookie-settings.php';
-    $routes['fr/cookie-settings'] = 'common/cookie-settings.php';
+    $routes['es/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['fr/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['de/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['it/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['ja/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['zh/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['nl/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['pl/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['ru/cookie-settings']    = 'common/cookie-settings.php';
+    $routes['hi/cookie-settings']    = 'common/cookie-settings.php';
 
-    $routes['en/terms-and-conditions'] = 'common/terms-and-conditions.php';
+    $routes['en/terms-and-conditions']    = 'common/terms-and-conditions.php';
     $routes['pt-br/terms-and-conditions'] = 'common/terms-and-conditions.php';
-    $routes['es/terms-and-conditions'] = 'common/terms-and-conditions.php';
-    $routes['fr/terms-and-conditions'] = 'common/terms-and-conditions.php';
+    $routes['es/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['fr/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['de/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['it/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['ja/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['zh/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['nl/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['pl/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['ru/terms-and-conditions']    = 'common/terms-and-conditions.php';
+    $routes['hi/terms-and-conditions']    = 'common/terms-and-conditions.php';
 
-    $routes['en/privacy-policy'] = 'common/privacy-policy.php';
+    $routes['en/privacy-policy']    = 'common/privacy-policy.php';
     $routes['pt-br/privacy-policy'] = 'common/privacy-policy.php';
-    $routes['es/privacy-policy'] = 'common/privacy-policy.php';
-    $routes['fr/privacy-policy'] = 'common/privacy-policy.php';
+    $routes['es/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['fr/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['de/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['it/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['ja/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['zh/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['nl/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['pl/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['ru/privacy-policy']    = 'common/privacy-policy.php';
+    $routes['hi/privacy-policy']    = 'common/privacy-policy.php';
 
