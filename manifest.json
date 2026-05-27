@@ -1,0 +1,26 @@
+{
+  "short_name": "Flashcards",
+  "name": "Play Flashcards",
+  "description": "Create and study flashcards with spaced repetition. Build your own decks or explore public ones.",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "lang": "en",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FAFAF7",
+  "theme_color": "#4F46E5",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "assets/img/pwa/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/img/pwa/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -46,8 +46,18 @@
         <link rel="alternate" hreflang="x-default" href="<?= $_hbase ?>/en<?= $_hslug ?>">
     <?php } ?>
 
+    <!-- PWA -->
+    <meta name="theme-color" content="#4F46E5">
+    <?php if (CAR_PROD) { ?>
+        <link rel="manifest" href="<?= CAR_PATH_WEB ?>/manifest.json">
+    <?php } ?>
+
+    <!-- iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= CAR_PATH_WEB ?>/assets/img/pwa/icon-180.png">
+    <meta name="apple-mobile-web-app-title" content="Flashcards">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="icon" type="image/png" href="<?= CAR_PATH_WEB ?>/assets/img/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= CAR_PATH_WEB ?>/assets/img/icon.png">
 
     <!-- Fonte Geist -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +73,18 @@
 
     <?php if (CAR_PROD && isset($_COOKIE['consent_key'])) { ?>
         <?php include_once CAR_ROOT_GENERAL . '/ga.inc'; ?>
+    <?php } ?>
+
+    <?php if (CAR_PROD) { ?>
+        <!-- PWA -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('<?= CAR_PATH_WEB ?>/service-worker.js?v=<?= $asset_v ?>', { updateViaCache: 'none' })
+                        .catch(err => console.error('Erro ao registrar Service Worker:', err));
+                });
+            }
+        </script>
     <?php } ?>
 
     <title><?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?></title>
