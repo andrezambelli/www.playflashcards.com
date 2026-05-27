@@ -18,7 +18,8 @@
                 </p>
 
                 <div class="d-flex gap-3 justify-content-center flex-wrap mb-3">
-                    <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"
+                    <?php $hero_logged_in = car_get_session_attribute('session_login', '') === 'on'; ?>
+                    <a href="<?= $hero_logged_in ? CAR_PATH_WEB . '/dash/home' : CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"
                        class="btn btn-primary btn-lg rounded-pill px-4">
                         <?= car_t($t, 'home.hero.cta-primary') ?>
                         <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
