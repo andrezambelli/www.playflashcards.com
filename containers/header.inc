@@ -9,7 +9,7 @@
     $asset_v = rawurlencode($asset_v);
 
     if (isset($header_hreflang_slug) && empty($header_canonical)) {
-        $_slug_auto = $header_hreflang_slug === '' ? '/' : ('/' . $header_hreflang_slug);
+        $_slug_auto = $header_hreflang_slug === '' ? '/' : ('/' . trim($header_hreflang_slug, '/') . '/');
         $header_canonical = 'https://www.playflashcards.com/' . $t['lang'] . $_slug_auto;
     }
 ?>
@@ -36,13 +36,26 @@
     <?php } ?>
 
     <?php if (isset($header_hreflang_slug)) {
-        $_hslug = $header_hreflang_slug === '' ? '/' : ('/' . $header_hreflang_slug);
+        $_hslug = $header_hreflang_slug === '' ? '/' : ('/' . trim($header_hreflang_slug, '/') . '/');
         $_hbase = 'https://www.playflashcards.com';
+        $_hreflangs = [
+            'en'    => 'en',
+            'pt-BR' => 'pt-br',
+            'es'    => 'es',
+            'fr'    => 'fr',
+            'de'    => 'de',
+            'it'    => 'it',
+            'nl'    => 'nl',
+            'pl'    => 'pl',
+            'ru'    => 'ru',
+            'ja'    => 'ja',
+            'zh'    => 'zh',
+            'hi'    => 'hi',
+        ];
         ?>
-        <link rel="alternate" hreflang="en"        href="<?= $_hbase ?>/en<?= $_hslug ?>">
-        <link rel="alternate" hreflang="pt-BR"     href="<?= $_hbase ?>/pt-br<?= $_hslug ?>">
-        <link rel="alternate" hreflang="es"        href="<?= $_hbase ?>/es<?= $_hslug ?>">
-        <link rel="alternate" hreflang="fr"        href="<?= $_hbase ?>/fr<?= $_hslug ?>">
+        <?php foreach ($_hreflangs as $_hreflang => $_lang_path) { ?>
+        <link rel="alternate" hreflang="<?= $_hreflang ?>" href="<?= $_hbase ?>/<?= $_lang_path ?><?= $_hslug ?>">
+        <?php } ?>
         <link rel="alternate" hreflang="x-default" href="<?= $_hbase ?>/en<?= $_hslug ?>">
     <?php } ?>
 

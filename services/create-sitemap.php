@@ -29,7 +29,7 @@
             "    </url>";
     }
 
-    // home (4 idiomas)
+    // home
     $home_lastmod = car_sitemap_lastmod([
         $root . '/main.php',
         $root . '/home/hero.inc',
@@ -42,28 +42,28 @@
     }
     $logs[] = '[OK] home: ' . count($langs) . ' URLs';
 
-    // contact-us (4 idiomas)
+    // contact-us
     $contact_lastmod = car_sitemap_lastmod([$root . '/common/contact-us.php'], $today);
     foreach ($langs as $lang) {
         $urls[] = car_sitemap_url($base . '/' . $lang . '/contact-us/', $contact_lastmod, 'monthly', '0.7');
     }
     $logs[] = '[OK] contact-us: ' . count($langs) . ' URLs';
 
-    // privacy-policy (4 idiomas)
+    // privacy-policy
     $privacy_lastmod = car_sitemap_lastmod([$root . '/common/privacy-policy.php'], $today);
     foreach ($langs as $lang) {
         $urls[] = car_sitemap_url($base . '/' . $lang . '/privacy-policy/', $privacy_lastmod, 'yearly', '0.4');
     }
     $logs[] = '[OK] privacy-policy: ' . count($langs) . ' URLs';
 
-    // terms-and-conditions (4 idiomas)
+    // terms-and-conditions
     $terms_lastmod = car_sitemap_lastmod([$root . '/common/terms-and-conditions.php'], $today);
     foreach ($langs as $lang) {
         $urls[] = car_sitemap_url($base . '/' . $lang . '/terms-and-conditions/', $terms_lastmod, 'yearly', '0.4');
     }
     $logs[] = '[OK] terms-and-conditions: ' . count($langs) . ' URLs';
 
-    // cookie-settings (4 idiomas)
+    // cookie-settings
     $cookie_lastmod = car_sitemap_lastmod([$root . '/common/cookie-settings.php'], $today);
     foreach ($langs as $lang) {
         $urls[] = car_sitemap_url($base . '/' . $lang . '/cookie-settings/', $cookie_lastmod, 'yearly', '0.3');

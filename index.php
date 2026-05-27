@@ -1,6 +1,18 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
 <?php include_once 'config.inc' ?>
 <?php
+    $_request_uri = $_SERVER['REQUEST_URI'] ?? '';
+    $_request_path = strtok($_request_uri, '?');
+    if (strpos($_request_path, '//') !== false) {
+        $_query = parse_url($_request_uri, PHP_URL_QUERY);
+        $_redirect = preg_replace('#/+#', '/', $_request_path);
+        if (!empty($_query)) {
+            $_redirect .= '?' . $_query;
+        }
+        car_redirect($_redirect);
+    }
+    unset($_request_uri, $_request_path, $_query, $_redirect);
+
 	$_page = $routes['en'];
 
     if(isset($_GET['page'])){
