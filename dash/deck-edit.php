@@ -112,7 +112,7 @@
                             <div class="input-group input-group-sm" style="min-width: 0">
                                 <input type="text" class="form-control car-text-mono"
                                        id="deck-edit-public-url"
-                                       value="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url) ?>"
+                                       value="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url . '/') ?>"
                                        readonly>
                                 <button class="btn btn-outline-secondary d-inline-flex align-items-center gap-1"
                                         type="button" id="btn-edit-copy-url">
@@ -120,7 +120,7 @@
                                     <span id="edit-copy-label"><?= car_t($t, 'dash.deck.visibility-copy') ?></span>
                                 </button>
                             </div>
-                            <a href="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url) ?>"
+                            <a href="<?= car_htmlspecialchars(car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url . '/') ?>"
                                target="_blank" rel="noopener noreferrer"
                                class="text-secondary flex-shrink-0"
                                title="<?= car_t($t, 'dash.deck.visibility-open') ?>">

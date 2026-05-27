@@ -156,5 +156,5 @@
 
     $mysqli->close();
 
-    car_redirect(CAR_PATH_WEB . '/study/' . $stud_key);
+    car_redirect(CAR_PATH_WEB . '/study/' . $stud_key . '/');
 ?>

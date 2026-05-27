@@ -50,7 +50,7 @@
 
 				$x = '<url><loc>';
 				
-				$x .= 'https://www.playflashcards.com/deck/' . $row['deck_key'] . '/'. $row['deck_url'];
+				$x .= 'https://www.playflashcards.com/deck/' . $row['deck_key'] . '/'. $row['deck_url'] . '/';
 				
 				$x .= '</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
 		

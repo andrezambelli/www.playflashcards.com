@@ -31,7 +31,7 @@
 		$result = $mysqli->query($sql);
 		if ($result->num_rows > 0) {
 			$mysqli->close();
-			car_redirect(CAR_PATH_WEB . '/study/' . $_SESSION[$_session_study_key]);
+			car_redirect(CAR_PATH_WEB . '/study/' . $_SESSION[$_session_study_key] . '/');
 		}
 		unset($_SESSION[$_session_study_key]);
 	}
@@ -136,7 +136,7 @@
             $mysqli->commit();
 
             $_SESSION[$_session_study_key] = $stud_key;
-            $redirect = CAR_PATH_WEB . '/study/' . $stud_key;
+            $redirect = CAR_PATH_WEB . '/study/' . $stud_key . '/';
         } else {
             car_set_session_error_message('dash.study-new-act.no-cards');
 

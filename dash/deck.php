@@ -133,7 +133,7 @@
     }
 
     // url pública
-    $public_url = car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url;
+    $public_url = car_get_base_url(CAR_PATH_WEB) . '/deck/' . $deck_key . '/' . $deck_url . '/';
 
     // preview: 5 cartões com menor taxa de acerto (cartões sem tentativas ficam por último)
     $preview_cards = [];

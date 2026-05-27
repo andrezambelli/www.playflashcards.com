@@ -18,14 +18,12 @@
 
     $has_deck      = false;
     $page_deck_url = '';
-    $page_redirect = false;
 
     if (isset($_GET['page'])) {
         $pages = $_GET['page'];
 
         if ($pages[strlen($pages) - 1] == '/') {
             $pages = substr($pages, 0, -1);
-            $page_redirect = true;
         }
 
         $pages    = explode('/', $pages);
@@ -85,8 +83,8 @@
             exit;
         }
 
-        if ($deck_url != $page_deck_url || $page_redirect) {
-            car_redirect(CAR_PATH_WEB . '/deck/' . $deck_key . '/' . $deck_url);
+        if ($deck_url != $page_deck_url) {
+            car_redirect(CAR_PATH_WEB . '/deck/' . $deck_key . '/' . $deck_url . '/');
         }
     }
 
@@ -94,7 +92,7 @@
 
     $header_title        = (!empty($deck_name) ? $deck_name . ' - ' : '') . 'Play Flashcards';
     $header_description  = !empty($deck_desc) ? $deck_desc : car_t($t, 'main.desc');
-    $header_canonical    = $has_deck ? $_base_url . '/deck/' . $deck_key . '/' . $deck_url : '';
+    $header_canonical    = $has_deck ? $_base_url . '/deck/' . $deck_key . '/' . $deck_url . '/' : '';
     $header_og_image     = $_base_url . '/assets/img/playflashcards-logo.png';
     $header_index_follow = $deck_follow ? 'index,follow' : 'noindex,nofollow';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
@@ -237,7 +235,7 @@
     "@type": "LearningResource",
     "name": <?= json_encode($deck_name) ?>,
     "description": <?= json_encode($deck_desc ?: $deck_name) ?>,
-    "url": <?= json_encode($_base_url . '/deck/' . $deck_key . '/' . $deck_url) ?>,
+    "url": <?= json_encode($_base_url . '/deck/' . $deck_key . '/' . $deck_url . '/') ?>,
     "learningResourceType": "flashcard",
     "inLanguage": <?= json_encode($t['lang']) ?>,
     "educationalUse": "self-study",
