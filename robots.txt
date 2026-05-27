@@ -4,7 +4,6 @@ Disallow: /admin
 Disallow: /common
 Disallow: /containers
 Disallow: /dash
-Disallow: /docs
 Disallow: /external-lib
 Disallow: /general
 Disallow: /home
