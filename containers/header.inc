@@ -7,6 +7,11 @@
 
     $asset_v = CAR_PROD ? CAR_VERSION : (string) ($_SERVER['REQUEST_TIME'] ?? time());
     $asset_v = rawurlencode($asset_v);
+
+    if (isset($header_hreflang_slug) && empty($header_canonical)) {
+        $_slug_auto = $header_hreflang_slug === '' ? '/' : ('/' . $header_hreflang_slug);
+        $header_canonical = 'https://www.playflashcards.com/' . $t['lang'] . $_slug_auto;
+    }
 ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <!DOCTYPE html>
@@ -30,11 +35,15 @@
         <link rel="canonical" href="<?= car_htmlspecialchars($header_canonical) ?>">
     <?php } ?>
 
-    <?php if ($_SERVER['REQUEST_URI'] === '' || $_SERVER['REQUEST_URI'] === '/') { ?>
-        <link rel="alternate" hreflang="en"    href="https://www.playflashcards.com/en/">
-        <link rel="alternate" hreflang="pt-br" href="https://www.playflashcards.com/pt-br/">
-        <link rel="alternate" hreflang="es"    href="https://www.playflashcards.com/es/">
-        <link rel="alternate" hreflang="fr"    href="https://www.playflashcards.com/fr/">
+    <?php if (isset($header_hreflang_slug)) {
+        $_hslug = $header_hreflang_slug === '' ? '/' : ('/' . $header_hreflang_slug);
+        $_hbase = 'https://www.playflashcards.com';
+        ?>
+        <link rel="alternate" hreflang="en"        href="<?= $_hbase ?>/en<?= $_hslug ?>">
+        <link rel="alternate" hreflang="pt-BR"     href="<?= $_hbase ?>/pt-br<?= $_hslug ?>">
+        <link rel="alternate" hreflang="es"        href="<?= $_hbase ?>/es<?= $_hslug ?>">
+        <link rel="alternate" hreflang="fr"        href="<?= $_hbase ?>/fr<?= $_hslug ?>">
+        <link rel="alternate" hreflang="x-default" href="<?= $_hbase ?>/en<?= $_hslug ?>">
     <?php } ?>
 
     <link rel="icon" type="image/png" href="<?= CAR_PATH_WEB ?>/assets/img/favicon.png">

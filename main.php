@@ -8,6 +8,7 @@
     $header_canonical = car_get_base_url(CAR_PATH_WEB) . '/' . $t['lang'] . '/';
     $header_description = car_t($t, 'main.desc');
     $header_index_follow = 'index,follow';
+    $header_hreflang_slug = '';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 

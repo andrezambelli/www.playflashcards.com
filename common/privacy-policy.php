@@ -105,6 +105,7 @@ switch ($t['lang']) {
 $header_title        = $page_h1 . ' - Play Flashcards';
 $header_description  = car_t($t, 'common.privacy.desc');
 $header_index_follow = 'index,follow';
+$header_hreflang_slug = 'privacy-policy';
 include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 

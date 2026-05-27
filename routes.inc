@@ -63,12 +63,7 @@
     $routes['dash/card-download-act'] = 'dash/card-download-act.php';
     $routes['dash/card-upload-act'] = 'dash/card-upload-act.php';
 
-    // about - public
-    $routes['en/about-us'] = 'common/about-us.php';
-    $routes['pt-br/about-us'] = 'common/about-us.php';
-    $routes['es/about-us'] = 'common/about-us.php';
-    $routes['fr/about-us'] = 'common/about-us.php';
-
+    // common - public
     $routes['en/contact-us'] = 'common/contact-us.php';
     $routes['pt-br/contact-us'] = 'common/contact-us.php';
     $routes['es/contact-us'] = 'common/contact-us.php';
@@ -89,7 +84,3 @@
     $routes['es/privacy-policy'] = 'common/privacy-policy.php';
     $routes['fr/privacy-policy'] = 'common/privacy-policy.php';
 
-    $routes['en/donate'] = 'common/donate.php';
-    $routes['pt-br/donate'] = 'common/donate.php';
-    $routes['es/donate'] = 'common/donate.php';
-    $routes['fr/donate'] = 'common/donate.php';

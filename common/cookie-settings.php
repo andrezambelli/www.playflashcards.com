@@ -7,6 +7,7 @@
     $header_title = car_t($t, 'common.cookie-settings.title') . ' - Play Flashcards';
     $header_description = car_t($t, 'common.cookie-settings.desc');
     $header_index_follow = 'index,follow';
+    $header_hreflang_slug = 'cookie-settings';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 <div class="div-primary">

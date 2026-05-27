@@ -7,6 +7,7 @@
     $header_title        = car_t($t, 'common.contact-us.title') . ' - Play Flashcards';
     $header_description  = car_t($t, 'common.contact-us.desc');
     $header_index_follow = 'index,follow';
+    $header_hreflang_slug = 'contact-us';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 
