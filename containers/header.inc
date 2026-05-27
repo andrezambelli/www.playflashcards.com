@@ -88,6 +88,8 @@
     <?php } ?>
 
     <title><?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?></title>
+
+    <?php if (!empty($header_jsonld)) { echo $header_jsonld; } ?>
 </head>
 <body class="<?= !isset($_COOKIE['consent_key']) ? 'car-has-cookie-banner' : '' ?>">
 

@@ -26,6 +26,7 @@
     // system
     $routes['404'] = 'common/404.php';
     $routes['home/home'] = 'home/home.php';
+    $routes['services/create-sitemap'] = 'services/create-sitemap.php';
     $routes['services/set-timezone-act'] = 'services/set-timezone-act.php';
     $routes['services/set-cookie-act'] = 'services/set-cookie-act.php';
     $routes['services/change-language-act'] = 'services/change-language-act.php';

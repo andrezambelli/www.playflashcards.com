@@ -6,7 +6,12 @@
     if (in_array($first, $valid)) {
         $_SESSION['lang'] = $first;
     } elseif (empty($_SESSION['lang'])) {
-        $_SESSION['lang'] = 'en';
+        // novo visitante: detecta idioma preferido pelo navegador, fallback en
+        preg_match('/^([a-z]{2})/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', $_m);
+        $_browser = strtolower($_m[1] ?? '');
+        $_lang_map = ['pt' => 'pt-br', 'es' => 'es', 'fr' => 'fr'];
+        $_SESSION['lang'] = $_lang_map[$_browser] ?? 'en';
+        unset($_m, $_browser, $_lang_map);
     }
 
     if ($_SESSION['lang'] == 'pt-br') {

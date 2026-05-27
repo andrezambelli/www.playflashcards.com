@@ -212,6 +212,7 @@ $t = [
     'Yes'=>'Yes',
     'Last Study'=>'Last study',
     'share.title'=>'Share this page with your friends:',
+    'main.title'=>'Play Flashcards - Create and study flashcards online',
     'main.desc'=>'Create and master custom flashcards with Play Flashcards. Boost learning, retain knowledge effectively, and achieve academic success. Start today!',
     'home.hero.badge'=>'Open beta',
     'home.hero.h1-before'=>'Flashcards that',

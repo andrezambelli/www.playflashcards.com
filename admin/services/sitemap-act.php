@@ -1,81 +1,18 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
 <?php include_once CAR_ROOT_ADMIN . '/config.inc' ?>
 <?php
-    // Variáveis
-    $today = date("Y-m-d");
-
-	// Procurando os grupos que podem ser indexados
-    $sql = 'select deck_key,
-                   deck_url
-              from car_deck
-             where deck_public = 1
-               and deck_follow = 1';
-
-	$result_decks = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    ob_start();
+    include CAR_ROOT_WEB . '/services/create-sitemap.php';
+    $output = ob_get_clean();
 ?>
 <?php include_once CAR_ROOT_ADMIN . '/containers/header.inc'; ?>
 <div class="master">
-	<div class="form">
-		<strong>Sitemap</strong><br/>
-		<br/>
-		<?php 
-			$xml = '<?xml version="1.0"?><urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">';
-			
-			// Estáticas Home
-			$xml .= '<url><loc>https://www.playflashcards.com/en/</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-			$xml .= '<url><loc>https://www.playflashcards.com/pt-br/</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-			$xml .= '<url><loc>https://www.playflashcards.com/es/</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-			$xml .= '<url><loc>https://www.playflashcards.com/fr/</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-
-            $xml .= '<url><loc>https://www.playflashcards.com/en/contact-us</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-            $xml .= '<url><loc>https://www.playflashcards.com/pt-br/contact-us</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-            $xml .= '<url><loc>https://www.playflashcards.com/es/contact-us</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-            $xml .= '<url><loc>https://www.playflashcards.com/fr/contact-us</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-
-            echo '[OK] Estáticas Home = 4<br/>';
-
-            // Estatáticas Login
-            $xml .= '<url><loc>https://www.playflashcards.com/en/login/login</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-            echo '[OK] Estáticas Login = 1<br/>';
-
-            $xml .= '<url><loc>https://www.playflashcards.com/en/terms-and-conditions</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
-            $xml .= '<url><loc>https://www.playflashcards.com/en/privacy-policy</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
-            echo '[OK] Estáticas Footer = 2<br/>';
-
-            // Grupos públicos
-            $count = 0;
-
-            while ($row = $result_decks->fetch_array(MYSQLI_ASSOC)) {
-				$count += 1;
-
-				$x = '<url><loc>';
-				
-				$x .= 'https://www.playflashcards.com/deck/' . $row['deck_key'] . '/'. $row['deck_url'] . '/';
-				
-				$x .= '</loc><lastmod>'.$today.'</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
-		
-				$xml .= $x;
-			}
-			
-			echo '[OK] Grupos = ' . $count . '<br/>';
-			
-			$xml .= '</urlset>';
-		?>
-		<?php 
-			$file_path_name = CAR_ROOT_WEB . '/sitemap.xml';
-			
-			if (file_exists($file_path_name)) {
-				unlink($file_path_name);
-			}
-			
-			file_put_contents($file_path_name, $xml);
-			
-			echo '[OK]<br/>';
-		?>
-		<br/>
-		Sitemap criado com sucesso.<br/>
-		<br/>
-		Arquivo gerado: <a href="<?= CAR_PATH_WEB . '/sitemap.xml'; ?>"><?= CAR_PATH_WEB . '/sitemap.xml'; ?></a>
-	</div>
+    <div class="form">
+        <strong>Sitemap</strong><br><br>
+        <pre><?= htmlspecialchars($output, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></pre>
+        <br>
+        Sitemap criado com sucesso.<br><br>
+        Arquivo: <a href="<?= CAR_PATH_WEB ?>/sitemap.xml" target="_blank"><?= CAR_PATH_WEB ?>/sitemap.xml</a>
+    </div>
 </div>
 <?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>

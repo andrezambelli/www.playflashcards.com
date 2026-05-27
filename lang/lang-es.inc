@@ -212,6 +212,7 @@ $t = [
     'Yes'=>'Sí',
     'Last Study'=>'Último estudio',
     'share.title'=>'Comparte esta página con tus amigos:',
+    'main.title'=>'Play Flashcards - Crea y estudia flashcards en línea',
     'main.desc'=>'Crea y domina tarjetas personalizadas con Play Flashcards. Impulsar el aprendizaje, retener conocimientos de manera efectiva y lograr el éxito académico. ¡Empieza hoy!',
     'home.hero.badge'=>'Beta abierta',
     'home.hero.h1-before'=>'Flashcards que',
