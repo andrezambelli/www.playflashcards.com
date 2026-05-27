@@ -11,6 +11,15 @@
         '+'=>''
     );
 
+    function car_is_production() {
+        return isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'www.playflashcards.com';
+    }
+
+    function car_is_localhost() {
+        $host = $_SERVER['HTTP_HOST'] ?? '';
+        return strpos($host, 'localhost') !== false || $host === '127.0.0.1';
+    }
+
     function car_check_admin_login() {
         $_login = car_get_session_attribute('session_admin_login', '');
 

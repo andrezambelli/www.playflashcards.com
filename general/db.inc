@@ -88,7 +88,7 @@
 	
 	date_default_timezone_set('America/Sao_Paulo');
 
-	error_reporting(CAR_PROD ? 0 : -1);
+	error_reporting(car_is_production() ? 0 : -1);
 
 	// Iniciando o objeto para conexão com o banco de dados
 	$mysqli = new mysqli(CAR_DB_HOST, CAR_DB_USER, CAR_DB_PASSWORD, CAR_DB_NAME);

@@ -55,7 +55,7 @@
         // limpa state da sessão e do cookie imediatamente para evitar replay
         car_set_session_attribute('google_oauth_state', '');
         car_set_session_attribute('google_redirect_url', '');
-        setcookie('car_google_state', '', ['expires' => time() - 3600, 'path' => '/', 'domain' => CAR_PROD ? '' : '.localhost']);
+        setcookie('car_google_state', '', ['expires' => time() - 3600, 'path' => '/', 'domain' => car_is_localhost() ? '.localhost' : '']);
 
         if (empty($code) || empty($state_get) || empty($state_stored) || $state_get !== $state_stored) {
             car_google_fail($redirect);

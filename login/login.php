@@ -25,7 +25,7 @@
     setcookie('car_google_state', $google_state, [
         'expires'  => time() + 300,
         'path'     => '/',
-        'domain'   => CAR_PROD ? '' : '.localhost',
+        'domain'   => car_is_localhost() ? '.localhost' : '',
         'httponly' => true,
         'samesite' => 'Lax',
     ]);

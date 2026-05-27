@@ -5,7 +5,7 @@
     $_login    = car_get_session_attribute('session_login', 'off');
     $_timezone = car_get_session_attribute('timezone', '');
 
-    $asset_v = CAR_PROD ? CAR_VERSION : (string) ($_SERVER['REQUEST_TIME'] ?? time());
+    $asset_v = car_is_production() ? CAR_VERSION : (string) ($_SERVER['REQUEST_TIME'] ?? time());
     $asset_v = rawurlencode($asset_v);
 
     if (isset($header_hreflang_slug) && empty($header_canonical)) {
@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="<?= $header_index_follow ?? 'noindex,nofollow' ?>">
+    <meta name="robots" content="<?= car_is_production() ? ($header_index_follow ?? 'noindex,nofollow') : 'noindex,nofollow' ?>">
     <meta name="description" content="<?= car_htmlspecialchars($header_description ?? '') ?>">
     <meta name="author" content="Play Flashcards">
 
@@ -48,7 +48,7 @@
 
     <!-- PWA -->
     <meta name="theme-color" content="#4F46E5">
-    <?php if (CAR_PROD) { ?>
+    <?php if (car_is_production()) { ?>
         <link rel="manifest" href="<?= CAR_PATH_WEB ?>/manifest.json">
     <?php } ?>
 
@@ -71,11 +71,11 @@
     <script src="<?= CAR_PATH_WEB ?>/assets/js/bootstrap-5.3.8.bundle.min.js" defer></script>
     <script src="<?= CAR_PATH_WEB ?>/assets/js/main.js?v=<?= $asset_v ?>" defer></script>
 
-    <?php if (CAR_PROD && isset($_COOKIE['consent_key'])) { ?>
+    <?php if (car_is_production() && isset($_COOKIE['consent_key'])) { ?>
         <?php include_once CAR_ROOT_GENERAL . '/ga.inc'; ?>
     <?php } ?>
 
-    <?php if (CAR_PROD) { ?>
+    <?php if (car_is_production()) { ?>
         <!-- PWA -->
         <script>
             if ('serviceWorker' in navigator) {

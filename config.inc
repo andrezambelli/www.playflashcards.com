@@ -1,6 +1,6 @@
 <?php
-    include_once 'general/db.inc';
     include_once 'general/functions.inc';
+    include_once 'general/db.inc';
 
     const CAR_VERSION = '1.0.0';
 
@@ -38,7 +38,7 @@
     const CAR_USER_SRS_DAYS = 7;
 
     // em produção envia e-mail real; em desenvolvimento usa código fixo 111111 sem envio
-    define('CAR_SEND_EMAIL', CAR_PROD);
+    define('CAR_SEND_EMAIL', car_is_production());
 
     // Se o idioma estiver vazio na sessão
     // Carrega o conteúdo do idioma do navegador na sessão

@@ -127,7 +127,7 @@
         }
     }
 
-    $asset_v = CAR_PROD ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());
+    $asset_v = car_is_production() ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());
     $asset_v = rawurlencode($asset_v);
 
     $_progress_pct = ($has_card && $stud_total > 0) ? round(($stse_order - 1) / $stud_total * 100) : 100;

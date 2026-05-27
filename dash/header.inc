@@ -10,7 +10,7 @@
     $_timezone = car_get_session_attribute('timezone', '');
     $user_id   = car_get_session_attribute('user_id', 0);
 
-    $asset_v = CAR_PROD ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());
+    $asset_v = car_is_production() ? CAR_VERSION : (string)($_SERVER['REQUEST_TIME'] ?? time());
     $asset_v = rawurlencode($asset_v);
 
     // lista de baralhos para a sidebar
@@ -49,7 +49,7 @@
     <script src="<?= CAR_PATH_WEB ?>/assets/js/bootstrap-5.3.8.bundle.min.js" defer></script>
     <script src="<?= CAR_PATH_WEB ?>/assets/js/main.js?v=<?= $asset_v ?>" defer></script>
 
-    <?php if (CAR_PROD && isset($_COOKIE['consent_key'])) { ?>
+    <?php if (car_is_production() && isset($_COOKIE['consent_key'])) { ?>
         <?php include_once CAR_ROOT_GENERAL . '/ga.inc'; ?>
     <?php } ?>
 

@@ -45,7 +45,8 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 
 **Produção**
 - URL: `https://www.playflashcards.com/`
-- Deploy: `one deploy playflashcards`
+- Deploy produção: `one deploy play www`
+- Deploy staging: `one deploy play staging`
 
 **Templates de ambiente** (em `docs/`, gitignored — apenas local)
 - `docs/server/car-server-mac.php` — referência para o `car-server.php` local
