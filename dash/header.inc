@@ -142,7 +142,7 @@
     </aside>
 
     <!-- Coluna principal -->
-    <div class="d-flex flex-column min-vh-100" style="min-width: 0; overflow-x: hidden">
+    <div class="car-app-main d-flex flex-column min-vh-100">
 
         <!-- Topbar -->
         <div class="car-app-topbar">
@@ -156,6 +156,17 @@
                     aria-label="<?= car_t($t, 'Menu') ?>">
                 <i class="bi bi-list fs-5" aria-hidden="true"></i>
             </button>
+
+            <?php if (empty($dash_breadcrumb)) { ?>
+                <a class="car-app-mobile-brand d-md-none text-decoration-none text-body" href="<?= CAR_PATH_WEB ?>/dash/home">
+                    <span class="car-brand-mark" aria-hidden="true">
+                        <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L10 6.5L1 12V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Play Flashcards
+                </a>
+            <?php } ?>
 
             <!-- Breadcrumb -->
             <?php if (!empty($dash_breadcrumb)) { ?>

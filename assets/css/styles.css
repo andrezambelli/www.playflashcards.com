@@ -608,6 +608,9 @@ html {
     padding: 1rem 0.75rem;
     overflow-y: auto;
 }
+.car-app-main {
+    min-width: 0;
+}
 
 .car-app-brand {
     display: flex;
@@ -720,8 +723,9 @@ html {
     background: var(--bs-body-bg);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1030;
     flex-shrink: 0;
+    box-shadow: var(--app-shadow-xs);
 }
 .car-app-topbar .breadcrumb {
     --bs-breadcrumb-font-size: 0.8125rem;
@@ -735,6 +739,14 @@ html {
 }
 .car-app-topbar .breadcrumb-item a:hover {
     color: var(--bs-body-color);
+}
+.car-app-mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .car-app-page {

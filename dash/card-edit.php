@@ -82,9 +82,7 @@
     $dash_active     = 'decks';
     $dash_deck_key   = $deck_key;
     $dash_breadcrumb = [
-        [car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'],
         [$deck_name, CAR_PATH_WEB . '/dash/deck?k=' . $deck_key],
-        [car_t($t, 'Flashcards'), CAR_PATH_WEB . '/dash/card-list?k=' . $deck_key],
         [car_t($t, 'Edit Flashcard')]
     ];
     include_once CAR_ROOT_WEB . '/dash/header.inc';

@@ -159,7 +159,7 @@
     $header_title    = car_htmlspecialchars($deck_name) . ' - Play Flashcards';
     $dash_active     = 'decks';
     $dash_deck_key   = $deck_key;
-    $dash_breadcrumb = [[car_t($t, 'Decks'), CAR_PATH_WEB . '/dash/deck-list'], [$deck_name]];
+    $dash_breadcrumb = [[$deck_name]];
     include_once CAR_ROOT_WEB . '/dash/header.inc';
 ?>
 
