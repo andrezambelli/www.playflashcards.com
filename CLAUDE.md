@@ -108,6 +108,13 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Ao adicionar texto visível ao usuário, sempre adicionar a chave nos quatro arquivos de idioma: `lang-en.inc`, `lang-pt-br.inc`, `lang-es.inc`, `lang-fr.inc`
 - O painel admin (`admin/`) usa strings em português fixo no código — isso é intencional, pois é uma área interna sem necessidade de i18n
 
+### Capitalização nos arquivos de idioma
+- Usar **sentence case** em todos os idiomas: apenas a primeira letra da frase é maiúscula, mais nomes próprios (`SRS`, `Play Flashcards`, `Google`, `CSV`)
+- Isso vale para botões, títulos, rótulos de campos, textos curtos e referências a labels dentro de textos explicativos
+- Exemplos corretos: `'Save deck'`, `'Delete flashcard'`, `'Accuracy rate'`, `'Study frequency'`
+- Exemplos errados: `'Save Deck'`, `'Delete Flashcard'`, `'Accuracy Rate'`, `'Study Frequency'`
+- Essa regra se aplica aos quatro idiomas: title case é gramaticalmente incorreto em pt-BR, es e fr, e foge do padrão moderno de UI mesmo em en
+
 ### Autenticação
 - `car_check_login($t)` no topo de toda página da área logada (`dash/`, `profile/`)
 - Páginas públicas (`public/`, `common/`) não requerem login
