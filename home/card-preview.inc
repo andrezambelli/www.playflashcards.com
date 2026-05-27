@@ -33,7 +33,7 @@
     $home_card_preview_lang     = $home_card_preview_examples[$t['lang']] ?? $home_card_preview_examples['en'];
     $home_card_preview_selected = $home_card_preview_lang[array_rand($home_card_preview_lang)];
 ?>
-<section class="car-card-preview-section overflow-hidden">
+<div class="car-card-preview-section overflow-hidden">
     <div class="container">
         <div class="car-card-stack">
             <div class="car-card-ghost car-card-ghost--left">
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
