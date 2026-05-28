@@ -45,8 +45,7 @@
 
         $sql = sprintf("update car_cookie
                            set user_id = %d
-                         where cook_key = '%s'
-                           and cook_update = now()",
+                         where cook_key = '%s'",
                         $user_id,
                         $mysqli->real_escape_string(car_never_null($cook_key)));
 
