@@ -49,19 +49,15 @@
     }
     $logs[] = '[OK] contact-us: ' . count($langs) . ' URLs';
 
-    // privacy-policy
+    // privacy-policy (somente en — canonical único, conteúdo não traduzido)
     $privacy_lastmod = car_sitemap_lastmod([$root . '/common/privacy-policy.php'], $today);
-    foreach ($langs as $lang) {
-        $urls[] = car_sitemap_url($base . '/' . $lang . '/privacy-policy/', $privacy_lastmod, 'yearly', '0.4');
-    }
-    $logs[] = '[OK] privacy-policy: ' . count($langs) . ' URLs';
+    $urls[] = car_sitemap_url($base . '/en/privacy-policy/', $privacy_lastmod, 'yearly', '0.4');
+    $logs[] = '[OK] privacy-policy: 1 URL';
 
-    // terms-and-conditions
+    // terms-and-conditions (somente en — canonical único, conteúdo não traduzido)
     $terms_lastmod = car_sitemap_lastmod([$root . '/common/terms-and-conditions.php'], $today);
-    foreach ($langs as $lang) {
-        $urls[] = car_sitemap_url($base . '/' . $lang . '/terms-and-conditions/', $terms_lastmod, 'yearly', '0.4');
-    }
-    $logs[] = '[OK] terms-and-conditions: ' . count($langs) . ' URLs';
+    $urls[] = car_sitemap_url($base . '/en/terms-and-conditions/', $terms_lastmod, 'yearly', '0.4');
+    $logs[] = '[OK] terms-and-conditions: 1 URL';
 
     // cookie-settings
     $cookie_lastmod = car_sitemap_lastmod([$root . '/common/cookie-settings.php'], $today);

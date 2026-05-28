@@ -14,98 +14,32 @@ $sections             = [];
 
 switch ($t['lang']) {
 
-    case 'pt-br':
-        $page_h1       = 'Política de Privacidade';
-        $page_subtitle = 'O Play Flashcards se compromete a proteger sua privacidade. Esta política descreve o que coletamos, como usamos e os controles que você tem.';
-        $sidebar_on_this_page   = 'Nesta página';
-        $sidebar_questions      = 'Dúvidas?';
-        $sidebar_questions_desc = 'Entre em contato com nossa equipe.';
-        $sections = [
-            ['id' => 'information', 'title' => 'Informações Coletadas',
-             'content' => '<p>Ao usar o site e criar uma conta, o Play Flashcards coleta e armazena apenas o seu endereço de e-mail e a preferência de idioma do seu navegador, para fornecer os serviços do site.</p><p>Podemos também coletar dados de uso não identificáveis, como quais baralhos você estuda e quais recursos utiliza, para melhorar o produto. Esses dados não estão vinculados à sua conta.</p>'],
-            ['id' => 'use',         'title' => 'Uso das Informações',
-             'content' => '<p>Utilizamos suas informações para personalizar sua experiência no site, enviar notificações relevantes (somente as que você optou por receber) e melhorar nossos serviços.</p>'],
-            ['id' => 'sharing',     'title' => 'Compartilhamento de Informações',
-             'content' => '<p>Não compartilhamos suas informações pessoais com terceiros, exceto quando necessário para fornecer os serviços solicitados ou conforme exigido por lei.</p><div class="d-flex align-items-start gap-3 p-3 mt-3 rounded" style="background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border-subtle)"><i class="bi bi-lock-fill text-primary flex-shrink-0" style="margin-top:2px" aria-hidden="true"></i><div><p class="fw-semibold text-primary small mb-1">Não vendemos seus dados. Nunca.</p><p class="small mb-0" style="color:var(--bs-secondary-color)">Sem redes de publicidade, sem perfis comportamentais, sem corretores de dados.</p></div></div>'],
-            ['id' => 'security',    'title' => 'Segurança',
-             'content' => '<p>Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado ou uso indevido, incluindo criptografia em trânsito (TLS 1.3), criptografia em repouso e auditorias regulares de segurança. Senhas de conta nunca são armazenadas. Utilizamos apenas códigos de acesso enviados por e-mail.</p>'],
-            ['id' => 'cookies',     'title' => 'Cookies',
-             'content' => '<p>Utilizamos cookies para melhorar a funcionalidade do site e aprimorar sua experiência de uso.</p><div class="table-responsive mt-3"><table class="table table-bordered mb-0"><thead><tr><th>Cookie</th><th>Finalidade</th><th>Duração</th></tr></thead><tbody><tr><td class="font-monospace small">pf_session</td><td>Mantém você conectado.</td><td>30 dias</td></tr><tr><td class="font-monospace small">pf_lang</td><td>Lembra seu idioma.</td><td>1 ano</td></tr><tr><td class="font-monospace small">pf_theme</td><td>Lembra a preferência de tema claro/escuro.</td><td>1 ano</td></tr></tbody></table></div>'],
-            ['id' => 'changes',     'title' => 'Alterações na Política',
-             'content' => '<p>Podemos atualizar esta Política de Privacidade conforme necessário. Quaisquer alterações serão publicadas nesta página. Recomendamos verificar esta página periodicamente para se manter informado.</p>'],
-        ];
-        break;
-
-    case 'es':
-        $page_h1       = 'Política de Privacidad';
-        $page_subtitle = 'Play Flashcards se compromete a proteger tu privacidad. Esta política describe qué recopilamos, cómo lo usamos y los controles que tienes.';
-        $sidebar_on_this_page   = 'En esta página';
-        $sidebar_questions      = 'Preguntas?';
-        $sidebar_questions_desc = 'Contacta a nuestro equipo.';
-        $sections = [
-            ['id' => 'information', 'title' => 'Información recopilada',
-             'content' => '<p>Al usar el sitio y crear una cuenta, Play Flashcards recopila y almacena únicamente tu dirección de correo electrónico y la preferencia de idioma de tu navegador, para proporcionar los servicios del sitio.</p><p>También podemos recopilar datos de uso no identificables, como qué mazos estudias y qué funciones utilizas, para mejorar el producto. Estos datos no están vinculados a tu cuenta.</p>'],
-            ['id' => 'use',         'title' => 'Uso de la información',
-             'content' => '<p>Utilizamos tu información para personalizar tu experiencia en el sitio, enviarte notificaciones relevantes (solo las que hayas activado) y mejorar nuestros servicios.</p>'],
-            ['id' => 'sharing',     'title' => 'Compartir información',
-             'content' => '<p>No compartimos tu información personal con terceros, excepto cuando sea necesario para proporcionarte los servicios solicitados o según lo exija la ley.</p><div class="d-flex align-items-start gap-3 p-3 mt-3 rounded" style="background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border-subtle)"><i class="bi bi-lock-fill text-primary flex-shrink-0" style="margin-top:2px" aria-hidden="true"></i><div><p class="fw-semibold text-primary small mb-1">No vendemos tus datos. Nunca.</p><p class="small mb-0" style="color:var(--bs-secondary-color)">Sin redes publicitarias, sin perfiles de comportamiento, sin intermediarios de datos.</p></div></div>'],
-            ['id' => 'security',    'title' => 'Seguridad',
-             'content' => '<p>Implementamos medidas de seguridad para proteger tu información contra el acceso no autorizado o el uso indebido, incluyendo cifrado en tránsito (TLS 1.3), cifrado en reposo y auditorías de seguridad periódicas. Las contraseñas de las cuentas nunca se almacenan. Usamos únicamente códigos de acceso enviados por correo electrónico.</p>'],
-            ['id' => 'cookies',     'title' => 'Cookies',
-             'content' => '<p>Utilizamos cookies para mejorar la funcionalidad del sitio web y tu experiencia de usuario.</p><div class="table-responsive mt-3"><table class="table table-bordered mb-0"><thead><tr><th>Cookie</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody><tr><td class="font-monospace small">pf_session</td><td>Te mantiene conectado.</td><td>30 días</td></tr><tr><td class="font-monospace small">pf_lang</td><td>Recuerda tu idioma.</td><td>1 año</td></tr><tr><td class="font-monospace small">pf_theme</td><td>Recuerda la preferencia de tema claro/oscuro.</td><td>1 año</td></tr></tbody></table></div>'],
-            ['id' => 'changes',     'title' => 'Cambios en la política',
-             'content' => '<p>Podemos actualizar esta Política de Privacidad según sea necesario. Cualquier cambio se publicará en esta página. Recomendamos consultar esta página ocasionalmente para mantenerte informado.</p>'],
-        ];
-        break;
-
-    case 'fr':
-        $page_h1       = 'Politique de confidentialité';
-        $page_subtitle = "Play Flashcards s'engage à protéger votre vie privée. Cette politique décrit ce que nous collectons, comment nous l'utilisons et les contrôles dont vous disposez.";
-        $sidebar_on_this_page   = 'Sur cette page';
-        $sidebar_questions      = 'Des questions?';
-        $sidebar_questions_desc = 'Contactez notre équipe.';
-        $sections = [
-            ['id' => 'information', 'title' => 'Informations collectées',
-             'content' => "<p>En utilisant le site et en créant un compte, Play Flashcards collecte et stocke uniquement votre adresse e-mail et la préférence de langue de votre navigateur, afin de fournir les services du site.</p><p>Nous pouvons également collecter des données d'utilisation non identifiables, telles que les paquets que vous étudiez et les fonctionnalités que vous utilisez, afin d'améliorer le produit. Ces données ne sont pas liées à votre compte.</p>"],
-            ['id' => 'use',         'title' => 'Utilisation des informations',
-             'content' => '<p>Nous utilisons vos informations pour personnaliser votre expérience sur le site, vous envoyer des notifications pertinentes (uniquement celles auxquelles vous avez choisi de vous abonner) et améliorer nos services.</p>'],
-            ['id' => 'sharing',     'title' => 'Partage des informations',
-             'content' => '<p>Nous ne partageons pas vos informations personnelles avec des tiers, sauf si nécessaire pour vous fournir les services demandés ou si requis par la loi.</p><div class="d-flex align-items-start gap-3 p-3 mt-3 rounded" style="background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border-subtle)"><i class="bi bi-lock-fill text-primary flex-shrink-0" style="margin-top:2px" aria-hidden="true"></i><div><p class="fw-semibold text-primary small mb-1">Nous ne vendons pas vos données. Jamais.</p><p class="small mb-0" style="color:var(--bs-secondary-color)">Pas de réseaux publicitaires, pas de profilage comportemental, pas de courtiers en données.</p></div></div>'],
-            ['id' => 'security',    'title' => 'Sécurité',
-             'content' => '<p>Nous mettons en oeuvre des mesures de sécurité pour protéger vos informations contre tout accès non autorisé ou toute utilisation abusive, notamment le chiffrement en transit (TLS 1.3), le chiffrement au repos et des audits de sécurité réguliers. Les mots de passe des comptes ne sont jamais stockés. Nous utilisons uniquement des codes d\'accès envoyés par e-mail.</p>'],
-            ['id' => 'cookies',     'title' => 'Cookies',
-             'content' => '<p>Nous utilisons des cookies pour améliorer les fonctionnalités du site web et votre expérience utilisateur.</p><div class="table-responsive mt-3"><table class="table table-bordered mb-0"><thead><tr><th>Cookie</th><th>Finalité</th><th>Durée</th></tr></thead><tbody><tr><td class="font-monospace small">pf_session</td><td>Vous maintient connecté.</td><td>30 jours</td></tr><tr><td class="font-monospace small">pf_lang</td><td>Mémorise votre langue.</td><td>1 an</td></tr><tr><td class="font-monospace small">pf_theme</td><td>Mémorise la préférence de thème clair/sombre.</td><td>1 an</td></tr></tbody></table></div>'],
-            ['id' => 'changes',     'title' => 'Modifications de la politique',
-             'content' => '<p>Nous pouvons mettre à jour cette Politique de confidentialité si nécessaire. Toute modification sera publiée sur cette page. Nous vous recommandons de consulter cette page occasionnellement pour rester informé.</p>'],
-        ];
-        break;
-
-    default: // en
+    default: // en (único idioma para páginas legais)
         $page_h1       = 'Privacy Policy';
-        $page_subtitle = 'Play Flashcards is committed to protecting your privacy. This policy describes what we collect, how we use it, and the controls you have.';
+        $page_subtitle = 'Play Flashcards is committed to protecting your privacy. This policy describes exactly what we collect, how we use it, and the controls you have.';
         $sidebar_on_this_page   = 'On this page';
         $sidebar_questions      = 'Questions?';
-        $sidebar_questions_desc = 'Reach our privacy team.';
+        $sidebar_questions_desc = 'Reach our team.';
         $sections = [
             ['id' => 'information', 'title' => 'Information collected',
-             'content' => '<p>When using the site and creating an account, Play Flashcards collects and stores only your email address and the language preference of your browser, to provide the services of the site.</p><p>We may also collect non-identifiable usage data, such as which decks you study and which features you use, to improve the product. This data is not linked to your account.</p>'],
+             'content' => '<p>When you create an account, Play Flashcards collects and stores:</p><ul><li>Your <strong>email address</strong>, used to identify your account and send login codes.</li><li>Your <strong>language and timezone preferences</strong>.</li><li>The <strong>decks, flashcards and study data</strong> you create, including progress and performance statistics used by the spaced repetition system.</li><li>A <strong>cookie consent record</strong>, linked anonymously before login and associated with your account after login.</li></ul><p>We do not collect your name, profile picture or any information beyond what is listed above.</p>'],
             ['id' => 'use',         'title' => 'Use of information',
-             'content' => '<p>We use your information to customize your website experience, send you relevant notifications (only the ones you have opted into), and improve our services.</p>'],
-            ['id' => 'sharing',     'title' => 'Information sharing',
-             'content' => '<p>We do not share your personal information with third parties, except as necessary to provide you with requested services or as required by law.</p><div class="d-flex align-items-start gap-3 p-3 mt-3 rounded" style="background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border-subtle)"><i class="bi bi-lock-fill text-primary flex-shrink-0" style="margin-top:2px" aria-hidden="true"></i><div><p class="fw-semibold text-primary small mb-1">We don\'t sell your data. Ever.</p><p class="small mb-0" style="color:var(--bs-secondary-color)">No advertising networks, no behavioral profiling, no data brokers.</p></div></div>'],
-            ['id' => 'security',    'title' => 'Security',
-             'content' => '<p>We implement security measures to protect your information from unauthorized access or misuse, including encryption in transit (TLS 1.3), encryption at rest, and regular security audits. Account passwords are never stored. We use one-time email codes only.</p>'],
+             'content' => '<p>We use your information to provide the flashcard and spaced repetition service, to send one-time login codes to your email address, and to analyze anonymized usage patterns to improve the product.</p><p>We do not send marketing, promotional or newsletter emails. The only emails we send are transactional: one-time login codes requested by you.</p>'],
+            ['id' => 'sharing',     'title' => 'Third-party services',
+             'content' => '<p>We do not sell your data. We work with the following third-party services, each governed by its own privacy policy:</p><ul><li><strong>MailerSend</strong> — processes your email address solely to deliver login codes.</li><li><strong>Google Analytics</strong> — receives anonymized usage data (pages visited, session duration) to help us understand how the site is used. No personally identifiable information is sent.</li><li><strong>Google Sign-In</strong> — if you choose to sign in with Google, your authentication is processed by Google, which shares only your email address with us.</li></ul><div class="d-flex align-items-start gap-3 p-3 mt-3 rounded" style="background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border-subtle)"><i class="bi bi-lock-fill text-primary flex-shrink-0" style="margin-top:2px" aria-hidden="true"></i><div><p class="fw-semibold text-primary small mb-1">We don\'t sell your data. Ever.</p><p class="small mb-0" style="color:var(--bs-secondary-color)">No advertising networks, no behavioral profiling, no data brokers.</p></div></div>'],
+            ['id' => 'security',    'title' => 'Security and account deletion',
+             'content' => '<p>We implement security measures to protect your information, including encryption in transit (TLS 1.3) and encryption at rest. We do not store passwords. Authentication uses one-time codes sent to your email, or Google Sign-In.</p><p>You can permanently delete your account at any time from your profile settings. Deleting your account removes all your decks, flashcards, study data and personal information from our servers.</p>'],
             ['id' => 'cookies',     'title' => 'Cookies',
-             'content' => '<p>We use cookies to improve the functionality of the website and enhance your user experience.</p><div class="table-responsive mt-3"><table class="table table-bordered mb-0"><thead><tr><th>Cookie</th><th>Purpose</th><th>Duration</th></tr></thead><tbody><tr><td class="font-monospace small">pf_session</td><td>Keeps you signed in.</td><td>30 days</td></tr><tr><td class="font-monospace small">pf_lang</td><td>Remembers your language.</td><td>1 year</td></tr><tr><td class="font-monospace small">pf_theme</td><td>Remembers light/dark preference.</td><td>1 year</td></tr></tbody></table></div>'],
+             'content' => '<p>We use cookies to keep your session active and to understand how the site is used. No cookies are used for advertising or tracking across other websites.</p><div class="table-responsive mt-3"><table class="table table-bordered mb-0"><thead><tr><th>Cookie</th><th>Purpose</th><th>Duration</th></tr></thead><tbody><tr><td class="font-monospace small">PHPSESSID</td><td>Keeps your session active while you browse the site.</td><td>Session</td></tr><tr><td class="font-monospace small">consent_key</td><td>Records your consent to the use of cookies.</td><td>30 days</td></tr><tr><td class="font-monospace small">_ga</td><td>Google Analytics: distinguishes unique users.</td><td>2 years</td></tr><tr><td class="font-monospace small">_ga_LDCEXXD2NL</td><td>Google Analytics: maintains the analytics session state.</td><td>2 years</td></tr></tbody></table></div>'],
             ['id' => 'changes',     'title' => 'Policy changes',
-             'content' => '<p>We may update this Privacy Policy as needed. Any changes will be posted on this page. We recommend checking this page occasionally to stay informed.</p>'],
+             'content' => '<p>We may update this Privacy Policy as the service evolves. Any changes will be posted on this page. We recommend checking this page occasionally to stay informed.</p>'],
         ];
 }
 
 $header_title        = $page_h1 . ' - Play Flashcards';
 $header_description  = car_t($t, 'common.privacy.desc');
 $header_index_follow = 'index,follow';
-$header_hreflang_slug = 'privacy-policy';
+$header_canonical    = 'https://www.playflashcards.com/en/privacy-policy/';
 include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 
