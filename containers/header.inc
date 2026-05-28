@@ -219,16 +219,26 @@
                         </ul>
                     </div>
 
-                    <!-- Idioma: inline (mobile) -->
-                    <div class="d-flex d-lg-none align-items-center gap-1 py-2">
-                        <i class="bi bi-globe text-secondary me-1" style="font-size:0.8125rem" aria-hidden="true"></i>
-                        <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
-                            <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
-                               class="car-lang-pill <?= $active ? 'active' : '' ?>"
-                               title="<?= $name ?>">
-                                <?= $lang_labels[$code] ?>
-                            </a>
-                        <?php } ?>
+                    <!-- Idioma: lista aberta (mobile) -->
+                    <div class="d-lg-none w-100 py-2">
+                        <p class="d-flex align-items-center gap-1 text-secondary small mb-2">
+                            <i class="bi bi-globe" aria-hidden="true"></i>
+                            <?= car_t($t, 'Language') ?>
+                        </p>
+                        <div class="row g-1">
+                            <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
+                            <div class="col-6">
+                                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
+                                   class="d-flex align-items-center gap-2 px-2 py-1 rounded text-decoration-none <?= $active ? 'bg-primary-subtle text-primary fw-semibold' : 'text-secondary' ?>">
+                                    <span class="car-text-mono small" style="width:20px"><?= $lang_labels[$code] ?></span>
+                                    <span class="small"><?= $name ?></span>
+                                    <?php if ($active) { ?>
+                                        <i class="bi bi-check ms-auto" aria-hidden="true"></i>
+                                    <?php } ?>
+                                </a>
+                            </div>
+                            <?php } ?>
+                        </div>
                     </div>
 
                     <a id="car-navbar-cta"
