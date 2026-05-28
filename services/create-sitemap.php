@@ -70,6 +70,11 @@
     }
     $logs[] = '[OK] cookie-settings: ' . count($langs) . ' URLs';
 
+    // explore
+    $explore_lastmod = car_sitemap_lastmod([$root . '/public/explore.php'], $today);
+    $urls[] = car_sitemap_url($base . '/explore/', $explore_lastmod, 'weekly', '0.9');
+    $logs[] = '[OK] explore: 1 URL';
+
     // baralhos públicos
     $sql = 'select deck_key, deck_url
               from car_deck

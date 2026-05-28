@@ -35,6 +35,8 @@
     $routes['login/login-pincode-act'] = 'login/login-pincode-act.php';
     $routes['login/login-google-act'] = 'login/login-google-act.php';
 
+    $routes['explore'] = 'public/explore.php';
+
     $routes['deck/study-new-act'] = 'public/study-new-act.php';
     $routes['study/study-act'] = 'public/study-act.php';
     $routes['study/study-delete-act'] = 'public/study-delete-act.php';

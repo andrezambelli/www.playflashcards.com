@@ -231,6 +231,9 @@
                         <?php } ?>
                     </div>
 
+                    <a class="nav-link text-secondary"
+                       href="<?= CAR_PATH_WEB ?>/explore/"><?= car_t($t, 'Public Decks') ?></a>
+
                     <a class="btn btn-primary"
                        href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Get Started') ?></a>
                 </div>
