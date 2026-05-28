@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Попробуйте пример колоды',
     'home.sample-decks.public-badge'=>'публичная',
     'home.sample-decks.cards-label'=>'Карточки',
+    'public.deck.show-all'=>'Показать все карточки',
+    'public.deck.all-decks'=>'Смотреть все колоды',
     'public.deck.signup-desc'=>'Создайте бесплатный аккаунт, чтобы сохранять учебные сессии, отслеживать точность и создавать собственные колоды карточек.',
     'public.deck.more-decks'=>'Больше колод',
     'public.explore.title'=>'Исследовать публичные колоды - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'История',
     'public.explore.cat.arts'=>'Искусство',
     'public.explore.cat.business'=>'Бизнес',
+    'public.explore.cat.nature'=>'Природа',
+    'public.explore.cat.sports'=>'Спорт',
     'public.explore.cat.other'=>'Прочее',
     ];

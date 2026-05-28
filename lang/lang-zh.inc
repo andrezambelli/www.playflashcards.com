@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'试用示例卡组',
     'home.sample-decks.public-badge'=>'公开',
     'home.sample-decks.cards-label'=>'卡片',
+    'public.deck.show-all'=>'显示所有卡片',
+    'public.deck.all-decks'=>'查看所有卡组',
     'public.deck.signup-desc'=>'创建免费账户以保存学习记录、跟踪准确率并构建您自己的闪卡卡组。',
     'public.deck.more-decks'=>'更多卡组',
     'public.explore.title'=>'探索公开卡组 - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'历史',
     'public.explore.cat.arts'=>'艺术',
     'public.explore.cat.business'=>'商业',
+    'public.explore.cat.nature'=>'自然',
+    'public.explore.cat.sports'=>'体育',
     'public.explore.cat.other'=>'其他',
     ];

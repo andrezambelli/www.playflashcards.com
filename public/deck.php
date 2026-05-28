@@ -3,7 +3,8 @@
 <?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
 <?php
-    $user_id = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
+    $user_id    = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
+    $is_logged  = car_get_session_attribute('session_login', '') === 'on';
 
     $user_id_deck  = 0;
     $deck_key      = '';
@@ -128,7 +129,7 @@
 
             <div class="card mb-4">
                 <div class="card-body">
-                    <?php if ($user_id == $user_id_deck) { ?>
+                    <?php if ($is_logged && $user_id == $user_id_deck) { ?>
                     <div class="row g-2">
                         <div class="col-md-6">
                             <a href="<?= CAR_PATH_WEB ?>/dash/study-srs-new-act?k=<?= $deck_key ?>"
@@ -178,11 +179,11 @@
             </div>
 
             <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <div class="fw-medium"><?= car_t($t, 'Flashcards') ?></div>
-                    <span class="badge"><?= $total_cards ?></span>
+                <div class="card-header">
+                    <span class="fw-medium"><?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?></span>
                 </div>
                 <?php if (!empty($preview_cards)) { ?>
+                <?php $_preview_limit = 5; ?>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead>
@@ -192,7 +193,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($preview_cards as $_pc) { ?>
+                            <?php foreach ($preview_cards as $_i => $_pc) { ?>
+                            <?php if ($_i === $_preview_limit) { ?></tbody><tbody id="car-deck-extra" class="d-none"><?php } ?>
                             <tr>
                                 <td class="small fw-medium"><?= car_htmlspecialchars($_pc['card_front']) ?></td>
                                 <td class="small text-secondary"><?= car_htmlspecialchars($_pc['card_back']) ?></td>
@@ -201,6 +203,15 @@
                         </tbody>
                     </table>
                 </div>
+                <?php if ($total_cards > $_preview_limit) { ?>
+                <div class="card-footer text-center" id="car-deck-show-more">
+                    <button type="button"
+                            class="btn btn-link btn-sm text-decoration-none"
+                            onclick="document.getElementById('car-deck-extra').classList.remove('d-none');document.getElementById('car-deck-show-more').classList.add('d-none');">
+                        <?= car_t($t, 'public.deck.show-all') ?> · <?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?>
+                    </button>
+                </div>
+                <?php } ?>
                 <?php } ?>
             </div>
 

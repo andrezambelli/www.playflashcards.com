@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'एक नमूना डेक आज़माएं',
     'home.sample-decks.public-badge'=>'सार्वजनिक',
     'home.sample-decks.cards-label'=>'कार्ड',
+    'public.deck.show-all'=>'सभी कार्ड दिखाएं',
+    'public.deck.all-decks'=>'सभी डेक देखें',
     'public.deck.signup-desc'=>'अध्ययन सहेजने, सटीकता ट्रैक करने और अपने खुद के फ्लैशकार्ड डेक बनाने के लिए एक मुफ्त खाता बनाएं।',
     'public.deck.more-decks'=>'और डेक',
     'public.explore.title'=>'सार्वजनिक डेक खोजें - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'इतिहास',
     'public.explore.cat.arts'=>'कला',
     'public.explore.cat.business'=>'व्यापार',
+    'public.explore.cat.nature'=>'प्रकृति',
+    'public.explore.cat.sports'=>'खेल',
     'public.explore.cat.other'=>'अन्य',
     ];

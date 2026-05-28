@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Wypróbuj przykładowy zestaw',
     'home.sample-decks.public-badge'=>'publiczny',
     'home.sample-decks.cards-label'=>'Fiszki',
+    'public.deck.show-all'=>'Pokaż wszystkie fiszki',
+    'public.deck.all-decks'=>'Zobacz wszystkie zestawy',
     'public.deck.signup-desc'=>'Utwórz bezpłatne konto, aby zapisywać sesje nauki, śledzić dokładność i tworzyć własne zestawy fiszek.',
     'public.deck.more-decks'=>'Więcej zestawów',
     'public.explore.title'=>'Przeglądaj publiczne zestawy - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'Historia',
     'public.explore.cat.arts'=>'Sztuka',
     'public.explore.cat.business'=>'Biznes',
+    'public.explore.cat.nature'=>'Przyroda',
+    'public.explore.cat.sports'=>'Sport',
     'public.explore.cat.other'=>'Inne',
     ];

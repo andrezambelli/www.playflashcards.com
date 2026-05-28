@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Try a sample deck',
     'home.sample-decks.public-badge'=>'public',
     'home.sample-decks.cards-label'=>'Cards',
+    'public.deck.show-all'=>'Show all cards',
+    'public.deck.all-decks'=>'See all decks',
     'public.deck.signup-desc'=>'Create a free account to save studies, track your accuracy and build your own flashcard decks.',
     'public.deck.more-decks'=>'More decks',
     'public.explore.title'=>'Explore public decks - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'History',
     'public.explore.cat.arts'=>'Arts',
     'public.explore.cat.business'=>'Business',
+    'public.explore.cat.nature'=>'Nature',
+    'public.explore.cat.sports'=>'Sports',
     'public.explore.cat.other'=>'Other',
     ];

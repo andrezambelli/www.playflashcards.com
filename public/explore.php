@@ -24,7 +24,7 @@
         $all_decks[] = $row;
     }
 
-    $category_order = ['geography', 'language', 'science', 'technology', 'history', 'arts', 'business'];
+    $category_order = ['geography', 'language', 'science', 'technology', 'history', 'arts', 'business', 'nature', 'sports'];
 
     $category_icons = [
         'geography'  => 'bi-geo-alt',
@@ -34,6 +34,8 @@
         'history'    => 'bi-clock-history',
         'arts'       => 'bi-music-note-beamed',
         'business'   => 'bi-briefcase',
+        'nature'     => 'bi-tree',
+        'sports'     => 'bi-trophy',
     ];
 
     $_base_url = car_get_base_url(CAR_PATH_WEB);
@@ -69,7 +71,7 @@
                 </h2>
                 <div class="row g-3">
                     <?php foreach ($by_category[$cat] as $deck) { ?>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <a href="<?= CAR_PATH_WEB . '/deck/' . $deck['deck_key'] . '/' . $deck['deck_url'] . '/' ?>"
                            class="card h-100 text-decoration-none text-body car-card-link">
                             <div class="card-body">
@@ -108,7 +110,7 @@
                 </h2>
                 <div class="row g-3">
                     <?php foreach ($extra as $deck) { ?>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <a href="<?= CAR_PATH_WEB . '/deck/' . $deck['deck_key'] . '/' . $deck['deck_url'] . '/' ?>"
                            class="card h-100 text-decoration-none text-body car-card-link">
                             <div class="card-body">

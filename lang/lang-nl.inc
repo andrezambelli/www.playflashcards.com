@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Probeer een voorbeelddeck',
     'home.sample-decks.public-badge'=>'openbaar',
     'home.sample-decks.cards-label'=>'Kaarten',
+    'public.deck.show-all'=>'Alle kaarten tonen',
+    'public.deck.all-decks'=>'Alle decks bekijken',
     'public.deck.signup-desc'=>'Maak een gratis account aan om studies op te slaan, je nauwkeurigheid bij te houden en je eigen flashcard-decks te bouwen.',
     'public.deck.more-decks'=>'Meer decks',
     'public.explore.title'=>'Openbare decks verkennen - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'Geschiedenis',
     'public.explore.cat.arts'=>'Kunst',
     'public.explore.cat.business'=>'Business',
+    'public.explore.cat.nature'=>'Natuur',
+    'public.explore.cat.sports'=>'Sport',
     'public.explore.cat.other'=>'Overig',
     ];

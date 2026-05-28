@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Einen Beispielstapel ausprobieren',
     'home.sample-decks.public-badge'=>'öffentlich',
     'home.sample-decks.cards-label'=>'Karten',
+    'public.deck.show-all'=>'Alle Karten anzeigen',
+    'public.deck.all-decks'=>'Alle Stapel anzeigen',
     'public.deck.signup-desc'=>'Erstelle ein kostenloses Konto, um Lerneinheiten zu speichern, deine Genauigkeit zu verfolgen und eigene Lernkartenstapel zu erstellen.',
     'public.deck.more-decks'=>'Weitere Stapel',
     'public.explore.title'=>'Öffentliche Stapel erkunden - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'Geschichte',
     'public.explore.cat.arts'=>'Kunst',
     'public.explore.cat.business'=>'Business',
+    'public.explore.cat.nature'=>'Natur',
+    'public.explore.cat.sports'=>'Sport',
     'public.explore.cat.other'=>'Sonstige',
     ];

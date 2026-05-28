@@ -235,6 +235,8 @@ $t = [
     'home.sample-decks.title'=>'Essayez un paquet exemple',
     'home.sample-decks.public-badge'=>'public',
     'home.sample-decks.cards-label'=>'Cartes',
+    'public.deck.show-all'=>'Voir toutes les cartes',
+    'public.deck.all-decks'=>'Voir tous les paquets',
     'public.deck.signup-desc'=>'Créez un compte gratuit pour sauvegarder des études, suivre votre précision et créer vos propres paquets de cartes.',
     'public.deck.more-decks'=>'Plus de paquets',
     'public.explore.title'=>'Explorer les paquets publics - Play Flashcards',
@@ -248,5 +250,7 @@ $t = [
     'public.explore.cat.history'=>'Histoire',
     'public.explore.cat.arts'=>'Arts',
     'public.explore.cat.business'=>'Commerce',
+    'public.explore.cat.nature'=>'Nature',
+    'public.explore.cat.sports'=>'Sports',
     'public.explore.cat.other'=>'Autres',
     ];

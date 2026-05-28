@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Experimente um baralho',
     'home.sample-decks.public-badge'=>'público',
     'home.sample-decks.cards-label'=>'Cartões',
+    'public.deck.show-all'=>'Ver todos os cartões',
+    'public.deck.all-decks'=>'Ver todos os baralhos',
     'public.deck.signup-desc'=>'Crie uma conta gratuita para salvar estudos, acompanhar seu acerto e criar seus próprios baralhos de flashcards.',
     'public.deck.more-decks'=>'Mais baralhos',
     'public.explore.title'=>'Explorar baralhos públicos - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'História',
     'public.explore.cat.arts'=>'Artes',
     'public.explore.cat.business'=>'Negócios',
+    'public.explore.cat.nature'=>'Natureza',
+    'public.explore.cat.sports'=>'Esportes',
     'public.explore.cat.other'=>'Outros',
     ];

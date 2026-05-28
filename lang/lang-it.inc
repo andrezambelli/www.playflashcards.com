@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'Prova un mazzo di esempio',
     'home.sample-decks.public-badge'=>'pubblico',
     'home.sample-decks.cards-label'=>'Carte',
+    'public.deck.show-all'=>'Mostra tutte le carte',
+    'public.deck.all-decks'=>'Vedi tutti i mazzi',
     'public.deck.signup-desc'=>'Crea un account gratuito per salvare gli studi, monitorare la tua precisione e creare i tuoi mazzi di flashcard.',
     'public.deck.more-decks'=>'Altri mazzi',
     'public.explore.title'=>'Esplora i mazzi pubblici - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'Storia',
     'public.explore.cat.arts'=>'Arte',
     'public.explore.cat.business'=>'Business',
+    'public.explore.cat.nature'=>'Natura',
+    'public.explore.cat.sports'=>'Sport',
     'public.explore.cat.other'=>'Altro',
     ];

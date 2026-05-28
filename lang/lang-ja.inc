@@ -234,6 +234,8 @@ $t = [
     'home.sample-decks.title'=>'サンプルデッキを試してみよう',
     'home.sample-decks.public-badge'=>'公開',
     'home.sample-decks.cards-label'=>'カード',
+    'public.deck.show-all'=>'すべてのカードを表示',
+    'public.deck.all-decks'=>'すべてのデッキを見る',
     'public.deck.signup-desc'=>'無料アカウントを作成して学習を保存し、正解率を追跡し、自分だけのフラッシュカードデッキを作りましょう。',
     'public.deck.more-decks'=>'もっとデッキを見る',
     'public.explore.title'=>'パブリックデッキを探索 - Play Flashcards',
@@ -247,5 +249,7 @@ $t = [
     'public.explore.cat.history'=>'歴史',
     'public.explore.cat.arts'=>'アート',
     'public.explore.cat.business'=>'ビジネス',
+    'public.explore.cat.nature'=>'自然',
+    'public.explore.cat.sports'=>'スポーツ',
     'public.explore.cat.other'=>'その他',
     ];
