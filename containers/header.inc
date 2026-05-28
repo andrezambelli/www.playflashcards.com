@@ -131,6 +131,17 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
 
+        <!-- Toggler mobile -->
+        <button class="btn btn-sm btn-outline-secondary d-lg-none border-0 px-2"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#main-navbar"
+                aria-controls="main-navbar"
+                aria-expanded="false"
+                aria-label="<?= car_t($t, 'Menu') ?>">
+            <i class="bi bi-list fs-5" aria-hidden="true"></i>
+        </button>
+
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>">
             <span class="car-brand-mark" aria-hidden="true">
@@ -140,17 +151,6 @@
             </span>
             Play Flashcards
         </a>
-
-        <!-- Toggler mobile -->
-        <button class="navbar-toggler border-0"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#main-navbar"
-                aria-controls="main-navbar"
-                aria-expanded="false"
-                aria-label="<?= car_t($t, 'Menu') ?>">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="main-navbar">
 
