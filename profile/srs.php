@@ -48,7 +48,13 @@
     <?php include_once CAR_ROOT_WEB . '/containers/message.inc'; ?>
 
     <h1 class="h3 fw-semibold mb-1"><?= car_t($t, 'Spaced Repetition System (SRS)') ?></h1>
-    <p class="text-secondary small mb-4"><?= car_t($t, 'profile.srs.definition') ?></p>
+    <p class="text-secondary small mb-2"><?= car_t($t, 'profile.srs.definition') ?></p>
+    <p class="small mb-4">
+        <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/spaced-repetition' ?>">
+            <?= car_t($t, 'home.features.srs.learn-more') ?>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+    </p>
 
     <div class="card mb-4">
         <div class="card-body">

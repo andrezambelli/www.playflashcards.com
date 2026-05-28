@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Persönliche Stapel privat halten oder eine URL teilen, damit jeder lernen kann. CSV in einem Klick importieren und exportieren. Deine Daten, deine Entscheidung.',
     'home.features.3.title'=>'Tastatur zuerst',
     'home.features.3.desc'=>'LEERTASTE zum Umdrehen, Pfeiltasten zum Antworten, ESC zum Verlassen. Entwickelt für Menschen, die während einer Lernsession die Tastatur bevorzugen.',
+    'home.features.srs.learn-more'=>'Mehr erfahren',
     'home.sample-decks.title'=>'Einen Beispielstapel ausprobieren',
     'home.sample-decks.public-badge'=>'öffentlich',
     'home.sample-decks.cards-label'=>'Karten',

@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Mantén tus barajas privadas o comparte una URL para que cualquiera pueda estudiar. Importa y exporta CSV con un clic. Tus datos, tu decisión.',
     'home.features.3.title'=>'Teclado primero',
     'home.features.3.desc'=>'ESPACIO para voltear, flechas para responder, ESC para salir. Hecho para quienes prefieren el teclado durante una sesión de estudio.',
+    'home.features.srs.learn-more'=>'Saber más',
     'home.sample-decks.title'=>'Prueba un grupo de ejemplo',
     'home.sample-decks.public-badge'=>'público',
     'home.sample-decks.cards-label'=>'Tarjetas',

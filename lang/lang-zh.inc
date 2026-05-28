@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'保持个人卡组私密，或分享 URL 供所有人学习。一键导入导出 CSV。您的数据，由您做主。',
     'home.features.3.title'=>'键盘优先',
     'home.features.3.desc'=>'空格翻转，方向键回答，ESC 退出。专为学习时偏爱键盘的用户打造。',
+    'home.features.srs.learn-more'=>'了解更多',
     'home.sample-decks.title'=>'试用示例卡组',
     'home.sample-decks.public-badge'=>'公开',
     'home.sample-decks.cards-label'=>'卡片',

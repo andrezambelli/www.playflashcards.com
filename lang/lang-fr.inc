@@ -232,6 +232,7 @@ $t = [
     'home.features.2.desc'=>"Gardez vos paquets privés ou partagez une URL pour que n'importe qui puisse étudier. Importez et exportez en CSV en un clic. Vos données, votre choix.",
     'home.features.3.title'=>'Clavier avant tout',
     'home.features.3.desc'=>"ESPACE pour retourner, flèches pour répondre, ÉCHAP pour quitter. Conçu pour ceux qui préfèrent le clavier pendant une session d'étude.",
+    'home.features.srs.learn-more'=>'En savoir plus',
     'home.sample-decks.title'=>'Essayez un paquet exemple',
     'home.sample-decks.public-badge'=>'public',
     'home.sample-decks.cards-label'=>'Cartes',

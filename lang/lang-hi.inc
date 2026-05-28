@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'व्यक्तिगत डेक को निजी रखें या किसी के लिए URL साझा करें। एक क्लिक में CSV आयात और निर्यात करें। आपका डेटा, आपकी पसंद।',
     'home.features.3.title'=>'कीबोर्ड पहले',
     'home.features.3.desc'=>'पलटने के लिए SPACE, जवाब देने के लिए तीर, बाहर निकलने के लिए ESC। अध्ययन के दौरान कीबोर्ड पसंद करने वालों के लिए बनाया गया।',
+    'home.features.srs.learn-more'=>'और जानें',
     'home.sample-decks.title'=>'एक नमूना डेक आज़माएं',
     'home.sample-decks.public-badge'=>'सार्वजनिक',
     'home.sample-decks.cards-label'=>'कार्ड',

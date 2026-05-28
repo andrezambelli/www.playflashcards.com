@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'個人のデッキをプライベートに保つか、URLを共有して誰でも学習できるようにする。ワンクリックでCSVのインポートとエクスポート。あなたのデータ、あなたの選択。',
     'home.features.3.title'=>'キーボード優先',
     'home.features.3.desc'=>'スペースで裏返す、矢印で回答、ESCで終了。学習中にキーボードを好む方のために作られています。',
+    'home.features.srs.learn-more'=>'詳しく見る',
     'home.sample-decks.title'=>'サンプルデッキを試してみよう',
     'home.sample-decks.public-badge'=>'公開',
     'home.sample-decks.cards-label'=>'カード',

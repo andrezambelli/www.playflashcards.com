@@ -16,7 +16,11 @@
                     <i class="bi bi-sliders text-primary" aria-hidden="true"></i>
                 </div>
                 <h3 class="h5 fw-bold mb-2"><?= car_t($t, 'home.features.1.title') ?></h3>
-                <p class="text-body-secondary small mb-0"><?= car_t($t, 'home.features.1.desc') ?></p>
+                <p class="text-body-secondary small mb-2"><?= car_t($t, 'home.features.1.desc') ?></p>
+                <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/spaced-repetition' ?>" class="small">
+                    <?= car_t($t, 'home.features.srs.learn-more') ?>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
             </div>
 
             <div class="col-md-4">

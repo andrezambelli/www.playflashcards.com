@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Tieni i mazzi personali privati o condividi un URL per far studiare chiunque. Importa ed esporta CSV in un clic. I tuoi dati, la tua scelta.',
     'home.features.3.title'=>'Prima la tastiera',
     'home.features.3.desc'=>'SPAZIO per girare, frecce per rispondere, ESC per uscire. Pensato per chi preferisce la tastiera durante una sessione di studio.',
+    'home.features.srs.learn-more'=>'Scopri di più',
     'home.sample-decks.title'=>'Prova un mazzo di esempio',
     'home.sample-decks.public-badge'=>'pubblico',
     'home.sample-decks.cards-label'=>'Carte',

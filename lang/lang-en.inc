@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Keep personal decks private or share a URL for anyone to study. Import and export CSV in one click. Your data, your call.',
     'home.features.3.title'=>'Keyboard-first',
     'home.features.3.desc'=>'SPACE to flip, arrows to respond, ESC to leave. Built for people who prefer the keyboard during a study sprint.',
+    'home.features.srs.learn-more'=>'Learn more',
     'home.sample-decks.title'=>'Try a sample deck',
     'home.sample-decks.public-badge'=>'public',
     'home.sample-decks.cards-label'=>'Cards',

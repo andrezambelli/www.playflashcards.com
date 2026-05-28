@@ -66,6 +66,13 @@
     }
     $logs[] = '[OK] cookie-settings: ' . count($langs) . ' URLs';
 
+    // spaced-repetition
+    $srs_lastmod = car_sitemap_lastmod([$root . '/common/spaced-repetition.php'], $today);
+    foreach ($langs as $lang) {
+        $urls[] = car_sitemap_url($base . '/' . $lang . '/spaced-repetition/', $srs_lastmod, 'monthly', '0.7');
+    }
+    $logs[] = '[OK] spaced-repetition: ' . count($langs) . ' URLs';
+
     // explore
     $explore_lastmod = car_sitemap_lastmod([$root . '/public/explore.php'], $today);
     foreach ($langs as $lang) {

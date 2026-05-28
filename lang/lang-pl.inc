@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Trzymaj osobiste zestawy prywatne lub udostępnij URL, aby każdy mógł się uczyć. Importuj i eksportuj CSV jednym kliknięciem. Twoje dane, Twój wybór.',
     'home.features.3.title'=>'Klawiatura na pierwszym miejscu',
     'home.features.3.desc'=>'SPACJA do obracania, strzałki do odpowiadania, ESC do wyjścia. Zbudowany dla ludzi preferujących klawiaturę podczas sesji nauki.',
+    'home.features.srs.learn-more'=>'Dowiedz się więcej',
     'home.sample-decks.title'=>'Wypróbuj przykładowy zestaw',
     'home.sample-decks.public-badge'=>'publiczny',
     'home.sample-decks.cards-label'=>'Fiszki',

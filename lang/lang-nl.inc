@@ -231,6 +231,7 @@ $t = [
     'home.features.2.desc'=>'Houd persoonlijke decks privé of deel een URL zodat iedereen kan leren. CSV importeren en exporteren met één klik. Jouw data, jouw keuze.',
     'home.features.3.title'=>'Toetsenbord eerst',
     'home.features.3.desc'=>'SPATIE om te draaien, pijltjes om te antwoorden, ESC om te verlaten. Gemaakt voor mensen die het toetsenbord prefereren tijdens een studiesessie.',
+    'home.features.srs.learn-more'=>'Meer weten',
     'home.sample-decks.title'=>'Probeer een voorbeelddeck',
     'home.sample-decks.public-badge'=>'openbaar',
     'home.sample-decks.cards-label'=>'Kaarten',

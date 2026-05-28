@@ -150,3 +150,16 @@
     $routes['ru/privacy-policy']    = 'common/privacy-policy.php';
     $routes['hi/privacy-policy']    = 'common/privacy-policy.php';
 
+    $routes['pt-br/spaced-repetition'] = 'common/spaced-repetition.php';
+    $routes['en/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['es/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['fr/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['de/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['it/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['ja/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['zh/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['nl/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['pl/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['ru/spaced-repetition']    = 'common/spaced-repetition.php';
+    $routes['hi/spaced-repetition']    = 'common/spaced-repetition.php';
+
