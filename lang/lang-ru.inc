@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Исследовать публичные колоды',
     'home.hero.footnote'=>'Бесплатно для личного использования навсегда · Карта не требуется',
     'home.hero.card-hint'=>'Нажмите на карточку или нажмите ПРОБЕЛ, чтобы перевернуть',
+    'home.card-preview.eyebrow'=>'Открытая колода',
     'home.features.eyebrow'=>'Создан для концентрации',
     'home.features.title'=>'Три вещи, сделанные хорошо.',
     'home.features.1.title'=>'Настраиваемый SRS',

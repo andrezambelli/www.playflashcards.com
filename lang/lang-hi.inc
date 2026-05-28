@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'सार्वजनिक डेक देखें',
     'home.hero.footnote'=>'व्यक्तिगत उपयोग के लिए हमेशा मुफ्त · कोई कार्ड आवश्यक नहीं',
     'home.hero.card-hint'=>'कार्ड टैप करें या पलटने के लिए SPACE दबाएं',
+    'home.card-preview.eyebrow'=>'सार्वजनिक डेक',
     'home.features.eyebrow'=>'फोकस के लिए बनाया गया',
     'home.features.title'=>'तीन चीजें, सही ढंग से।',
     'home.features.1.title'=>'अनुकूलनीय SRS',

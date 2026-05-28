@@ -224,6 +224,7 @@ $t = [
     'home.hero.cta-secondary'=>'Explorer les paquets publics',
     'home.hero.footnote'=>'Gratuit à vie pour usage personnel · Sans carte bancaire',
     'home.hero.card-hint'=>'Touchez la carte ou appuyez sur ESPACE pour retourner',
+    'home.card-preview.eyebrow'=>'Jeu public',
     'home.features.eyebrow'=>'Conçu pour la concentration',
     'home.features.title'=>'Trois choses, bien faites.',
     'home.features.1.title'=>'SRS personnalisable',

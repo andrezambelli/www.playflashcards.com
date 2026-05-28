@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Öffentliche Stapel erkunden',
     'home.hero.footnote'=>'Für den persönlichen Gebrauch dauerhaft kostenlos · Keine Karte erforderlich',
     'home.hero.card-hint'=>'Karte antippen oder LEERTASTE drücken zum Umdrehen',
+    'home.card-preview.eyebrow'=>'Öffentliches Deck',
     'home.features.eyebrow'=>'Für Fokus entwickelt',
     'home.features.title'=>'Drei Dinge, gut gemacht.',
     'home.features.1.title'=>'Anpassbares SRS',

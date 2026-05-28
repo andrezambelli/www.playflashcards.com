@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Explore public decks',
     'home.hero.footnote'=>'Free forever for personal use · No card required',
     'home.hero.card-hint'=>'Tap card or press SPACE to flip',
+    'home.card-preview.eyebrow'=>'Public deck',
     'home.features.eyebrow'=>'Built for focus',
     'home.features.title'=>'Three things, done well.',
     'home.features.1.title'=>'Tunable SRS',

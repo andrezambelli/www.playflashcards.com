@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'探索公开卡组',
     'home.hero.footnote'=>'个人使用永久免费 · 无需信用卡',
     'home.hero.card-hint'=>'点击卡片或按空格键翻转',
+    'home.card-preview.eyebrow'=>'公开卡组',
     'home.features.eyebrow'=>'专为专注而设计',
     'home.features.title'=>'三件事，做到极致。',
     'home.features.1.title'=>'可调节的 SRS',

@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Verken openbare decks',
     'home.hero.footnote'=>'Voor persoonlijk gebruik altijd gratis · Geen kaart vereist',
     'home.hero.card-hint'=>'Tik op de kaart of druk op SPATIE om om te draaien',
+    'home.card-preview.eyebrow'=>'Openbaar deck',
     'home.features.eyebrow'=>'Gebouwd voor focus',
     'home.features.title'=>'Drie dingen, goed gedaan.',
     'home.features.1.title'=>'Aanpasbaar SRS',

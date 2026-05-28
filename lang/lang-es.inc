@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Explorar barajas públicas',
     'home.hero.footnote'=>'Gratis para siempre para uso personal · Sin tarjeta de crédito',
     'home.hero.card-hint'=>'Toca la tarjeta o presiona ESPACIO para voltear',
+    'home.card-preview.eyebrow'=>'Mazo público',
     'home.features.eyebrow'=>'Hecho para el enfoque',
     'home.features.title'=>'Tres cosas, bien hechas.',
     'home.features.1.title'=>'SRS ajustable',

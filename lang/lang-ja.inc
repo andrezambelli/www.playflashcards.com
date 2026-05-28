@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'公開デッキを探す',
     'home.hero.footnote'=>'個人利用は永久無料 · カード不要',
     'home.hero.card-hint'=>'カードをタップするかスペースキーで裏返す',
+    'home.card-preview.eyebrow'=>'公開デッキ',
     'home.features.eyebrow'=>'集中のために作られた',
     'home.features.title'=>'3つのこと、しっかりと。',
     'home.features.1.title'=>'カスタマイズ可能なSRS',

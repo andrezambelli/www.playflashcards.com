@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Esplora mazzi pubblici',
     'home.hero.footnote'=>'Gratuito per sempre per uso personale · Nessuna carta richiesta',
     'home.hero.card-hint'=>'Tocca la carta o premi SPAZIO per girarla',
+    'home.card-preview.eyebrow'=>'Mazzo pubblico',
     'home.features.eyebrow'=>'Progettato per la concentrazione',
     'home.features.title'=>'Tre cose, fatte bene.',
     'home.features.1.title'=>'SRS personalizzabile',

@@ -223,6 +223,7 @@ $t = [
     'home.hero.cta-secondary'=>'Przeglądaj publiczne zestawy',
     'home.hero.footnote'=>'Bezpłatny na zawsze do użytku osobistego · Nie wymaga karty',
     'home.hero.card-hint'=>'Dotknij karty lub naciśnij SPACJĘ, aby odwrócić',
+    'home.card-preview.eyebrow'=>'Publiczny zestaw',
     'home.features.eyebrow'=>'Zbudowany dla skupienia',
     'home.features.title'=>'Trzy rzeczy, zrobione dobrze.',
     'home.features.1.title'=>'Konfigurowalny SRS',
