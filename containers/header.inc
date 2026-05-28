@@ -231,8 +231,11 @@
                         <?php } ?>
                     </div>
 
-                    <a class="btn btn-primary"
-                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"><?= car_t($t, 'Get Started') ?></a>
+                    <a id="car-navbar-cta"
+                       class="btn btn-primary"
+                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"
+                       data-dash-href="<?= CAR_PATH_WEB ?>/dash/home"
+                       data-dash-label="<?= car_t($t, 'Dashboard') ?>"><?= car_t($t, 'Get Started') ?></a>
                 </div>
 
             <?php } else { ?>

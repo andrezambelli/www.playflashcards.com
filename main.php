@@ -54,6 +54,15 @@
         . json_encode($_schema_app, $_json_flags)
         . "\n</script>";
 
+    // cache: serve arquivo estático se existir e não estiver expirado
+    $_cache_file = CAR_ROOT_WEB . '/cache/home-' . $t['lang'] . '.html';
+    $_cache_ttl  = 3600;
+    if (file_exists($_cache_file) && (time() - filemtime($_cache_file)) < $_cache_ttl) {
+        readfile($_cache_file);
+        exit;
+    }
+    ob_start();
+
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 
@@ -64,4 +73,29 @@
     <?php include CAR_ROOT_WEB . '/home/try-a-sample.inc'; ?>
 </main>
 
+<script>
+(function() {
+    fetch('<?= CAR_PATH_WEB ?>/services/check-login')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            if (d.logged_in) {
+                var btn = document.getElementById('car-navbar-cta');
+                if (btn) {
+                    btn.href = btn.dataset.dashHref;
+                    btn.textContent = btn.dataset.dashLabel;
+                }
+            }
+        })
+        .catch(function() {});
+})();
+</script>
+
 <?php include_once CAR_ROOT_WEB . '/containers/footer.inc';?>
+<?php
+    $_html = ob_get_clean();
+    if (!is_dir(CAR_ROOT_WEB . '/cache')) {
+        @mkdir(CAR_ROOT_WEB . '/cache', 0755, true);
+    }
+    @file_put_contents($_cache_file, $_html, LOCK_EX);
+    echo $_html;
+?>

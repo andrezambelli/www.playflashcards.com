@@ -5,3 +5,4 @@ car-server.php
 .claude
 external-lib/google-api-client-2.12.1/
 docs/
+cache/

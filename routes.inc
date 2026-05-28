@@ -44,6 +44,7 @@
     // system
     $routes['404'] = 'common/404.php';
     $routes['home/home'] = 'home/home.php';
+    $routes['services/check-login']    = 'services/check-login.php';
     $routes['services/create-sitemap'] = 'services/create-sitemap.php';
     $routes['services/set-timezone-act'] = 'services/set-timezone-act.php';
     $routes['services/set-cookie-act'] = 'services/set-cookie-act.php';
