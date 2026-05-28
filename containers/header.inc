@@ -178,18 +178,18 @@
 
                     <?php
                         $langs = [
+                            'de'    => 'Deutsch',
                             'en'    => 'English',
                             'es'    => 'Español',
                             'fr'    => 'Français',
-                            'pt-br' => 'Português',
-                            'de'    => 'Deutsch',
+                            'hi'    => 'हिंदी',
                             'it'    => 'Italiano',
+                            'ja'    => '日本語',
                             'nl'    => 'Nederlands',
                             'pl'    => 'Polski',
+                            'pt-br' => 'Português',
                             'ru'    => 'Русский',
-                            'ja'    => '日本語',
                             'zh'    => '中文',
-                            'hi'    => 'हिंदी',
                         ];
                         $lang_redirect_url = urlencode(car_current_url());
                     ?>

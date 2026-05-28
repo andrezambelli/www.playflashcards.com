@@ -12,6 +12,7 @@
     $deck_desc    = car_get_parameter('deck_desc', '');
     $deck_bgcolor = car_get_parameter('deck_bgcolor', CAR_DECK_BGCOLOR_DEFAULT);
     $deck_public  = car_get_parameter('deck_public', 0);
+    $deck_lang    = car_get_parameter('deck_lang', 'en');
 
     $redirect = CAR_PATH_WEB . '/dash/deck-list';
 
@@ -22,6 +23,7 @@
         car_set_session_attribute('new_deck_desc', $deck_desc);
         car_set_session_attribute('new_deck_bgcolor', $deck_bgcolor);
         car_set_session_attribute('new_deck_public', $deck_public);
+        car_set_session_attribute('new_deck_lang', $deck_lang);
         $redirect = CAR_PATH_WEB . '/dash/deck-new';
     } else {
         try {
@@ -57,15 +59,16 @@
 
                 // Insere o grupo com os dados reais do formulário
                 $sql = sprintf("insert into car_deck
-                                    (user_id, deck_name, deck_desc, deck_key, deck_url, deck_bgcolor, deck_public)
-                                values (%d, '%s', '%s', '%s', '%s', '%s', %d)",
+                                    (user_id, deck_name, deck_desc, deck_key, deck_url, deck_bgcolor, deck_public, deck_lang)
+                                values (%d, '%s', '%s', '%s', '%s', '%s', %d, '%s')",
                                 $user_id,
                                 $mysqli->real_escape_string(car_never_null($deck_name)),
                                 $mysqli->real_escape_string(car_never_null($deck_desc)),
                                 $mysqli->real_escape_string(car_never_null($deck_key)),
                                 $mysqli->real_escape_string(car_never_null($deck_url)),
                                 $mysqli->real_escape_string(car_never_null($deck_bgcolor)),
-                                $deck_public);
+                                $deck_public,
+                                $mysqli->real_escape_string(car_never_null($deck_lang)));
 
                 $result = $mysqli->query($sql);
 

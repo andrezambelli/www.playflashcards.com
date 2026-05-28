@@ -27,12 +27,14 @@
     $deck_desc    = car_get_session_attribute('new_deck_desc', '');
     $deck_bgcolor = car_get_session_attribute('new_deck_bgcolor', CAR_DECK_BGCOLOR_DEFAULT);
     $deck_public  = car_get_session_attribute('new_deck_public', '0');
+    $deck_lang    = car_get_session_attribute('new_deck_lang', $t['lang']);
 
     // limpa os valores de repopulação após ler
     $_SESSION['new_deck_name']    = null;
     $_SESSION['new_deck_desc']    = null;
     $_SESSION['new_deck_bgcolor'] = null;
     $_SESSION['new_deck_public']  = null;
+    $_SESSION['new_deck_lang']    = null;
 ?>
 <?php
     $header_title    = car_t($t, 'New Deck') . ' - Play Flashcards';
@@ -73,6 +75,24 @@
                            maxlength="1024"
                            placeholder="<?= car_t($t, 'Deck Description') ?>"
                            class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="deck_lang" class="form-label"><?= car_t($t, 'Language') ?></label>
+                    <select id="deck_lang" name="deck_lang" class="form-select" style="max-width: 280px">
+                        <option value="de"    <?= $deck_lang === 'de'    ? 'selected' : '' ?>>Deutsch</option>
+                        <option value="en"    <?= $deck_lang === 'en'    ? 'selected' : '' ?>>English</option>
+                        <option value="es"    <?= $deck_lang === 'es'    ? 'selected' : '' ?>>Español</option>
+                        <option value="fr"    <?= $deck_lang === 'fr'    ? 'selected' : '' ?>>Français</option>
+                        <option value="hi"    <?= $deck_lang === 'hi'    ? 'selected' : '' ?>>हिंदी</option>
+                        <option value="it"    <?= $deck_lang === 'it'    ? 'selected' : '' ?>>Italiano</option>
+                        <option value="ja"    <?= $deck_lang === 'ja'    ? 'selected' : '' ?>>日本語</option>
+                        <option value="nl"    <?= $deck_lang === 'nl'    ? 'selected' : '' ?>>Nederlands</option>
+                        <option value="pl"    <?= $deck_lang === 'pl'    ? 'selected' : '' ?>>Polski</option>
+                        <option value="pt-br" <?= $deck_lang === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
+                        <option value="ru"    <?= $deck_lang === 'ru'    ? 'selected' : '' ?>>Русский</option>
+                        <option value="zh"    <?= $deck_lang === 'zh'    ? 'selected' : '' ?>>中文</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

@@ -15,6 +15,7 @@
     $deck_bgcolor = '';
     $deck_public  = '0';
     $deck_url     = '';
+    $deck_lang    = 'en';
 
     if ($read_database == 'on') {
         $sql = sprintf("select deck_id,
@@ -23,7 +24,8 @@
                                deck_desc,
                                deck_bgcolor,
                                deck_public,
-                               deck_url
+                               deck_url,
+                               deck_lang
                           from car_deck
                          where deck_key = '%s'
                            and user_id = %d",
@@ -39,6 +41,7 @@
             $deck_bgcolor = $row['deck_bgcolor'];
             $deck_public  = $row['deck_public'];
             $deck_url     = $row['deck_url'];
+            $deck_lang    = $row['deck_lang'];
         }
 
         if ($deck_id === 0) {
@@ -50,6 +53,7 @@
         $deck_desc    = car_get_session_attribute('deck_desc', '');
         $deck_bgcolor = car_get_session_attribute('deck_bgcolor', '');
         $deck_public  = car_get_session_attribute('deck_public', '0');
+        $deck_lang    = car_get_session_attribute('deck_lang', 'en');
     }
 
 ?>
@@ -95,6 +99,24 @@
                            maxlength="1024"
                            placeholder="<?= car_t($t, 'Deck Description') ?>"
                            class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="deck_lang" class="form-label"><?= car_t($t, 'Language') ?></label>
+                    <select id="deck_lang" name="deck_lang" class="form-select" style="max-width: 280px">
+                        <option value="de"    <?= $deck_lang === 'de'    ? 'selected' : '' ?>>Deutsch</option>
+                        <option value="en"    <?= $deck_lang === 'en'    ? 'selected' : '' ?>>English</option>
+                        <option value="es"    <?= $deck_lang === 'es'    ? 'selected' : '' ?>>Español</option>
+                        <option value="fr"    <?= $deck_lang === 'fr'    ? 'selected' : '' ?>>Français</option>
+                        <option value="hi"    <?= $deck_lang === 'hi'    ? 'selected' : '' ?>>हिंदी</option>
+                        <option value="it"    <?= $deck_lang === 'it'    ? 'selected' : '' ?>>Italiano</option>
+                        <option value="ja"    <?= $deck_lang === 'ja'    ? 'selected' : '' ?>>日本語</option>
+                        <option value="nl"    <?= $deck_lang === 'nl'    ? 'selected' : '' ?>>Nederlands</option>
+                        <option value="pl"    <?= $deck_lang === 'pl'    ? 'selected' : '' ?>>Polski</option>
+                        <option value="pt-br" <?= $deck_lang === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
+                        <option value="ru"    <?= $deck_lang === 'ru'    ? 'selected' : '' ?>>Русский</option>
+                        <option value="zh"    <?= $deck_lang === 'zh'    ? 'selected' : '' ?>>中文</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

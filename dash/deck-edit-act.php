@@ -12,6 +12,7 @@
 	$deck_desc = car_get_parameter('deck_desc', '');
     $deck_bgcolor = car_get_parameter('deck_bgcolor', CAR_DECK_BGCOLOR_DEFAULT);
     $deck_public = car_get_parameter('deck_public', 0);
+    $deck_lang = car_get_parameter('deck_lang', 'en');
 
 	car_set_session_attribute('read_database', 'off');
 	
@@ -29,6 +30,7 @@
                                    deck_url = '%s',
                                    deck_bgcolor = '%s',
                                    deck_public = %d,
+                                   deck_lang = '%s',
                                    deck_update = now()
                              where deck_key = '%s'
                                and user_id = %d",
@@ -37,6 +39,7 @@
                             $mysqli->real_escape_string(car_never_null($deck_url)),
                             $mysqli->real_escape_string(car_never_null($deck_bgcolor)),
                             $mysqli->real_escape_string($deck_public),
+                            $mysqli->real_escape_string(car_never_null($deck_lang)),
                             $mysqli->real_escape_string(car_never_null($deck_key)),
                             $user_id);
 	
@@ -61,6 +64,7 @@
         car_set_session_attribute('deck_desc', $deck_desc);
         car_set_session_attribute('deck_bgcolor', $deck_bgcolor);
         car_set_session_attribute('deck_public', $deck_public);
+        car_set_session_attribute('deck_lang', $deck_lang);
 
 		car_redirect(CAR_PATH_WEB . '/dash/deck-edit?k=' . $deck_key);
 	}
