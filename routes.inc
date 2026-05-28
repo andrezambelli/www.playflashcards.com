@@ -63,6 +63,7 @@
     $routes['services/set-timezone-act'] = 'services/set-timezone-act.php';
     $routes['services/set-cookie-act'] = 'services/set-cookie-act.php';
     $routes['services/change-language-act'] = 'services/change-language-act.php';
+    $routes['services/force-500-act']       = 'services/force-500-act.php';
 
     // profile - private
     $routes['profile/home'] = 'profile/home.php';
