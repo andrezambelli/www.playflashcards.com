@@ -142,7 +142,7 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Ao identificar durante o trabalho uma regra, padrão ou exceção recorrente que ainda não está documentada, propor a adição neste CLAUDE.md antes de encerrar a conversa
 - Ao escrever JavaScript, usar vanilla JS com `fetch()` para requisições assíncronas e `document.addEventListener('DOMContentLoaded', ...)` para inicializações. Seguir o padrão do `assets/js/main.js`
 - Ao referenciar o design visual do redesign, consultar `docs/redesign/claude_design/` apenas como referência de aparência (cores, layout, tipografia), nunca como fonte de código a copiar
-- Ao adicionar um novo idioma `{code}`, atualizar obrigatoriamente todos os 12 pontos abaixo — nenhum é opcional:
+- Ao adicionar um novo idioma `{code}`, atualizar obrigatoriamente todos os 11 pontos abaixo — nenhum é opcional:
   1. Criar `lang/lang-{code}.inc` com todas as chaves de `lang/lang-en.inc` traduzidas (incluindo `'lang' => '{code}'`)
   2. `lang/lang.inc`: adicionar `{code}` ao array `$valid`, ao `$_lang_map` e criar o bloco `elseif` de include
   3. `containers/header.inc`: adicionar a `$lang_labels` (ex: `'de' => 'DE'`) e ao array `$langs` (com o nome nativo)
@@ -152,6 +152,5 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
   7. `services/create-sitemap.php`: adicionar `{code}` ao array `$langs`
   8. `main.php`: adicionar `{code}` ao array `in_array` da validação anti-loop (linha com `$_uri_first`) — omitir causa `ERR_TOO_MANY_REDIRECTS` na homepage do idioma
   9. `general/functions.inc`: adicionar bloco `elseif` para `/{code}/` na função `car_check_language()`
-  10. `assets/data/try-a-sample.json`: adicionar 3 entradas de decks de exemplo com `"lang": "{code}"` e títulos traduzidos
-  11. `home/card-preview.inc`: adicionar entrada no array `$home_card_preview_examples` com 5 flashcards de exemplo traduzidos para `{code}`
-  12. `profile/home.php` (select): o atributo `selected` dos `<option>` usa `$t['lang']` (sessão ativa), não `$user_lang` (banco) — isso já está correto; ao criar novos selects de idioma em outras páginas, seguir o mesmo padrão
+  10. `home/card-preview.inc`: adicionar entrada no array `$home_card_preview_examples` com 5 flashcards de exemplo traduzidos para `{code}`
+  11. `profile/home.php` (select): o atributo `selected` dos `<option>` usa `$t['lang']` (sessão ativa), não `$user_lang` (banco) — isso já está correto; ao criar novos selects de idioma em outras páginas, seguir o mesmo padrão

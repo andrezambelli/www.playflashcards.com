@@ -2,6 +2,16 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php';?>
 <?php include_once CAR_ROOT_WEB . '/config.inc';?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php
+    // cache: ativo apenas em staging e produção — deve ser verificado o mais cedo possível
+    $_cache_on   = !car_is_localhost();
+    $_cache_file = CAR_ROOT_WEB . '/cache/home-' . $t['lang'] . '.html';
+    $_cache_ttl  = 3600;
+    if ($_cache_on && file_exists($_cache_file) && (time() - filemtime($_cache_file)) < $_cache_ttl) {
+        readfile($_cache_file);
+        exit;
+    }
+?>
 <?php car_check_language($t['lang']); ?>
 <?php
     // redireciona raiz sem prefixo de idioma (ex: /) para /{lang}/
@@ -54,14 +64,6 @@
         . json_encode($_schema_app, $_json_flags)
         . "\n</script>";
 
-    // cache: ativo apenas em staging e produção
-    $_cache_on   = !car_is_localhost();
-    $_cache_file = CAR_ROOT_WEB . '/cache/home-' . $t['lang'] . '.html';
-    $_cache_ttl  = 3600;
-    if ($_cache_on && file_exists($_cache_file) && (time() - filemtime($_cache_file)) < $_cache_ttl) {
-        readfile($_cache_file);
-        exit;
-    }
     if ($_cache_on) ob_start();
 
     include_once CAR_ROOT_WEB . '/containers/header.inc';

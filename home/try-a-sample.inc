@@ -1,20 +1,23 @@
 <?php /** @var array $t */ ?>
 <?php
-    $sample_decks_data = json_decode(file_get_contents(CAR_ROOT_WEB . '/assets/data/try-a-sample.json'), true) ?? [];
-    $sample_decks      = array_values(array_filter(
-        $sample_decks_data['decks'] ?? [],
-        fn($deck) => ($deck['active'] ?? true) === true
-                  && ($deck['home'] ?? true) === true
-                  && ($deck['lang'] ?? 'en') === $t['lang']
-    ));
-    if (empty($sample_decks)) {
-        $sample_decks = array_values(array_filter(
-            $sample_decks_data['decks'] ?? [],
-            fn($deck) => ($deck['active'] ?? true) === true
-                      && ($deck['home'] ?? true) === true
-                      && ($deck['lang'] ?? 'en') === 'en'
-        ));
+    $sql = 'select d.deck_key,
+                   d.deck_url,
+                   d.deck_name,
+                   d.deck_desc,
+                   count(c.card_id) as total_cards
+              from car_deck d
+              left join car_card c on c.deck_id = d.deck_id
+             where d.deck_public = 1
+               and d.deck_follow = 1
+             group by d.deck_id
+             order by rand()
+             limit 3';
+    $result       = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    $sample_decks = [];
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $sample_decks[] = $row;
     }
+    if (empty($sample_decks)) return;
 ?>
 <section id="try-a-sample" class="py-5">
     <div class="container">
@@ -29,26 +32,19 @@
 
         <div class="row g-4">
 
-            <?php foreach ($sample_decks as $sample_deck) { ?>
-            <?php
-                $sample_name = $sample_deck['title'] ?? '';
-                $sample_desc = $sample_deck['desc'] ?? '';
-                $sample_link = $sample_deck['link'] ?? '#';
-                if (strpos($sample_link, '/') === 0) {
-                    $sample_link = CAR_PATH_WEB . $sample_link;
-                }
-            ?>
+            <?php foreach ($sample_decks as $deck) { ?>
             <div class="col-md-4">
-                <a href="<?= car_htmlspecialchars($sample_link) ?>" class="card h-100 text-decoration-none text-body car-card-link">
+                <a href="<?= CAR_PATH_WEB . '/deck/' . $deck['deck_key'] . '/' . $deck['deck_url'] . '/' ?>"
+                   class="card h-100 text-decoration-none text-body car-card-link">
                     <div class="card-body d-flex flex-column gap-3">
                         <div>
                             <div class="car-label-uc d-flex align-items-center gap-1 mb-1">
                                 <i class="bi bi-globe2" aria-hidden="true"></i>
                                 <?= car_t($t, 'home.sample-decks.public-badge') ?>
                             </div>
-                            <div class="fw-semibold"><?= car_htmlspecialchars($sample_name) ?></div>
-                            <?php if (!empty($sample_desc)) { ?>
-                                <div class="small text-secondary text-truncate mt-1"><?= car_htmlspecialchars($sample_desc) ?></div>
+                            <div class="fw-semibold"><?= car_htmlspecialchars($deck['deck_name']) ?></div>
+                            <?php if (!empty($deck['deck_desc'])) { ?>
+                                <div class="small text-secondary text-truncate mt-1"><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
                             <?php } ?>
                         </div>
 
@@ -56,7 +52,7 @@
                             <div class="d-flex gap-4 mt-3">
                                 <div>
                                     <div class="car-label-uc"><?= car_t($t, 'home.sample-decks.cards-label') ?></div>
-                                    <div class="car-text-mono small fw-medium"><?= (int) ($sample_deck['cards'] ?? 0) ?></div>
+                                    <div class="car-text-mono small fw-medium"><?= (int) $deck['total_cards'] ?></div>
                                 </div>
                             </div>
                         </div>
