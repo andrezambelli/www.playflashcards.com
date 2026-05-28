@@ -120,7 +120,7 @@
     <div class="container">
 
         <?php if ($home_card_deck) { ?>
-        <div class="row justify-content-center mb-2">
+        <div class="row justify-content-center mb-0">
             <div class="col-lg-7 text-center">
                 <p class="car-label-uc mb-0">
                     <a href="<?= car_htmlspecialchars($home_card_deck_url) ?>" class="text-decoration-none" style="color: inherit;">
@@ -133,7 +133,7 @@
 
         <div class="car-card-stack">
             <div class="car-card-ghost car-card-ghost--left">
-                <div class="car-label-uc"><?= car_t($t, 'Back') ?> &middot; 02/20</div>
+                <div class="car-label-uc"><?= car_t($t, 'Back') ?> &middot; 3/20</div>
             </div>
             <div class="car-card-ghost car-card-ghost--right"></div>
             <div id="home_card_preview"
@@ -168,11 +168,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var side       = document.getElementById('home_card_preview_side');
     var text       = document.getElementById('home_card_preview_text');
+    var body       = card.querySelector('.car-card-preview-body');
     var flipped    = false;
     var frontLabel = card.dataset.frontLabel;
     var backLabel  = card.dataset.backLabel;
     var frontText  = card.dataset.frontText;
     var backText   = card.dataset.backText;
+
+    function fitCardText() {
+        var avail = body.clientHeight;
+        var size  = 28;
+        text.style.fontSize = size + 'px';
+        while (text.scrollHeight > avail && size > 12) {
+            size--;
+            text.style.fontSize = size + 'px';
+        }
+    }
 
     function flipHomeCard() {
         if (card.classList.contains('flip-out') || card.classList.contains('flip-start')) return;
@@ -181,12 +192,13 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             flipped = !flipped;
             card.classList.toggle('flipped', flipped);
-            side.textContent = (flipped ? backLabel : frontLabel) + ' · ' + (flipped ? '02/20' : '7/20');
+            side.textContent = (flipped ? backLabel : frontLabel) + ' · 7/20';
             text.textContent = flipped ? backText : frontText;
             card.classList.add('flip-start');
             card.classList.remove('flip-out');
             void card.offsetWidth;
             card.classList.remove('flip-start');
+            fitCardText();
         }, 280);
     }
 
@@ -208,5 +220,13 @@ document.addEventListener('DOMContentLoaded', function () {
             flipHomeCard();
         }
     }, true);
+
+    fitCardText();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitCardText, 100);
+    });
 });
 </script>
