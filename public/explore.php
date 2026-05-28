@@ -20,6 +20,7 @@
               left join car_card c on c.deck_id = d.deck_id
              where d.deck_public = 1
                and d.deck_follow = 1
+               and d.user_id = ' . CAR_USER_ID_MASTER . '
              group by d.deck_id
              order by d.deck_category asc, d.deck_name asc';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);

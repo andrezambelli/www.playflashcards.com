@@ -8,6 +8,7 @@
                        JOIN car_deck d ON d.deck_id = c.deck_id
                       WHERE d.deck_public = 1
                         AND d.deck_follow = 1
+                        AND d.user_id = ' . CAR_USER_ID_MASTER . '
                       ORDER BY RAND()
                       LIMIT 1';
         $res_card = $mysqli->query($sql_card, MYSQLI_STORE_RESULT);
