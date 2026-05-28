@@ -72,8 +72,10 @@
 
     // explore
     $explore_lastmod = car_sitemap_lastmod([$root . '/public/explore.php'], $today);
-    $urls[] = car_sitemap_url($base . '/explore/', $explore_lastmod, 'weekly', '0.9');
-    $logs[] = '[OK] explore: 1 URL';
+    foreach ($langs as $lang) {
+        $urls[] = car_sitemap_url($base . '/' . $lang . '/explore/', $explore_lastmod, 'weekly', '0.9');
+    }
+    $logs[] = '[OK] explore: ' . count($langs) . ' URLs';
 
     // baralhos públicos
     $sql = 'select deck_key, deck_url

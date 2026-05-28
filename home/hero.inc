@@ -24,7 +24,7 @@
                         <?= car_t($t, 'home.hero.cta-primary') ?>
                         <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
                     </a>
-                    <a href="<?= CAR_PATH_WEB ?>/explore/"
+                    <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] ?>/explore/"
                        class="btn btn-outline-secondary btn-lg rounded-pill px-4">
                         <?= car_t($t, 'home.hero.cta-secondary') ?>
                     </a>

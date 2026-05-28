@@ -2,6 +2,13 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
 <?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php car_check_language($t['lang']); ?>
+<?php
+    // redireciona URL legada /explore/ para /{lang}/explore/
+    if (($_GET['page'] ?? '') === 'explore') {
+        car_redirect(car_get_base_url(CAR_PATH_WEB) . '/' . $t['lang'] . '/explore/');
+    }
+?>
 <?php
     $sql = 'select d.deck_key,
                    d.deck_url,
@@ -42,9 +49,10 @@
 
     $header_title        = car_t($t, 'public.explore.title');
     $header_description  = car_t($t, 'public.explore.desc');
-    $header_canonical    = $_base_url . '/explore/';
+    $header_canonical    = $_base_url . '/' . $t['lang'] . '/explore/';
     $header_og_image     = $_base_url . '/assets/img/playflashcards-logo.png';
     $header_index_follow = 'index,follow';
+    $header_hreflang_slug = 'explore';
     include_once CAR_ROOT_WEB . '/containers/header.inc';
 ?>
 

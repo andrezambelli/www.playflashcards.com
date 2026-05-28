@@ -35,7 +35,20 @@
     $routes['login/login-pincode-act'] = 'login/login-pincode-act.php';
     $routes['login/login-google-act'] = 'login/login-google-act.php';
 
-    $routes['explore'] = 'public/explore.php';
+    $routes['explore'] = 'public/explore.php'; // redireciona para /{lang}/explore/
+
+    $routes['en/explore']    = 'public/explore.php';
+    $routes['pt-br/explore'] = 'public/explore.php';
+    $routes['es/explore']    = 'public/explore.php';
+    $routes['fr/explore']    = 'public/explore.php';
+    $routes['de/explore']    = 'public/explore.php';
+    $routes['it/explore']    = 'public/explore.php';
+    $routes['ja/explore']    = 'public/explore.php';
+    $routes['zh/explore']    = 'public/explore.php';
+    $routes['nl/explore']    = 'public/explore.php';
+    $routes['pl/explore']    = 'public/explore.php';
+    $routes['ru/explore']    = 'public/explore.php';
+    $routes['hi/explore']    = 'public/explore.php';
 
     $routes['deck/study-new-act'] = 'public/study-new-act.php';
     $routes['study/study-act'] = 'public/study-act.php';

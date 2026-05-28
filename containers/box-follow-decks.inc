@@ -59,7 +59,7 @@
         <?php } ?>
     </div>
     <div class="card-footer text-center">
-        <a href="<?= CAR_PATH_WEB ?>/explore/" class="btn btn-link btn-sm text-decoration-none">
+        <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] ?>/explore/" class="btn btn-link btn-sm text-decoration-none">
             <?= car_t($t, 'public.deck.all-decks') ?>
             <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
         </a>

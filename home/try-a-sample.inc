@@ -24,7 +24,7 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="h3 fw-bold mb-0"><?= car_t($t, 'home.sample-decks.title') ?></h2>
-            <a href="<?= CAR_PATH_WEB ?>/explore/" class="text-decoration-none small">
+            <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] ?>/explore/" class="text-decoration-none small">
                 <?= car_t($t, 'home.hero.cta-secondary') ?>
                 <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
             </a>
