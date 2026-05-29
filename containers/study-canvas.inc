@@ -11,6 +11,7 @@
 //   $card_back     string — texto do verso do cartão
 //   $deck_key      string — chave do baralho
 //   $deck_name     string — nome do baralho
+//   $deck_desc     string — descrição do baralho (pode ser vazia)
 //   $stud_begin    string — data/hora de início do estudo
 //   $stud_end      string — data/hora de término do estudo
 //   $stud_total    int    — total de cartões no estudo
@@ -97,6 +98,14 @@
         <div style="max-width: 480px; width: 100%">
 
             <div class="text-center mb-4">
+                <div class="car-label-uc mb-2"><?= car_t($t, 'public.study.result-for') ?></div>
+                <div class="fw-semibold fs-5 mb-1"><?= car_htmlspecialchars($deck_name) ?></div>
+                <?php if (!empty($deck_desc)) { ?>
+                <div class="text-secondary small"><?= car_htmlspecialchars($deck_desc) ?></div>
+                <?php } ?>
+            </div>
+
+            <div class="text-center mb-4">
                 <div class="car-label-uc mb-2"><?= car_t($t, 'Results') ?></div>
                 <?php
                     $_acc       = car_percent($stud_true, $stud_total);
@@ -115,6 +124,10 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-secondary small"><?= car_t($t, 'Study Time') ?></span>
                         <span class="small car-text-mono"><?= car_diff_dates($stud_begin, $stud_end) ?></span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-secondary small"><?= car_t($t, 'Study ID') ?></span>
+                        <span class="small car-text-mono"><?= car_htmlspecialchars($stud_key) ?></span>
                     </div>
                 </div>
             </div>

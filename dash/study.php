@@ -15,6 +15,7 @@
 
     $deck_key  = '';
     $deck_name = '';
+    $deck_desc = '';
 
     $stud_id    = '';
     $stud_begin = '';
@@ -32,6 +33,7 @@
 
     $sql = sprintf("select b.deck_key,
                            b.deck_name,
+                           b.deck_desc,
                            a.stud_id,
                            a.stud_begin,
                            a.stud_end,
@@ -53,6 +55,7 @@
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $deck_key   = $row['deck_key'];
         $deck_name  = $row['deck_name'];
+        $deck_desc  = $row['deck_desc'];
         $stud_id    = $row['stud_id'];
         $stud_begin = $row['stud_begin'];
         $stud_end   = $row['stud_end'];

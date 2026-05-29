@@ -13,6 +13,7 @@
 
     $deck_key  = '';
     $deck_name = '';
+    $deck_desc = '';
 
     $stud_id    = '';
     $stud_begin = '';
@@ -36,6 +37,7 @@
 
         $sql = sprintf("select b.deck_key,
                                b.deck_name,
+                               b.deck_desc,
                                a.stud_id,
                                a.stud_begin,
                                a.stud_end,
@@ -55,6 +57,7 @@
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $deck_key   = $row['deck_key'];
             $deck_name  = $row['deck_name'];
+            $deck_desc  = $row['deck_desc'];
             $stud_id    = $row['stud_id'];
             $stud_begin = $row['stud_begin'];
             $stud_end   = $row['stud_end'];
@@ -140,6 +143,22 @@
     // variáveis específicas da área pública passadas para o canvas
     $_form_action  = CAR_PATH_WEB . '/study/study-act';
     $_is_public    = true;
+
+    $_base_url   = car_get_base_url(CAR_PATH_WEB);
+    if (!empty($stud_end)) {
+        $_acc        = ($stud_total > 0) ? round($stud_true / $stud_total * 100) : 0;
+        $_study_date = substr($stud_end, 0, 10);
+        $_meta_title = car_htmlspecialchars(car_t($t, 'Results') . ' · ' . $deck_name . ' - Play Flashcards');
+        $_meta_desc  = car_htmlspecialchars(sprintf(
+            car_t($t, 'public.study.result-desc'),
+            $stud_key, $_study_date, $_acc, $stud_true, $stud_total
+        ));
+    } else {
+        $_meta_title = car_htmlspecialchars($deck_name . ' - Play Flashcards');
+        $_meta_desc  = car_htmlspecialchars(car_t($t, 'public.study.result-for') . ': ' . $stud_key);
+    }
+    $_meta_url        = car_htmlspecialchars($_base_url . '/study/' . rawurlencode($stud_key) . '/');
+    $_meta_og_image   = car_htmlspecialchars($_base_url . '/assets/img/playflashcards-logo.png');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $t['lang'] ?>" xml:lang="<?= $t['lang'] ?>">
@@ -147,6 +166,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="<?= $_meta_desc ?>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $_meta_url ?>">
+    <meta property="og:title" content="<?= $_meta_title ?>">
+    <meta property="og:description" content="<?= $_meta_desc ?>">
+    <meta property="og:image" content="<?= $_meta_og_image ?>">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@playflashcards">
+
     <link rel="icon" type="image/png" href="<?= CAR_PATH_WEB ?>/assets/img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,7 +184,7 @@
     <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-icons-1.13.1.min.css">
     <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/styles.css?v=<?= $asset_v ?>">
     <script src="<?= CAR_PATH_WEB ?>/assets/js/bootstrap-5.3.8.bundle.min.js" defer></script>
-    <title><?= car_t($t, 'Study') ?> - Play Flashcards</title>
+    <title><?= $_meta_title ?></title>
 </head>
 <body>
 
