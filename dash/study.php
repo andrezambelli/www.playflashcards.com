@@ -13,10 +13,11 @@
     $card_front = '';
     $card_back  = '';
 
-    $deck_key    = '';
-    $deck_name   = '';
-    $deck_desc   = '';
-    $deck_public = 0;
+    $deck_key     = '';
+    $deck_name    = '';
+    $deck_desc    = '';
+    $deck_bgcolor = '';
+    $deck_public  = 0;
 
     $stud_id    = '';
     $stud_begin = '';
@@ -35,6 +36,7 @@
     $sql = sprintf("select b.deck_key,
                            b.deck_name,
                            b.deck_desc,
+                           b.deck_bgcolor,
                            b.deck_public,
                            a.stud_id,
                            a.stud_begin,
@@ -55,10 +57,11 @@
     $result = $mysqli->query($sql);
 
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $deck_key    = $row['deck_key'];
-        $deck_name   = $row['deck_name'];
-        $deck_desc   = $row['deck_desc'];
-        $deck_public = (int) $row['deck_public'];
+        $deck_key     = $row['deck_key'];
+        $deck_name    = $row['deck_name'];
+        $deck_desc    = $row['deck_desc'];
+        $deck_bgcolor = $row['deck_bgcolor'];
+        $deck_public  = (int) $row['deck_public'];
         $stud_id     = $row['stud_id'];
         $stud_begin = $row['stud_begin'];
         $stud_end   = $row['stud_end'];
@@ -143,6 +146,7 @@
     $_form_action  = CAR_PATH_WEB . '/dash/study-act';
     $_is_public    = false;
     $_deck_public  = (bool) $deck_public;
+    $_deck_bgcolor = $deck_bgcolor ?: CAR_DECK_BGCOLOR_DEFAULT;
 ?>
 <!DOCTYPE html>
 <html lang="<?= $t['lang'] ?>" xml:lang="<?= $t['lang'] ?>">

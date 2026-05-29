@@ -801,8 +801,8 @@ html {
     max-width: 640px;
     aspect-ratio: 16 / 10;
     will-change: transform;
-    background: #fff3a3;
-    border: 1px solid #eadb72;
+    background: var(--car-deck-bgcolor, #fef161);
+    border: 1px solid rgba(0,0,0,0.12);
     border-radius: 1.25rem;
     box-shadow: var(--app-shadow-md);
     display: flex;
@@ -830,6 +830,19 @@ html {
     background: #ffffff;
     color: var(--bs-body-color);
     border-color: var(--bs-border-color);
+}
+.car-color-swatch {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent;
+    transition: box-shadow 0.15s;
+}
+input[type="radio"]:checked + .car-color-swatch {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--bs-primary);
 }
 .car-flashcard-side {
     position: absolute;

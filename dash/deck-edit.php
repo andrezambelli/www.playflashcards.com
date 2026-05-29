@@ -81,7 +81,6 @@
         <div class="card-body">
             <form action="<?= CAR_PATH_WEB ?>/dash/deck-edit-act" method="post">
                 <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key) ?>">
-                <input type="hidden" name="deck_bgcolor" value="<?= car_htmlspecialchars($deck_bgcolor) ?>">
 
                 <div class="mb-3">
                     <label for="deck_name" class="form-label"><?= car_t($t, 'Name') ?></label>
@@ -99,6 +98,27 @@
                            maxlength="1024"
                            placeholder="<?= car_t($t, 'Deck Description') ?>"
                            class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><?= car_t($t, 'dash.deck.bgcolor') ?></label>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <?php foreach ([
+                            'fef161' => 'color.yellow',
+                            'ffd6a5' => 'color.peach',
+                            'ffadad' => 'color.pink',
+                            'caffbf' => 'color.green',
+                            '9bf6ff' => 'color.blue',
+                            'bdb2ff' => 'color.lavender',
+                        ] as $_hex => $_key) { ?>
+                        <label>
+                            <input type="radio" name="deck_bgcolor" value="<?= $_hex ?>"
+                                   class="visually-hidden"
+                                   <?= $deck_bgcolor === $_hex ? 'checked' : '' ?>>
+                            <span class="car-color-swatch" style="background: #<?= $_hex ?>" title="<?= car_t($t, $_key) ?>"></span>
+                        </label>
+                        <?php } ?>
+                    </div>
                 </div>
 
                 <div class="mb-3">

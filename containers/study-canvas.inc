@@ -21,6 +21,7 @@
 //   $_form_action  string — url de destino do formulário de resposta
 //   $_is_public    bool   — true = área pública; false = área logada
 //   $_deck_public  bool   — true = deck é público (mostra botão de compartilhar)
+//   $_deck_bgcolor string — hex sem # da cor de fundo do flashcard (ex: 'fef161')
 ?>
 <div class="car-play-stage">
 
@@ -69,7 +70,8 @@
         </div>
         <?php } ?>
 
-        <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0">
+        <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0"
+             style="--car-deck-bgcolor: #<?= car_htmlspecialchars($_deck_bgcolor) ?>">
             <div id="card_side" class="car-flashcard-side">
                 <?= car_t($t, 'Front') ?> &middot; <?= $stse_order ?>/<?= $stud_total ?>
             </div>
