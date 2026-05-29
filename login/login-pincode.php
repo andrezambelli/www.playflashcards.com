@@ -40,21 +40,16 @@
 
         <form action="<?= CAR_PATH_WEB . '/login/login-pincode-act'; ?>" method="post">
             <div class="mb-3">
-                <label class="visually-hidden" for="pincode-digit-1"><?= car_t($t, 'Code') ?></label>
-                <div class="car-pincode-grid">
-                    <?php for ($i = 1; $i <= 6; $i++) { ?>
-                        <input type="text"
-                               id="pincode-digit-<?= $i ?>"
-                               class="car-pincode-digit<?= $i === 4 ? ' car-pincode-digit-gap' : '' ?>"
-                               value=""
-                               maxlength="<?= $i === 1 ? '6' : '1' ?>"
-                               placeholder="_"
-                               inputmode="numeric"
-                               autocomplete="<?= $i === 1 ? 'one-time-code' : 'off' ?>"
-                               <?= $i === 1 ? 'autofocus' : '' ?> />
-                    <?php } ?>
-                </div>
-                <input type="hidden" name="pincode" id="pincode" value="">
+                <label class="visually-hidden" for="pincode"><?= car_t($t, 'Code') ?></label>
+                <input type="text"
+                       id="pincode"
+                       name="pincode"
+                       class="form-control form-control-lg car-pincode-field"
+                       maxlength="6"
+                       inputmode="numeric"
+                       autocomplete="one-time-code"
+                       pattern="[0-9]*"
+                       autofocus />
             </div>
             <button type="submit" class="btn btn-primary btn-lg w-100">
                 <?= car_t($t, 'Check the Code') ?>
@@ -86,62 +81,31 @@
             var els        = [linkResend, linkChange];
             var countdowns = document.querySelectorAll('.car-auth-countdown');
             var seconds    = <?= (int) $remaining ?>;
-            var pinValue   = document.getElementById('pincode');
-            var pinDigits  = Array.prototype.slice.call(document.querySelectorAll('.car-pincode-digit'));
+            var pincodeInput = document.getElementById('pincode');
+            var submitBtn    = document.querySelector('button[type="submit"]');
+            var pincodeForm  = submitBtn.closest('form');
 
-            function syncPinValue() {
-                pinValue.value = pinDigits.map(function (el) {
-                    return el.value;
-                }).join('');
+            function processPin(val) {
+                val = val.replace(/\D/g, '').slice(0, 6);
+                pincodeInput.value = val;
+                if (val.length === 6) {
+                    submitBtn.disabled = true;
+                    pincodeForm.submit();
+                }
             }
 
-            pinDigits.forEach(function (el, index) {
-                el.addEventListener('input', function () {
-                    var digits = el.value.replace(/\D/g, '').slice(0, 6);
+            pincodeInput.addEventListener('input', function () {
+                processPin(pincodeInput.value);
+            });
 
-                    if (digits.length > 1) {
-                        digits.split('').forEach(function (digit, offset) {
-                            if (pinDigits[index + offset]) {
-                                pinDigits[index + offset].value = digit;
-                            }
-                        });
+            pincodeInput.addEventListener('paste', function (e) {
+                e.preventDefault();
+                var text = (e.clipboardData || window.clipboardData).getData('text');
+                processPin(text);
+            });
 
-                        var nextIndex = Math.min(index + digits.length, pinDigits.length - 1);
-                        pinDigits[nextIndex].focus();
-                    } else {
-                        el.value = digits;
-
-                        if (digits !== '' && pinDigits[index + 1]) {
-                            pinDigits[index + 1].focus();
-                        }
-                    }
-
-                    syncPinValue();
-                });
-
-                el.addEventListener('keydown', function (e) {
-                    if (e.key === 'Backspace' && el.value === '' && pinDigits[index - 1]) {
-                        pinDigits[index - 1].focus();
-                    }
-                });
-
-                el.addEventListener('paste', function (e) {
-                    e.preventDefault();
-
-                    var text = (e.clipboardData || window.clipboardData).getData('text');
-                    var digits = text.replace(/\D/g, '').slice(0, 6);
-
-                    digits.split('').forEach(function (digit, offset) {
-                        if (pinDigits[offset]) {
-                            pinDigits[offset].value = digit;
-                        }
-                    });
-
-                    syncPinValue();
-                    if (digits.length > 0) {
-                        pinDigits[Math.min(digits.length, pinDigits.length) - 1].focus();
-                    }
-                });
+            pincodeForm.addEventListener('submit', function () {
+                submitBtn.disabled = true;
             });
 
             linkResend.addEventListener('click', function (e) {

@@ -2,7 +2,7 @@
     include_once 'general/functions.inc';
     include_once 'general/db.inc';
 
-    const CAR_VERSION = '0.1.2';
+    const CAR_VERSION = '0.1.3';
 
     // Controla a versão para recarregar o arquivo de idioma na sessão
     if (!isset($_SESSION['version'])) {

@@ -351,49 +351,17 @@ footer a:hover {
     margin-inline: auto;
     line-height: 1.55;
 }
-.car-pincode-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) 1.45fr repeat(3, 1fr);
-    align-items: center;
-    min-height: 4.25rem;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--bs-border-color);
-    border-radius: var(--bs-border-radius-lg);
-    background: var(--bs-body-bg);
-}
-.car-pincode-grid:focus-within {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-.car-pincode-digit {
-    width: 100%;
-    min-width: 0;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    color: var(--bs-body-color);
+.car-pincode-field {
     font-family: var(--bs-font-monospace);
     font-size: 2rem;
     font-weight: 700;
-    line-height: 1.2;
     text-align: center;
+    letter-spacing: 0.4rem;
     font-variant-numeric: tabular-nums;
-    outline: 0;
-}
-.car-pincode-digit::placeholder {
-    color: var(--bs-secondary-color);
-    opacity: 1;
-}
-.car-pincode-digit-gap {
-    grid-column: 5;
 }
 @media (max-width: 575.98px) {
     .car-auth-wrap {
         padding: 1.5rem 1.25rem;
-    }
-    .car-pincode-grid {
-        padding-inline: 1rem;
-        grid-template-columns: repeat(3, 1fr) 1.1fr repeat(3, 1fr);
     }
 }
 
