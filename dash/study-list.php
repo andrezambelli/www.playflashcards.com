@@ -118,7 +118,7 @@
                         $_sl_acc   = car_percent((int) $row['stud_true'], (int) $row['stud_total']);
                         $_sl_color = $_sl_acc < 50 ? 'bg-danger' : ($_sl_acc < 75 ? 'bg-warning' : 'bg-success');
                     ?>
-                    <tr <?= $_sl_open ? 'style="cursor: pointer" onclick="location.href=\'' . CAR_PATH_WEB . '/dash/study?k=' . car_htmlspecialchars($row['stud_key']) . '\'"' : '' ?>>
+                    <tr style="cursor: pointer" onclick="location.href='<?= CAR_PATH_WEB ?>/dash/study?k=<?= car_htmlspecialchars($row['stud_key']) ?>'">
                         <td class="small fw-medium car-text-mono">
                             <?= car_htmlspecialchars($row['stud_begin']) ?>
                             <?php if ($_sl_open) { ?>
@@ -143,9 +143,7 @@
                             <?= !$_sl_open ? car_diff_dates($row['stud_begin'], $row['stud_end']) : '&mdash;' ?>
                         </td>
                         <td>
-                            <?php if ($_sl_open) { ?>
                             <i class="bi bi-chevron-right small text-primary" aria-hidden="true"></i>
-                            <?php } ?>
                         </td>
                     </tr>
                     <?php } ?>
