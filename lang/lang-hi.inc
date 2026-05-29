@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'गलत उत्तर दिया',
     'lang'=>'hi',
     'login.login-act.invalid'=>'अमान्य ईमेल प्रारूप।',
+    'login.login-act.error'=>'कोड भेजने में विफल। कृपया पुनः प्रयास करें।',
     'login.login-act.sucesso'=>'ईमेल सफलतापूर्वक भेजा गया।',
     'login.login-act.cooldown'=>'कृपया नया कोड अनुरोध करने से पहले थोड़ा इंतजार करें।',
     'login.login-google-act.error'=>'Google खाते से लॉगिन करने में त्रुटि। कृपया पुनः प्रयास करें।',

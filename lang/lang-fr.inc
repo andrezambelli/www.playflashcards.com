@@ -144,6 +144,7 @@ $t = [
     'Last Study'=>"Dernière étude",
     'share.title'=>'Partagez cette page avec vos amis :',
     'login.login-act.invalid'=>"Format d'e-mail invalide.",
+    'login.login-act.error'=>"Échec de l'envoi du code. Veuillez réessayer.",
     'login.login-act.sucesso'=>"E-mail envoyé avec succès.",
     'login.login-act.cooldown'=>"Veuillez patienter un moment avant de demander un nouveau code.",
     'login.login-google-act.error'=>"Erreur de connexion avec le compte Google. Veuillez réessayer.",

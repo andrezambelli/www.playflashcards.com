@@ -15,6 +15,7 @@
     $deck_name    = '';
     $deck_desc    = '';
     $deck_bgcolor = '';
+    $deck_lang    = '';
     $deck_public  = 0;
 
     $stud_id    = '';
@@ -41,6 +42,7 @@
                                b.deck_name,
                                b.deck_desc,
                                b.deck_bgcolor,
+                               b.deck_lang,
                                b.deck_public,
                                a.stud_id,
                                a.stud_begin,
@@ -63,6 +65,7 @@
             $deck_name    = $row['deck_name'];
             $deck_desc    = $row['deck_desc'];
             $deck_bgcolor = $row['deck_bgcolor'];
+            $deck_lang    = $row['deck_lang'];
             $deck_public  = (int) $row['deck_public'];
             $stud_id     = $row['stud_id'];
             $stud_begin = $row['stud_begin'];
@@ -151,6 +154,7 @@
     $_is_public    = true;
     $_deck_public  = (bool) $deck_public;
     $_deck_bgcolor = $deck_bgcolor ?: CAR_DECK_BGCOLOR_DEFAULT;
+    $_deck_lang    = $deck_lang;
 
     $_base_url   = car_get_base_url(CAR_PATH_WEB);
     if (!empty($stud_end)) {

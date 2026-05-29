@@ -48,7 +48,7 @@
                        maxlength="6"
                        inputmode="numeric"
                        autocomplete="one-time-code"
-                       pattern="[0-9]*"
+                       pattern="[0-9]{6}"
                        autofocus />
             </div>
             <button type="submit" class="btn btn-primary btn-lg w-100">

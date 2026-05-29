@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'Resposta errada',
     'lang'=>'pt-br',
     'login.login-act.invalid'=>'Formato de email inválido.',
+    'login.login-act.error'=>'Falha ao enviar o código. Tente novamente.',
     'login.login-act.sucesso'=>'Email enviado com sucesso.',
     'login.login-act.cooldown'=>'Aguarde alguns instantes antes de solicitar um novo código.',
     'login.login-google-act.error'=>'Erro ao fazer login com a Conta do Google. Por favor, tente novamente.',

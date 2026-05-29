@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'Onjuist beantwoord',
     'lang'=>'nl',
     'login.login-act.invalid'=>'Ongeldig e-mailformaat.',
+    'login.login-act.error'=>'Code verzenden mislukt. Probeer het opnieuw.',
     'login.login-act.sucesso'=>'E-mail succesvol verzonden.',
     'login.login-act.cooldown'=>'Wacht even voordat je een nieuwe code aanvraagt.',
     'login.login-google-act.error'=>'Fout bij inloggen met Google-account. Probeer het opnieuw.',

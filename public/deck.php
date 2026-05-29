@@ -2,6 +2,7 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/car-server.php'; ?>
 <?php include_once CAR_ROOT_WEB . '/config.inc'; ?>
 <?php include CAR_ROOT_WEB . '/lang/lang.inc'; ?>
+<?php include_once CAR_ROOT_WEB . '/lang/lang-list.inc'; ?>
 <?php
     $user_id    = car_get_session_attribute('user_id', CAR_USER_ID_MASTER);
     $is_logged  = car_get_session_attribute('session_login', '') === 'on';
@@ -12,6 +13,7 @@
     $deck_name     = '';
     $deck_desc     = '';
     $deck_url      = '';
+    $deck_lang     = '';
     $deck_follow   = 0;
 
     $total_cards   = 0;
@@ -35,6 +37,7 @@
                                deck_name,
                                deck_desc,
                                deck_url,
+                               deck_lang,
                                deck_follow
                           from car_deck
                          where deck_key = '%s'
@@ -47,6 +50,7 @@
             $deck_name    = $row['deck_name'];
             $deck_desc    = $row['deck_desc'];
             $deck_url     = $row['deck_url'];
+            $deck_lang    = $row['deck_lang'];
             $deck_follow  = $row['deck_follow'];
             $has_deck     = true;
         }
@@ -118,10 +122,14 @@
                         <span class="mx-1" aria-hidden="true">·</span>
                         <?= $total_cards ?> <?= car_t($t, 'profile.srs.unit-cards') ?>
                     <?php } ?>
+                    <?php if (!empty($deck_lang) && isset($car_langs[$deck_lang])) { ?>
+                        <span class="mx-1" aria-hidden="true">·</span>
+                        <?= car_htmlspecialchars($car_langs[$deck_lang]) ?>
+                    <?php } ?>
                 </div>
-                <h1 class="h2 fw-semibold mb-2"><?= car_htmlspecialchars($deck_name) ?></h1>
+                <h1 class="h2 fw-semibold mb-2"<?= !empty($deck_lang) ? ' lang="' . car_htmlspecialchars($deck_lang) . '"' : '' ?>><?= car_htmlspecialchars($deck_name) ?></h1>
                 <?php if (!empty($deck_desc)) { ?>
-                    <p class="text-secondary mb-0"><?= car_htmlspecialchars($deck_desc) ?></p>
+                    <p class="text-secondary mb-0"<?= !empty($deck_lang) ? ' lang="' . car_htmlspecialchars($deck_lang) . '"' : '' ?>><?= car_htmlspecialchars($deck_desc) ?></p>
                 <?php } ?>
             </div>
 
@@ -185,7 +193,7 @@
                 <?php if (!empty($preview_cards)) { ?>
                 <?php $_preview_limit = 5; ?>
                 <div class="table-responsive">
-                    <table class="table table-hover mb-0">
+                    <table class="table table-hover mb-0"<?= !empty($deck_lang) ? ' lang="' . car_htmlspecialchars($deck_lang) . '"' : '' ?>>
                         <thead>
                             <tr>
                                 <th class="small text-secondary fw-normal"><?= car_t($t, 'Front') ?></th>
@@ -248,7 +256,7 @@
     "description": <?= json_encode($deck_desc ?: $deck_name) ?>,
     "url": <?= json_encode($_base_url . '/deck/' . $deck_key . '/' . $deck_url . '/') ?>,
     "learningResourceType": "flashcard",
-    "inLanguage": <?= json_encode($t['lang']) ?>,
+    "inLanguage": <?= json_encode($deck_lang ?: $t['lang']) ?>,
     "educationalUse": "self-study",
     "provider": {
         "@type": "Organization",

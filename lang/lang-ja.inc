@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'不正解数',
     'lang'=>'ja',
     'login.login-act.invalid'=>'無効なメール形式です。',
+    'login.login-act.error'=>'コードの送信に失敗しました。もう一度お試しください。',
     'login.login-act.sucesso'=>'メールを送信しました。',
     'login.login-act.cooldown'=>'新しいコードをリクエストする前にしばらくお待ちください。',
     'login.login-google-act.error'=>'Googleアカウントでのログインエラーです。もう一度お試しください。',

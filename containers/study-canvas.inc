@@ -22,6 +22,7 @@
 //   $_is_public    bool   — true = área pública; false = área logada
 //   $_deck_public  bool   — true = deck é público (mostra botão de compartilhar)
 //   $_deck_bgcolor string — hex sem # da cor de fundo do flashcard (ex: 'fef161')
+//   $_deck_lang    string — código do idioma do deck (ex: 'en', 'ja') — pode ser vazio
 ?>
 <div class="car-play-stage">
 
@@ -71,6 +72,7 @@
         <?php } ?>
 
         <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0"
+             <?= !empty($_deck_lang) ? 'lang="' . car_htmlspecialchars($_deck_lang) . '"' : '' ?>
              style="--car-deck-bgcolor: #<?= car_htmlspecialchars($_deck_bgcolor) ?>">
             <div id="card_side" class="car-flashcard-side">
                 <?= car_t($t, 'Front') ?> &middot; <?= $stse_order ?>/<?= $stud_total ?>

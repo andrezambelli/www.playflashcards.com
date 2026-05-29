@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'错误回答',
     'lang'=>'zh',
     'login.login-act.invalid'=>'邮箱格式无效。',
+    'login.login-act.error'=>'发送验证码失败，请重试。',
     'login.login-act.sucesso'=>'邮件发送成功。',
     'login.login-act.cooldown'=>'请稍等片刻再请求新验证码。',
     'login.login-google-act.error'=>'使用 Google 账户登录时出错，请重试。',

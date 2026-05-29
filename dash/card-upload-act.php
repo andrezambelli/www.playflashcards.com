@@ -72,13 +72,12 @@
 
             if (($handle = fopen($file, "r")) !== false) {
                 $card_count = 0;
+                $line_import = false;
 
                 while (($line = fgets($handle)) !== false) {
                     if ($card_count >= CAR_USER_MAX_CARD) break;
 
                     $values = str_getcsv($line, ';');
-
-                    $line_import = false;
 
                     // Verificar se há pelo menos dois valores
                     if (count($values) == 2) {

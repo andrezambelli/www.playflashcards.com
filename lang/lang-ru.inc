@@ -141,6 +141,7 @@ $t = [
     'Incorrectly Answered'=>'Неправильно отвечено',
     'lang'=>'ru',
     'login.login-act.invalid'=>'Неверный формат эл. почты.',
+    'login.login-act.error'=>'Не удалось отправить код. Попробуйте ещё раз.',
     'login.login-act.sucesso'=>'Письмо успешно отправлено.',
     'login.login-act.cooldown'=>'Пожалуйста, подождите немного перед тем, как запросить новый код.',
     'login.login-google-act.error'=>'Ошибка входа через аккаунт Google. Пожалуйста, попробуйте снова.',
