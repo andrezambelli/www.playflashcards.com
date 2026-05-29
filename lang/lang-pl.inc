@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Nie wiem',
     'dash.study.true-flipped'=>'Wiem',
     'dash.study.study-again'=>'Ucz się ponownie',
+    'dash.study.share-result'=>'Udostępnij wynik',
     'dash.study.share-deck'=>'Udostępnij tafle',
     'dash.study.share-copied'=>'Link skopiowany!',
     'dash.study-new-act.error1'=>'Nie możesz dodać więcej fiszek do tej grupy.',

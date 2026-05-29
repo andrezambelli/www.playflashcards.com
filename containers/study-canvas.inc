@@ -152,6 +152,11 @@
                         <?= car_t($t, 'dash.study.study-again') ?>
                     </button>
                 </form>
+                <button type="button" id="btn_share_result"
+                        class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2">
+                    <i class="bi bi-share" aria-hidden="true"></i>
+                    <span id="btn_share_result_label"><?= car_t($t, 'dash.study.share-result') ?></span>
+                </button>
                 <?php } else { ?>
                 <!-- área logada: srs (recomendado) + baralho completo -->
                 <a href="<?= CAR_PATH_WEB ?>/dash/study-srs-new-act?k=<?= car_htmlspecialchars($deck_key) ?>"
@@ -189,6 +194,28 @@
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { e.preventDefault(); location.href = <?= json_encode($_deck_url) ?>; }
 }, true);
+<?php if ($_is_public) { ?>
+// botão de compartilhar resultado
+(function () {
+    var btn   = document.getElementById('btn_share_result');
+    var label = document.getElementById('btn_share_result_label');
+    if (!btn) return;
+    var shareUrl    = <?= json_encode(CAR_PATH_WEB . '/study/' . rawurlencode($stud_key) . '/') ?>;
+    var shareTitle  = <?= json_encode($deck_name) ?>;
+    var labelShare  = <?= json_encode(car_t($t, 'dash.study.share-result')) ?>;
+    var labelCopied = <?= json_encode(car_t($t, 'dash.study.share-copied')) ?>;
+    btn.addEventListener('click', function () {
+        if (navigator.share) {
+            navigator.share({ url: shareUrl, title: shareTitle }).catch(function () {});
+        } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareUrl).then(function () {
+                label.textContent = labelCopied;
+                setTimeout(function () { label.textContent = labelShare; }, 2000);
+            }).catch(function () {});
+        }
+    });
+}());
+<?php } ?>
 <?php if ($_deck_public) { ?>
 // botão de compartilhar baralho
 (function () {

@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'गलत हो गया',
     'dash.study.true-flipped'=>'सही हो गया',
     'dash.study.study-again'=>'फिर से अध्ययन करें',
+    'dash.study.share-result'=>'परिणाम शेयर करें',
     'dash.study.share-deck'=>'डेक शेयर करें',
     'dash.study.share-copied'=>'लिंक कॉपी हो गया!',
     'dash.study-new-act.error1'=>'आप इस ग्रुप में एक और फ्लैशकार्ड जोड़ने की अनुमति नहीं रखते।',

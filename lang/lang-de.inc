@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Falsch',
     'dash.study.true-flipped'=>'Richtig',
     'dash.study.study-again'=>'Nochmals lernen',
+    'dash.study.share-result'=>'Ergebnis teilen',
     'dash.study.share-deck'=>'Stapel teilen',
     'dash.study.share-copied'=>'Link kopiert!',
     'dash.study-new-act.error1'=>'Du kannst diesem Stapel keine weiteren Lernkarten hinzufügen.',

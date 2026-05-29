@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Errei',
     'dash.study.true-flipped'=>'Acertei',
     'dash.study.study-again'=>'Estudar novamente',
+    'dash.study.share-result'=>'Compartilhar resultado',
     'dash.study.share-deck'=>'Compartilhar baralho',
     'dash.study.share-copied'=>'Link copiado!',
     'dash.study-new-act.error1'=>'Você não tem permissão para incluir mais um cartão neste grupo.',

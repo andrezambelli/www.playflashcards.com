@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'答错了',
     'dash.study.true-flipped'=>'答对了',
     'dash.study.study-again'=>'再次学习',
+    'dash.study.share-result'=>'分享结果',
     'dash.study.share-deck'=>'分享卡组',
     'dash.study.share-copied'=>'链接已复制！',
     'dash.study-new-act.error1'=>'您不能再向此卡组添加更多闪卡。',

@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'間違えた',
     'dash.study.true-flipped'=>'正解',
     'dash.study.study-again'=>'もう一度学習する',
+    'dash.study.share-result'=>'結果をシェアする',
     'dash.study.share-deck'=>'デッキをシェアする',
     'dash.study.share-copied'=>'リンクをコピーしました！',
     'dash.study-new-act.error1'=>'このグループにこれ以上カードを追加できません。',

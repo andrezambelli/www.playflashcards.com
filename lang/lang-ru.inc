@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Не знаю',
     'dash.study.true-flipped'=>'Знаю',
     'dash.study.study-again'=>'Учиться снова',
+    'dash.study.share-result'=>'Поделиться результатом',
     'dash.study.share-deck'=>'Поделиться колодой',
     'dash.study.share-copied'=>'Ссылка скопирована!',
     'dash.study-new-act.error1'=>'Вы не можете добавить больше карточек в эту группу.',

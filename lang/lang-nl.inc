@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Fout',
     'dash.study.true-flipped'=>'Juist',
     'dash.study.study-again'=>'Opnieuw bestuderen',
+    'dash.study.share-result'=>'Resultaat delen',
     'dash.study.share-deck'=>'Pak delen',
     'dash.study.share-copied'=>'Link gekopieerd!',
     'dash.study-new-act.error1'=>'Je kunt geen flashcards meer toevoegen aan deze groep.',

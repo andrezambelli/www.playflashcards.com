@@ -85,6 +85,7 @@ $t = [
     'dash.study.false-flipped'=>'Fallé',
     'dash.study.true-flipped'=>'Acerté',
     'dash.study.study-again'=>'Estudiar de nuevo',
+    'dash.study.share-result'=>'Compartir resultado',
     'dash.study.share-deck'=>'Compartir mazo',
     'dash.study.share-copied'=>'¡Enlace copiado!',
     'dash.study-new-act.error1'=>'No puedes agregar una nueva tarjeta a este grupo.',

@@ -86,6 +86,7 @@ $t = [
     'dash.study.false-flipped'=>'Raté',
     'dash.study.true-flipped'=>'Réussi',
     'dash.study.study-again'=>'Étudier à nouveau',
+    'dash.study.share-result'=>'Partager le résultat',
     'dash.study.share-deck'=>'Partager le paquet',
     'dash.study.share-copied'=>'Lien copié !',
     'dash.study-new-act.error1'=>"Vous n'êtes pas autorisé à ajouter une autre carte mémoire à ce paquet.",
