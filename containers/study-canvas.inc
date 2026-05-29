@@ -106,7 +106,6 @@
             </div>
 
             <div class="text-center mb-4">
-                <div class="car-label-uc mb-2"><?= car_t($t, 'Results') ?></div>
                 <?php
                     $_acc       = car_percent($stud_true, $stud_total);
                     $_acc_color = $_acc < 50 ? 'text-danger' : ($_acc < 75 ? 'text-warning' : 'text-success');
@@ -132,7 +131,9 @@
                 </div>
             </div>
 
+            <?php if (!$_is_public) { ?>
             <div class="car-label-uc text-center mb-3"><?= car_t($t, 'dash.study.study-again') ?></div>
+            <?php } ?>
 
             <div class="d-flex flex-column gap-2 mb-4">
                 <?php if ($_is_public) { ?>
@@ -140,8 +141,8 @@
                 <form action="<?= CAR_PATH_WEB ?>/deck/study-new-act" method="post">
                     <input type="hidden" name="k" value="<?= car_htmlspecialchars($deck_key) ?>">
                     <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-layers" aria-hidden="true"></i>
-                        <?= car_t($t, 'dash.deck.study-full') ?>
+                        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                        <?= car_t($t, 'dash.study.study-again') ?>
                     </button>
                 </form>
                 <?php } else { ?>
