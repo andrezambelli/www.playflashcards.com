@@ -113,7 +113,7 @@
                             <label for="card_front" class="form-label"><?= car_t($t, 'Front') ?></label>
                             <input type="text" id="card_front" name="card_front"
                                    value="<?= car_htmlspecialchars($card_front) ?>"
-                                   maxlength="1024"
+                                   maxlength="255"
                                    class="form-control" autofocus>
                         </div>
 
@@ -121,7 +121,7 @@
                             <label for="card_back" class="form-label"><?= car_t($t, 'Back') ?></label>
                             <input type="text" id="card_back" name="card_back"
                                    value="<?= car_htmlspecialchars($card_back) ?>"
-                                   maxlength="1024"
+                                   maxlength="255"
                                    class="form-control">
                         </div>
 

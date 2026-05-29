@@ -85,7 +85,7 @@
                         $card_front = trim($values[0]);
                         $card_back = trim($values[1]);
 
-                        if (strlen($card_front) <= 1024 and strlen($card_back) <= 1024) {
+                        if (strlen($card_front) <= 255 and strlen($card_back) <= 255) {
                             // Cria a chave do cartão
                             $card_key = null;
 
