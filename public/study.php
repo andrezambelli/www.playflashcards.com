@@ -151,11 +151,11 @@
         $_meta_title = car_htmlspecialchars(car_t($t, 'Results') . ' · ' . $deck_name . ' - Play Flashcards');
         $_meta_desc  = car_htmlspecialchars(sprintf(
             car_t($t, 'public.study.result-desc'),
-            $stud_key, $_study_date, $_acc, $stud_true, $stud_total
+            car_format_study_key($stud_key), $_study_date, $_acc, $stud_true, $stud_total
         ));
     } else {
         $_meta_title = car_htmlspecialchars($deck_name . ' - Play Flashcards');
-        $_meta_desc  = car_htmlspecialchars(car_t($t, 'public.study.result-for') . ': ' . $stud_key);
+        $_meta_desc  = car_htmlspecialchars(car_t($t, 'public.study.result-for') . ': ' . car_format_study_key($stud_key));
     }
     $_meta_url        = car_htmlspecialchars($_base_url . '/study/' . rawurlencode($stud_key) . '/');
     $_meta_og_image   = car_htmlspecialchars($_base_url . '/assets/img/playflashcards-logo.png');

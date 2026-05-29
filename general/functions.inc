@@ -295,6 +295,23 @@
 	}
 	
 	/*
+	 * Gera a chave numérica para estudos (12 dígitos, sem hifens)
+	 */
+	function car_generate_study_key() {
+        return (string)random_int(100000000000, 999999999999);
+    }
+
+    /*
+     * Formata a chave de estudo para exibição: XXXX-XXXX-XXXX
+     */
+    function car_format_study_key($_key) {
+        if (ctype_digit($_key) && strlen($_key) === 12) {
+            return implode('-', str_split($_key, 4));
+        }
+        return $_key;
+    }
+
+    /*
 	 * Gera a chave que será utilizada nos grupos, cartões e estudos
 	 */
 	function car_generate_key($_size) {

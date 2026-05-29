@@ -117,16 +117,16 @@
             <div class="card mb-3">
                 <div class="card-body d-flex flex-column gap-2">
                     <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-secondary small"><?= car_t($t, 'Study ID') ?></span>
+                        <span class="small car-text-mono"><?= car_htmlspecialchars(car_format_study_key($stud_key)) ?></span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <span class="text-secondary small"><?= car_t($t, 'Start Date') ?></span>
                         <span class="small car-text-mono"><?= car_htmlspecialchars($stud_begin) ?></span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-secondary small"><?= car_t($t, 'Study Time') ?></span>
                         <span class="small car-text-mono"><?= car_diff_dates($stud_begin, $stud_end) ?></span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-secondary small"><?= car_t($t, 'Study ID') ?></span>
-                        <span class="small car-text-mono"><?= car_htmlspecialchars($stud_key) ?></span>
                     </div>
                 </div>
             </div>

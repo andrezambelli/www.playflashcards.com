@@ -68,7 +68,7 @@
 			$stud_key = null;
 			
 			while ($stud_key == null) {
-				$stud_key = car_generate_key(12);
+				$stud_key = car_generate_study_key();
 				
 				// A chave do estudo precisa ser única no banco de dados
 				$sql = sprintf("select count(1) as count
