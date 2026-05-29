@@ -49,10 +49,6 @@
             <i class="bi bi-share" aria-hidden="true"></i>
             <span id="btn_share_label"><?= car_t($t, 'dash.study.share-deck') ?></span>
         </button>
-        <?php } elseif (!empty($deck_name)) { ?>
-        <div class="ms-auto">
-            <div class="car-label-uc"><?= car_htmlspecialchars($deck_name) ?></div>
-        </div>
         <?php } ?>
     </div>
 
@@ -65,6 +61,13 @@
             <input type="hidden" name="stse_order" value="<?= $stse_order ?>">
             <input type="hidden" id="stse_answer" name="stse_answer" value="">
         </form>
+
+        <?php if (!empty($deck_name)) { ?>
+        <div class="text-center">
+            <div class="car-label-uc mb-1"><?= car_t($t, 'Study') ?></div>
+            <div class="fw-semibold mb-3"><?= car_htmlspecialchars($deck_name) ?></div>
+        </div>
+        <?php } ?>
 
         <div id="car_flashcard" class="car-flashcard" role="button" tabindex="0">
             <div id="card_side" class="car-flashcard-side">
