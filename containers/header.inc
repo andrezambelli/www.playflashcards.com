@@ -27,8 +27,10 @@
     <meta property="og:url" content="<?= car_htmlspecialchars($header_canonical ?? '') ?>">
     <meta property="og:title" content="<?= car_htmlspecialchars($header_title ?? 'Play Flashcards') ?>">
     <meta property="og:description" content="<?= car_htmlspecialchars($header_description ?? '') ?>">
-    <meta property="og:image" content="<?= car_htmlspecialchars($header_og_image ?? (car_get_base_url(CAR_PATH_WEB) . '/assets/img/playflashcards-logo.png')) ?>">
-    <meta name="twitter:card" content="<?= car_htmlspecialchars($header_twitter_card ?? 'summary') ?>">
+    <meta property="og:image" content="<?= car_htmlspecialchars($header_og_image ?? (car_get_base_url(CAR_PATH_WEB) . '/assets/img/og-image.png')) ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@playflashcards">
 
     <?php if (!empty($header_canonical)) { ?>

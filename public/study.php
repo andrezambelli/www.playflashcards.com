@@ -162,7 +162,7 @@
         $_meta_desc  = car_htmlspecialchars(car_t($t, 'public.study.result-for') . ': ' . car_format_study_key($stud_key));
     }
     $_meta_url        = car_htmlspecialchars($_base_url . '/study/' . rawurlencode($stud_key) . '/');
-    $_meta_og_image   = car_htmlspecialchars($_base_url . '/assets/img/playflashcards-logo.png');
+    $_meta_og_image   = car_htmlspecialchars($_base_url . '/assets/img/og-image.png');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $t['lang'] ?>" xml:lang="<?= $t['lang'] ?>">
@@ -178,7 +178,9 @@
     <meta property="og:title" content="<?= $_meta_title ?>">
     <meta property="og:description" content="<?= $_meta_desc ?>">
     <meta property="og:image" content="<?= $_meta_og_image ?>">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@playflashcards">
 
     <link rel="icon" type="image/png" href="<?= CAR_PATH_WEB ?>/assets/img/favicon.png">
