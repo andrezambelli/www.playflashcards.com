@@ -246,6 +246,7 @@
     </div>
 
     <!-- Sessão de estudo -->
+    <?php if ($total_cards > 0) { ?>
     <div class="card mb-4">
         <div class="card-header">
             <div class="fw-medium"><?= car_t($t, 'dash.deck.study-title') ?></div>
@@ -310,6 +311,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 
     <!-- Visibilidade -->
     <div class="card mb-4">

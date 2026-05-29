@@ -204,6 +204,10 @@
                 <?= car_t($t, 'New Deck') ?>
             </a>
         </div>
+        <?php } elseif ($next_deck_cards === 0) { ?>
+        <div class="card-body text-center py-4 text-secondary">
+            <p class="mb-0 small"><?= car_t($t, 'dash.home.caught-up') ?></p>
+        </div>
         <?php } else { ?>
         <div class="card-body d-flex justify-content-between align-items-center gap-3 flex-wrap">
             <div>
