@@ -70,6 +70,7 @@
                            maxlength="255"
                            class="form-control form-control-lg"
                            placeholder="<?= car_t($t, 'Email address') ?>"
+                           autocomplete="email"
                            style="font-size:0.875rem" />
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg w-100">
