@@ -3,7 +3,7 @@
     // busca um card aleatório de deck público
     $home_card_db = null;
     if (isset($mysqli)) {
-        $sql_card = 'SELECT c.card_front, c.card_back, d.deck_name, d.deck_key, d.deck_url
+        $sql_card = 'SELECT c.card_front, c.card_back, d.deck_name, d.deck_key, d.deck_url, d.deck_lang
                        FROM car_card c
                        JOIN car_deck d ON d.deck_id = c.deck_id
                       WHERE d.deck_public = 1
@@ -18,10 +18,11 @@
     }
 
     if ($home_card_db) {
-        $home_card_front    = $home_card_db['card_front'];
-        $home_card_back     = $home_card_db['card_back'];
-        $home_card_deck     = $home_card_db['deck_name'];
-        $home_card_deck_url = CAR_PATH_WEB . '/deck/' . $home_card_db['deck_key'] . '/' . $home_card_db['deck_url'] . '/';
+        $home_card_front     = $home_card_db['card_front'];
+        $home_card_back      = $home_card_db['card_back'];
+        $home_card_deck      = $home_card_db['deck_name'];
+        $home_card_deck_url  = CAR_PATH_WEB . '/deck/' . $home_card_db['deck_key'] . '/' . $home_card_db['deck_url'] . '/';
+        $home_card_deck_lang = $home_card_db['deck_lang'];
     } else {
         $home_card_preview_examples = [
             'en' => [
@@ -113,8 +114,9 @@
         $home_card_preview_selected = $home_card_preview_lang[array_rand($home_card_preview_lang)];
         $home_card_front    = $home_card_preview_selected['front'];
         $home_card_back     = $home_card_preview_selected['back'];
-        $home_card_deck     = null;
-        $home_card_deck_url = null;
+        $home_card_deck      = null;
+        $home_card_deck_url  = null;
+        $home_card_deck_lang = null;
     }
 ?>
 <div class="car-card-preview-section overflow-hidden">
@@ -124,7 +126,8 @@
         <div class="row justify-content-center mb-0">
             <div class="col-lg-7 text-center">
                 <p class="car-label-uc mb-0">
-                    <a href="<?= car_htmlspecialchars($home_card_deck_url) ?>" class="text-decoration-none" style="color: inherit;">
+                    <a href="<?= car_htmlspecialchars($home_card_deck_url) ?>" class="text-decoration-none" style="color: inherit;"
+                       <?= !empty($home_card_deck_lang) ? 'lang="' . car_htmlspecialchars($home_card_deck_lang) . '"' : '' ?>>
                         <?= car_htmlspecialchars($home_card_deck) ?>
                     </a>
                 </p>
@@ -141,6 +144,7 @@
                  class="car-card-preview"
                  role="button"
                  tabindex="0"
+                 <?= !empty($home_card_deck_lang) ? 'lang="' . car_htmlspecialchars($home_card_deck_lang) . '"' : '' ?>
                  data-front-label="<?= car_htmlspecialchars(car_t($t, 'Front')) ?>"
                  data-back-label="<?= car_htmlspecialchars(car_t($t, 'Back')) ?>"
                  data-front-text="<?= car_htmlspecialchars($home_card_front) ?>"

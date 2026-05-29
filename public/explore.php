@@ -14,6 +14,7 @@
                    d.deck_url,
                    d.deck_name,
                    d.deck_desc,
+                   d.deck_lang,
                    d.deck_category,
                    count(c.card_id) as total_cards
               from car_deck d
@@ -87,9 +88,9 @@
                                 <div class="car-label-uc mb-2">
                                     <?= (int) $deck['total_cards'] ?> <?= car_t($t, 'profile.srs.unit-cards') ?>
                                 </div>
-                                <div class="fw-medium mb-1"><?= car_htmlspecialchars($deck['deck_name']) ?></div>
+                                <div class="fw-medium mb-1"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_name']) ?></div>
                                 <?php if (!empty($deck['deck_desc'])) { ?>
-                                <div class="small text-secondary"><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
+                                <div class="small text-secondary"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
                                 <?php } ?>
                             </div>
                         </a>
@@ -126,9 +127,9 @@
                                 <div class="car-label-uc mb-2">
                                     <?= (int) $deck['total_cards'] ?> <?= car_t($t, 'profile.srs.unit-cards') ?>
                                 </div>
-                                <div class="fw-medium mb-1"><?= car_htmlspecialchars($deck['deck_name']) ?></div>
+                                <div class="fw-medium mb-1"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_name']) ?></div>
                                 <?php if (!empty($deck['deck_desc'])) { ?>
-                                <div class="small text-secondary"><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
+                                <div class="small text-secondary"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
                                 <?php } ?>
                             </div>
                         </a>

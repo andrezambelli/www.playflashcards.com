@@ -4,6 +4,7 @@
                    d.deck_url,
                    d.deck_name,
                    d.deck_desc,
+                   d.deck_lang,
                    count(c.card_id) as total_cards
               from car_deck d
               left join car_card c on c.deck_id = d.deck_id
@@ -42,9 +43,9 @@
                                 <i class="bi bi-globe2" aria-hidden="true"></i>
                                 <?= car_t($t, 'home.sample-decks.public-badge') ?>
                             </div>
-                            <div class="fw-semibold"><?= car_htmlspecialchars($deck['deck_name']) ?></div>
+                            <div class="fw-semibold"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_name']) ?></div>
                             <?php if (!empty($deck['deck_desc'])) { ?>
-                                <div class="small text-secondary text-truncate mt-1"><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
+                                <div class="small text-secondary text-truncate mt-1"<?= !empty($deck['deck_lang']) ? ' lang="' . car_htmlspecialchars($deck['deck_lang']) . '"' : '' ?>><?= car_htmlspecialchars($deck['deck_desc']) ?></div>
                             <?php } ?>
                         </div>
 
