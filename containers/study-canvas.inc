@@ -20,6 +20,7 @@
 //   $_deck_url     string — url de retorno ao baralho
 //   $_form_action  string — url de destino do formulário de resposta
 //   $_is_public    bool   — true = área pública; false = área logada
+//   $_deck_public  bool   — true = deck é público (mostra botão de compartilhar)
 ?>
 <div class="car-play-stage">
 
@@ -42,7 +43,13 @@
             </span>
         </div>
         <?php } ?>
-        <?php if (!empty($deck_name)) { ?>
+        <?php if ($has_study && !$has_card && $_deck_public) { ?>
+        <button type="button" id="btn_share"
+                class="btn btn-sm btn-outline-secondary ms-auto d-inline-flex align-items-center gap-2">
+            <i class="bi bi-share" aria-hidden="true"></i>
+            <span id="btn_share_label"><?= car_t($t, 'dash.study.share-deck') ?></span>
+        </button>
+        <?php } elseif (!empty($deck_name)) { ?>
         <div class="ms-auto">
             <div class="car-label-uc"><?= car_htmlspecialchars($deck_name) ?></div>
         </div>
@@ -179,10 +186,31 @@
 <?php if ($has_study && !$has_card) { ?>
 <script>
 // tela de resultados: esc retorna ao baralho
-// capture phase garante disparo antes de qualquer elemento focado
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { e.preventDefault(); location.href = <?= json_encode($_deck_url) ?>; }
 }, true);
+<?php if ($_deck_public) { ?>
+// botão de compartilhar baralho
+(function () {
+    var btn   = document.getElementById('btn_share');
+    var label = document.getElementById('btn_share_label');
+    if (!btn) return;
+    var shareUrl   = <?= json_encode(CAR_PATH_WEB . '/deck/' . rawurlencode($deck_key)) ?>;
+    var shareTitle = <?= json_encode($deck_name) ?>;
+    var labelShare = <?= json_encode(car_t($t, 'dash.study.share-deck')) ?>;
+    var labelCopied = <?= json_encode(car_t($t, 'dash.study.share-copied')) ?>;
+    btn.addEventListener('click', function () {
+        if (navigator.share) {
+            navigator.share({ url: shareUrl, title: shareTitle }).catch(function () {});
+        } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareUrl).then(function () {
+                label.textContent = labelCopied;
+                setTimeout(function () { label.textContent = labelShare; }, 2000);
+            }).catch(function () {});
+        }
+    });
+}());
+<?php } ?>
 </script>
 <?php } ?>
 <?php if ($has_study && $has_card) { ?>
