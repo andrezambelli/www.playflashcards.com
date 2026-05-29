@@ -177,20 +177,6 @@
                 <div class="d-flex align-items-center gap-2 ms-lg-auto car-navbar-actions">
 
                     <?php
-                        $langs = [
-                            'de'    => 'Deutsch',
-                            'en'    => 'English',
-                            'es'    => 'Español',
-                            'fr'    => 'Français',
-                            'hi'    => 'हिंदी',
-                            'it'    => 'Italiano',
-                            'ja'    => '日本語',
-                            'nl'    => 'Nederlands',
-                            'pl'    => 'Polski',
-                            'pt-br' => 'Português',
-                            'ru'    => 'Русский',
-                            'zh'    => '中文',
-                        ];
                         $lang_redirect_url = urlencode(car_current_url());
                     ?>
 
@@ -204,7 +190,7 @@
                             <?= $lang_current ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
+                            <?php foreach ($car_langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
                                    href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>">
@@ -226,7 +212,7 @@
                             <?= car_t($t, 'Language') ?>
                         </p>
                         <div class="row g-1">
-                            <?php foreach ($langs as $code => $name) { $active = $t['lang'] === $code; ?>
+                            <?php foreach ($car_langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <div class="col-6">
                                 <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
                                    class="d-flex align-items-center gap-2 px-2 py-1 rounded text-decoration-none <?= $active ? 'bg-primary-subtle text-primary fw-semibold' : 'text-secondary' ?>">

@@ -39,3 +39,5 @@
     } else {
         include CAR_ROOT_WEB . '/lang/lang-en.inc';
     }
+
+    include_once CAR_ROOT_WEB . '/lang/lang-list.inc';

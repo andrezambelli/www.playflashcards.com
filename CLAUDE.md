@@ -145,8 +145,8 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Ao adicionar um novo idioma `{code}`, atualizar obrigatoriamente todos os 11 pontos abaixo — nenhum é opcional:
   1. Criar `lang/lang-{code}.inc` com todas as chaves de `lang/lang-en.inc` traduzidas (incluindo `'lang' => '{code}'`)
   2. `lang/lang.inc`: adicionar `{code}` ao array `$valid`, ao `$_lang_map` e criar o bloco `elseif` de include
-  3. `containers/header.inc`: adicionar a `$lang_labels` (ex: `'de' => 'DE'`) e ao array `$langs` (com o nome nativo)
-  4. `profile/home.php`: adicionar `<option value="{code}">` no select de idioma
+  3. `containers/header.inc`: adicionar a `$lang_labels` (ex: `'de' => 'DE'`)
+  4. `lang/lang-list.inc`: adicionar `{code}` ao array `$car_langs` com o nome nativo (ex: `'de' => 'Deutsch'`) — atualiza automaticamente os selects em `profile/home.php`, `dash/deck-new.php`, `dash/deck-edit.php` e o dropdown em `containers/header.inc`
   5. `services/change-language-act.php`: adicionar ao array `$valid_langs` e às duas verificações de sufixo de URL (`elseif` de detecção de prefixo na URL)
   6. `routes.inc`: adicionar rotas para `{code}`, `{code}/login/login`, `{code}/contact-us`, `{code}/cookie-settings`, `{code}/terms-and-conditions` e `{code}/privacy-policy`
   7. `services/create-sitemap.php`: adicionar `{code}` ao array `$langs`

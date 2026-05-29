@@ -104,18 +104,7 @@
                 <div class="mb-3">
                     <label for="deck_lang" class="form-label"><?= car_t($t, 'Language') ?></label>
                     <select id="deck_lang" name="deck_lang" class="form-select" style="max-width: 280px">
-                        <option value="de"    <?= $deck_lang === 'de'    ? 'selected' : '' ?>>Deutsch</option>
-                        <option value="en"    <?= $deck_lang === 'en'    ? 'selected' : '' ?>>English</option>
-                        <option value="es"    <?= $deck_lang === 'es'    ? 'selected' : '' ?>>Español</option>
-                        <option value="fr"    <?= $deck_lang === 'fr'    ? 'selected' : '' ?>>Français</option>
-                        <option value="hi"    <?= $deck_lang === 'hi'    ? 'selected' : '' ?>>हिंदी</option>
-                        <option value="it"    <?= $deck_lang === 'it'    ? 'selected' : '' ?>>Italiano</option>
-                        <option value="ja"    <?= $deck_lang === 'ja'    ? 'selected' : '' ?>>日本語</option>
-                        <option value="nl"    <?= $deck_lang === 'nl'    ? 'selected' : '' ?>>Nederlands</option>
-                        <option value="pl"    <?= $deck_lang === 'pl'    ? 'selected' : '' ?>>Polski</option>
-                        <option value="pt-br" <?= $deck_lang === 'pt-br' ? 'selected' : '' ?>>Português (Brasil)</option>
-                        <option value="ru"    <?= $deck_lang === 'ru'    ? 'selected' : '' ?>>Русский</option>
-                        <option value="zh"    <?= $deck_lang === 'zh'    ? 'selected' : '' ?>>中文</option>
+                        <?= car_lang_options($deck_lang) ?>
                     </select>
                 </div>
 
