@@ -64,7 +64,7 @@
                     // Gera a chave única do cartão
                     $card_key = null;
                     while ($card_key == null) {
-                        $card_key = car_generate_key(12);
+                        $card_key = car_generate_card_key();
                         $sql = sprintf("select count(1) as count
                                           from car_card
                                          where card_key = '%s'",

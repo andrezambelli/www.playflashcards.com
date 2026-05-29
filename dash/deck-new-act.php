@@ -44,7 +44,7 @@
                 // Gera a chave única do grupo
                 $deck_key = null;
                 while ($deck_key == null) {
-                    $deck_key = car_generate_key(12);
+                    $deck_key = car_generate_deck_key();
                     $sql = sprintf("select count(1) as count
                                       from car_deck
                                      where deck_key = '%s'",

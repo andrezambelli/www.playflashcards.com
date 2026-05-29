@@ -90,7 +90,7 @@
                             $card_key = null;
 
                             while ($card_key == null) {
-                                $card_key = car_generate_key(12);
+                                $card_key = car_generate_card_key();
 
                                 // A chave do cartão precisa ser única no banco de dados
                                 $sql = sprintf("select count(1) as count

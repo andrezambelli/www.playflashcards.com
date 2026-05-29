@@ -312,6 +312,30 @@
     }
 
     /*
+     * Gera a chave numérica para cartões (12 dígitos, sem hifens)
+     */
+    function car_generate_card_key() {
+        return (string)random_int(100000000000, 999999999999);
+    }
+
+    /*
+     * Formata a chave de cartão para exibição: XXXX-XXXX-XXXX
+     */
+    function car_format_card_key($_key) {
+        if (ctype_digit($_key) && strlen($_key) === 12) {
+            return implode('-', str_split($_key, 4));
+        }
+        return $_key;
+    }
+
+    /*
+     * Gera a chave numérica para baralhos (12 dígitos, sem hifens)
+     */
+    function car_generate_deck_key() {
+        return (string)random_int(100000000000, 999999999999);
+    }
+
+    /*
 	 * Gera a chave que será utilizada nos grupos, cartões e estudos
 	 */
 	function car_generate_key($_size) {
