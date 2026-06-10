@@ -1,4 +1,4 @@
-$(document).ready(function() {
-	// coloca o foco no primeiro campo do formulário
-	$('form:first *:input[type!=hidden]:first').focus();
+document.addEventListener('DOMContentLoaded', function () {
+    const firstInput = document.querySelector('form input:not([type=hidden])');
+    if (firstInput) firstInput.focus();
 });

@@ -1,42 +1,32 @@
 <?php
     car_check_admin_login();
-	$_login = car_get_session_attribute('session_admin_login', 'off');
+    $_login = car_get_session_attribute('session_admin_login', 'off');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" dir="ltr">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Content-Language" content="pt-br" />
-	<meta name="Robots" content="noindex, nofollow" />
-	<meta name="Googlebot" content="noindex, nofollow, noarchive " />
-	<meta name="google-site-verification" content="" />
-	<meta name="Distribution" content="global" />
-	<meta name="Author" content="Aluzax" />
-	<meta name="Copyright" content="(c) 2023 Play Flashcards" />
-	<meta name="Keywords" content="" />
-	<meta name="Description" content="" />
-	
-	<link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon" />
-	<link type="text/css" rel="stylesheet" href="<?= CAR_PATH_ADMIN . "/assets/css/styles.css" ?>"  media="all" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<title>
-		Play Flashcards Admin - <?= CAR_ADMIN_VERSION; ?>
-	</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" href="<?= CAR_PATH_ADMIN ?>/assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-5.3.8.min.css">
+    <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-icons-1.13.1.min.css">
+    <link rel="stylesheet" href="<?= CAR_PATH_ADMIN ?>/assets/css/styles.css">
+    <title>Play Flashcards Admin</title>
 </head>
-<body>
-	<div class="header">
-		<div class="title">
-			<div style="padding:10px;">
-				Administrador do Play Flashcards<br/>
-				Versão <?= CAR_ADMIN_VERSION; ?>
-				[<?= $_login; ?>]
-			</div>
-		</div>
-	</div>
-	<?php if (!empty($_login) and $_login != 'off') { ?>
-		<?php include_once "menu-on.inc" ?>
-	<?php } else { ?>
-		<?php include_once "menu-off.inc" ?>
-	<?php } ?>
-
-<?php if (1 == 2) { ?></body></html><?php } ?>
+<body class="bg-light">
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-lg">
+        <span class="navbar-brand mb-0">
+            Play Flashcards Admin
+            <small class="text-secondary fs-6 fw-normal ms-2">v<?= CAR_ADMIN_VERSION ?></small>
+        </span>
+        <div class="d-flex gap-3">
+            <?php if (!empty($_login) && $_login != 'off') { ?>
+                <?php include_once "menu-on.inc" ?>
+            <?php } else { ?>
+                <?php include_once "menu-off.inc" ?>
+            <?php } ?>
+        </div>
+    </div>
+</nav>

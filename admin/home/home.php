@@ -9,103 +9,94 @@
     $total_sessions = 0;
     $total_cookies = 0;
 
-    // Número de usuários
-    $sql = 'select count(*) as count
-              from car_user';
-
+    $sql = 'select count(*) as count from car_user';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_users = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_users = $row['count'];
-    }
-
-    // Número de grupos
-    $sql = 'select count(*) as count
-              from car_deck';
-
+    $sql = 'select count(*) as count from car_deck';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_decks = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_decks = $row['count'];
-    }
-
-    // Número de estudos
-    $sql = 'select count(*) as count
-              from car_study';
-
+    $sql = 'select count(*) as count from car_study';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_studies = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_studies = $row['count'];
-    }
-
-    // Número de sessões de estudo privado
-    $sql = 'select count(*) as count
-              from car_study
-             where stud_public = 0';
-
+    $sql = 'select count(*) as count from car_study where stud_public = 0';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_studies_sessions_private = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_studies_sessions_private = $row['count'];
-    }
-
-    // Número de sessões de estudo público
-    $sql = 'select count(*) as count
-              from car_study
-             where stud_public = 1';
-
+    $sql = 'select count(*) as count from car_study where stud_public = 1';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_studies_sessions_public = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_studies_sessions_public = $row['count'];
-    }
-
-    // Número de sessões
-    $sql = 'select count(*) as count
-              from car_session';
-
+    $sql = 'select count(*) as count from car_session';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_sessions = $row['count']; }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_sessions = $row['count'];
-    }
-
-    // Número de cookies
-    $sql = 'select count(*) as count
-              from car_cookie';
-
+    $sql = 'select count(*) as count from car_cookie';
     $result = $mysqli->query($sql, MYSQLI_STORE_RESULT);
-
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $total_cookies = $row['count'];
-    }
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { $total_cookies = $row['count']; }
 ?>
 <?php include_once CAR_ROOT_ADMIN . '/containers/header.inc' ?>
-<div class="master">
-	<div class="subtitle"><div>Home</div></div>
-    <div class="form">
-        <strong>Usuários</strong><br/>
-        <?= $total_users; ?><br/>
-        <br/>
-        <strong>Grupos</strong><br/>
-        <?= $total_decks; ?><br/>
-        <br/>
-        <strong>Estudos</strong><br/>
-        <?= $total_studies; ?><br/>
-        <br/>
-        <strong>Sessões de Estudo Privados</strong><br/>
-        <?= $total_studies_sessions_private; ?><br/>
-        <br/>
-        <strong>Sessões de Estudo Públicos</strong><br/>
-        <?= $total_studies_sessions_public; ?><br/>
-        <br/>
-        <strong>Sessões</strong><br/>
-        <?= $total_sessions; ?><br/>
-        <br/>
-        <strong>Cookies</strong><br/>
-        <?= $total_cookies; ?><br/>
-        <br/>
+<div class="container-lg py-4">
+    <h5 class="mb-4">Home</h5>
+    <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_users ?></div>
+                    <div class="text-muted small mt-1">Usuários</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_decks ?></div>
+                    <div class="text-muted small mt-1">Baralhos</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_studies ?></div>
+                    <div class="text-muted small mt-1">Estudos</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_studies_sessions_private ?></div>
+                    <div class="text-muted small mt-1">Estudos privados</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_studies_sessions_public ?></div>
+                    <div class="text-muted small mt-1">Estudos públicos</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_sessions ?></div>
+                    <div class="text-muted small mt-1">Sessões</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="display-5 fw-semibold"><?= $total_cookies ?></div>
+                    <div class="text-muted small mt-1">Cookies</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc' ?>

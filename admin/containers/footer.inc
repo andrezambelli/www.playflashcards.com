@@ -1,9 +1,5 @@
-<div class="footer">
-	<div class="content">
-		Play Flashcards 2023
-	</div>
-</div>
-<script type="text/javascript" src="../assets/js/main.js"></script>
+<script src="<?= CAR_PATH_WEB ?>/assets/js/bootstrap-5.3.8.bundle.min.js"></script>
+<script src="<?= CAR_PATH_ADMIN ?>/assets/js/main.js"></script>
 </body>
 </html>
 <?php include_once "clear-session.inc" ?>

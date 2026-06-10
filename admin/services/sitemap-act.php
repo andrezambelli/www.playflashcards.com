@@ -6,13 +6,12 @@
     $output = ob_get_clean();
 ?>
 <?php include_once CAR_ROOT_ADMIN . '/containers/header.inc'; ?>
-<div class="master">
-    <div class="form">
-        <strong>Sitemap</strong><br><br>
-        <pre><?= htmlspecialchars($output, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></pre>
-        <br>
-        Sitemap criado com sucesso.<br><br>
+<div class="container-lg py-4">
+    <h5 class="mb-4">Criar sitemap</h5>
+    <div class="alert alert-success">
+        Sitemap criado com sucesso.
         Arquivo: <a href="<?= CAR_PATH_WEB ?>/sitemap.xml" target="_blank"><?= CAR_PATH_WEB ?>/sitemap.xml</a>
     </div>
+    <pre><?= htmlspecialchars($output, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></pre>
 </div>
 <?php include_once CAR_ROOT_ADMIN . '/containers/footer.inc'; ?>

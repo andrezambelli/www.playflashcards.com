@@ -1,6 +1,1 @@
-<div class="menu">
-	<div class="content">
-		<a href="../login/login.php" class="selected">Login</a>
-	</div>
-</div>
-
+<a class="text-light text-decoration-none small" href="<?= CAR_PATH_ADMIN ?>/login/login.php">Login</a>
