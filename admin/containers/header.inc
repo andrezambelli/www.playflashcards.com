@@ -1,6 +1,7 @@
 <?php
     car_check_admin_login();
-    $_login = car_get_session_attribute('session_admin_login', 'off');
+    $_login  = car_get_session_attribute('session_admin_login', 'off');
+    $asset_v = rawurlencode(car_is_production() ? CAR_ADMIN_VERSION : (string) ($_SERVER['REQUEST_TIME'] ?? time()));
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +12,7 @@
     <link rel="shortcut icon" href="<?= CAR_PATH_ADMIN ?>/assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-5.3.8.min.css">
     <link rel="stylesheet" href="<?= CAR_PATH_WEB ?>/assets/css/bootstrap-icons-1.13.1.min.css">
-    <link rel="stylesheet" href="<?= CAR_PATH_ADMIN ?>/assets/css/styles.css">
+    <link rel="stylesheet" href="<?= CAR_PATH_ADMIN ?>/assets/css/styles.css?v=<?= $asset_v ?>">
     <title>Play Flashcards Admin</title>
 </head>
 <body class="bg-light">
