@@ -60,7 +60,7 @@
             <div class="d-flex justify-content-between align-items-center gap-3">
                 <div>
                     <div class="fw-semibold">Atualizar rate dos cartões</div>
-                    <small class="text-muted">Recalcula o rate de todos os cartões com base em acertos e erros.</small>
+                    <small class="text-muted">Recalcula <code>car_card.card_rate</code> para todos os cartões (acertos / total de respostas × 100). O SRS usa esse valor para priorizar cartões com menor desempenho.</small>
                 </div>
                 <a href="update-card-rate-act.php" class="btn btn-sm btn-outline-primary flex-shrink-0">Executar</a>
             </div>
@@ -73,7 +73,7 @@
             <div class="d-flex justify-content-between align-items-center gap-3">
                 <div>
                     <div class="fw-semibold">Apagar sessões</div>
-                    <small class="text-muted">Apaga todos os registros da tabela car_session.</small>
+                    <small class="text-muted">Apaga todos os registros de <code>car_session</code> (sessões PHP do servidor).</small>
                 </div>
                 <a href="session-act.php" class="btn btn-sm btn-outline-primary flex-shrink-0">Executar</a>
             </div>
@@ -87,7 +87,7 @@
             <div class="d-flex justify-content-between align-items-center gap-3">
                 <div>
                     <div class="fw-semibold">Apagar estudos públicos não finalizados</div>
-                    <small class="text-muted">Apaga estudos de visitantes (user_id = 1) com mais de 24 horas sem finalizar, incluindo os registros de car_study_session.</small>
+                    <small class="text-muted">Apaga registros de <code>car_study</code> e <code>car_study_session</code> de visitantes não concluídos após 24 horas.</small>
                 </div>
                 <a href="clean-study-act.php" class="btn btn-sm btn-outline-primary flex-shrink-0">Executar</a>
             </div>
