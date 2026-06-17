@@ -6,6 +6,9 @@ Options -Indexes
 
 RewriteEngine on  
 
+# redirect /admin/* para o subdomínio admin
+RewriteRule ^admin(/.*)?$ https://admin.playflashcards.com$1 [L,R=301]
+
 # remove variantes /index.php/... para evitar URLs duplicadas
 RewriteCond %{THE_REQUEST} \s/+index\.php[^\s]* [NC]
 RewriteRule ^index\.php(/.*)?$ / [L,R=301,NC]
