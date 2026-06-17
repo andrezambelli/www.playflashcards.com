@@ -22,7 +22,6 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 | `containers/` | Blocos reutilizáveis incluídos nas páginas: header, footer, message, share, boxes |
 | `dash/` | Área logada: gerenciamento de decks, cartões e sessões de estudo |
 | `docs/` | Documentação local (gitignored): scripts MySQL, templates de servidor |
-| `external-lib/` | Bibliotecas externas (MailerSend) |
 | `general/` | Funções utilitárias (`functions.inc`), handler de sessão |
 | `home/` | Página inicial pública |
 | `lang/` | Arquivos de tradução por idioma |
