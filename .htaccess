@@ -1,4 +1,6 @@
 DirectoryIndex index.html index.php
+
+RedirectMatch 301 ^/admin(/.*)?$ https://admin.playflashcards.com$1
 AddType image/webp .webp
 AddType video/mp4 .mp4
 AddType application/x-httpd-php config
