@@ -20,15 +20,6 @@
         return strpos($host, 'localhost') !== false || $host === '127.0.0.1';
     }
 
-    function car_check_admin_login() {
-        $_login = car_get_session_attribute('session_admin_login', '');
-
-        // se não estiver logado, redireciona para a página de login
-        if ($_login == 'off' and strrpos($_SERVER['REQUEST_URI'], '/login/login.php') === false) {
-            car_redirect('../login/login.php?redirect_url=' . urlencode(car_current_url()));
-        }
-    }
-
     /*
      * Calcula a porcentagem de um número sobre outro. by chatGPT
      */
