@@ -1,3 +1,34 @@
+/* Navbar: oculta ao rolar para baixo e revela ao rolar para cima */
+(function () {
+    var navbar = document.querySelector('.navbar.fixed-top');
+    if (!navbar) return;
+    var collapse = navbar.querySelector('.navbar-collapse');
+    var lastScrollY = window.scrollY;
+
+    function update() {
+        var currentScrollY = window.scrollY;
+        var menuOpen = !!(collapse && collapse.classList.contains('show'));
+
+        if (!menuOpen) {
+            if (currentScrollY <= 60) {
+                navbar.classList.remove('one-navbar-hidden');
+            } else if (currentScrollY > lastScrollY) {
+                navbar.classList.add('one-navbar-hidden');
+            } else {
+                navbar.classList.remove('one-navbar-hidden');
+            }
+        }
+
+        lastScrollY = currentScrollY;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    navbar.addEventListener('show.bs.collapse', function () {
+        navbar.classList.remove('one-navbar-hidden');
+    });
+    update();
+})();
+
 /**
  * Aceite de cookies GDPR — esconde o banner e registra no servidor
  */

@@ -121,6 +121,11 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 0;
     padding-bottom: 0;
     min-height: var(--app-header-h);
+    transition: transform 0.3s ease;
+}
+
+.navbar.one-navbar-hidden {
+    transform: translateY(-100%);
 }
 .navbar .nav-link {
     font-size: 0.8125rem;
