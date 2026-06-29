@@ -1,5 +1,61 @@
+# ROBOTS.TXT OTIMIZADO - PLAY FLASHCARDS
+# SEO, Segurança, AIs permitidos
+# Site: https://www.playflashcards.com
+
 User-agent: *
 Allow: /
+
+# Recursos essenciais
+Allow: /assets/
+Allow: /assets/img/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
+Allow: *.ico
+Allow: *.woff
+Allow: *.woff2
+Allow: *.pdf
+
+# Parâmetros de tracking (evita conteúdo duplicado)
+Disallow: /*?utm_
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+Disallow: /*?gad_source=
+Disallow: /*?msclkid=
+Disallow: /*?ref=
+Disallow: /*?session=
+Disallow: /*?source=
+
+# Arquivos sensíveis
+Disallow: /*.git$
+Disallow: /*.sql$
+Disallow: /*.tgz$
+Disallow: /*.gz$
+Disallow: /*.tar$
+Disallow: /*.svn$
+Disallow: /*.bz2$
+Disallow: /*.log$
+Disallow: /*.zip$
+Disallow: /*.old$
+Disallow: /*.bak$
+Disallow: /*.env$
+Disallow: /*.config$
+Disallow: /*.ini$
+Disallow: /*.yml$
+Disallow: /*.yaml$
+Disallow: /*.json$
+Disallow: /cgi-bin/
+Disallow: /*.cgi$
+Disallow: /*.inc$
+
+# Diretórios de aplicação (não indexar)
 Disallow: /admin
 Disallow: /common
 Disallow: /containers
@@ -12,4 +68,143 @@ Disallow: /login
 Disallow: /profile
 Disallow: /public
 Disallow: /services
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# SEO tools - permitidos
+User-agent: rogerbot
+Allow: /
+
+User-agent: dotbot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+# SEO tools - bloqueados
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-OCOB
+Disallow: /
+
+User-agent: SemrushBot-SWA
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# IA bots - permitidos
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: SearchGPT-User
+Allow: /
+
+User-agent: SearchGPT
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Gemini-Deep-Research
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: GrokBot
+Allow: /
+
+User-agent: XAI-Bot
+Allow: /
+
+User-agent: xAI-Grok
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Scrapers - bloqueados
+User-agent: Scrapy
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+User-agent: libwww-perl
+Disallow: /
+
+User-agent: Python-urllib
+Disallow: /
+
+User-agent: python-requests
+Disallow: /
+
+User-agent: Java
+Disallow: /
+
+User-agent: Jakarta
+Disallow: /
+
+# Sitemap
 Sitemap: https://www.playflashcards.com/sitemap.xml

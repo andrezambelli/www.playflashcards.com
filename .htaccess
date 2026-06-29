@@ -2,6 +2,7 @@ DirectoryIndex index.html index.php
 AddType image/webp .webp
 AddType video/mp4 .mp4
 AddType application/x-httpd-php config
+AddCharset UTF-8 .txt
 Options -Indexes 
 
 RewriteEngine on  

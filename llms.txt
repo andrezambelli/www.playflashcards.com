@@ -1,0 +1,30 @@
+# Play Flashcards
+
+> Play Flashcards is a web platform for creating and studying flashcards using spaced repetition (SRS). Users can create private or public decks and cards, study in sessions with performance tracking, and monitor their progress over time. It supports multiple languages and is available to anyone with an internet connection — no app installation required.
+
+Key information:
+
+- Site language: Multilingual (Portuguese, English, Spanish, French, German, Italian, Japanese, Chinese, Dutch, Polish, Russian, Hindi).
+- Product: spaced repetition flashcard platform for studying and memorization.
+- Contact email: contato@onepropage.com.br.
+- Public access (no login required): public decks and study sessions available at /public/.
+
+## Main page
+
+- [Home — Play Flashcards](https://www.playflashcards.com/): Public landing page introducing the platform, with flashcard examples and access to login and sign up.
+
+## Core features
+
+- **Decks**: create private or public flashcard decks.
+- **Cards**: front-and-back cards organized within decks.
+- **Study sessions**: sessions with right/wrong tracking, configurable via SRS or free mode.
+- **Spaced Repetition (SRS)**: performance-based repetition system to optimize long-term memorization.
+- **Public decks**: decks shared publicly and accessible without an account.
+
+## Public sections
+
+- [Public decks](https://www.playflashcards.com/public/): Public decks and study sessions accessible without sign up.
+- [About](https://www.playflashcards.com/common/about): About Play Flashcards and its mission.
+- [Contact](https://www.playflashcards.com/common/contact-us): Contact form.
+- [Terms and Conditions](https://www.playflashcards.com/common/terms-and-conditions): Terms of use.
+- [Privacy Policy](https://www.playflashcards.com/common/privacy-policy): Privacy policy and data usage.
