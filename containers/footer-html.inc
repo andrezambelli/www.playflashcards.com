@@ -43,9 +43,9 @@
             <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2 gap-md-0 small text-secondary">
 
                 <div class="d-flex align-items-center gap-3 flex-wrap">
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>"><?= car_t($t, 'Contact') ?></a>
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions' ?>"><?= car_t($t, 'Terms') ?></a>
-                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy' ?>"><?= car_t($t, 'Privacy') ?></a>
+                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us/' ?>"><?= car_t($t, 'Contact') ?></a>
+                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/terms-and-conditions/' ?>"><?= car_t($t, 'Terms') ?></a>
+                    <a class="text-decoration-none text-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/privacy-policy/' ?>"><?= car_t($t, 'Privacy') ?></a>
                     <span class="d-none d-md-inline" aria-hidden="true">·</span>
                     <a href="https://x.com/playflashcards" target="_blank" rel="noopener" aria-label="Play Flashcards no X" class="d-none d-md-inline text-secondary">
                         <i class="bi bi-twitter-x" aria-hidden="true"></i>

@@ -16,7 +16,7 @@
             <div class="display-1 fw-bold text-secondary mb-3">403</div>
             <h1 class="h3 fw-semibold mb-2"><?= car_t($t, 'common.403.title') ?></h1>
             <p class="text-secondary mb-4"><?= car_t($t, 'common.404.desc') ?></p>
-            <a href="<?= CAR_PATH_WEB ?>/" class="btn btn-primary">
+            <a href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/' ?>" class="btn btn-primary">
                 <?= car_t($t, 'Home') ?>
             </a>
         </div>

@@ -72,7 +72,7 @@ include_once CAR_ROOT_WEB . '/containers/header.inc';
                 <div class="card p-3 d-none d-lg-block">
                     <p class="fw-semibold small mb-1"><?= car_htmlspecialchars($sidebar_questions) ?></p>
                     <p class="small text-secondary mb-3"><?= car_htmlspecialchars($sidebar_questions_desc) ?></p>
-                    <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>">
+                    <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us/' ?>">
                         <i class="bi bi-envelope" aria-hidden="true"></i>
                         <?= car_t($t, 'Contact us') ?>
                     </a>
@@ -99,7 +99,7 @@ include_once CAR_ROOT_WEB . '/containers/header.inc';
             <div class="card p-3 mt-4 d-lg-none">
                 <p class="fw-semibold small mb-1"><?= car_htmlspecialchars($sidebar_questions) ?></p>
                 <p class="small text-secondary mb-3"><?= car_htmlspecialchars($sidebar_questions_desc) ?></p>
-                <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>">
+                <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us/' ?>">
                     <i class="bi bi-envelope" aria-hidden="true"></i>
                     <?= car_t($t, 'Contact us') ?>
                 </a>

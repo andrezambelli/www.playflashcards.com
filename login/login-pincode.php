@@ -67,7 +67,7 @@
                 <?= car_t($t, 'login.login-pincode.resend-code') ?>
                 <span class="car-auth-countdown car-text-mono"></span>
             </a>
-            <a id="link-change-email" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"
+            <a id="link-change-email" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login/' ?>"
                class="small text-secondary text-decoration-none">
                 <?= car_t($t, 'login.login-pincode.change-email') ?>
                 <span class="car-auth-countdown car-text-mono"></span>

@@ -195,6 +195,7 @@
                             <?php foreach ($car_langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center gap-2 <?= $active ? 'active' : '' ?>"
+                                   rel="nofollow"
                                    href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>">
                                     <span class="car-text-mono text-secondary" style="width:22px"><?= $lang_labels[$code] ?></span>
                                     <?= $name ?>
@@ -216,7 +217,7 @@
                         <div class="row g-1">
                             <?php foreach ($car_langs as $code => $name) { $active = $t['lang'] === $code; ?>
                             <div class="col-6">
-                                <a href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
+                                <a rel="nofollow" href="<?= CAR_PATH_WEB ?>/services/change-language-act?lang=<?= $code ?>&redirect_url=<?= $lang_redirect_url ?>"
                                    class="d-flex align-items-center gap-2 px-2 py-1 rounded text-decoration-none <?= $active ? 'bg-primary-subtle text-primary fw-semibold' : 'text-secondary' ?>">
                                     <span class="car-text-mono small" style="width:20px"><?= $lang_labels[$code] ?></span>
                                     <span class="small"><?= $name ?></span>
@@ -231,7 +232,7 @@
 
                     <a id="car-navbar-cta"
                        class="btn btn-primary"
-                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login' ?>"
+                       href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/login/login/' ?>"
                        data-dash-href="<?= CAR_PATH_WEB ?>/dash/home"
                        data-dash-label="<?= car_t($t, 'Dashboard') ?>"><?= car_t($t, 'Get Started') ?></a>
                 </div>

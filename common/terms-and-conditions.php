@@ -26,7 +26,7 @@ switch ($t['lang']) {
             ['id' => 'responsibility',       'title' => 'User responsibility',
              'content' => '<p>You are responsible for ensuring that any content you create on Play Flashcards — including deck names, descriptions and flashcard text — complies with applicable laws and does not infringe on the rights of third parties. Play Flashcards is not responsible for any content created by users.</p>'],
             ['id' => 'privacy',              'title' => 'Privacy',
-             'content' => '<p>We respect your privacy. Please see our <a href="' . CAR_PATH_WEB . '/en/privacy-policy">Privacy Policy</a> for a full description of what data we collect, how we use it, and the third-party services involved.</p>'],
+             'content' => '<p>We respect your privacy. Please see our <a href="' . CAR_PATH_WEB . '/en/privacy-policy/">Privacy Policy</a> for a full description of what data we collect, how we use it, and the third-party services involved.</p>'],
             ['id' => 'intellectual-property','title' => 'Intellectual property',
              'content' => '<p>The Play Flashcards platform — including its design, code and features — is protected by copyright and intellectual property law. You may not copy, modify, distribute or commercially exploit any part of the platform without express permission. The flashcard content you create remains yours.</p>'],
             ['id' => 'public-decks',         'title' => 'Public decks',
@@ -76,7 +76,7 @@ include_once CAR_ROOT_WEB . '/containers/header.inc';
                 <div class="card p-3 d-none d-lg-block">
                     <p class="fw-semibold small mb-1"><?= car_htmlspecialchars($sidebar_questions) ?></p>
                     <p class="small text-secondary mb-3"><?= car_htmlspecialchars($sidebar_questions_desc) ?></p>
-                    <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>">
+                    <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us/' ?>">
                         <i class="bi bi-envelope" aria-hidden="true"></i>
                         <?= car_t($t, 'Contact us') ?>
                     </a>
@@ -103,7 +103,7 @@ include_once CAR_ROOT_WEB . '/containers/header.inc';
             <div class="card p-3 mt-4 d-lg-none">
                 <p class="fw-semibold small mb-1"><?= car_htmlspecialchars($sidebar_questions) ?></p>
                 <p class="small text-secondary mb-3"><?= car_htmlspecialchars($sidebar_questions_desc) ?></p>
-                <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us' ?>">
+                <a class="btn btn-sm btn-outline-secondary" href="<?= CAR_PATH_WEB . '/' . $t['lang'] . '/contact-us/' ?>">
                     <i class="bi bi-envelope" aria-hidden="true"></i>
                     <?= car_t($t, 'Contact us') ?>
                 </a>
