@@ -1,9 +1,17 @@
-car-server.php
-**/.DS_Store
+# Sistema e ferramentas locais
+.DS_Store
 .idea/
+.claude/
+
+# Configuração de deploy (contém a senha do servidor)
 .vscode/sftp.json
-.claude
-external-lib/google-api-client-2.12.1/
+
+# Credenciais e configuração de ambiente (viajam no deploy pelo sftp.json)
+car-server.php
+
+# Documentação local
 docs/
+
+# Gerados em runtime e biblioteca externa
 cache/
-admin/
+external-lib/google-api-client-2.12.1/
