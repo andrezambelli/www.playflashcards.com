@@ -21,7 +21,7 @@ Plataforma de criação e estudo de flashcards com suporte a repetição espaça
 | `common/` | Páginas comuns: sobre, contato, cookies, termos, privacidade, doação |
 | `containers/` | Blocos reutilizáveis incluídos nas páginas: header, footer, message, share, boxes |
 | `dash/` | Área logada: gerenciamento de decks, cartões e sessões de estudo |
-| `docs/` | Documentação local (gitignored): agentes, scripts MySQL, credenciais Google, referências do redesign |
+| `docs/` | Documentação local (gitignored): scripts MySQL, credenciais Google, referências do redesign e a revisão de segurança do login por PIN (`docs/agents/pincode-security.md`, relatório, não agente) |
 | `general/` | Funções utilitárias (`functions.inc`), conexão e handler de sessão (`db.inc`), GA |
 | `home/` | Página inicial pública |
 | `lang/` | Arquivos de tradução por idioma |
@@ -105,27 +105,23 @@ Configurado por usuário em `profile/srs.php`. Constantes globais em `config.inc
 - Autocommit desligado: usar `$mysqli->commit()` após operações de escrita
 - Escapar inputs com `$mysqli->real_escape_string()` nas queries interpoladas
 
-## 5. Agentes
-
-- `docs/agents/pincode-security.md` — revisão de segurança do login por pincode enviado por e-mail
-
-## 6. Restrições (nunca)
+## 5. Restrições (nunca)
 
 - Nunca alterar o estilo de um botão isolado fora do hero. Mudanças de espaçamento, padding, fonte ou raio de botões devem ser aplicadas ao padrão global de botões
 
-## 7. Regras (ao fazer)
+## 6. Regras (ao fazer)
 
 - Ao escrever JavaScript, seguir o padrão do `assets/js/main.js`
 - Ao referenciar o design visual do redesign, consultar `docs/redesign/claude_design/` apenas como referência de aparência (cores, layout, tipografia), nunca como fonte de código a copiar
-- Ao adicionar um novo idioma `{code}`, atualizar obrigatoriamente todos os 11 pontos abaixo — nenhum é opcional:
+- Ao adicionar um novo idioma `{code}`, atualizar obrigatoriamente todos os 11 pontos abaixo, sem exceção:
   1. Criar `lang/lang-{code}.inc` com todas as chaves de `lang/lang-en.inc` traduzidas (incluindo `'lang' => '{code}'`)
   2. `lang/lang.inc`: adicionar `{code}` ao array `$valid`, ao `$_lang_map` e criar o bloco `elseif` de include
   3. `containers/header.inc`: adicionar a `$lang_labels` (ex: `'de' => 'DE'`)
-  4. `lang/lang-list.inc`: adicionar `{code}` ao array `$car_langs` com o nome nativo (ex: `'de' => 'Deutsch'`) — atualiza automaticamente os selects em `profile/home.php`, `dash/deck-new.php`, `dash/deck-edit.php` e o dropdown em `containers/header.inc`
+  4. `lang/lang-list.inc`: adicionar `{code}` ao array `$car_langs` com o nome nativo (ex: `'de' => 'Deutsch'`): atualiza automaticamente os selects em `profile/home.php`, `dash/deck-new.php`, `dash/deck-edit.php` e o dropdown em `containers/header.inc`
   5. `services/change-language-act.php`: adicionar ao array `$valid_langs` e às duas verificações de sufixo de URL (`elseif` de detecção de prefixo na URL)
   6. `routes.inc`: adicionar rotas para `{code}`, `{code}/login/login`, `{code}/contact-us`, `{code}/cookie-settings`, `{code}/terms-and-conditions` e `{code}/privacy-policy`
   7. `services/create-sitemap.php`: adicionar `{code}` ao array `$langs`
-  8. `main.php`: adicionar `{code}` ao array `in_array` da validação anti-loop (linha com `$_uri_first`) — omitir causa `ERR_TOO_MANY_REDIRECTS` na homepage do idioma
+  8. `main.php`: adicionar `{code}` ao array `in_array` da validação anti-loop (linha com `$_uri_first`): omitir causa `ERR_TOO_MANY_REDIRECTS` na homepage do idioma
   9. `general/functions.inc`: adicionar bloco `elseif` para `/{code}/` na função `car_check_language()`
   10. `home/card-preview.inc`: adicionar entrada no array `$home_card_preview_examples` com 5 flashcards de exemplo traduzidos para `{code}`
-  11. `profile/home.php` (select): o atributo `selected` dos `<option>` usa `$t['lang']` (sessão ativa), não `$user_lang` (banco) — isso já está correto; ao criar novos selects de idioma em outras páginas, seguir o mesmo padrão
+  11. `profile/home.php` (select): o atributo `selected` dos `<option>` usa `$t['lang']` (sessão ativa), não `$user_lang` (banco): isso já está correto; ao criar novos selects de idioma em outras páginas, seguir o mesmo padrão
